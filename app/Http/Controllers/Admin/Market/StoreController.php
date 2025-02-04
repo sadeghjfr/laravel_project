@@ -1,0 +1,51 @@
+<?php
+
+namespace App\Http\Controllers\Admin\Market;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class StoreController extends Controller
+{
+
+    public function index()
+    {
+        return view('admin.market.store.index');
+    }
+
+
+    public function addToStore()
+    {
+        return view('admin.market.store.add-to-store');
+    }
+
+
+    public function store(Request $request)
+    {
+        //
+    }
+
+
+    public function show($id)
+    {
+        //
+    }
+
+
+    public function edit($id)
+    {
+        //
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+
+    public function destroy($id)
+    {
+        //
+    }
+}
