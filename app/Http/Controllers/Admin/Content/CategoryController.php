@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Admin\Content;
 
 use App\Http\Controllers\Controller;
+use App\Models\Content\PostCategory;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
     public function index()
     {
-        return view('admin.content.category.index');
+
+        $postCategories = PostCategory::orderBy('created_at', 'desc')->simplePaginate(15);
+        return view('admin.content.category.index', compact('postCategories'));
     }
 
 

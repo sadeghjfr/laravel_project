@@ -38,39 +38,33 @@
                             <th>#</th>
                             <th>نام دسته بندی</th>
                             <th>دسته والد</th>
+                            <th>توضیحات</th>
+                            <th>اسلاگ</th>
+                            <th>تصویر</th>
+                            <th>تگ ها</th>
                             <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th>1</th>
-                            <td>هوش مصنوعی</td>
-                            <td>تکنولوژی</td>
-                            <td class="width-16-rem text-left">
-                                <a href="{{route('admin.content.category.edit', 2)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
-                                <button class="btn btn-danger btn-sm" type="submit"><i class="fa fa-trash-alt"></i> حذف</button>
-                            </td>
-                        </tr>
 
-                        <tr>
-                            <th>2</th>
-                            <td>هوش مصنوعی</td>
-                            <td>تکنولوژی</td>
-                            <td class="width-16-rem text-left">
-                                <a href="{{route('admin.content.category.edit', 2)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
-                                <button class="btn btn-danger btn-sm" type="submit"><i class="fa fa-trash-alt"></i> حذف</button>
-                            </td>
-                        </tr>
+                        @foreach($postCategories as $postCategory)
 
-                        <tr>
-                            <th>3</th>
-                            <td>هوش مصنوعی</td>
-                            <td>تکنولوژی</td>
-                            <td class="width-16-rem text-left">
-                                <a href="{{route('admin.content.category.edit', 2)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
-                                <button class="btn btn-danger btn-sm" type="submit"><i class="fa fa-trash-alt"></i> حذف</button>
-                            </td>
-                        </tr>
+                            <tr>
+                                <th>1</th>
+                                <td>{{$postCategory->name}}</td>
+                                <td>{{$postCategory->parent_id}}</td>
+                                <td>{{$postCategory->description}}</td>
+                                <td>{{$postCategory->slug}}</td>
+                                <td><img src="{{asset($postCategory->image)}}" alt="image" width="50" height="50"></td>
+                                <td>{{$postCategory->tags}}</td>
+
+                                <td class="width-16-rem text-left">
+                                    <a href="{{route('admin.content.category.edit', [$postCategory->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
+                                    <button class="btn btn-danger btn-sm" type="submit"><i class="fa fa-trash-alt"></i> حذف</button>
+                                </td>
+                            </tr>
+
+                        @endforeach
 
                         </tbody>
                     </table>
