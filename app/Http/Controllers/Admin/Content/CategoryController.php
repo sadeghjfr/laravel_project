@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin\Content;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Content\PostCategoryRequest;
 use App\Models\Content\PostCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -12,19 +14,26 @@ class CategoryController extends Controller
     {
 
         $postCategories = PostCategory::orderBy('created_at', 'desc')->simplePaginate(15);
+        //dd($postCategories[0]->parent());
         return view('admin.content.category.index', compact('postCategories'));
     }
 
 
     public function create()
     {
-        return view('admin.content.category.create');
+
+        $parentCategories = PostCategory::whereNull('parent_id')->get();
+        return view('admin.content.category.create', compact('parentCategories'));
     }
 
 
-    public function store(Request $request)
+    public function store(PostCategoryRequest $request)
     {
-        //
+        $inputs = $request->all();
+        $inputs['slug'] = Str::replace(' ', '-', $inputs['name']) . '-' . Str::random(5);
+        $inputs['image'] = 'image';
+        $postCategory = PostCategory::create($inputs);
+        return redirect()->route('admin.content.category.index');
     }
 
 
@@ -34,19 +43,30 @@ class CategoryController extends Controller
     }
 
 
-    public function edit($id)
+    public function edit(PostCategory $postCategory)
     {
-        //
+
+        $parentCategories = PostCategory::whereNull('parent_id')->get();
+        return view('admin.content.category.edit', compact('postCategory', 'parentCategories'));
     }
 
 
-    public function update(Request $request, $id)
+    public function update(PostCategoryRequest $request, PostCategory $postCategory)
     {
-        //
+        $inputs = $request->all();
+        $inputs['image'] = 'image';
+        $postCategory->update($inputs);
+        return redirect()->route('admin.content.category.index');
     }
 
 
-    public function destroy($id)
+    public function destroy(PostCategory $postCategory)
+    {
+        $result = $postCategory->delete();
+        return redirect()->route('admin.content.category.index');
+    }
+
+    public function status(PostCategory $postCategory)
     {
         //
     }

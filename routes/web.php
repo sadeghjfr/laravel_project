@@ -202,9 +202,10 @@ Route::prefix('admin')->namespace('Admin')->group(function (){
             Route::get('/create', [ContentCategoryController::class, 'create'])->name('admin.content.category.create');
             Route::post('/store', [ContentCategoryController::class, 'store'])->name('admin.content.category.store');
             //Route::get('/show/{id}', [ContentCategoryController::class, 'show'])->name('admin.content.category.show');
-            Route::get('/edit/{id}', [ContentCategoryController::class, 'edit'])->name('admin.content.category.edit');
-            Route::put('/update/{id}', [ContentCategoryController::class, 'update'])->name('admin.content.category.update');
-            Route::delete('/destroy/{id}', [ContentCategoryController::class, 'destroy'])->name('admin.content.category.destroy');
+            Route::get('/edit/{postCategory}', [ContentCategoryController::class, 'edit'])->name('admin.content.category.edit');
+            Route::put('/update/{postCategory}', [ContentCategoryController::class, 'update'])->name('admin.content.category.update');
+            Route::delete('/destroy/{postCategory}', [ContentCategoryController::class, 'destroy'])->name('admin.content.category.destroy');
+            Route::get('/status/{postCategory}', [ContentCategoryController::class, 'status'])->name('admin.content.category.status');
 
         });
 

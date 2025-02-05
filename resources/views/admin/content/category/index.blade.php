@@ -38,10 +38,10 @@
                             <th>#</th>
                             <th>نام دسته بندی</th>
                             <th>دسته والد</th>
-                            <th>توضیحات</th>
                             <th>اسلاگ</th>
                             <th>تصویر</th>
                             <th>تگ ها</th>
+                            <th>وضعیت</th>
                             <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>
                         </thead>
@@ -50,17 +50,25 @@
                         @foreach($postCategories as $postCategory)
 
                             <tr>
-                                <th>1</th>
+                                <th>{{$postCategory->id}}</th>
                                 <td>{{$postCategory->name}}</td>
-                                <td>{{$postCategory->parent_id}}</td>
-                                <td>{{$postCategory->description}}</td>
+                                <td>{{empty($postCategory->parent_id) ? '' : $postCategory->parent_id}}</td>
                                 <td>{{$postCategory->slug}}</td>
                                 <td><img src="{{asset($postCategory->image)}}" alt="image" width="50" height="50"></td>
-                                <td>{{$postCategory->tags}}</td>
+                                <td>{{Str::substr($postCategory->tags, 0, 50)}}</td>
+                                <td>
+                                    <label>
+                                        <input type="checkbox" @if($postCategory->status===1) checked @endif>
+                                    </label>
+                                </td>
 
                                 <td class="width-16-rem text-left">
-                                    <a href="{{route('admin.content.category.edit', [$postCategory->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
-                                    <button class="btn btn-danger btn-sm" type="submit"><i class="fa fa-trash-alt"></i> حذف</button>
+                                    <a href="{{route('admin.content.category.edit', $postCategory->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
+                                    <form class="d-inline" action="{{route('admin.content.category.destroy', $postCategory->id)}}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="btn btn-danger btn-sm" type="submit"><i class="fa fa-trash-alt"></i> حذف</button>
+                                    </form>
                                 </td>
                             </tr>
 

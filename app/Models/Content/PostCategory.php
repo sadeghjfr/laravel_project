@@ -10,5 +10,10 @@ class PostCategory extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['name', 'description', 'slug', 'image', 'status', 'tags'];
+    protected $fillable = ['name', 'description', 'slug', 'image', 'status', 'tags', 'parent_id'];
+
+    public function parent(){
+
+        return $this->belongsTo('App\Models\Content\PostCategory', 'parent_id', 'id');
+    }
 }

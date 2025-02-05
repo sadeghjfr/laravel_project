@@ -30,28 +30,110 @@
                 </section>
 
                 <section>
-                    <form action="{{route('admin.content.category.store')}}" method="post">
+                    <form action="{{route('admin.content.category.store')}}" method="post" enctype="multipart/form-data">
+                        @csrf
                         <section class="row">
 
                             <section class="col-12 col-md-6">
                                 <div class="form-group">
-                                    <label for="">نام دسته</label>
-                                    <input id="name" type="text" class="form-control form-control-sm">
+                                    <label for="name">نام دسته</label>
+                                    <input value="{{old('name')}}" name="name" id="name" type="text" class="form-control form-control-sm">
                                 </div>
+                                @error('name')
+                                <span class="text-danger" role="alert">
+                                    <strong>
+                                        {{$message}}
+                                    </strong>
+                                </span>
+                                @enderror
                             </section>
 
                             <section class="col-12 col-md-6">
                                 <div class="form-group">
-                                    <label for="">دسته والد</label>
-                                    <select name="parent_id" id="parent_id" class="form-control form-control-sm">
-                                        <option value="">دسته را انتخاب کنید</option>
-                                        <option value="">تکنولوژی</option>
+                                    <label for="image">تصویر</label>
+                                    <input name="image" id="image" type="file" class="form-control form-control-sm">
+                                </div>
+                                @error('image')
+                                <span class="text-danger" role="alert">
+                                    <strong>
+                                        {{$message}}
+                                    </strong>
+                                </span>
+                                @enderror
+                            </section>
+
+
+
+                            <section class="col-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="status">وضعیت</label>
+                                    <select name="status" id="status" class="form-control form-control-sm">
+                                        <option value="0" @if(old('status')==0) selected @endif>غیر فعال</option>
+                                        <option value="1" @if(old('status')==1) selected @endif>فعال</option>
                                     </select>
                                 </div>
+                                @error('status')
+                                <span class="text-danger" role="alert">
+                                    <strong>
+                                        {{$message}}
+                                    </strong>
+                                </span>
+                                @enderror
                             </section>
+
+                            <section class="col-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="parent_id">دسته والد</label>
+                                    <select name="parent_id" id="parent_id" class="form-control form-control-sm">
+                                        <option value="">دسته را انتخاب کنید</option>
+                                        @foreach($parentCategories as $parentCategory)
+                                            <option value="{{$parentCategory->id}}">{{$parentCategory->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @error('parent_id')
+                                <span class="text-danger" role="alert">
+                                    <strong>
+                                        {{$message}}
+                                    </strong>
+                                </span>
+                                @enderror
+                            </section>
+
+                            <section class="col-12">
+                                <div class="form-group">
+                                    <label for="tags">تگ ها</label>
+                                    <input value="{{old('tags')}}" name="tags" id="tags" type="text" class="form-control form-control-sm">
+                                </div>
+                                @error('tags')
+                                <span class="text-danger" role="alert">
+                                    <strong>
+                                        {{$message}}
+                                    </strong>
+                                </span>
+                                @enderror
+                            </section>
+
+                            <section class="col-12">
+                                <div class="form-group">
+                                    <label for="description">توضیحات</label>
+                                    <textarea name="description" id="description" type="text" class="form-control form-control-sm" rows="6">{{old('description')}}</textarea>
+                                </div>
+                                @error('description')
+                                <span class="text-danger" role="alert">
+                                    <strong>
+                                        {{$message}}
+                                    </strong>
+                                </span>
+                                @enderror
+                            </section>
+
+
+
                             <section class="col-12">
                                 <button class="btn btn-primary btn-sm">ثبت</button>
                             </section>
+
                         </section>
                     </form>
                 </section>
