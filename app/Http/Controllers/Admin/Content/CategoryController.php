@@ -14,7 +14,6 @@ class CategoryController extends Controller
     {
 
         $postCategories = PostCategory::orderBy('created_at', 'desc')->simplePaginate(15);
-        //dd($postCategories[0]->parent());
         return view('admin.content.category.index', compact('postCategories'));
     }
 
@@ -37,10 +36,7 @@ class CategoryController extends Controller
     }
 
 
-    public function show($id)
-    {
-        //
-    }
+    //public function show(PostCategory $postCategory){}
 
 
     public function edit(PostCategory $postCategory)
