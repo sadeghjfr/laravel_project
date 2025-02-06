@@ -24,6 +24,8 @@
                     </h5>
                 </section>
 
+                {{--@include('admin.alerts.alert-section.success')--}}
+
                 <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
                     <a href="{{route('admin.content.category.create')}}" class="btn btn-info btn-sm">ایجاد دسته بندی</a>
                     <div class="max-width-16-rem">
@@ -67,7 +69,7 @@
                                     <form class="d-inline" action="{{route('admin.content.category.destroy', $postCategory->id)}}" method="post">
                                         @csrf
                                         @method('delete')
-                                        <button class="btn btn-danger btn-sm" type="submit"><i class="fa fa-trash-alt"></i> حذف</button>
+                                        <button class="btn btn-danger btn-sm delete" type="submit"><i class="fa fa-trash-alt"></i> حذف</button>
                                     </form>
                                 </td>
                             </tr>
@@ -88,47 +90,73 @@
 
     <script type="text/javascript">
 
-        function changeStatus(id) {
+        function changeStatus(id){
 
-            let element = $("#"+id)
-            let url = element.attr('data-url')
-            let elementValue = !element.prop('checked')
+            const element = $("#" + id);
+            const url = element.attr('data-url');
+            const elementValue = !element.prop('checked');
 
             $.ajax({
-
-                url: url,
-                type: "GET",
-                success: function (response) {
-
-                    if (response.status){
-
-                        if(response.checked)
-                            element.prompt('checked', true)
-
-                        else
-                            element.prompt('checked', false)
+                url : url,
+                type : "GET",
+                success : function(response){
+                    if(response.status){
+                        if(response.checked){
+                            element.prop('checked', true);
+                            successToast('دسته بندی با موفقیت فعال شد')
+                        }
+                        else{
+                            element.prop('checked', false);
+                            successToast('دسته بندی با موفقیت غیر فعال شد')
+                        }
                     }
-
-                    else
-                        element.prompt('checked', elementValue)
-
+                    else{
+                        element.prop('checked', elementValue);
+                        errorToast('هنگام ویرایش مشکلی بوجود امده است')
+                    }
+                },
+                error : function(){
+                    element.prop('checked', elementValue);
+                    errorToast('ارتباط برقرار نشد')
                 }
-            })
+            });
 
+            function successToast(message){
+
+                const successToastTag = '<section class="toast" data-delay="5000">\n' +
+                    '<section class="toast-body py-3 d-flex bg-success text-white">\n' +
+                    '<strong class="ml-auto">' + message + '</strong>\n' +
+                    '<button type="button" class="mr-2 close" data-dismiss="toast" aria-label="Close">\n' +
+                    '<span aria-hidden="true">&times;</span>\n' +
+                    '</button>\n' +
+                    '</section>\n' +
+                    '</section>';
+
+                $('.toast-wrapper').append(successToastTag);
+                $('.toast').toast('show').delay(5500).queue(function() {
+                    $(this).remove();
+                })
+            }
+
+            function errorToast(message){
+
+                const errorToastTag = '<section class="toast" data-delay="5000">\n' +
+                    '<section class="toast-body py-3 d-flex bg-danger text-white">\n' +
+                    '<strong class="ml-auto">' + message + '</strong>\n' +
+                    '<button type="button" class="mr-2 close" data-dismiss="toast" aria-label="Close">\n' +
+                    '<span aria-hidden="true">&times;</span>\n' +
+                    '</button>\n' +
+                    '</section>\n' +
+                    '</section>';
+
+                $('.toast-wrapper').append(errorToastTag);
+                $('.toast').toast('show').delay(5500).queue(function() {
+                    $(this).remove();
+                })
+            }
         }
-
     </script>
 
+    @include('admin.alerts.sweetalert.delete-confirm', ['className' => 'delete'])
+
 @endsection
-
-
-
-
-
-
-
-
-
-
-
-

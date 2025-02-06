@@ -32,7 +32,10 @@ class CategoryController extends Controller
         $inputs['slug'] = Str::replace(' ', '-', $inputs['name']) . '-' . Str::random(5);
         $inputs['image'] = 'image';
         $postCategory = PostCategory::create($inputs);
-        return redirect()->route('admin.content.category.index');
+        return redirect()->route('admin.content.category.index')->with('toast-success', 'دسته بندی با موفقیت ثبت شد');
+           // ->with('swal-success', 'دسته بندی شما با موفقیت ثبت شد');
+           // ->with('alert-section-success', 'دسته بندی شما با موفقیت ثبت شد');
+
     }
 
 
@@ -52,14 +55,14 @@ class CategoryController extends Controller
         $inputs = $request->all();
         $inputs['image'] = 'image';
         $postCategory->update($inputs);
-        return redirect()->route('admin.content.category.index');
+        return redirect()->route('admin.content.category.index')->with('toast-success', 'دسته بندی با موفقیت ویرایش شد');
     }
 
 
     public function destroy(PostCategory $postCategory)
     {
         $result = $postCategory->delete();
-        return redirect()->route('admin.content.category.index');
+        return redirect()->route('admin.content.category.index')->with('toast-error', 'دسته بندی با موفقیت حذف شد');
     }
 
     public function status(PostCategory $postCategory)
