@@ -64,6 +64,22 @@ class CategoryController extends Controller
 
     public function status(PostCategory $postCategory)
     {
-        //
+        $postCategory->status = $postCategory->status == 0 ? 1 : 0;
+        $result = $postCategory->save();
+
+        if ($result){
+
+            if ($postCategory->status == 0)
+                return response()->json(['status' => true, 'checked' => false]);
+
+            else
+                return response()->json(['status' => true, 'checked' => true]);
+
+        }
+
+        else
+            return response()->json(['status' => false]);
+
+
     }
 }
