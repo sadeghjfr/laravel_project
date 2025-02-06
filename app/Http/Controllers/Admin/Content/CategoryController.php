@@ -29,7 +29,6 @@ class CategoryController extends Controller
     public function store(PostCategoryRequest $request)
     {
         $inputs = $request->all();
-        $inputs['slug'] = Str::replace(' ', '-', $inputs['name']) . '-' . Str::random(5);
         $inputs['image'] = 'image';
         $postCategory = PostCategory::create($inputs);
         return redirect()->route('admin.content.category.index')->with('toast-success', 'دسته بندی با موفقیت ثبت شد');
