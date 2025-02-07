@@ -56,7 +56,7 @@
                                 <td>{{$postCategory->name}}</td>
                                 <td>{{empty($postCategory->parent_id) ? '' : $postCategory->parent_id}}</td>
                                 <td>{{$postCategory->slug}}</td>
-                                <td><img src="{{asset($postCategory->image)}}" alt="image" width="50" height="50"></td>
+                                <td><img src="@if($postCategory->image !=null) {{asset($postCategory->image['indexArray'][$postCategory->image['currentImage']])}} @endif" alt="image" width="50" height="50"></td>
                                 <td>{{Str::substr($postCategory->tags, 0, 50)}}</td>
                                 <td>
                                     <label>

@@ -13,6 +13,8 @@ class PostCategory extends Model
 
     protected $fillable = ['name', 'description', 'slug', 'image', 'status', 'tags', 'parent_id'];
 
+    protected $casts = ['image' => 'array'];
+
     public function parent(){
 
         return $this->belongsTo('App\Models\Content\PostCategory', 'parent_id', 'id');

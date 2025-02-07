@@ -48,7 +48,7 @@
                                 @enderror
                             </section>
 
-                            <section class="col-12 col-md-6">
+                            <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group">
                                     <label for="image">تصویر</label>
                                     <input name="image" id="image" type="file" class="form-control form-control-sm">
@@ -60,6 +60,29 @@
                                     </strong>
                                 </span>
                                 @enderror
+
+                                @if(!empty($postCategory->image))
+                                    <section class="row">
+                                        @php
+                                            $number = 1;
+                                        @endphp
+                                        @foreach ($postCategory->image['indexArray'] as $key => $value )
+                                            <section class="col-md-{{ 6 / $number }}">
+                                                <div class="form-check">
+                                                    <input type="radio" class="form-check-input" name="currentImage" value="{{ $key }}" id="{{ $number }}" @if($postCategory->image['currentImage'] == $key) checked @endif>
+                                                    <label for="{{ $number }}" class="form-check-label mx-2">
+                                                        <img src="{{ asset($value) }}" class="w-100" alt="">
+                                                    </label>
+                                                </div>
+                                            </section>
+                                            @php
+                                                $number++;
+                                            @endphp
+                                        @endforeach
+
+                                    </section>
+                                @endif
+
                             </section>
 
                             <section class="col-12 col-md-6">
