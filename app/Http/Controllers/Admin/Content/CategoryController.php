@@ -28,7 +28,6 @@ class CategoryController extends Controller
         return view('admin.content.category.create', compact('parentCategories'));
     }
 
-
     public function store(PostCategoryRequest $request, ImageService $imageService)
     {
         $inputs = $request->all();
@@ -126,4 +125,5 @@ class CategoryController extends Controller
 
 
     }
+
 }

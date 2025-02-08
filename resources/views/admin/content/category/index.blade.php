@@ -49,15 +49,15 @@
                         </thead>
                         <tbody>
 
-                        @foreach($postCategories as $postCategory)
+                        @foreach($postCategories as $key => $postCategory)
 
                             <tr>
-                                <th>{{$postCategory->id}}</th>
+                                <th>{{$key+1}}</th>
                                 <td>{{$postCategory->name}}</td>
-                                <td>{{empty($postCategory->parent_id) ? '' : $postCategory->parent_id}}</td>
+                                <td>{{empty($postCategory->parent_id) ? '-' : $postCategory->parent->name}}</td>
                                 <td>{{$postCategory->slug}}</td>
                                 <td><img src="@if($postCategory->image !=null) {{asset($postCategory->image['indexArray'][$postCategory->image['currentImage']])}} @endif" alt="image" width="50" height="50"></td>
-                                <td>{{Str::substr($postCategory->tags, 0, 50)}}</td>
+                                <td>{{$postCategory->tags}}</td>
                                 <td>
                                     <label>
                                         <input id="{{$postCategory->id}}" onchange="changeStatus({{$postCategory->id}})" data-url="{{route('admin.content.category.status', $postCategory->id)}}" type="checkbox" @if($postCategory->status===1) checked @endif>

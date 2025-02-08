@@ -23,17 +23,28 @@ class PostCategoryRequest extends FormRequest
      */
     public function rules()
     {
+        if($this->isMethod('post')){
 
             return [
-                'name' => 'required|max:128|min:2',
-                'description' => 'nullable',
-                'slug' => 'nullable',
-                'image' => 'nullable',
-                'tags' => 'nullable',
-                'parent_id' => 'nullable',
+                'name' => 'required|max:120|min:2|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
+                'description' => 'required|max:500|min:5',
+                'image' => 'required|image|mimes:png,jpg,jpeg,gif',
                 'status' => 'required|numeric|in:0,1',
+                'tags' => 'required|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
             ];
 
+        }
+
+        else{
+
+            return [
+                'name' => 'required|max:120|min:2|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
+                'description' => 'required|max:500|min:5',
+                'image' => 'image|mimes:png,jpg,jpeg,gif',
+                'status' => 'required|numeric|in:0,1',
+                'tags' => 'required|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
+            ];
+        }
 
     }
 }

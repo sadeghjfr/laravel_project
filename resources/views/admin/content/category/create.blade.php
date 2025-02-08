@@ -84,7 +84,7 @@
                                     <select name="parent_id" id="parent_id" class="form-control form-control-sm">
                                         <option value="">دسته را انتخاب کنید</option>
                                         @foreach($parentCategories as $parentCategory)
-                                            <option value="{{$parentCategory->id}}">{{$parentCategory->name}}</option>
+                                            <option value="{{$parentCategory->id}}" @if(old('parent_id')==$parentCategory->id) selected @endif>{{$parentCategory->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -145,6 +145,12 @@
 @endsection
 
 @section('script')
+
+    <script src="{{ asset('admin-assets/ckeditor/ckeditor.js') }}"></script>
+
+    <script>
+        CKEDITOR.replace('description');
+    </script>
 
     <script>
 

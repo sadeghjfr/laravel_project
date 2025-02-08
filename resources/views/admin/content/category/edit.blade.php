@@ -89,8 +89,8 @@
                                 <div class="form-group">
                                     <label for="status">وضعیت</label>
                                     <select name="status" id="status" class="form-control form-control-sm">
-                                        <option value="0" @if(old('status', $postCategory->status==0)) selected @endif>غیر فعال</option>
-                                        <option value="1" @if(old('status', $postCategory->status==1)) selected @endif>فعال</option>
+                                        <option value="0" @if(old('status', $postCategory->status) ==0 ) selected @endif>غیر فعال</option>
+                                        <option value="1" @if(old('status', $postCategory->status) ==1 ) selected @endif>فعال</option>
                                     </select>
                                 </div>
                                 @error('status')
@@ -108,7 +108,7 @@
                                     <select name="parent_id" id="parent_id" class="form-control form-control-sm">
                                         <option value="">دسته را انتخاب کنید</option>
                                         @foreach($parentCategories as $parentCategory)
-                                            <option @if($parentCategory->id == $postCategory->parent_id) selected @endif value="{{$parentCategory->id}}">{{$parentCategory->name}}</option>
+                                            <option @if(old('parent_id', $postCategory->parent_id) == $parentCategory->id) selected @endif value="{{$parentCategory->id}}">{{$parentCategory->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -167,6 +167,12 @@
 @endsection
 
 @section('script')
+
+    <script src="{{ asset('admin-assets/ckeditor/ckeditor.js') }}"></script>
+
+    <script>
+        CKEDITOR.replace('description');
+    </script>
 
     <script>
 

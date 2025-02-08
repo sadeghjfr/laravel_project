@@ -1,5 +1,5 @@
 
-<header class="header">
+<header class="header-main">
 
     <section class="sidebar-header bg-gray">
 
