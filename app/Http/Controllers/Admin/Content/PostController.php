@@ -91,6 +91,7 @@ class PostController extends Controller
             }
         }
 
+        $inputs['slug'] = null;
         $post->update($inputs);
         return redirect()->route('admin.content.post.index')->with('toast-success', 'پست با موفقیت ویرایش شد');
     }

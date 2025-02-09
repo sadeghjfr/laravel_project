@@ -120,7 +120,7 @@ return [
         "password_confirmation"     => "تاییدیه ی رمز عبور",
         "city"                      => "شهر",
         "country"                   => "کشور",
-        "address"                   => "نشانی",
+        "address"                   => "آدرس",
         "phone"                     => "تلفن",
         "mobile"                    => "تلفن همراه",
         "cellphone"                 => "تلفن همراه",

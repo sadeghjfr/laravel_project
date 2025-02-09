@@ -94,6 +94,7 @@ class CategoryController extends Controller
             }
         }
 
+        $inputs['slug'] = null;
         $postCategory->update($inputs);
         return redirect()->route('admin.content.category.index')->with('toast-success', 'دسته بندی با موفقیت ویرایش شد');
     }

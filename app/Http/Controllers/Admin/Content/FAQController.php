@@ -45,6 +45,7 @@ class FAQController extends Controller
     public function update(FAQRequest $request, FAQ $faq)
     {
         $inputs = $request->all();
+        $inputs['slug'] = null;
         $faq->update($inputs);
         return redirect()->route('admin.content.faq.index')->with('toast-success', 'سوال با موفقیت ویرایش شد');
     }

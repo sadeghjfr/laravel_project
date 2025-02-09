@@ -238,6 +238,20 @@ Route::prefix('admin')->namespace('Admin')->group(function (){
 
         });
 
+        //page
+        Route::prefix('page')->group(function (){
+
+            Route::get('/', [PageController::class, 'index'])->name('admin.content.page.index');
+            Route::get('/create', [PageController::class, 'create'])->name('admin.content.page.create');
+            Route::post('/store', [PageController::class, 'store'])->name('admin.content.page.store');
+            //Route::get('/show/{page}', [PageController::class, 'show'])->name('admin.content.page.show');
+            Route::get('/edit/{page}', [PageController::class, 'edit'])->name('admin.content.page.edit');
+            Route::put('/update/{page}', [PageController::class, 'update'])->name('admin.content.page.update');
+            Route::delete('/destroy/{page}', [PageController::class, 'destroy'])->name('admin.content.page.destroy');
+            Route::get('/status/{page}', [PageController::class, 'status'])->name('admin.content.page.status');
+
+        });
+
         //comment
         Route::prefix('comment')->group(function (){
 
@@ -261,19 +275,6 @@ Route::prefix('admin')->namespace('Admin')->group(function (){
             Route::get('/edit/{id}', [MenuController::class, 'edit'])->name('admin.content.menu.edit');
             Route::put('/update/{id}', [MenuController::class, 'update'])->name('admin.content.menu.update');
             Route::delete('/destroy/{id}', [MenuController::class, 'destroy'])->name('admin.content.menu.destroy');
-
-        });
-
-        //page
-        Route::prefix('page')->group(function (){
-
-            Route::get('/', [PageController::class, 'index'])->name('admin.content.page.index');
-            Route::get('/create', [PageController::class, 'create'])->name('admin.content.page.create');
-            Route::post('/store', [PageController::class, 'store'])->name('admin.content.page.store');
-            //Route::get('/show/{id}', [PageController::class, 'show'])->name('admin.content.page.show');
-            Route::get('/edit/{id}', [PageController::class, 'edit'])->name('admin.content.page.edit');
-            Route::put('/update/{id}', [PageController::class, 'update'])->name('admin.content.page.update');
-            Route::delete('/destroy/{id}', [PageController::class, 'destroy'])->name('admin.content.page.destroy');
 
         });
 
