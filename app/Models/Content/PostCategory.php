@@ -17,7 +17,26 @@ class PostCategory extends Model
 
     public function parent(){
 
-        return $this->belongsTo('App\Models\Content\PostCategory', 'parent_id', 'id');
+        return $this->belongsTo(PostCategory::class, 'parent_id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany(PostCategory::class, 'parent_id');
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($category) {
+
+            $category->children()->each(function ($child) {
+                $child->delete();
+            });
+        });
+
+
     }
 
     public function sluggable(): array

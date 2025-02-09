@@ -59,7 +59,7 @@ class CategoryController extends Controller
     public function edit(PostCategory $postCategory)
     {
 
-        $parentCategories = PostCategory::whereNull('parent_id')->get();
+        $parentCategories = PostCategory::whereNull('parent_id')->where('id', '<>', $postCategory->id)->get();
         return view('admin.content.category.edit', compact('postCategory', 'parentCategories'));
     }
 

@@ -224,6 +224,20 @@ Route::prefix('admin')->namespace('Admin')->group(function (){
 
         });
 
+        //faq
+        Route::prefix('faq')->group(function (){
+
+            Route::get('/', [FAQController::class, 'index'])->name('admin.content.faq.index');
+            Route::get('/create', [FAQController::class, 'create'])->name('admin.content.faq.create');
+            Route::post('/store', [FAQController::class, 'store'])->name('admin.content.faq.store');
+            //Route::get('/show/{faq}', [FAQController::class, 'show'])->name('admin.content.faq.show');
+            Route::get('/edit/{faq}', [FAQController::class, 'edit'])->name('admin.content.faq.edit');
+            Route::put('/update/{faq}', [FAQController::class, 'update'])->name('admin.content.faq.update');
+            Route::delete('/destroy/{faq}', [FAQController::class, 'destroy'])->name('admin.content.faq.destroy');
+            Route::get('/status/{faq}', [FAQController::class, 'status'])->name('admin.content.faq.status');
+
+        });
+
         //comment
         Route::prefix('comment')->group(function (){
 
@@ -234,19 +248,6 @@ Route::prefix('admin')->namespace('Admin')->group(function (){
             //Route::get('/edit/{id}', [ContentCommentController::class, 'edit'])->name('admin.content.comment.edit');
             //Route::put('/update/{id}', [ContentCommentController::class, 'update'])->name('admin.content.comment.update');
             //Route::delete('/destroy/{id}', [ContentCommentController::class, 'destroy'])->name('admin.content.comment.destroy');
-
-        });
-
-        //faq
-        Route::prefix('faq')->group(function (){
-
-            Route::get('/', [FAQController::class, 'index'])->name('admin.content.faq.index');
-            Route::get('/create', [FAQController::class, 'create'])->name('admin.content.faq.create');
-            Route::post('/store', [FAQController::class, 'store'])->name('admin.content.faq.store');
-            //Route::get('/show/{id}', [FAQController::class, 'show'])->name('admin.content.faq.show');
-            Route::get('/edit/{id}', [FAQController::class, 'edit'])->name('admin.content.faq.edit');
-            Route::put('/update/{id}', [FAQController::class, 'update'])->name('admin.content.faq.update');
-            Route::delete('/destroy/{id}', [FAQController::class, 'destroy'])->name('admin.content.faq.destroy');
 
         });
 

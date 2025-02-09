@@ -21,7 +21,7 @@ class CreatePostCategoriesTable extends Migration
             $table->text('image')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->string('tags')->nullable();
-            $table->foreignId('parent_id')->nullable()->constrained('post_categories')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('parent_id')->nullable()->constrained('post_categories')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -38,39 +38,36 @@
                             <th>#</th>
                             <th>سوال</th>
                             <th>پاسخ</th>
-                            <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
+                            <th>وضعیت</th>
+                            <th class="max-width-16-rem text-left"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th>1</th>
-                            <td>روش ارسال به چه صورت است؟</td>
-                            <td>روش ارسال به صورتی است که خیلی خوب است و به امید دیدار دوباره ای دوست عزیز و نازنین خدا نگه دار</td>
-                            <td class="width-16-rem text-left">
-                                <a href="{{route('admin.content.faq.edit', 2)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
-                                <button class="btn btn-danger btn-sm" type="submit"><i class="fa fa-trash-alt"></i> حذف</button>
-                            </td>
-                        </tr>
+
+                        @foreach($faqs as $key => $faq)
 
                         <tr>
-                            <th>2</th>
-                            <td>روش ارسال به چه صورت است؟</td>
-                            <td>روش ارسال به صورتی است که خیلی خوب است و به امید دیدار دوباره ای دوست عزیز و نازنین خدا نگه دار</td>
-                            <td class="width-16-rem text-left">
-                                <a href="{{route('admin.content.faq.edit', 2)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
-                                <button class="btn btn-danger btn-sm" type="submit"><i class="fa fa-trash-alt"></i> حذف</button>
+                            <th>{{$key+1}}</th>
+                            <td>{{$faq->question}}</td>
+                            <td>{{$faq->answer}}</td>
+                            <td>
+                                <label>
+                                    <input id="{{$faq->id}}" onchange="changeStatus({{$faq->id}})" data-url="{{route('admin.content.faq.status', $faq->id)}}" type="checkbox" @if($faq->status===1) checked @endif>
+                                </label>
                             </td>
+
+                            <td class="width-16-rem text-left">
+                                <a href="{{route('admin.content.faq.edit', $faq->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
+                                <form class="d-inline" action="{{route('admin.content.faq.destroy', $faq->id)}}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn btn-danger btn-sm delete" type="submit"><i class="fa fa-trash-alt"></i> حذف</button>
+                                </form>
+                            </td>
+
                         </tr>
 
-                        <tr>
-                            <th>3</th>
-                            <td>روش ارسال به چه صورت است؟</td>
-                            <td>روش ارسال به صورتی است که خیلی خوب است و به امید دیدار دوباره ای دوست عزیز و نازنین خدا نگه دار</td>
-                            <td class="width-16-rem text-left">
-                                <a href="{{route('admin.content.faq.edit', 2)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
-                                <button class="btn btn-danger btn-sm" type="submit"><i class="fa fa-trash-alt"></i> حذف</button>
-                            </td>
-                        </tr>
+                        @endforeach
 
                         </tbody>
                     </table>
@@ -79,5 +76,79 @@
             </section>
         </section>
     </section>
+
+@endsection
+
+@section('script')
+
+    <script type="text/javascript">
+        function changeStatus(id){
+
+            const element = $("#" + id);
+            const url = element.attr('data-url');
+            const elementValue = !element.prop('checked');
+
+            $.ajax({
+                url : url,
+                type : "GET",
+                success : function(response){
+                    if(response.status){
+                        if(response.checked){
+                            element.prop('checked', true);
+                            successToast('سوال با موفقیت فعال شد')
+                        }
+                        else{
+                            element.prop('checked', false);
+                            successToast('سوال با موفقیت غیر فعال شد')
+                        }
+                    }
+                    else{
+                        element.prop('checked', elementValue);
+                        errorToast('هنگام ویرایش مشکلی بوجود امده است')
+                    }
+                },
+                error : function(){
+                    element.prop('checked', elementValue);
+                    errorToast('ارتباط برقرار نشد')
+                }
+            });
+
+            function successToast(message){
+
+                const successToastTag = '<section class="toast" data-delay="5000">\n' +
+                    '<section class="toast-body py-3 d-flex bg-success text-white">\n' +
+                    '<strong class="ml-auto">' + message + '</strong>\n' +
+                    '<button type="button" class="mr-2 close" data-dismiss="toast" aria-label="Close">\n' +
+                    '<span aria-hidden="true">&times;</span>\n' +
+                    '</button>\n' +
+                    '</section>\n' +
+                    '</section>';
+
+                $('.toast-wrapper').append(successToastTag);
+                $('.toast').toast('show').delay(5500).queue(function() {
+                    $(this).remove();
+                })
+            }
+
+            function errorToast(message){
+
+                const errorToastTag = '<section class="toast" data-delay="5000">\n' +
+                    '<section class="toast-body py-3 d-flex bg-danger text-white">\n' +
+                    '<strong class="ml-auto">' + message + '</strong>\n' +
+                    '<button type="button" class="mr-2 close" data-dismiss="toast" aria-label="Close">\n' +
+                    '<span aria-hidden="true">&times;</span>\n' +
+                    '</button>\n' +
+                    '</section>\n' +
+                    '</section>';
+
+                $('.toast-wrapper').append(errorToastTag);
+                $('.toast').toast('show').delay(5500).queue(function() {
+                    $(this).remove();
+                })
+            }
+        }
+    </script>
+
+    @include('admin.alerts.sweetalert.delete-confirm', ['className' => 'delete'])
 
 @endsection
