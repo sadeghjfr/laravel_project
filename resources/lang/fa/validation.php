@@ -169,6 +169,8 @@ return [
         "summary"                      => "خلاصه",
         "question"                      => "سوال",
         "answer"                      => "جواب",
+        'parent_id'                      => 'منوی والد',
+        'url'                      => 'آدرس'
 
     ],
 ];
