@@ -256,12 +256,13 @@ Route::prefix('admin')->namespace('Admin')->group(function (){
         Route::prefix('comment')->group(function (){
 
             Route::get('/', [ContentCommentController::class, 'index'])->name('admin.content.comment.index');
+            Route::get('/show/{comment}', [ContentCommentController::class, 'show'])->name('admin.content.comment.show');
+            Route::get('/status/{comment}', [ContentCommentController::class, 'status'])->name('admin.content.comment.status');
+            Route::delete('/destroy/{comment}', [ContentCommentController::class, 'destroy'])->name('admin.content.comment.destroy');
+            Route::post('/answer/{comment}', [ContentCommentController::class, 'answer'])->name('admin.content.comment.answer');
             //Route::get('/create', [ContentCommentController::class, 'create'])->name('admin.content.comment.create');
-            //Route::post('/store', [ContentCommentController::class, 'store'])->name('admin.content.comment.store');
-            Route::get('/show/{id}', [ContentCommentController::class, 'show'])->name('admin.content.comment.show');
-            //Route::get('/edit/{id}', [ContentCommentController::class, 'edit'])->name('admin.content.comment.edit');
-            //Route::put('/update/{id}', [ContentCommentController::class, 'update'])->name('admin.content.comment.update');
-            //Route::delete('/destroy/{id}', [ContentCommentController::class, 'destroy'])->name('admin.content.comment.destroy');
+            //Route::get('/edit/{comment}', [ContentCommentController::class, 'edit'])->name('admin.content.comment.edit');
+            //Route::put('/update/{comment}', [ContentCommentController::class, 'update'])->name('admin.content.comment.update');
 
         });
 
