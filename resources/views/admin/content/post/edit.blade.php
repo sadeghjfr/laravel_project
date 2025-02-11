@@ -159,7 +159,7 @@
                             <section class="col-12 col-md-6">
                                 <div class="form-group">
                                     <label for="">تاریخ انتشار</label>
-                                    <input class="form-control form-control-sm d-none"  type="text" id="published_at" name="published_at">
+                                    <input class="form-control form-control-sm d-none"  type="text" id="published_at" name="published_at" value="{{$post->published_at}}">
                                     <input type="text" id="published_at_view" class="form-control form-control-sm" value="{{$post->published_at}}">
                                 </div>
                                 @error('published_at')

@@ -170,7 +170,8 @@ return [
         "question"                      => "سوال",
         "answer"                      => "جواب",
         'parent_id'                      => 'منوی والد',
-        'url'                      => 'آدرس'
+        'url'                      => 'آدرس',
+        'subject'                      => 'عنوان'
 
     ],
 ];
