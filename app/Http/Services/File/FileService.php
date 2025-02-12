@@ -30,12 +30,26 @@ class FileService extends FileToolsService
     }
 
 
-    public function deleteFile($filePath)
+    public function deleteFile($filePath, $storage = false)
     {
-        if(file_exists($filePath))
-        {
-            unlink($filePath);
+
+        if($storage){
+            unlink(storage_path($filePath));
+            return true;
         }
+
+        else {
+
+            if(file_exists($filePath))
+            {
+                unlink($filePath);
+                return true;
+            }
+
+            else
+                return false;
+        }
+
     }
 
 
