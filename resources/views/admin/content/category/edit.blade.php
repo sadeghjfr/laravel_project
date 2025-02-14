@@ -34,8 +34,8 @@
                         @method('put')
                         <section class="row">
 
-                            <section class="col-12 col-md-6">
-                                <div class="form-group">
+                            <section class="col-12 col-md-6 mb-2">
+                                <div class="form-group mb-1">
                                     <label for="name">نام دسته</label>
                                     <input value="{{old('name', $postCategory->name)}}" name="name" id="name" type="text" class="form-control form-control-sm">
                                 </div>
@@ -49,7 +49,7 @@
                             </section>
 
                             <section class="col-12 col-md-6 mb-2">
-                                <div class="form-group">
+                                <div class="form-group mb-1">
                                     <label for="image">تصویر</label>
                                     <input name="image" id="image" type="file" class="form-control form-control-sm">
                                 </div>
@@ -85,8 +85,8 @@
 
                             </section>
 
-                            <section class="col-12 col-md-6">
-                                <div class="form-group">
+                            <section class="col-12 col-md-6 mb-2">
+                                <div class="form-group mb-1">
                                     <label for="status">وضعیت</label>
                                     <select name="status" id="status" class="form-control form-control-sm">
                                         <option value="0" @if(old('status', $postCategory->status) ==0 ) selected @endif>غیر فعال</option>
@@ -102,8 +102,8 @@
                                 @enderror
                             </section>
 
-                            <section class="col-12 col-md-6">
-                                <div class="form-group">
+                            <section class="col-12 col-md-6 mb-2">
+                                <div class="form-group mb-1">
                                     <label for="parent_id">دسته والد</label>
                                     <select name="parent_id" id="parent_id" class="form-control form-control-sm">
                                         <option value="">دسته را انتخاب کنید</option>
@@ -122,7 +122,7 @@
                             </section>
 
                             <section class="col-12 col-md-6 my-2">
-                                <div class="form-group">
+                                <div class="form-group mb-1">
                                     <label for="tags">تگ ها</label>
                                     <input type="hidden" class="form-control form-control-sm"  name="tags" id="tags" value="{{ old('tags', $postCategory->tags) }}">
                                     <select class="select2 form-control form-control-sm" id="select_tags" multiple>
@@ -138,8 +138,8 @@
                                 @enderror
                             </section>
 
-                            <section class="col-12">
-                                <div class="form-group">
+                            <section class="col-12 mb-2">
+                                <div class="form-group mb-1">
                                     <label for="description">توضیحات</label>
                                     <textarea name="description" id="description" type="text" class="form-control form-control-sm" rows="6">{{old('description', $postCategory->description)}}</textarea>
                                 </div>

@@ -44,8 +44,8 @@
             <section>
                 <form action="" method="">
                     <section class="row">
-                        <section class="col-12">
-                            <div class="form-group">
+                        <section class="col-12 mb-2">
+                            <div class="form-group mb-1">
                                 <label for="">پاسخ تیکت </label>
                                ‍<textarea class="form-control form-control-sm" rows="4"></textarea>
                             </div>

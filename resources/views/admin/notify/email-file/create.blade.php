@@ -47,7 +47,7 @@
                         @enderror
                         </section>
 
-                        <section class="col-12 col-md-6">
+                        <section class="col-12 col-md-6 mb-2">
                             <div >
                                 <label for="">درجه فایل</label>
                                 <label>
@@ -64,7 +64,7 @@
                             @enderror
                         </section>
 
-                        <section class="col-12 col-md-6">
+                        <section class="col-12 col-md-6 mb-2">
                             <div class="form-group">
                                 <label for="status">وضعیت</label>
                                 <select name="status" class="form-control form-control-sm" id="status">

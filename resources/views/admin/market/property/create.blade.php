@@ -33,15 +33,15 @@
                 <form action="" method="">
                     <section class="row">
 
-                        <section class="col-12 col-md-6">
-                            <div class="form-group">
+                        <section class="col-12 col-md-6 mb-2">
+                            <div class="form-group mb-1">
                                 <label for="">نام فرم</label>
                                 <input type="text" class="form-control form-control-sm">
                             </div>
                         </section>
 
-                        <section class="col-12 col-md-6">
-                            <div class="form-group">
+                        <section class="col-12 col-md-6 mb-2">
+                            <div class="form-group mb-1">
                                 <label for="">فرم والد</label>
                                 <select name="" id="" class="form-control form-control-sm">
                                     <option value="">فرم را انتخاب کنید</option>

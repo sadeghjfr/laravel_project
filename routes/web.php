@@ -24,7 +24,7 @@ use App\Http\Controllers\Admin\Notify\EmailFileController;
 use App\Http\Controllers\Admin\Notify\SMSController;
 use App\Http\Controllers\Admin\Setting\SettingController;
 use App\Http\Controllers\Admin\Ticket\TicketController;
-use App\Http\Controllers\Admin\User\AdminUserController;
+use App\Http\Controllers\Admin\User\UserController;
 use App\Http\Controllers\Admin\User\CustomerController;
 use App\Http\Controllers\Admin\User\PermissionController;
 use App\Http\Controllers\Admin\User\RoleController;
@@ -284,30 +284,15 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
     //users
     Route::prefix('user')->namespace('User')->group(function () {
 
-        //admin-user
-        Route::prefix('admin-user')->group(function () {
-            Route::get('/', [AdminUserController::class, 'index'])->name('admin.user.admin-user.index');
-            Route::get('/create', [AdminUserController::class, 'create'])->name('admin.user.admin-user.create');
-            Route::post('/store', [AdminUserController::class, 'store'])->name('admin.user.admin-user.store');
-            Route::get('/edit/{admin}', [AdminUserController::class, 'edit'])->name('admin.user.admin-user.edit');
-            Route::put('/update/{admin}', [AdminUserController::class, 'update'])->name('admin.user.admin-user.update');
-            Route::delete('/destroy/{admin}', [AdminUserController::class, 'destroy'])->name('admin.user.admin-user.destroy');
-            Route::get('/status/{admin}', [AdminUserController::class, 'status'])->name('admin.user.admin-user.status');
-            Route::get('/activation/{admin}', [AdminUserController::class, 'activation'])->name('admin.user.admin-user.activation');
-        });
+        Route::get('/', [UserController::class, 'index'])->name('admin.user.index');
+        Route::get('/create', [UserController::class, 'create'])->name('admin.user.create');
+        Route::post('/store', [UserController::class, 'store'])->name('admin.user.store');
+        Route::get('/edit/{user}', [UserController::class, 'edit'])->name('admin.user.edit');
+        Route::put('/update/{user}', [UserController::class, 'update'])->name('admin.user.update');
+        Route::delete('/destroy/{user}', [UserController::class, 'destroy'])->name('admin.user.destroy');
+        Route::get('/status/{user}', [UserController::class, 'status'])->name('admin.user.status');
+        Route::get('/activation/{user}', [UserController::class, 'activation'])->name('admin.user.activation');
 
-
-        //customer
-        Route::prefix('customer')->group(function(){
-            Route::get('/', [CustomerController::class, 'index'])->name('admin.user.customer.index');
-            Route::get('/create', [CustomerController::class, 'create'])->name('admin.user.customer.create');
-            Route::post('/store', [CustomerController::class, 'store'])->name('admin.user.customer.store');
-            Route::get('/edit/{user}', [CustomerController::class, 'edit'])->name('admin.user.customer.edit');
-            Route::put('/update/{user}', [CustomerController::class, 'update'])->name('admin.user.customer.update');
-            Route::delete('/destroy/{user}', [CustomerController::class, 'destroy'])->name('admin.user.customer.destroy');
-            Route::get('/status/{user}', [CustomerController::class, 'status'])->name('admin.user.customer.status');
-            Route::get('/activation/{user}', [CustomerController::class, 'activation'])->name('admin.user.customer.activation');
-        });
 
         //role
         Route::prefix('role')->group(function () {

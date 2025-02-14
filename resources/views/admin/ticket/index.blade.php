@@ -19,7 +19,6 @@
         <section class="col-12">
             <section class="main-body-container">
 
-
                 <section class="d-flex justify-content-between align-items-center mt-4 mb-3">
 
                     {{--<a href="#" class="btn btn-info btn-sm disabled">ایجاد تیکت </a>--}}
@@ -66,33 +65,33 @@
                 --}}
 
                 <section class="container-fluid mt-5">
-                    <!-- تب‌ها (تمام عرض) -->
+
                     <nav>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                                   aria-controls="home" aria-selected="true">تیکت های جدید</a>
+                                <a class="nav-link active" id="newticket-tab" data-toggle="tab" href="#newticket" role="tab"
+                                   aria-controls="newticket" aria-selected="true">تیکت های جدید</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                   aria-controls="profile" aria-selected="false">تیکت های باز</a>
+                                <a class="nav-link" id="openticket-tab" data-toggle="tab" href="#openticket" role="tab"
+                                   aria-controls="openticket" aria-selected="false">تیکت های باز</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
-                                   aria-controls="contact" aria-selected="false">تیکت های بسته</a>
+                                <a class="nav-link" id="closeticket-tab" data-toggle="tab" href="#closeticket" role="tab"
+                                   aria-controls="closeticket" aria-selected="false">تیکت های بسته</a>
                             </li>
                         </ul>
                     </nav>
 
                     <!-- محتوای تب‌ها -->
                     <section class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="tab-pane fade show active" id="newticket" role="tabpanel" aria-labelledby="newticket-tab">
                             @include('admin.ticket.items')
                         </div>
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade" id="openticket" role="tabpanel" aria-labelledby="openticket-tab">
                             @include('admin.ticket.items')
                         </div>
-                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="tab-pane fade" id="closeticket" role="tabpanel" aria-labelledby="closeticket-tab">
                             @include('admin.ticket.items')
                         </div>
                     </section>

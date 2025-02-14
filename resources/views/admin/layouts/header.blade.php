@@ -125,7 +125,7 @@
 
                                 <li class="list-group-item list-group-item-action">
                                     <section class="media">
-                                        <img src="v" alt="avatar" class="notification-img">
+                                        <img src="{{asset('admin-assets/images/avatar-2.jpg')}}" alt="avatar" class="notification-img">
                                         <section class="media-body pr-1">
                                             <section class="d-flex justify-content-between">
                                                 <h5 class="comment-user">صادق جعفری</h5>

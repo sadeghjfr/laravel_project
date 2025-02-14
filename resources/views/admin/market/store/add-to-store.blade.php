@@ -33,27 +33,27 @@
                 <form action="" method="">
                     <section class="row">
 
-                        <section class="col-12 col-md-6">
-                            <div class="form-group">
+                        <section class="col-12 col-md-6 mb-2">
+                            <div class="form-group mb-1">
                                 <label for="">نام تحویل گیرنده</label>
                                 <input type="text" class="form-control form-control-sm">
                             </div>
                         </section>
-                        <section class="col-12 col-md-6">
-                            <div class="form-group">
+                        <section class="col-12 col-md-6 mb-2">
+                            <div class="form-group mb-1">
                                 <label for="">نام تحویل دهنده</label>
                                 <input type="text" class="form-control form-control-sm">
                             </div>
                         </section>
-                        <section class="col-12 col-md-6">
-                            <div class="form-group">
+                        <section class="col-12 col-md-6 mb-2">
+                            <div class="form-group mb-1">
                                 <label for="">تعداد</label>
                                 <input type="text" class="form-control form-control-sm">
                             </div>
                         </section>
 
                         <section class="col-12">
-                            <div class="form-group">
+                            <div class="form-group mb-1">
                                 <label for="">توضیحات</label>
                                <textarea name="" rows="4" class="form-control form-control-sm"></textarea>
                             </div>

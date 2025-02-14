@@ -82,7 +82,7 @@
                             @csrf
                             <section class="row">
                                 <section class="col-12">
-                                    <div class="form-group">
+                                    <div class="form-group mb-1">
                                         <label for="">پاسخ ادمین</label>
                                         <textarea id="body" name="body" class="form-control form-control-sm" rows="4"></textarea>
                                     </div>

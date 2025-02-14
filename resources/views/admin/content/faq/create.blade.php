@@ -35,7 +35,7 @@
                         <section class="row">
 
                             <section class="col-12 mb-2">
-                                <div class="form-group">
+                                <div class="form-group mb-1">
                                     <label for="question">سوال</label>
                                     <input id="question" name="question" value="{{old('question')}}" type="text" class="form-control form-control-sm">
                                 </div>
@@ -46,8 +46,8 @@
                                 @enderror
                             </section>
 
-                            <section class="col-12 col-md-6 mb-2">
-                                <div class="form-group">
+                            <section class="col-12 col-md-6 mb-2 mb-2">
+                                <div class="form-group mb-1">
                                     <label for="status">وضعیت</label>
                                     <select name="status" id="status" class="form-control form-control-sm">
                                         <option value="0" @if(old('status')==0) selected @endif>غیر فعال</option>
@@ -63,8 +63,8 @@
                                 @enderror
                             </section>
 
-                            <section class="col-12 col-md-6 mb-2">
-                                <div class="form-group">
+                            <section class="col-12 col-md-6 mb-2 mb-2">
+                                <div class="form-group mb-1">
                                     <label for="tags">تگ ها</label>
                                     <input value="{{old('tags')}}" name="tags" id="tags" type="hidden" class="form-control form-control-sm">
                                     <select class="select2 form-control form-control-sm" id="select_tags" multiple>
@@ -81,7 +81,7 @@
                             </section>
 
                             <section class="col-12 mb-2">
-                                <div class="form-group">
+                                <div class="form-group mb-1">
                                     <label for="answer">پاسخ</label>
                                     <textarea name="answer" id="answer"  class="form-control form-control-sm" rows="6">{{old('answer')}}</textarea>
                                 </div>

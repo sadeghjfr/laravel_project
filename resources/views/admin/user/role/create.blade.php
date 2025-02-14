@@ -33,14 +33,14 @@
                 <form action="" method="">
                     <section class="row">
 
-                        <section class="col-12 col-md-5">
-                            <div class="form-group">
+                        <section class="col-12 mb-2 col-md-5">
+                            <div class="form-group mb-1">
                                 <label for="">عنوان نقش</label>
                                 <input type="text" class="form-control form-control-sm">
                             </div>
                         </section>
-                        <section class="col-12 col-md-5">
-                            <div class="form-group">
+                        <section class="col-12 mb-2 col-md-5">
+                            <div class="form-group mb-1">
                                 <label for="">توضیح نقش</label>
                                 <input type="text" class="form-control form-control-sm">
                             </div>

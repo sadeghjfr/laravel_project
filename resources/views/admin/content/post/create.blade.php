@@ -35,8 +35,8 @@
                         @csrf
                         <section class="row">
 
-                            <section class="col-12 col-md-6">
-                                <div class="form-group">
+                            <section class="col-12 col-md-6 mb-2">
+                                <div class="form-group mb-1">
                                     <label for="">عنوان پست</label>
                                     <input type="text" class="form-control form-control-sm" name="title" value="{{ old('title') }}">
                                 </div>
@@ -49,8 +49,8 @@
                                 @enderror
                             </section>
 
-                            <section class="col-12 col-md-6">
-                                <div class="form-group">
+                            <section class="col-12 col-md-6 mb-2">
+                                <div class="form-group mb-1">
                                     <label for="">انتخاب دسته</label>
                                     <select name="category_id" id="" class="form-control form-control-sm">
                                         <option value="">دسته را انتخاب کنید</option>
@@ -69,8 +69,8 @@
                                 @enderror
                             </section>
 
-                            <section class="col-12 col-md-6">
-                                <div class="form-group">
+                            <section class="col-12 col-md-6 mb-2">
+                                <div class="form-group mb-1">
                                     <label for="">تصویر </label>
                                     <input type="file" name="image" class="form-control form-control-sm">
                                 </div>
@@ -83,8 +83,8 @@
                                 @enderror
                             </section>
 
-                            <section class="col-12 col-md-6">
-                                <div class="form-group">
+                            <section class="col-12 col-md-6 mb-2">
+                                <div class="form-group mb-1">
                                     <label for="status">وضعیت</label>
                                     <select name="status" id="" class="form-control form-control-sm" id="status">
                                         <option value="0" @if(old('status') == 0) selected @endif>غیرفعال</option>
@@ -101,8 +101,8 @@
                             </section>
 
 
-                            <section class="col-12 col-md-6">
-                                <div class="form-group">
+                            <section class="col-12 col-md-6 mb-2">
+                                <div class="form-group mb-1">
                                     <label for="commentable">امکان درج کامنت</label>
                                     <select name="commentable" id="" class="form-control form-control-sm" id="commentable">
                                         <option value="0" @if(old('commentable') == 0) selected @endif>غیرفعال</option>
@@ -120,8 +120,8 @@
 
 
 
-                            <section class="col-12 col-md-6">
-                                <div class="form-group">
+                            <section class="col-12 col-md-6 mb-2">
+                                <div class="form-group mb-1">
                                     <label for="">تاریخ انتشار</label>
                                     <input type="text" id="published_at" name="published_at" class="form-control form-control-sm d-none">
                                     <input type="text" id="published_at_view" class="form-control form-control-sm">
@@ -135,8 +135,8 @@
                                 @enderror
                             </section>
 
-                            <section class="col-12">
-                                <div class="form-group">
+                            <section class="col-12 mb-2">
+                                <div class="form-group mb-1">
                                     <label for="tags">تگ ها</label>
                                     <input type="hidden" class="form-control form-control-sm"  name="tags" id="tags" value="{{ old('tags') }}">
                                     <select class="select2 form-control form-control-sm" id="select_tags" multiple>
@@ -152,8 +152,8 @@
                                 @enderror
                             </section>
 
-                            <section class="col-12">
-                                <div class="form-group">
+                            <section class="col-12 mb-2">
+                                <div class="form-group mb-1">
                                     <label for="">خلاصه پست</label>
                                     <textarea name="summary" id="summary"  class="form-control form-control-sm" rows="6">{{ old('summary') }}</textarea>
                                 </div>
@@ -166,8 +166,8 @@
                                 @enderror
                             </section>
 
-                            <section class="col-12">
-                                <div class="form-group">
+                            <section class="col-12 mb-2">
+                                <div class="form-group mb-1">
                                     <label for="">متن پست</label>
                                     <textarea name="body" id="body"  class="form-control form-control-sm" rows="6">{{ old('body') }}</textarea>
                                 </div>

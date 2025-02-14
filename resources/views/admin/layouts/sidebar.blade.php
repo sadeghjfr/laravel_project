@@ -83,8 +83,7 @@
 
 
             <section class="sidebar-part-title">بخش کاربران</section>
-            <a href="{{route('admin.user.admin-user.index')}}" class="sidebar-link"><i class="fas fa-bars"></i><span>کاربران ادمین</span></a>
-            <a href="{{route('admin.user.customer.index')}}" class="sidebar-link"><i class="fas fa-bars"></i><span>مشتریان</span></a>
+            <a href="{{route('admin.user.index')}}" class="sidebar-link"><i class="fas fa-bars"></i><span>کاربران</span></a>
             <a href="{{route('admin.user.role.index')}}" class="sidebar-link"><i class="fas fa-bars"></i><span>سطوح دسترسی</span></a>
 
 
