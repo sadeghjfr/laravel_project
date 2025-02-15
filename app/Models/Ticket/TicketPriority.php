@@ -11,4 +11,10 @@ class TicketPriority extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = ['name', 'status'];
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class, 'priority_id');
+    }
+
 }

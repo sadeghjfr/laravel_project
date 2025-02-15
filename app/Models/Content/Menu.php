@@ -28,9 +28,9 @@ class Menu extends Model
     {
         parent::boot();
 
-        static::deleting(function ($category) {
+        static::deleting(function ($menu) {
 
-            $category->children()->each(function ($child) {
+            $menu->children()->each(function ($child) {
                 $child->delete();
             });
         });

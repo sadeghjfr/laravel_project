@@ -6,28 +6,27 @@
 
 @section('content')
 
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
+    <section class="d-flex justify-content-between align-items-center">
+
+        <ol class="breadcrumb mb-0 w-100 ml-2">
             <li class="breadcrumb-item font-size-12"><a href="{{route('admin.home')}}">خانه</a></li>
             <li class="breadcrumb-item font-size-12"><a href="#"> بخش تیکت ها</a></li>
-            <li class="breadcrumb-item font-size-12"> تیکت ها</li>
+            <li class="breadcrumb-item font-size-12 active" aria-current="page"> تیکت ها</li>
+
         </ol>
-    </nav>
+
+        <div class="max-width-16-rem my-0" style="z-index: 10000">
+            <input type="text" class="form-control form-control-sm form-text my-2" placeholder="جستجو">
+        </div>
+
+    </section>
+
+
 
 
     <section class="row">
         <section class="col-12">
             <section class="main-body-container">
-
-                <section class="d-flex justify-content-between align-items-center my-2 mx-3">
-
-                    {{--<a href="#" class="btn btn-info btn-sm disabled">ایجاد تیکت </a>--}}
-
-                    <div class="max-width-16-rem ml-2">
-                        <input type="text" class="form-control form-control-sm form-text" placeholder="جستجو">
-                    </div>
-
-                </section>
 
                 <section class="container-fluid mt-3">
 
@@ -50,16 +49,13 @@
 
                     <section class="tab-content" id="myTabContent">
                         <div class="tab-pane fade" id="new" role="tabpanel" aria-labelledby="new-tab">
-                            {{--@include('admin.ticket.items', ['items' => $newTickets])--}}
-                            @include('admin.ticket.items')
+                            @include('admin.ticket.items', ['items' => $newTickets, 'status' => 'new'])
                         </div>
                         <div class="tab-pane fade" id="open" role="tabpanel" aria-labelledby="open-tab">
-                            {{--@include('admin.ticket.items', ['items' => $openTickets])--}}
-                            @include('admin.ticket.items')
+                            @include('admin.ticket.items', ['items' => $openTickets, 'status' => 'open'])
                         </div>
                         <div class="tab-pane fade" id="close" role="tabpanel" aria-labelledby="close-tab">
-                            {{--@include('admin.ticket.items', ['items' => $closeTickets])--}}
-                            @include('admin.ticket.items')
+                            @include('admin.ticket.items', ['items' => $closeTickets, 'status' => 'close'])
                         </div>
                     </section>
 

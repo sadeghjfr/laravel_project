@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Content\Comment;
+use App\Models\Ticket\Ticket;
 use App\Models\Ticket\TicketAdmin;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -48,19 +49,41 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function comments(){
-
-        return $this->hasMany(Comment::class);
-    }
-
     public function getFullNameAttribute()
     {
         return "{$this->first_name} {$this->last_name}";
     }
 
+    public function comments(){
+
+        return $this->hasMany(Comment::class);
+    }
+
     public function ticketAdmin(){
 
         return $this->hasOne(TicketAdmin::class);
+    }
+
+    public function tickets(){
+
+        return $this->hasMany(Ticket::class);
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($user) {
+
+            $user->tickets()->each(function ($ticket) {
+                $ticket->delete();
+            });
+
+            $user->comments()->each(function ($comment) {
+                $comment->delete();
+            });
+        });
+
     }
 
 }

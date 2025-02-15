@@ -83,9 +83,16 @@
                             <section class="row">
                                 <section class="col-12">
                                     <div class="form-group mb-1">
-                                        <label for="">پاسخ ادمین</label>
-                                        <textarea id="body" name="body" class="form-control form-control-sm" rows="4"></textarea>
+                                        <label for="body">پاسخ ادمین</label>
+                                        <textarea id="body" name="body" class="form-control form-control-sm" rows="4">{{old('body')}}</textarea>
                                     </div>
+                                    @error('body')
+                                    <span class="text-danger" role="alert">
+                                    <strong>
+                                        {{$message}}
+                                    </strong>
+                                </span>
+                                    @enderror
                                 </section>
                                 <section class="col-12">
                                     <button class="btn btn-primary btn-sm">ثبت</button>

@@ -3,64 +3,71 @@
 namespace App\Http\Controllers\Admin\Ticket;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Ticket\TicketRequest;
+use App\Models\Content\Comment;
+use App\Models\Ticket\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class TicketController extends Controller
 {
 
-    public function newTickets()
-    {
-        return view('admin.ticket.index');
-    }
-
-    public function openTickets()
-    {
-        return view('admin.ticket.index');
-    }
-
-    public function closeTickets()
-    {
-        return view('admin.ticket.index');
-    }
-
     public function index()
     {
-        return view('admin.ticket.index');
+        $newTickets = Ticket::where('status', 'new')->get();
+        $openTickets = Ticket::where('status', 'open')->get();
+        $closeTickets = Ticket::where('status', 'close')->get();
+
+        return view('admin.ticket.index', compact('newTickets', 'openTickets', 'closeTickets'));
     }
 
-
-    public function create()
+    public function show(Ticket $ticket)
     {
-        //
+
+        if ($ticket->status == 'new'){
+            $ticket->status = 'open';
+            $ticket->save();
+        }
+
+        return view('admin.ticket.show', compact('ticket'));
     }
 
-
-    public function store(Request $request)
+    public function status(Ticket $ticket)
     {
-        //
+
+        $ticket->status = $ticket->status == 'open' ? 'close' : 'open';
+        $ticket->save();
+        return Redirect::back()->with('toast-success', 'تغییرات با موفقیت اعمال شد');
     }
 
-
-    public function show()
+    public function answer(TicketRequest $request, Ticket $ticket)
     {
-        return view('admin.ticket.show');
+
+        $inputs = $request->all();
+        $inputs['subject'] = 'پاسخ به : ' . $ticket->subject;
+        $inputs['description'] = $request->description;
+        $inputs['status'] = 'answer';
+        $inputs['reference_id'] = $ticket->reference_id;
+        $inputs['user_id'] = $ticket->user_id;
+        $inputs['category_id'] = $ticket->category_id;
+        $inputs['priority_id'] = $ticket->priority_id;
+        $inputs['ticket_id'] = $ticket->id;
+
+        $result = Ticket::create($inputs);
+        return redirect()->route('admin.ticket.index')->with('toast-success', 'پاسخ تیکت با موفقیت ثبت شد');
     }
 
 
-    public function edit($id)
-    {
-        //
+    public function destroy(Ticket $ticket){
+        $result = $ticket->delete();
+        return redirect()->route('admin.ticket.index')->with('toast-error', 'تیکت با موفقیت حذف شد');
     }
 
+    //public function create(){}
 
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    //public function store(Request $request){}
 
+    //public function edit($id){}
 
-    public function destroy($id)
-    {
-        //
-    }
+    //public function update(Request $request, $id){}
 }
