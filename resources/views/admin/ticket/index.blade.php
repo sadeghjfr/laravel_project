@@ -9,7 +9,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item font-size-12"><a href="{{route('admin.home')}}">خانه</a></li>
-            <li class="breadcrumb-item font-size-12"> بخش تیکت ها</li>
+            <li class="breadcrumb-item font-size-12"><a href="#"> بخش تیکت ها</a></li>
             <li class="breadcrumb-item font-size-12"> تیکت ها</li>
         </ol>
     </nav>

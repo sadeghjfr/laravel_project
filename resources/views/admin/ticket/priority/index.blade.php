@@ -10,7 +10,7 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item font-size-12"><a href="{{route('admin.home')}}">خانه</a></li>
         <li class="breadcrumb-item font-size-12"><a href="#"> بخش تیکت ها</a></li>
-        <li class="breadcrumb-item font-size-12"> اولویت تیکت ها</li>
+        <li class="breadcrumb-item font-size-12 active" aria-current="page"> اولویت تیکت ها</li>
     </ol>
   </nav>
 

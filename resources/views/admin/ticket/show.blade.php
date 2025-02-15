@@ -47,7 +47,7 @@
                         <section class="col-12 mb-2">
                             <div class="form-group mb-1">
                                 <label for="">پاسخ تیکت </label>
-                               ‍<textarea class="form-control form-control-sm" rows="4"></textarea>
+                               <textarea class="form-control form-control-sm" rows="4"></textarea>
                             </div>
                         </section>
                         <section class="col-12">
