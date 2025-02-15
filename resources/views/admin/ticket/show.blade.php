@@ -8,9 +8,8 @@
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item font-size-12"> <a href="#"> خانه</a></li>
-      <li class="breadcrumb-item font-size-12"> <a href="#"> بخش تیکت ها</a></li>
-      <li class="breadcrumb-item font-size-12"> <a href="#"> تیکت</a></li>
+        <li class="breadcrumb-item font-size-12"><a href="{{route('admin.home')}}">خانه</a></li>
+      <li class="breadcrumb-item font-size-12"> <a href="{{route('admin.ticket.index')}}"> تیکت ها</a></li>
       <li class="breadcrumb-item font-size-12 active" aria-current="page"> نمایش تیکت</li>
     </ol>
   </nav>
@@ -19,13 +18,14 @@
   <section class="row">
     <section class="col-12">
         <section class="main-body-container">
-            <section class="main-body-container-header">
-                <h5>
-                نمایش تیکت
-                </h5>
-            </section>
+
 
             <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
+                <section class="main-body-container-header">
+                    <h5>
+                        نمایش تیکت
+                    </h5>
+                </section>
                 <a href="{{ route('admin.ticket.index') }}" class="btn btn-info btn-sm">بازگشت</a>
             </section>
 

@@ -8,9 +8,9 @@
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item font-size-12"><a href="#"> خانه</a></li>
-            {{--<li class="breadcrumb-item font-size-12"> <a href="#"> بخش تیکت ها</a></li>--}}
-            <li class="breadcrumb-item font-size-12 active" aria-current="page"> تیکت ها</li>
+            <li class="breadcrumb-item font-size-12"><a href="{{route('admin.home')}}">خانه</a></li>
+            <li class="breadcrumb-item font-size-12"> بخش تیکت ها</li>
+            <li class="breadcrumb-item font-size-12"> تیکت ها</li>
         </ol>
     </nav>
 
@@ -19,87 +19,62 @@
         <section class="col-12">
             <section class="main-body-container">
 
-                <section class="d-flex justify-content-between align-items-center mt-4 mb-3">
+                <section class="d-flex justify-content-between align-items-center my-2 mx-3">
 
                     {{--<a href="#" class="btn btn-info btn-sm disabled">ایجاد تیکت </a>--}}
 
-                    <section class="main-body-container-header">
-                        <h5>تیکت ها</h5>
-                    </section>
-
-                    <div class="max-width-16-rem">
+                    <div class="max-width-16-rem ml-2">
                         <input type="text" class="form-control form-control-sm form-text" placeholder="جستجو">
                     </div>
+
                 </section>
 
-                {{--
-                            <section class="table-responsive">
-                                <table class="table table-striped table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>نویسنده تیکت</th>
-                                            <th>عنوان تیکت</th>
-                                            <th>دسته تیکت</th>
-                                            <th>اولویت تیکت</th>
-                                            <th>ارجاع شده از</th>
-                                            <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th>1</th>
-                                            <td>حامد احمدی	</td>
-                                            <td>پرداخت انجام نمیشه!	</td>
-                                            <td>دسته فروش	</td>
-                                            <td>فوری</td>
-                                            <td>-</td>
-                                            <td class="width-16-rem text-left">
-                                                <a href="{{ route('admin.ticket.show') }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> مشاهده</a>
-                                            </td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                            </section>
-                --}}
-
-                <section class="container-fluid mt-5">
+                <section class="container-fluid mt-3">
 
                     <nav>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="newticket-tab" data-toggle="tab" href="#newticket" role="tab"
-                                   aria-controls="newticket" aria-selected="true">تیکت های جدید</a>
+                                <a class="nav-link" id="new-tab" data-toggle="tab" href="#new" role="tab"
+                                   aria-controls="new" aria-selected="true" data-tab-id="new">تیکت های جدید</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="openticket-tab" data-toggle="tab" href="#openticket" role="tab"
-                                   aria-controls="openticket" aria-selected="false">تیکت های باز</a>
+                                <a class="nav-link" id="open-tab" data-toggle="tab" href="#open" role="tab"
+                                   aria-controls="open" aria-selected="false" data-tab-id="open">تیکت های باز</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="closeticket-tab" data-toggle="tab" href="#closeticket" role="tab"
-                                   aria-controls="closeticket" aria-selected="false">تیکت های بسته</a>
+                                <a class="nav-link" id="close-tab" data-toggle="tab" href="#close" role="tab"
+                                   aria-controls="close" aria-selected="false" data-tab-id="close">تیکت های بسته</a>
                             </li>
                         </ul>
                     </nav>
 
-                    <!-- محتوای تب‌ها -->
                     <section class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="newticket" role="tabpanel" aria-labelledby="newticket-tab">
+                        <div class="tab-pane fade" id="new" role="tabpanel" aria-labelledby="new-tab">
+                            {{--@include('admin.ticket.items', ['items' => $newTickets])--}}
                             @include('admin.ticket.items')
                         </div>
-                        <div class="tab-pane fade" id="openticket" role="tabpanel" aria-labelledby="openticket-tab">
+                        <div class="tab-pane fade" id="open" role="tabpanel" aria-labelledby="open-tab">
+                            {{--@include('admin.ticket.items', ['items' => $openTickets])--}}
                             @include('admin.ticket.items')
                         </div>
-                        <div class="tab-pane fade" id="closeticket" role="tabpanel" aria-labelledby="closeticket-tab">
+                        <div class="tab-pane fade" id="close" role="tabpanel" aria-labelledby="close-tab">
+                            {{--@include('admin.ticket.items', ['items' => $closeTickets])--}}
                             @include('admin.ticket.items')
                         </div>
                     </section>
-                </section>
 
+                </section>
 
             </section>
         </section>
     </section>
+
+@endsection
+
+@section('script')
+
+    @include('admin.scripts.tab-control')
+    @include('admin.scripts.status-control')
+    @include('admin.alerts.sweetalert.delete-confirm', ['className' => 'delete'])
 
 @endsection
