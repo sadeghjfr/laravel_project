@@ -9,7 +9,8 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item font-size-12"><a href="{{route('admin.home')}}">خانه</a></li>
-            <li class="breadcrumb-item font-size-12"><a href="{{route('admin.user.index')}}"> بخش کاربران</a></li>
+            <li class="breadcrumb-item font-size-12"><a href="#"> بخش کاربران</a></li>
+            <li class="breadcrumb-item font-size-12"><a href="{{ route('admin.user.index') }}"> کاربران</a></li>
             <li class="breadcrumb-item font-size-12 active" aria-current="page"> ویرایش کاربر</li>
         </ol>
     </nav>
