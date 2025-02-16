@@ -60,7 +60,7 @@
 
                             <td>
                                 <label>
-                                    <input id="{{$post->id}}-commentable" onchange="changeCommentable({{$post->id}})" data-url="{{route('admin.content.post.commentable', $post->id)}}" type="checkbox" @if($post->commentable===1) checked @endif>
+                                    <input id="{{$post->id}}-commentable" onchange="changeStatus({{$post->id}}, '-commentable')" data-url="{{route('admin.content.post.commentable', $post->id)}}" type="checkbox" @if($post->commentable===1) checked @endif>
                                 </label>
                             </td>
 
@@ -87,143 +87,7 @@
 
 @section('script')
 
-    <script type="text/javascript">
-
-        function changeStatus(id){
-
-            const element = $("#" + id);
-            const url = element.attr('data-url');
-            const elementValue = !element.prop('checked');
-
-            $.ajax({
-                url : url,
-                type : "GET",
-                success : function(response){
-                    if(response.status){
-                        if(response.checked){
-                            element.prop('checked', true);
-                            successToast('پست با موفقیت فعال شد')
-                        }
-                        else{
-                            element.prop('checked', false);
-                            successToast('پست با موفقیت غیر فعال شد')
-                        }
-                    }
-                    else{
-                        element.prop('checked', elementValue);
-                        errorToast('هنگام ویرایش مشکلی بوجود امده است')
-                    }
-                },
-                error : function(){
-                    element.prop('checked', elementValue);
-                    errorToast('ارتباط برقرار نشد')
-                }
-            });
-
-            function successToast(message){
-
-                const successToastTag = '<section class="toast" data-delay="5000">\n' +
-                    '<section class="toast-body py-3 d-flex bg-success text-white">\n' +
-                    '<strong class="ml-auto">' + message + '</strong>\n' +
-                    '<button type="button" class="mr-2 close" data-dismiss="toast" aria-label="Close">\n' +
-                    '<span aria-hidden="true">&times;</span>\n' +
-                    '</button>\n' +
-                    '</section>\n' +
-                    '</section>';
-
-                $('.toast-wrapper').append(successToastTag);
-                $('.toast').toast('show').delay(5500).queue(function() {
-                    $(this).remove();
-                })
-            }
-
-            function errorToast(message){
-
-                const errorToastTag = '<section class="toast" data-delay="5000">\n' +
-                    '<section class="toast-body py-3 d-flex bg-danger text-white">\n' +
-                    '<strong class="ml-auto">' + message + '</strong>\n' +
-                    '<button type="button" class="mr-2 close" data-dismiss="toast" aria-label="Close">\n' +
-                    '<span aria-hidden="true">&times;</span>\n' +
-                    '</button>\n' +
-                    '</section>\n' +
-                    '</section>';
-
-                $('.toast-wrapper').append(errorToastTag);
-                $('.toast').toast('show').delay(5500).queue(function() {
-                    $(this).remove();
-                })
-            }
-        }
-
-        function changeCommentable(id){
-
-            const element = $("#" + id + '-commentable');
-            const url = element.attr('data-url');
-            const elementValue = !element.prop('checked');
-
-            $.ajax({
-                url : url,
-                type : "GET",
-                success : function(response){
-                    if(response.status){
-                        if(response.checked){
-                            element.prop('checked', true);
-                            successToast('امکان درج کامنت با موفقیت فعال شد')
-                        }
-                        else{
-                            element.prop('checked', false);
-                            successToast('امکان درج کامنت با موفقیت غیر فعال شد')
-                        }
-                    }
-                    else{
-                        element.prop('checked', elementValue);
-                        errorToast('هنگام ویرایش مشکلی بوجود امده است')
-                    }
-                },
-                error : function(){
-                    element.prop('checked', elementValue);
-                    errorToast('ارتباط برقرار نشد')
-                }
-            });
-
-            function successToast(message){
-
-                const successToastTag = '<section class="toast" data-delay="5000">\n' +
-                    '<section class="toast-body py-3 d-flex bg-success text-white">\n' +
-                    '<strong class="ml-auto">' + message + '</strong>\n' +
-                    '<button type="button" class="mr-2 close" data-dismiss="toast" aria-label="Close">\n' +
-                    '<span aria-hidden="true">&times;</span>\n' +
-                    '</button>\n' +
-                    '</section>\n' +
-                    '</section>';
-
-                $('.toast-wrapper').append(successToastTag);
-                $('.toast').toast('show').delay(5500).queue(function() {
-                    $(this).remove();
-                })
-            }
-
-            function errorToast(message){
-
-                const errorToastTag = '<section class="toast" data-delay="5000">\n' +
-                    '<section class="toast-body py-3 d-flex bg-danger text-white">\n' +
-                    '<strong class="ml-auto">' + message + '</strong>\n' +
-                    '<button type="button" class="mr-2 close" data-dismiss="toast" aria-label="Close">\n' +
-                    '<span aria-hidden="true">&times;</span>\n' +
-                    '</button>\n' +
-                    '</section>\n' +
-                    '</section>';
-
-                $('.toast-wrapper').append(errorToastTag);
-                $('.toast').toast('show').delay(5500).queue(function() {
-                    $(this).remove();
-                })
-            }
-        }
-
-
-    </script>
-
+    @include('admin.scripts.status-control')
     @include('admin.alerts.sweetalert.delete-confirm', ['className' => 'delete'])
 
 @endsection

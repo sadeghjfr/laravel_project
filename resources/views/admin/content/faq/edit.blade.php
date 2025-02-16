@@ -73,7 +73,7 @@
                                     </select>
                                 </div>
                                 @error('tags')
-                                <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                <span class="text-danger" role="alert">
                                 <strong>
                                     {{ $message }}
                                 </strong>

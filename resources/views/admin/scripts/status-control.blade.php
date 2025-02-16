@@ -1,7 +1,9 @@
 <script type="text/javascript">
 
-    function changeStatus(id) {
-        const element = $("#" + id);
+    function changeStatus(id, extra = null) {
+
+        let element = $("#" + id);
+        element = extra ? $("#" + id + extra)  : element
         const url = element.attr('data-url');
         const elementValue = !element.prop('checked');
 

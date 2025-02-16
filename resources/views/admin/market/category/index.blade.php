@@ -8,8 +8,8 @@
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item font-size-12"> <a href="{{route('admin.home')}}">خانه</a></li>
-            <li class="breadcrumb-item font-size-12"> <a href="#">بخش فروش</a></li>
+            <li class="breadcrumb-item font-size-12"><a href="{{ route('admin.home') }}">خانه</a></li>
+            <li class="breadcrumb-item font-size-12"><a href="#"> بخش فروش</a></li>
             <li class="breadcrumb-item font-size-12 active" aria-current="page"> دسته بندی</li>
         </ol>
     </nav>
@@ -18,14 +18,10 @@
     <section class="row">
         <section class="col-12">
             <section class="main-body-container">
-                <section class="main-body-container-header">
-                    <h5>
-                        دسته بندی
-                    </h5>
-                </section>
 
-                <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
-                    <a href="{{route('admin.market.category.create')}}" class="btn btn-info btn-sm">ایجاد دسته بندی</a>
+                <section class="d-flex justify-content-between align-items-center mt-2 mb-3 border-bottom pb-2">
+                    <a href="{{ route('admin.market.category.create') }}" class="btn btn-info btn-sm">ایجاد دسته
+                        بندی</a>
                     <div class="max-width-16-rem">
                         <input type="text" class="form-control form-control-sm form-text" placeholder="جستجو">
                     </div>
@@ -38,37 +34,46 @@
                             <th>#</th>
                             <th>نام دسته بندی</th>
                             <th>دسته والد</th>
-                            <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
+                            <th>وضعیت</th>
+                            <th>نمایش در منو</th>
+                            <th class="max-width-16-rem text-left"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th>1</th>
-                            <td>نمایشگر	</td>
-                            <td>کالای الکترونیکی</td>
-                            <td class="width-16-rem text-left">
-                                <a href="{{route('admin.market.category.edit', 2)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
-                                <button class="btn btn-danger btn-sm" type="submit"><i class="fa fa-trash-alt"></i> حذف</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>2</th>
-                            <td>نمایشگر	</td>
-                            <td>کالای الکترونیکی</td>
-                            <td class="width-16-rem text-left">
-                                <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
-                                <button class="btn btn-danger btn-sm" type="submit"><i class="fa fa-trash-alt"></i> حذف</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>3</th>
-                            <td>نمایشگر	</td>
-                            <td>کالای الکترونیکی</td>
-                            <td class="width-16-rem text-left">
-                                <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
-                                <button class="btn btn-danger btn-sm" type="submit"><i class="fa fa-trash-alt"></i> حذف</button>
-                            </td>
-                        </tr>
+                        @foreach ($productCategories as $productCategory)
+
+                            <tr>
+                                <th>{{ $loop->iteration }}</th>
+                                <td>{{ $productCategory->name }}</td>
+                                <td>{{ $productCategory->parent_id ? $productCategory->parent->name : 'دسته اصلی' }}</td>
+                                <td>
+                                    <label>
+                                        <input id="{{$productCategory->id}}" onchange="changeStatus({{$productCategory->id}})" data-url="{{route('admin.market.category.status', $productCategory->id)}}" type="checkbox" @if($productCategory->status===1) checked @endif>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input id="{{$productCategory->id}}-menu" onchange="changeStatus({{$productCategory->id}}, '-menu')" data-url="{{route('admin.market.category.show-in-menu', $productCategory->id)}}" type="checkbox" @if($productCategory->show_in_menu===1) checked @endif>
+                                    </label>
+                                </td>
+                                <td class="width-16-rem text-left">
+                                    <a href="{{ route('admin.market.category.edit', $productCategory->id) }}"
+                                       class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
+                                    <form class="d-inline"
+                                          action="{{ route('admin.market.category.destroy', $productCategory->id) }}"
+                                          method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="btn btn-danger btn-sm delete" type="submit"><i
+                                                class="fa fa-trash-alt"></i> حذف
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+
+                        @endforeach
+
+
                         </tbody>
                     </table>
                 </section>
@@ -76,5 +81,13 @@
             </section>
         </section>
     </section>
+
+@endsection
+
+
+@section('script')
+
+    @include('admin.scripts.status-control')
+    @include('admin.alerts.sweetalert.delete-confirm', ['className' => 'delete'])
 
 @endsection
