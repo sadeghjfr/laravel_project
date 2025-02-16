@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Notify;
+namespace App\Models\Admin\Notify;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

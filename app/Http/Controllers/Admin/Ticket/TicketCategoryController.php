@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Admin\Ticket;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Ticket\TicketCategoryRequest;
-use App\Models\Ticket\TicketCategory;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use App\Models\Admin\Ticket\TicketCategory;
 
 class TicketCategoryController extends Controller
 {

@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Admin\Notify;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Notify\EmailFileRequest;
 use App\Http\Services\File\FileService;
-use App\Models\Notify\Email;
-use App\Models\Notify\EmailFile;
-use Illuminate\Http\Request;
+use App\Models\Admin\Notify\Email;
+use App\Models\Admin\Notify\EmailFile;
 
 class EmailFileController extends Controller
 {

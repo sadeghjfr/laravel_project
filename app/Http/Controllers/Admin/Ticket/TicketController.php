@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Admin\Ticket;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Ticket\TicketRequest;
-use App\Models\Content\Comment;
-use App\Models\Ticket\Ticket;
-use Illuminate\Http\Request;
+use App\Models\Admin\Ticket\Ticket;
 use Illuminate\Support\Facades\Redirect;
 
 class TicketController extends Controller

@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Admin\Content;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Content\CommentRequest;
-use App\Models\Content\Comment;
-use App\Models\Content\PostCategory;
-use Illuminate\Http\Request;
+use App\Models\Admin\Content\Comment;
 use Illuminate\Support\Facades\Redirect;
 
 class CommentController extends Controller

@@ -2,11 +2,10 @@
 
 namespace App\Models;
 
-use App\Models\Content\Comment;
-use App\Models\Ticket\Ticket;
-use App\Models\Ticket\TicketAdmin;
-use App\Models\User\Role;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Admin\Content\Comment;
+use App\Models\Admin\Ticket\Ticket;
+use App\Models\Admin\Ticket\TicketAdmin;
+use App\Models\Admin\User\Role;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;

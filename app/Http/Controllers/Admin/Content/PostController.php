@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin\Content;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Content\PostRequest;
 use App\Http\Services\Image\ImageService;
-use App\Models\Content\Post;
-use App\Models\Content\PostCategory;
+use App\Models\Admin\Content\Post;
+use App\Models\Admin\Content\PostCategory;
 
 class PostController extends Controller
 {

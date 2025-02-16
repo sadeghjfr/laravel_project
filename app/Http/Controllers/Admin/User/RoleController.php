@@ -4,11 +4,8 @@ namespace App\Http\Controllers\Admin\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\User\RoleRequest;
-use App\Models\Content\FAQ;
-use App\Models\Content\PostCategory;
-use App\Models\User\Permission;
-use App\Models\User\Role;
-use Illuminate\Http\Request;
+use App\Models\Admin\User\Permission;
+use App\Models\Admin\User\Role;
 
 class RoleController extends Controller
 {

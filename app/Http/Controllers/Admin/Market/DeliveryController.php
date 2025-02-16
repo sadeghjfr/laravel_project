@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Admin\Market;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Market\DeliveryRequest;
-use App\Models\Market\Delivery;
-use Illuminate\Http\Request;
+use App\Models\Admin\Market\Delivery;
 
 class DeliveryController extends Controller
 {

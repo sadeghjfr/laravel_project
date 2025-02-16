@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Ticket;
 
 use App\Http\Controllers\Controller;
-use App\Models\Ticket\TicketAdmin;
+use App\Models\Admin\Ticket\TicketAdmin;
 use App\Models\User;
 
 class TicketAdminController extends Controller

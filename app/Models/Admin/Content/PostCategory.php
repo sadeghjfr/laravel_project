@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Content;
+namespace App\Models\Admin\Content;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -42,9 +42,9 @@ class PostCategory extends Model
     public function sluggable(): array
     {
         return [
-          'slug' => [
-              'source' => 'name'
-          ]
+            'slug' => [
+                'source' => 'name'
+            ]
         ];
     }
 }

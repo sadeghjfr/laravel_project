@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Admin\Setting;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Setting\SettingRequest;
 use App\Http\Services\Image\ImageService;
-use App\Models\Setting\Setting;
+use App\Models\Admin\Setting\Setting;
 use Database\Seeders\SettingSeeder;
-use Illuminate\Http\Request;
 
 class SettingController extends Controller
 {

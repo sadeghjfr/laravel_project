@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\admin\notify;
 
-use App\Models\Notify\SMS;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Notify\SMSRequest;
+use App\Models\Admin\Notify\SMS;
 
 class SMSController extends Controller
 {

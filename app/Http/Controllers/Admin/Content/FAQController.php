@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Admin\Content;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Content\FAQRequest;
-use App\Models\Content\FAQ;
-use App\Models\Content\PostCategory;
-use Illuminate\Http\Request;
+use App\Models\Admin\Content\FAQ;
 
 class FAQController extends Controller
 {
