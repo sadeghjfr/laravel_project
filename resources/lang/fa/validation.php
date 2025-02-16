@@ -175,7 +175,10 @@ return [
         'logo'                      => 'لوگو',
         'icon'                      => 'آیکون',
         'user_type'                      => 'نوع کاربر',
-        'keywords'                      => 'کلمات کلیدی'
+        'keywords'                      => 'کلمات کلیدی',
+        'amount' => 'هزینه',
+        'delivery_time' => 'زمان ارسال',
+        'delivery_time_unit' => 'واحد زمان ارسال',
 
     ],
 ];

@@ -100,15 +100,13 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
 
         //delivery
         Route::prefix('delivery')->group(function () {
-
             Route::get('/', [DeliveryController::class, 'index'])->name('admin.market.delivery.index');
             Route::get('/create', [DeliveryController::class, 'create'])->name('admin.market.delivery.create');
             Route::post('/store', [DeliveryController::class, 'store'])->name('admin.market.delivery.store');
-            //Route::get('/show/{id}', [DeliveryController::class, 'show'])->name('admin.market.delivery.show');
-            Route::get('/edit/{id}', [DeliveryController::class, 'edit'])->name('admin.market.delivery.edit');
-            Route::put('/update/{id}', [DeliveryController::class, 'update'])->name('admin.market.delivery.update');
-            Route::delete('/destroy/{id}', [DeliveryController::class, 'destroy'])->name('admin.market.delivery.destroy');
-
+            Route::get('/edit/{delivery}', [DeliveryController::class, 'edit'])->name('admin.market.delivery.edit');
+            Route::put('/update/{delivery}', [DeliveryController::class, 'update'])->name('admin.market.delivery.update');
+            Route::delete('/destroy/{delivery}', [DeliveryController::class, 'destroy'])->name('admin.market.delivery.destroy');
+            Route::get('/status/{delivery}', [DeliveryController::class, 'status'])->name('admin.market.delivery.status');
         });
 
         //discount
