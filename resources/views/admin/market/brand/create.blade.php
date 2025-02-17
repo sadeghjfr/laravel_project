@@ -9,8 +9,8 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item font-size-12"> <a href="{{route('admin.home')}}">خانه</a></li>
-            <li class="breadcrumb-item font-size-12"> <a href="#">بخش فروش</a></li>
-            <li class="breadcrumb-item font-size-12"> <a href="{{route('admin.market.brand.index')}}">برند ها</a></li>
+            <li class="breadcrumb-item font-size-12"> <a href="#"> بخش فروش</a></li>
+            <li class="breadcrumb-item font-size-12"> <a href="{{route('admin.market.brand.index')}}"> برند ها</a></li>
             <li class="breadcrumb-item font-size-12 active" aria-current="page"> ایجاد برند</li>
         </ol>
     </nav>
@@ -19,35 +19,96 @@
     <section class="row">
         <section class="col-12">
             <section class="main-body-container">
-                <section class="main-body-container-header">
-                    <h5>
-                        ایجاد برند
-                    </h5>
-                </section>
 
-                <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
+                <section class="d-flex justify-content-between align-items-center mt-2 mb-3 border-bottom pb-2">
+                    <section class="main-body-container-header">
+                        <h5>
+                            ایجاد برند
+                        </h5>
+                    </section>
                     <a href="{{ route('admin.market.brand.index') }}" class="btn btn-info btn-sm">بازگشت</a>
                 </section>
 
                 <section>
-                    <form action="{{route('admin.market.brand.store')}}" method="post">
+                    <form action="{{route('admin.market.brand.store')}}" method="post" enctype="multipart/form-data" id="form">
+                        @csrf
                         <section class="row">
 
-                            <section class="col-12 col-md-6">
-                                <div class="form-group">
-                                    <label for="">نام برند</label>
-                                    <input id="name" type="text" class="form-control form-control-sm">
+                            <section class="col-12 col-md-6 mb-2">
+                                <div class="form-group mb-1">
+                                    <label for="persian_name"> نام فارسی برند <span class="text-danger">*</span></label>
+                                    <input value="{{old('persian_name')}}" id="persian_name" name="persian_name" type="text" class="form-control form-control-sm">
                                 </div>
+                                @error('persian_name')
+                                <span class="text-danger" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror
                             </section>
 
-                            <section class="col-12 col-md-6">
-                                <div class="form-group">
-                                    <label for="">لوگو</label>
-                                    <input type="file" class="form-control form-control-sm">
+                            <section class="col-12 col-md-6 mb-2">
+                                <div class="form-group mb-1">
+                                    <label for="original_name"> نام انگلیسی برند <span class="text-danger">*</span></label>
+                                    <input value="{{old('original_name')}}" id="original_name" name="original_name" type="text" class="form-control form-control-sm">
                                 </div>
+                                @error('original_name')
+                                <span class="text-danger" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror
                             </section>
+
+                            <section class="col-12 col-md-6 mb-2">
+                                <div class="form-group mb-1">
+                                    <label for="logo"> لوگو <span class="text-danger">*</span></label>
+                                    <input name="logo" id="logo" type="file" class="form-control form-control-sm">
+                                </div>
+                                @error('logo')
+                                <span class="text-danger" role="alert">
+                                    <strong>
+                                        {{$message}}
+                                    </strong>
+                                </span>
+                                @enderror
+                            </section>
+
+                            <section class="col-12 col-md-6 mb-2">
+                                <div class="form-group mb-1">
+                                    <label for="tags">تگ ها</label>
+                                    <input value="{{old('tags')}}" name="tags" id="tags" type="hidden" class="form-control form-control-sm">
+                                    <select class="select2 form-control form-control-sm" id="select_tags" multiple>
+
+                                    </select>
+                                </div>
+                                @error('tags')
+                                <span class="text-danger" role="alert">
+                                    <strong>
+                                        {{$message}}
+                                    </strong>
+                                </span>
+                                @enderror
+                            </section>
+
+                            <section class="col-12 mb-2">
+                                <div class="form-group mb-1">
+                                    <label for="status">وضعیت</label>
+                                    <select name="status" id="status" class="form-control form-control-sm">
+                                        <option value="0" @if(old('status')==0) selected @endif>غیر فعال</option>
+                                        <option value="1" @if(old('status')==1) selected @endif>فعال</option>
+                                    </select>
+                                </div>
+                                @error('status')
+                                <span class="text-danger" role="alert">
+                                    <strong>
+                                        {{$message}}
+                                    </strong>
+                                </span>
+                                @enderror
+                            </section>
+
+
                             <section class="col-12">
-                                <button class="btn btn-primary btn-sm">ثبت</button>
+                                <button class="btn btn-primary w-100 mt-3">ثبت نهایی</button>
                             </section>
                         </section>
                     </form>
@@ -56,5 +117,11 @@
             </section>
         </section>
     </section>
+
+@endsection
+
+@section('script')
+
+    @include('admin.scripts.tags-control')
 
 @endsection

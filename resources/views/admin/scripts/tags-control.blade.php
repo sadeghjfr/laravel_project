@@ -27,6 +27,10 @@
                 tags_input.val(selectedSource)
             }
 
+            else {
+                tags_input.val(null)
+            }
+
         })
 
     })
