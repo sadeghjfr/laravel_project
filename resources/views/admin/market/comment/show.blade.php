@@ -34,7 +34,7 @@
                         کامران محمدی - 845362736
                     </section>
                     <section class="card-body">
-                        <h5 class="card-title">مشخصات کالا : ساعت هوشمند apple watch کد کالا : 8974938</h5>
+                        <h5 class="card-title">مشخصات محصول : ساعت هوشمند apple watch کد محصول : 8974938</h5>
                         <p class="card-text">به نظر من ساعت خوبیه ولی تنها مشکلی که داره اینه که وزنش زیاده و زود شارژش تموم میشه!</p>
                     </section>
                 </section>

@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('head-tag')
-<title>فرم کالا</title>
+<title>فرم محصول</title>
 @endsection
 
 @section('content')
@@ -10,8 +10,8 @@
     <ol class="breadcrumb">
       <li class="breadcrumb-item font-size-12"> <a href="#">خانه</a></li>
       <li class="breadcrumb-item font-size-12"> <a href="#">بخش فروش</a></li>
-      <li class="breadcrumb-item font-size-12"> <a href="#">فرم کالا</a></li>
-      <li class="breadcrumb-item font-size-12 active" aria-current="page"> ایجاد فرم کالا</li>
+      <li class="breadcrumb-item font-size-12"> <a href="#">فرم محصول</a></li>
+      <li class="breadcrumb-item font-size-12 active" aria-current="page"> ایجاد فرم محصول</li>
     </ol>
   </nav>
 
@@ -21,7 +21,7 @@
         <section class="main-body-container">
             <section class="main-body-container-header">
                 <h5>
-                  ایجاد فرم کالا
+                  ایجاد فرم محصول
                 </h5>
             </section>
 

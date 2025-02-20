@@ -35,7 +35,7 @@
 
                         <section class="col-12 col-md-6">
                             <div class="form-group">
-                                <label for="">نام کالا</label>
+                                <label for="">نام محصول</label>
                                 <input type="text" class="form-control form-control-sm">
                             </div>
                         </section>

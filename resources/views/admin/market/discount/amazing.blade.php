@@ -25,7 +25,7 @@
             </section>
 
             <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
-                <a href="{{ route('admin.market.discount.amazing.create') }}" class="btn btn-info btn-sm">افزودن کالا به لیست شگفت انگیز</a>
+                <a href="{{ route('admin.market.discount.amazing.create') }}" class="btn btn-info btn-sm">افزودن محصول به لیست شگفت انگیز</a>
                 <div class="max-width-16-rem">
                     <input type="text" class="form-control form-control-sm form-text" placeholder="جستجو">
                 </div>
@@ -36,7 +36,7 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>نام کالا</th>
+                            <th>نام محصول</th>
                             <th>درصد تخفیف</th>
                             <th>تاریخ شروع</th>
                             <th>تاریخ پایان</th>

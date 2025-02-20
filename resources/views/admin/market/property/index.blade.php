@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('head-tag')
-<title>فرم کالا</title>
+<title>فرم محصول</title>
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@
     <ol class="breadcrumb">
       <li class="breadcrumb-item font-size-12"> <a href="#">خانه</a></li>
       <li class="breadcrumb-item font-size-12"> <a href="#">بخش فروش</a></li>
-      <li class="breadcrumb-item font-size-12 active" aria-current="page"> فرم کالا</li>
+      <li class="breadcrumb-item font-size-12 active" aria-current="page"> فرم محصول</li>
     </ol>
   </nav>
 
@@ -20,7 +20,7 @@
         <section class="main-body-container">
             <section class="main-body-container-header">
                 <h5>
-                 فرم کالا
+                 فرم محصول
                 </h5>
             </section>
 
@@ -45,7 +45,7 @@
                         <tr>
                             <th>1</th>
                             <td>نمایشگر	</td>
-                            <td>کالای الکترونیکی</td>
+                            <td>محصولی الکترونیکی</td>
                             <td class="width-22-rem text-left">
                                 <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> ویژگی ها</a>
                                 <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
@@ -55,7 +55,7 @@
                         <tr>
                             <th>2</th>
                             <td>نمایشگر	</td>
-                            <td>کالای الکترونیکی</td>
+                            <td>محصولی الکترونیکی</td>
                             <td class="width-22-rem text-left">
                                 <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> ویژگی ها</a>
                                 <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
@@ -65,7 +65,7 @@
                         <tr>
                             <th>3</th>
                             <td>نمایشگر	</td>
-                            <td>کالای الکترونیکی</td>
+                            <td>محصولی الکترونیکی</td>
                             <td class="width-22-rem text-left">
                                 <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> ویژگی ها</a>
                                 <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>

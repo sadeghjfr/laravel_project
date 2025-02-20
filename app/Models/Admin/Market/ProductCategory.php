@@ -34,6 +34,11 @@ class ProductCategory extends Model
         return $this->hasMany($this, 'parent_id')->with('children');
     }
 
+    public function products(){
+
+        return $this->hasMany(Product::class, 'category_id');
+    }
+
     public static function boot()
     {
         parent::boot();
@@ -42,6 +47,10 @@ class ProductCategory extends Model
 
             $category->children()->each(function ($child) {
                 $child->delete();
+            });
+
+            $category->products()->each(function ($product) {
+                $product->delete();
             });
         });
 
