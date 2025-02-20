@@ -194,7 +194,7 @@
   /*
   given a DOM element, return the list of all scroll parents, up the list of ancesors
   until we get to the top window object. This list is what we attach scroll listeners
-  to, because if any of these parent elements scroll, we'll need to re-calculate the 
+  to, because if any of these parent elements scroll, we'll need to re-calculate the
   reference element's position.
   */
 
@@ -372,7 +372,7 @@
     }, str);
   }
 
-  var INVALID_MODIFIER_ERROR = 'Popper: modifier "%s" provided an invalid %s property, expected %s but got %s';
+  var INVALID_MODIFIER_ERROR = 'Popper: modifier "%s" provided an invalid %s attribute, expected %s but got %s';
   var MISSING_DEPENDENCY_ERROR = 'Popper: modifier "%s" requires "%s", but "%s" modifier is not available';
   var VALID_PROPERTIES = ['name', 'enabled', 'phase', 'fn', 'effect', 'requires', 'options'];
   function validateModifiers(modifiers) {
@@ -431,7 +431,7 @@
             break;
 
           default:
-            console.error("PopperJS: an invalid property has been provided to the \"" + modifier.name + "\" modifier, valid properties are " + VALID_PROPERTIES.map(function (s) {
+            console.error("PopperJS: an invalid attribute has been provided to the \"" + modifier.name + "\" modifier, valid properties are " + VALID_PROPERTIES.map(function (s) {
               return "\"" + s + "\"";
             }).join(', ') + "; but \"" + key + "\" was provided.");
         }
@@ -911,7 +911,7 @@
           // stale/incorrect
 
           state.reset = false;
-          state.placement = state.options.placement; // On each update cycle, the `modifiersData` property for each modifier
+          state.placement = state.options.placement; // On each update cycle, the `modifiersData` attribute for each modifier
           // is filled with the initial data specified by the modifier. This means
           // it doesn't persist and is fresh on each update.
           // To ensure persistent data, use `${name}#persistent`
@@ -1181,7 +1181,7 @@
       if (adaptive && ['transform', 'top', 'right', 'bottom', 'left'].some(function (property) {
         return transitionProperty.indexOf(property) >= 0;
       })) {
-        console.warn(['Popper: Detected CSS transitions on at least one of the following', 'CSS properties: "transform", "top", "right", "bottom", "left".', '\n\n', 'Disable the "computeStyles" modifier\'s `adaptive` option to allow', 'for smooth transitions, or remove these properties from the CSS', 'transition declaration on the popper element if only transitioning', 'opacity or background-color for example.', '\n\n', 'We recommend using the popper element as a wrapper around an inner', 'element that can have any CSS property transitioned for animations.'].join(' '));
+        console.warn(['Popper: Detected CSS transitions on at least one of the following', 'CSS properties: "transform", "top", "right", "bottom", "left".', '\n\n', 'Disable the "computeStyles" modifier\'s `adaptive` option to allow', 'for smooth transitions, or remove these properties from the CSS', 'transition declaration on the popper element if only transitioning', 'opacity or background-color for example.', '\n\n', 'We recommend using the popper element as a wrapper around an inner', 'element that can have any CSS attribute transitioned for animations.'].join(' '));
       }
     }
 
@@ -1233,7 +1233,7 @@
 
       if (!isHTMLElement(element) || !getNodeName(element)) {
         return;
-      } // Flow doesn't support to extend this property, but it's the most
+      } // Flow doesn't support to extend this attribute, but it's the most
       // effective way to apply styles to an HTMLElement
       // $FlowFixMe
 
@@ -1284,7 +1284,7 @@
 
         if (!isHTMLElement(element) || !getNodeName(element)) {
           return;
-        } // Flow doesn't support to extend this property, but it's the most
+        } // Flow doesn't support to extend this attribute, but it's the most
         // effective way to apply styles to an HTMLElement
         // $FlowFixMe
 

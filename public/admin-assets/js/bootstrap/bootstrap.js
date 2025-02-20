@@ -491,7 +491,7 @@
               triggerChangeEvent = false;
             }
           } else {
-            // if it's not a radio button or checkbox don't add a pointless/invalid checked property to the input
+            // if it's not a radio button or checkbox don't add a pointless/invalid checked attribute to the input
             triggerChangeEvent = false;
           }
 

@@ -17,7 +17,7 @@
                 </section>
                 <section class="sidebar-dropdown">
                     <a href="{{route('admin.market.category.index')}}">دسته بندی</a>
-                    <a href="{{route('admin.market.property.index')}}">فرم محصول</a>
+                    <a href="{{route('admin.market.attribute.index')}}">ویژگی‌های دسته‌بندی‌ها</a>
                     <a href="{{route('admin.market.brand.index')}}">برندها</a>
                     <a href="{{route('admin.market.product.index')}}">محصولات</a>
                     <a href="{{route('admin.market.store.index')}}">انبار</a>

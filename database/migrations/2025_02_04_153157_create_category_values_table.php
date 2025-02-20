@@ -13,7 +13,7 @@ class CreateCategoryValuesTable extends Migration
      */
     public function up()
     {
-        Schema::create('category_values', function (Blueprint $table) {
+        Schema::create('category_attribute_values', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->constrained('products')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('category_attribute_id')->constrained('category_attributes')->onUpdate('cascade')->onDelete('cascade');

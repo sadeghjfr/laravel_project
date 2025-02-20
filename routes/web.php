@@ -1,11 +1,15 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\Content\CategoryController as ContentCategoryController;
+use App\Http\Controllers\Admin\Content\CommentController as ContentCommentController;
 use App\Http\Controllers\Admin\Content\FAQController;
 use App\Http\Controllers\Admin\Content\MenuController;
 use App\Http\Controllers\Admin\Content\PageController;
 use App\Http\Controllers\Admin\Content\PostController;
 use App\Http\Controllers\Admin\Market\BrandController;
+use App\Http\Controllers\Admin\Market\CategoryAttributeController;
+use App\Http\Controllers\Admin\Market\CategoryAttributeValueController;
 use App\Http\Controllers\Admin\Market\CategoryController;
 use App\Http\Controllers\Admin\Market\CommentController;
 use App\Http\Controllers\Admin\Market\DeliveryController;
@@ -16,9 +20,6 @@ use App\Http\Controllers\Admin\Market\PaymentController;
 use App\Http\Controllers\Admin\Market\ProductController;
 use App\Http\Controllers\Admin\Market\PropertyController;
 use App\Http\Controllers\Admin\Market\StoreController;
-use App\Http\Controllers\Admin\Content\CategoryController as ContentCategoryController;
-use App\Http\Controllers\Admin\Content\CommentController as ContentCommentController;
-
 use App\Http\Controllers\Admin\Notify\EmailController;
 use App\Http\Controllers\Admin\Notify\EmailFileController;
 use App\Http\Controllers\Admin\Notify\SMSController;
@@ -27,8 +28,8 @@ use App\Http\Controllers\Admin\Ticket\TicketAdminController;
 use App\Http\Controllers\Admin\Ticket\TicketCategoryController;
 use App\Http\Controllers\Admin\Ticket\TicketController;
 use App\Http\Controllers\Admin\Ticket\TicketPriorityController;
-use App\Http\Controllers\Admin\User\UserController;
 use App\Http\Controllers\Admin\User\RoleController;
+use App\Http\Controllers\Admin\User\UserController;
 use App\Http\Controllers\ProductColorController;
 use Illuminate\Support\Facades\Route;
 
@@ -68,6 +69,27 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
             Route::delete('/destroy/{productCategory}', [CategoryController::class, 'destroy'])->name('admin.market.category.destroy');
             Route::get('/status/{productCategory}', [CategoryController::class, 'status'])->name('admin.market.category.status');
             Route::get('/show-in-menu/{productCategory}', [CategoryController::class, 'showInMenu'])->name('admin.market.category.show-in-menu');
+        });
+
+        //category attributes
+        Route::prefix('attribute')->group(function () {
+
+            Route::get('/', [CategoryAttributeController::class, 'index'])->name('admin.market.attribute.index');
+            Route::get('/create', [CategoryAttributeController::class, 'create'])->name('admin.market.attribute.create');
+            Route::post('/store', [CategoryAttributeController::class, 'store'])->name('admin.market.attribute.store');
+            //Route::get('/show/{attribute}', [CategoryAttributeController::class, 'show'])->name('admin.market.attribute.show');
+            Route::get('/edit/{attribute}', [CategoryAttributeController::class, 'edit'])->name('admin.market.attribute.edit');
+            Route::put('/update/{attribute}', [CategoryAttributeController::class, 'update'])->name('admin.market.attribute.update');
+            Route::delete('/destroy/{attribute}', [CategoryAttributeController::class, 'destroy'])->name('admin.market.attribute.destroy');
+
+            //category attribute values
+            Route::get('/value/{attribute}', [CategoryAttributeValueController::class, 'index'])->name('admin.market.value.index');
+            Route::get('/value/create/{attribute}', [CategoryAttributeValueController::class, 'create'])->name('admin.market.value.create');
+            Route::post('/value/store/{attribute}', [CategoryAttributeValueController::class, 'store'])->name('admin.market.value.store');
+            Route::get('/value/edit/{attribute}/{value}', [CategoryAttributeValueController::class, 'edit'])->name('admin.market.value.edit');
+            Route::put('/value/update/{attribute}/{value}', [CategoryAttributeValueController::class, 'update'])->name('admin.market.value.update');
+            Route::delete('/value/destroy/{attribute}/{value}', [CategoryAttributeValueController::class, 'destroy'])->name('admin.market.value.destroy');
+
         });
 
         //brand
@@ -158,11 +180,11 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
             Route::get('/status/{product}', [ProductController::class, 'status'])->name('admin.market.product.status');
             Route::get('/marketable/{product}', [ProductController::class, 'marketable'])->name('admin.market.product.marketable');
 
+            //color
             Route::get('/color/{product}', [ProductColorController::class, 'index'])->name('admin.market.color.index');
-            Route::get('/color/{product}/create', [ProductColorController::class, 'create'])->name('admin.market.color.create');
-            Route::post('/color/{product}/store', [ProductColorController::class, 'store'])->name('admin.market.color.store');
-            Route::delete('/color/destroy/{product}/{productColor}', [ProductColorController::class, 'destroy'])->name('admin.market.color.destroy');
-
+            Route::get('/color/create/{product}', [ProductColorController::class, 'create'])->name('admin.market.color.create');
+            Route::post('/color/store/{product}', [ProductColorController::class, 'store'])->name('admin.market.color.store');
+            Route::delete('/color/destroy/{product}/{color}', [ProductColorController::class, 'destroy'])->name('admin.market.color.destroy');
             //gallery
             Route::get('/gallery/{product}', [GalleryController::class, 'index'])->name('admin.market.gallery.index');
             Route::get('/gallery/create/{product}', [GalleryController::class, 'create'])->name('admin.market.gallery.create');
@@ -171,18 +193,6 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
 
         });
 
-        //property
-        Route::prefix('property')->group(function () {
-
-            Route::get('/', [PropertyController::class, 'index'])->name('admin.market.property.index');
-            Route::get('/create', [PropertyController::class, 'create'])->name('admin.market.property.create');
-            Route::post('/store', [PropertyController::class, 'store'])->name('admin.market.property.store');
-            //Route::get('/show/{id}', [PropertyController::class, 'show'])->name('admin.market.property.show');
-            Route::get('/edit/{id}', [PropertyController::class, 'edit'])->name('admin.market.property.edit');
-            Route::put('/update/{id}', [PropertyController::class, 'update'])->name('admin.market.property.update');
-            Route::delete('/destroy/{id}', [PropertyController::class, 'destroy'])->name('admin.market.property.destroy');
-
-        });
 
         //store
         Route::prefix('store')->group(function () {
@@ -371,7 +381,7 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         Route::put('/update/{ticket}', [TicketController::class, 'update'])->name('admin.ticket.update');*/
 
         //category
-        Route::prefix('category')->group(function(){
+        Route::prefix('category')->group(function () {
             Route::get('/', [TicketCategoryController::class, 'index'])->name('admin.ticket.category.index');
             Route::get('/create', [TicketCategoryController::class, 'create'])->name('admin.ticket.category.create');
             Route::post('/store', [TicketCategoryController::class, 'store'])->name('admin.ticket.category.store');
@@ -384,7 +394,7 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
 
 
         //priority
-        Route::prefix('priority')->group(function(){
+        Route::prefix('priority')->group(function () {
             Route::get('/', [TicketPriorityController::class, 'index'])->name('admin.ticket.priority.index');
             Route::get('/create', [TicketPriorityController::class, 'create'])->name('admin.ticket.priority.create');
             Route::post('/store', [TicketPriorityController::class, 'store'])->name('admin.ticket.priority.store');
@@ -396,7 +406,7 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         });
 
         //admin
-        Route::prefix('admin')->group(function(){
+        Route::prefix('admin')->group(function () {
             Route::get('/', [TicketAdminController::class, 'index'])->name('admin.ticket.admin.index');
             Route::get('/set/{admin}', [TicketAdminController::class, 'set'])->name('admin.ticket.admin.set');
         });

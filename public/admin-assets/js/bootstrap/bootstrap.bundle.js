@@ -490,7 +490,7 @@
               triggerChangeEvent = false;
             }
           } else {
-            // if it's not a radio button or checkbox don't add a pointless/invalid checked property to the input
+            // if it's not a radio button or checkbox don't add a pointless/invalid checked attribute to the input
             triggerChangeEvent = false;
           }
 
@@ -1665,7 +1665,7 @@
   }
 
   /**
-   * Get CSS computed property of the given element
+   * Get CSS computed attribute of the given element
    * @method
    * @memberof Popper.Utils
    * @argument {Eement} element
@@ -2166,7 +2166,7 @@
   }
 
   /**
-   * Finds the first parent of an element that has a transformed property defined
+   * Finds the first parent of an element that has a transformed attribute defined
    * @method
    * @memberof Popper.Utils
    * @argument {Element} element
@@ -2550,11 +2550,11 @@
   }
 
   /**
-   * Get the prefixed supported property name
+   * Get the prefixed supported attribute name
    * @method
    * @memberof Popper.Utils
    * @argument {String} property (camelCase)
-   * @returns {String} prefixed property (camelCase or PascalCase, depending on the vendor prefix)
+   * @returns {String} prefixed attribute (camelCase or PascalCase, depending on the vendor prefix)
    */
   function getSupportedPropertyName(property) {
     var prefixes = [false, 'ms', 'Webkit', 'Moz', 'O'];
@@ -2749,13 +2749,13 @@
    * @returns {Object} The same data object
    */
   function applyStyle(data) {
-    // any property present in `data.styles` will be applied to the popper,
+    // any attribute present in `data.styles` will be applied to the popper,
     // in this way we can make the 3rd party modifiers add custom styles to it
     // Be aware, modifiers could override the properties defined in the previous
     // lines of this modifier!
     setStyles(data.instance.popper, data.styles);
 
-    // any property present in `data.attributes` will be applied to the popper,
+    // any attribute present in `data.attributes` will be applied to the popper,
     // they will be set as HTML attributes of the element
     setAttributes(data.instance.popper, data.attributes);
 
@@ -3218,7 +3218,7 @@
         data.placement = placement + (variation ? '-' + variation : '');
 
         // this object contains `position`, we want to preserve it along with
-        // any additional property we may add in the future
+        // any additional attribute we may add in the future
         data.offsets.popper = _extends({}, data.offsets.popper, getPopperOffsets(data.instance.popper, data.offsets.reference, data.placement));
 
         data = runModifiers(data.instance.modifiers, data, 'flip');
@@ -3600,7 +3600,7 @@
 
   /**
    * Modifier function, each modifier can have a function of this type assigned
-   * to its `fn` property.<br />
+   * to its `fn` attribute.<br />
    * These functions will be called on each update, this means that you must
    * make sure they are performant enough to avoid performance bottlenecks.
    *
@@ -3623,7 +3623,7 @@
     /**
      * Modifier used to shift the popper on the start or end of its reference
      * element.<br />
-     * It will read the variation of the `placement` property.<br />
+     * It will read the variation of the `placement` attribute.<br />
      * It can be one either `-end` or `-start`.
      * @memberof modifiers
      * @inner
@@ -3929,7 +3929,7 @@
       /** @prop {Function} */
       onLoad: applyStyleOnLoad,
       /**
-       * @deprecated since version 1.10.0, the property moved to `computeStyle` modifier
+       * @deprecated since version 1.10.0, the attribute moved to `computeStyle` modifier
        * @prop {Boolean} gpuAcceleration=true
        * If true, it uses the CSS 3D transformation to position the popper.
        * Otherwise, it will use the `top` and `left` properties
@@ -3942,19 +3942,19 @@
    * The `dataObject` is an object containing all the information used by Popper.js.
    * This object is passed to modifiers and to the `onCreate` and `onUpdate` callbacks.
    * @name dataObject
-   * @property {Object} data.instance The Popper.js instance
-   * @property {String} data.placement Placement applied to popper
-   * @property {String} data.originalPlacement Placement originally defined on init
-   * @property {Boolean} data.flipped True if popper has been flipped by flip modifier
-   * @property {Boolean} data.hide True if the reference element is out of boundaries, useful to know when to hide the popper
-   * @property {HTMLElement} data.arrowElement Node used as arrow by arrow modifier
-   * @property {Object} data.styles Any CSS property defined here will be applied to the popper. It expects the JavaScript nomenclature (eg. `marginBottom`)
-   * @property {Object} data.arrowStyles Any CSS property defined here will be applied to the popper arrow. It expects the JavaScript nomenclature (eg. `marginBottom`)
-   * @property {Object} data.boundaries Offsets of the popper boundaries
-   * @property {Object} data.offsets The measurements of popper, reference and arrow elements
-   * @property {Object} data.offsets.popper `top`, `left`, `width`, `height` values
-   * @property {Object} data.offsets.reference `top`, `left`, `width`, `height` values
-   * @property {Object} data.offsets.arrow] `top` and `left` offsets, only one of them will be different from 0
+   * @attribute {Object} data.instance The Popper.js instance
+   * @attribute {String} data.placement Placement applied to popper
+   * @attribute {String} data.originalPlacement Placement originally defined on init
+   * @attribute {Boolean} data.flipped True if popper has been flipped by flip modifier
+   * @attribute {Boolean} data.hide True if the reference element is out of boundaries, useful to know when to hide the popper
+   * @attribute {HTMLElement} data.arrowElement Node used as arrow by arrow modifier
+   * @attribute {Object} data.styles Any CSS attribute defined here will be applied to the popper. It expects the JavaScript nomenclature (eg. `marginBottom`)
+   * @attribute {Object} data.arrowStyles Any CSS attribute defined here will be applied to the popper arrow. It expects the JavaScript nomenclature (eg. `marginBottom`)
+   * @attribute {Object} data.boundaries Offsets of the popper boundaries
+   * @attribute {Object} data.offsets The measurements of popper, reference and arrow elements
+   * @attribute {Object} data.offsets.popper `top`, `left`, `width`, `height` values
+   * @attribute {Object} data.offsets.reference `top`, `left`, `width`, `height` values
+   * @attribute {Object} data.offsets.arrow] `top` and `left` offsets, only one of them will be different from 0
    */
 
   /**
@@ -4177,11 +4177,11 @@
    *
    * NB: This feature isn't supported in Internet Explorer 10.
    * @name referenceObject
-   * @property {Function} data.getBoundingClientRect
+   * @attribute {Function} data.getBoundingClientRect
    * A function that returns a set of coordinates compatible with the native `getBoundingClientRect` method.
-   * @property {number} data.clientWidth
+   * @attribute {number} data.clientWidth
    * An ES6 getter that will return the width of the virtual reference element.
-   * @property {number} data.clientHeight
+   * @attribute {number} data.clientHeight
    * An ES6 getter that will return the height of the virtual reference element.
    */
 

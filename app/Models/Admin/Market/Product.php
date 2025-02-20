@@ -51,6 +51,11 @@ class Product extends Model
         return $this->hasMany(Gallery::class);
     }
 
+    public function values()
+    {
+        return $this->hasMany(CategoryAttributeValue::class);
+    }
+
     /*public function comments(){
 
         return $this->morphMany(Comment::class, 'commentable');
@@ -72,6 +77,10 @@ class Product extends Model
 
             $product->images()->each(function ($image) {
                 $image->delete();
+            });
+
+            $product->values()->each(function ($value) {
+                $value->delete();
             });
 
             /*$product->comments()->each(function ($comment) {
