@@ -179,6 +179,8 @@ return [
         'amount' => 'هزینه',
         'price' => 'قیمت',
         'introduction' => 'توضیحات',
+        'price_increase' => 'افزایش قیمت',
+        'color_name' => 'نام رنگ',
         'weight' => 'وزن',
         'length' => 'طول',
         'width' => 'عرض',
