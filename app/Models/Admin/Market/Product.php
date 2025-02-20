@@ -46,6 +46,11 @@ class Product extends Model
         return $this->hasMany(ProductColor::class);
     }
 
+    public function images()
+    {
+        return $this->hasMany(Gallery::class);
+    }
+
     /*public function comments(){
 
         return $this->morphMany(Comment::class, 'commentable');
@@ -63,6 +68,10 @@ class Product extends Model
 
             $product->colors()->each(function ($color) {
                 $color->delete();
+            });
+
+            $product->images()->each(function ($image) {
+                $image->delete();
             });
 
             /*$product->comments()->each(function ($comment) {
