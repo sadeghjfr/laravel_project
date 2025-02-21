@@ -2,6 +2,7 @@
 
 namespace App\Models\Admin\Market;
 
+use App\Models\Admin\Content\Comment;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -56,10 +57,11 @@ class Product extends Model
         return $this->hasMany(CategoryAttributeValue::class);
     }
 
-    /*public function comments(){
+    public function comments(){
 
         return $this->morphMany(Comment::class, 'commentable');
-    }*/
+    }
+
 
     public static function boot()
     {
@@ -83,9 +85,9 @@ class Product extends Model
                 $value->delete();
             });
 
-            /*$product->comments()->each(function ($comment) {
+            $product->comments()->each(function ($comment) {
                 $comment->delete();
-            });*/
+            });
         });
 
     }

@@ -15,7 +15,7 @@
 
         </ol>
 
-        <div class="max-width-16-rem my-0" style="z-index: 10000">
+        <div class="max-width-16-rem my-0">
             <input type="text" class="form-control form-control-sm form-text my-2" placeholder="جستجو">
         </div>
 

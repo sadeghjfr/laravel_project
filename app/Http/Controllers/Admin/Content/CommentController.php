@@ -5,28 +5,27 @@ namespace App\Http\Controllers\Admin\Content;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Content\CommentRequest;
 use App\Models\Admin\Content\Comment;
+use App\Models\Admin\Ticket\Ticket;
 use Illuminate\Support\Facades\Redirect;
 
 class CommentController extends Controller
 {
     public function index()
     {
-        $comments = Comment::orderBy('created_at', 'desc')->simplePaginate(15);
-        return view('admin.content.comment.index', compact('comments'));
+        $unseenComments = Comment::where('status', 'unseen')->get();
+        $waitingComments = Comment::where('status', 'waiting')->get();
+        $approvedComments = Comment::where('status', 'approved')->get();
+        return view('admin.content.comment.index', compact('unseenComments', 'waitingComments', 'approvedComments'));
     }
 
     public function show(Comment $comment)
     {
-        $this->seen($comment);
-        return view('admin.content.comment.show', compact('comment'));
-    }
-
-    function seen(Comment $comment){
-
         if ($comment->status === 'unseen'){
             $comment->status = 'waiting';
             $comment->save();
         }
+
+        return view('admin.content.comment.show', compact('comment'));
     }
 
     public function status(Comment $comment)
@@ -40,7 +39,7 @@ class CommentController extends Controller
     public function destroy(Comment $comment)
     {
         $result = $comment->delete();
-        return redirect()->route('admin.content.comment.index')->with('toast-error', 'کامنت با موفقیت حذف شد');
+        return redirect()->route('admin.content.comment.index')->with('toast-success', 'کامنت با موفقیت حذف شد');
     }
 
 
@@ -48,15 +47,12 @@ class CommentController extends Controller
 
         if ($comment->parent_id == null){
 
-            $comment->status = 'approved';
-            $comment->save();
-
             $inputs = $request->all();
-            $inputs['user_id'] = 1;
+            $inputs['user_id'] = 13;
             $inputs['parent_id'] = $comment->id;
             $inputs['commentable_id'] = $comment->commentable_id;
             $inputs['commentable_type'] = $comment->commentable_type;
-            $inputs['status'] = 'approved';
+            $inputs['status'] = 'answer';
 
             $comment = Comment::create($inputs);
             return redirect()->route('admin.content.comment.index')->with('toast-success', 'پاسخ با موفقیت ثبت شد');

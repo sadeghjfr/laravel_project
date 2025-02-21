@@ -38,7 +38,7 @@
 
                     <section class="card mb-3">
 
-                        <section class="d-flex justify-content-between align-items-center bg-custom-pink">
+                        <section class="d-flex justify-content-between align-items-center bg-custom-light-green">
                             <section class="card-header text-white w-100">
                                 {{$answerTicket->admin->user->fullName ?? '-'}} - شناسه : {{$answerTicket->admin->user->id ?? '-'}}
                             </section>

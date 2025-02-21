@@ -8,9 +8,9 @@
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item font-size-12"> <a href="{{route('admin.home')}}"> خانه</a></li>
-            <li class="breadcrumb-item font-size-12"> <a href="#"> بخش محتوا</a></li>
-            <li class="breadcrumb-item font-size-12"> <a href="{{route('admin.content.comment.index')}}"> نظرات</a></li>
+            <li class="breadcrumb-item font-size-12"><a href="{{route('admin.home')}}"> خانه</a></li>
+            <li class="breadcrumb-item font-size-12"><a href="#"> بخش محتوا</a></li>
+            <li class="breadcrumb-item font-size-12"><a href="{{route('admin.content.comment.index')}}"> نظرات</a></li>
             <li class="breadcrumb-item font-size-12 active" aria-current="page"> نمایش نظر</li>
         </ol>
     </nav>
@@ -19,72 +19,50 @@
     <section class="row">
         <section class="col-12">
             <section class="main-body-container">
-                <section class="main-body-container-header">
-                    <h5>
-                        نمایش نظر
-                    </h5>
-
-                </section>
-
-                <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
-
-                    <a href="{{ route('admin.content.comment.index') }}" class="btn btn-info btn-sm ml-5">بازگشت</a>
-
-                    @if($comment->parent_id==null)
-                    {{'وضعیت : '}}
-                    @switch($comment->status)
-                        @case('unseen'){{'خوانده نشده'}}@break
-                        @case('waiting'){{'در انتظار تایید'}}@break
-                        @case('approved'){{'تایید شده'}}@break
-                    @endswitch
-
-                    <form class="d-inline mr-5" action="{{route('admin.content.comment.status', $comment->id)}}" method="get">
-                        @csrf
-                        @switch($comment->status)
-                            @case('waiting')
-                                <button class="btn btn-success btn-sm" type="submit"><i class="fa fa-check"></i>تایید</button>
-                                @break
-                            @case('approved')
-                                <button class="btn btn-warning btn-sm" type="submit"><i class="fa fa-clock"></i> عدم تایید</button>
-                                @break
-                        @endswitch
-                    </form>
-                    @endif
-
-                </section>
-
-                <section class="card-body">
-                    <h5 class="card-title">عنوان پست : {{$comment->commentable->title}} </h5>
-                    <h5 class="card-title">  کد پست : {{$comment->commentable_id}}</h5>
-                </section>
 
                 <section class="card mb-3">
-                    <section class="card-header text-white bg-custom-yellow">
-                       کاربر :  {{$comment->user->fullName}} - کد کاربر :  {{$comment->user_id}}
+
+                    <section class="d-flex justify-content-between align-items-center bg-custom-pink">
+                        <section class="card-header text-white w-100">
+                            {{$comment->user->fullName}} - شناسه : {{$comment->user->id}}
+                        </section>
+                        <a href="{{ route('admin.content.comment.index') }}" class="btn btn-info btn-sm ml-2">بازگشت</a>
                     </section>
 
                     <section class="card-body">
+                        <h5 class="card-title"> پست : {{$comment->commentable->title}}</h5>
                         <p class="card-text">{{$comment->body}}</p>
-
-                    @if($comment->parent_id != null)
-                            <section class="card-header text-white bg-custom-yellow">
-                                پاسخ به :  {{$comment->parent->user->fullName}} - کد کاربر :  {{$comment->parent->user->id}}
-                            </section>
-
-                        <p class="card-text mr-1 mt-2">{{$comment->parent->body}}</p>
-                        @endif
                     </section>
                 </section>
 
-                @if($comment->parent_id==null)
+                @foreach($comment->children as $answerComment)
+
+                    <section class="card mb-3">
+
+                        <section class="d-flex justify-content-between align-items-center bg-custom-light-green">
+                            <section class="card-header text-white w-100">
+                                پاسخ ادمین :
+                            </section>
+                        </section>
+
+                        <section class="card-body">
+                            <p class="card-text">{{$answerComment->body}}</p>
+                        </section>
+                    </section>
+
+                @endforeach
+
+                @if($comment->parent == null)
+
                     <section>
-                        <form action="{{route('admin.content.comment.answer', $comment->id)}}" method="POST">
+                        <form action="{{ route('admin.content.comment.answer', $comment->id) }}" method="post">
                             @csrf
                             <section class="row">
-                                <section class="col-12">
+                                <section class="col-12 mb-2">
                                     <div class="form-group mb-1">
-                                        <label for="body">پاسخ ادمین</label>
-                                        <textarea id="body" name="body" class="form-control form-control-sm" rows="4">{{old('body')}}</textarea>
+                                        <label for="body">پاسخ ادمین </label>
+                                        <textarea name="body" class="form-control form-control-sm"
+                                                  rows="4">{{old('body')}}</textarea>
                                     </div>
                                     @error('body')
                                     <span class="text-danger" role="alert">
@@ -100,6 +78,7 @@
                             </section>
                         </form>
                     </section>
+
                 @endif
 
             </section>

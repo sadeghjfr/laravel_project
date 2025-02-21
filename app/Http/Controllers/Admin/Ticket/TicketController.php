@@ -58,7 +58,7 @@ class TicketController extends Controller
 
     public function destroy(Ticket $ticket){
         $result = $ticket->delete();
-        return redirect()->route('admin.ticket.index')->with('toast-error', 'تیکت با موفقیت حذف شد');
+        return redirect()->route('admin.ticket.index')->with('toast-success', 'تیکت با موفقیت حذف شد');
     }
 
     //public function create(){}

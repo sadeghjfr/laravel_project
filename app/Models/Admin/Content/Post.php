@@ -32,4 +32,17 @@ class Post extends Model
 
         return $this->morphMany(Comment::class, 'commentable');
     }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($post) {
+
+            $post->comments()->each(function ($comment) {
+                $comment->delete();
+            });
+        });
+
+    }
 }
