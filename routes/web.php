@@ -108,13 +108,11 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         Route::prefix('comment')->group(function () {
 
             Route::get('/', [CommentController::class, 'index'])->name('admin.market.comment.index');
-            //Route::get('/create', [CommentController::class, 'create'])->name('admin.market.comment.create');
-            //Route::post('/store', [CommentController::class, 'store'])->name('admin.market.comment.store');
-            Route::get('/show/{id}', [CommentController::class, 'show'])->name('admin.market.comment.show');
-            //Route::get('/edit/{id}', [CommentController::class, 'edit'])->name('admin.market.comment.edit');
-            //Route::put('/update/{id}', [CommentController::class, 'update'])->name('admin.market.comment.update');
-            //Route::delete('/destroy/{id}', [CommentController::class, 'destroy'])->name('admin.market.comment.destroy');
-
+            Route::get('/show/{comment}', [CommentController::class, 'show'])->name('admin.market.comment.show');
+            Route::get('/status/{comment}', [CommentController::class, 'status'])->name('admin.market.comment.status');
+            Route::delete('/destroy/{comment}', [CommentController::class, 'destroy'])->name('admin.market.comment.destroy');
+            Route::post('/answer/{comment}', [CommentController::class, 'answer'])->name('admin.market.comment.answer');
+            Route::delete('/delete-answer/{answerComment}', [CommentController::class, 'deleteAnswer'])->name('admin.market.comment.deleteAnswer');
         });
 
         //delivery
@@ -277,10 +275,7 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
             Route::get('/status/{comment}', [ContentCommentController::class, 'status'])->name('admin.content.comment.status');
             Route::delete('/destroy/{comment}', [ContentCommentController::class, 'destroy'])->name('admin.content.comment.destroy');
             Route::post('/answer/{comment}', [ContentCommentController::class, 'answer'])->name('admin.content.comment.answer');
-            //Route::get('/create', [ContentCommentController::class, 'create'])->name('admin.content.comment.create');
-            //Route::get('/edit/{comment}', [ContentCommentController::class, 'edit'])->name('admin.content.comment.edit');
-            //Route::put('/update/{comment}', [ContentCommentController::class, 'update'])->name('admin.content.comment.update');
-
+            Route::delete('/delete-answer/{answerComment}', [ContentCommentController::class, 'deleteAnswer'])->name('admin.content.comment.deleteAnswer');
         });
 
         //menu

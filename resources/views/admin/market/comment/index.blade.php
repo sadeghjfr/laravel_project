@@ -6,75 +6,71 @@
 
 @section('content')
 
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item font-size-12"> <a href="#"> خانه</a></li>
-            <li class="breadcrumb-item font-size-12"> <a href="#"> بخش فروش</a></li>
-            <li class="breadcrumb-item font-size-12 active" aria-current="page"> نظرات</li>
-        </ol>
-    </nav>
+    <section class="d-flex justify-content-between align-items-center">
+
+            <ol class="breadcrumb mb-0 w-100 ml-2">
+                <li class="breadcrumb-item font-size-12"> <a href="{{route('admin.home')}}"> خانه</a></li>
+                <li class="breadcrumb-item font-size-12"> <a href="#"> بخش فروش</a></li>
+                <li class="breadcrumb-item font-size-12 active" aria-current="page"> نظرات</li>
+            </ol>
+
+            <div class="max-width-16-rem my-0">
+                <input type="text" class="form-control form-control-sm form-text my-2" placeholder="جستجو">
+            </div>
+
+    </section>
 
 
     <section class="row">
         <section class="col-12">
             <section class="main-body-container">
-                <section class="main-body-container-header">
-                    <h5>
-                        نظرات
-                    </h5>
-                </section>
 
-                <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
-                    <a href="#" class="btn btn-info btn-sm disabled">ایجاد نظر </a>
-                    <div class="max-width-16-rem">
-                        <input type="text" class="form-control form-control-sm form-text" placeholder="جستجو">
-                    </div>
-                </section>
+                <section class="container-fluid mt-3">
 
-                <section class="table-responsive">
-                    <table class="table table-striped table-hover">
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>کد کاربر</th>
-                            <th>نویسنده نظر</th>
-                            <th>کد محصول</th>
-                            <th>محصول</th>
-                            <th>وضعیت</th>
-                            <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th>1</th>
-                            <td>1231231</td>
-                            <td>حسن خسروجردی</td>
-                            <td>21321312</td>
-                            <td>ایفون 12</td>
-                            <td>در انتظار تایید</td>
-                            <td class="width-16-rem text-left">
-                                <a href="{{ route('admin.market.comment.show', [1]) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> نمایش</a>
-                                <button class="btn btn-success btn-sm" type="submit"><i class="fa fa-check"></i> تایید</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>2</th>
-                            <td>1231231</td>
-                            <td>حسن خسروجردی</td>
-                            <td>21321312</td>
-                            <td>ایفون 12</td>
-                            <td>تایید شده</td>
-                            <td class="width-16-rem text-left">
-                                <a href="{{ route('admin.market.comment.show',[1]) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> نمایش</a>
-                                <button class="btn btn-warning btn-sm" type="submit"><i class="fa fa-clock"></i> عدم تایید</button>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <nav>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link" id="unseen-tab" data-toggle="tab" href="#unseen" role="tab"
+                                   aria-controls="unseen" aria-selected="true" data-tab-id="unseen">خوانده نشده</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="waiting-tab" data-toggle="tab" href="#waiting" role="tab"
+                                   aria-controls="waiting" aria-selected="false" data-tab-id="waiting">در انتظار تایید</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="approved-tab" data-toggle="tab" href="#approved" role="tab"
+                                   aria-controls="approved" aria-selected="false" data-tab-id="approved">تایید شده</a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <section class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade" id="unseen" role="tabpanel" aria-labelledby="unseen-tab">
+                            @include('admin.market.comment.items', ['items' => $unseenComments, 'status' => 'unseen'])
+                        </div>
+                        <div class="tab-pane fade" id="waiting" role="tabpanel" aria-labelledby="waiting-tab">
+                            @include('admin.market.comment.items', ['items' => $waitingComments, 'status' => 'waiting'])
+                        </div>
+                        <div class="tab-pane fade" id="approved" role="tabpanel" aria-labelledby="approved-tab">
+                            @include('admin.market.comment.items', ['items' => $approvedComments, 'status' => 'approved'])
+                        </div>
+                    </section>
+
                 </section>
 
             </section>
         </section>
     </section>
 
+
 @endsection
+
+@section('script')
+
+    @include('admin.scripts.tab-control')
+    @include('admin.scripts.status-control')
+    @include('admin.alerts.sweetalert.delete-confirm', ['className' => 'delete'])
+
+@endsection
+
+

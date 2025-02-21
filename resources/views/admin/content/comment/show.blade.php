@@ -43,6 +43,12 @@
                             <section class="card-header text-white w-100">
                                 پاسخ ادمین :
                             </section>
+                            <form class="d-inline" action="{{route('admin.content.comment.deleteAnswer', $answerComment->id)}}"
+                                  method="post">
+                                @csrf
+                                @method('delete')
+                                <button class="btn btn-danger ml-2 btn-sm delete" type="submit">حذف</button>
+                            </form>
                         </section>
 
                         <section class="card-body">
@@ -84,5 +90,11 @@
             </section>
         </section>
     </section>
+
+@endsection
+
+@section('script')
+
+    @include('admin.alerts.sweetalert.delete-confirm', ['className' => 'delete'])
 
 @endsection

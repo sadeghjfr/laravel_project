@@ -12,9 +12,9 @@ class CommentController extends Controller
 {
     public function index()
     {
-        $unseenComments = Comment::where('status', 'unseen')->get();
-        $waitingComments = Comment::where('status', 'waiting')->get();
-        $approvedComments = Comment::where('status', 'approved')->get();
+        $unseenComments = Comment::where('status', 'unseen')->where('commentable_type', 'App\Models\Admin\Content\Post')->get();
+        $waitingComments = Comment::where('status', 'waiting')->where('commentable_type', 'App\Models\Admin\Content\Post')->get();
+        $approvedComments = Comment::where('status', 'approved')->where('commentable_type', 'App\Models\Admin\Content\Post')->get();
         return view('admin.content.comment.index', compact('unseenComments', 'waitingComments', 'approvedComments'));
     }
 
@@ -63,10 +63,11 @@ class CommentController extends Controller
 
     }
 
-    //public function create(){}
-
-    //public function edit($id){}
-
-    //public function update(Request $request, $id){}
+    public function deleteAnswer(Comment $answerComment)
+    {
+        $comment = $answerComment->parent;
+        $result = $answerComment->forceDelete();
+        return redirect()->route('admin.content.comment.show', compact('comment'))->with('toast-success', 'پاسخ با موفقیت حذف شد');
+    }
 
 }
