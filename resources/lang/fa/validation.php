@@ -195,5 +195,8 @@ return [
         'delivery_time_unit' => 'واحد زمان ارسال',
         'persian_name' => 'نام فارسی',
         'original_name' => 'نام انگلیسی',
+        'receiver' => 'تحویل گیرنده',
+        'deliverer' => 'تحویل دهنده',
+        'marketable_number' => 'تعداد',
     ],
 ];
