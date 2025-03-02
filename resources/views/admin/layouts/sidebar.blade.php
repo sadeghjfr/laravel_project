@@ -41,19 +41,8 @@
                 </section>
             </section>
 
-            <section class="sidebar-group-link">
-                <section class="sidebar-dropdown-toggle">
-                    <i class="fas fa-chart-bar icon"></i>
-                    <span>پرداخت ها</span>
-                    <i class="fas fa-angle-left angle"></i>
-                </section>
-                <section class="sidebar-dropdown">
-                    <a href="{{route('admin.market.payment.index')}}">تمام پرداخت ها</a>
-                    <a href="{{route('admin.market.payment.index')}}">پرداخت های آنلاین</a>
-                    <a href="{{route('admin.market.payment.index')}}">پرداخت های آفلاین</a>
-                    <a href="{{route('admin.market.payment.index')}}">پرداخت در محل</a>
-                </section>
-            </section>
+            <a href="{{route('admin.market.payment.index')}}" class="sidebar-link"><i class="fas fa-money-check-alt"></i><span>پرداخت ها</span></a>
+
 
             <section class="sidebar-group-link">
                 <section class="sidebar-dropdown-toggle">

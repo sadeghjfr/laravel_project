@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Admin\Content\Comment;
+use App\Models\Admin\Market\Payment;
 use App\Models\Admin\Ticket\Ticket;
 use App\Models\Admin\Ticket\TicketAdmin;
 use App\Models\Admin\User\Role;
@@ -69,6 +70,11 @@ class User extends Authenticatable
         return $this->hasMany(Ticket::class);
     }
 
+    public function payments(){
+
+        return $this->hasMany(Payment::class);
+    }
+
     public static function boot()
     {
         parent::boot();
@@ -82,6 +88,10 @@ class User extends Authenticatable
             $user->comments()->each(function ($comment) {
                 $comment->delete();
             });
+
+            $user->payments()->each(function ($payment) {
+                $payment->delete();
+            });
         });
 
     }
@@ -90,5 +100,7 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class);
     }
+
+
 
 }
