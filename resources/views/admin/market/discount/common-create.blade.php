@@ -11,8 +11,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item font-size-12"><a href="{{route('admin.home')}}">خانه</a></li>
             <li class="breadcrumb-item font-size-12"><a href="#"> بخش فروش</a></li>
-            <li class="breadcrumb-item font-size-12"><a href="{{ route('admin.market.discount.commonDiscount') }}">
-                    تخفیف عمومی</a></li>
+            <li class="breadcrumb-item font-size-12"><a href="{{ route('admin.market.discount.commonDiscount') }}"> تخفیف عمومی</a></li>
             <li class="breadcrumb-item font-size-12 active" aria-current="page"> ایجاد تخفیف عمومی</li>
         </ol>
     </nav>
@@ -98,8 +97,8 @@
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
                                     <label for="start_date">تاریخ شروع</label>
-                                    <input type="text" name="start_date" id="start_date" class="form-control form-control-sm d-none" value="{{old('start_date', $commonDiscount->start_date)}}">
-                                    <input type="text" id="start_date_view" class="form-control form-control-sm" value="{{old('start_date', $commonDiscount->start_date)}}">
+                                    <input type="text" name="start_date" id="start_date" class="form-control form-control-sm d-none" value="{{old('start_date')}}">
+                                    <input type="text" id="start_date_view" class="form-control form-control-sm" value="{{old('start_date')}}">
                                 </div>
                                 @error('start_date')
                                 <span class="text-danger" role="alert">
@@ -113,8 +112,8 @@
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
                                     <label for="end_date">تاریخ پایان</label>
-                                    <input type="text" name="end_date" id="end_date" class="form-control form-control-sm d-none" value="{{old('end_date', $commonDiscount->end_date)}}">
-                                    <input type="text" id="end_date_view" class="form-control form-control-sm" value="{{old('end_date', $commonDiscount->end_date)}}">
+                                    <input type="text" name="end_date" id="end_date" class="form-control form-control-sm d-none" value="{{old('end_date')}}">
+                                    <input type="text" id="end_date_view" class="form-control form-control-sm" value="{{old('end_date')}}">
                                 </div>
                                 @error('end_date')
                                 <span class="text-danger" role="alert">
@@ -158,21 +157,5 @@
 
 
 @section('script')
-
-    <script src="{{ asset('admin-assets/jalalidatepicker/persian-date.min.js') }}"></script>
-    <script src="{{ asset('admin-assets/jalalidatepicker/persian-datepicker.min.js') }}"></script>
-
-
-    <script>
-        $(document).ready(function () {
-            $('#start_date_view').persianDatepicker({
-                format: 'YYYY/MM/DD',
-                altField: '#start_date'
-            }),
-                $('#end_date_view').persianDatepicker({
-                    format: 'YYYY/MM/DD',
-                    altField: '#end_date'
-                })
-        });
-    </script>
+    @include('admin.scripts.discount-date-picker-control')
 @endsection
