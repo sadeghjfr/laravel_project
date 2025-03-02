@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Admin\Market;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Market\AmazingSaleRequest;
 use App\Http\Requests\Admin\Market\CommonDiscountRequest;
+use App\Http\Requests\Admin\Market\CouponRequest;
 use App\Models\Admin\Market\AmazingSale;
 use App\Models\Admin\Market\CommonDiscount;
+use App\Models\Admin\Market\Coupon;
 use App\Models\Admin\Market\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DiscountController extends Controller
@@ -15,12 +18,58 @@ class DiscountController extends Controller
 
     public function coupon()
     {
-        return view('admin.market.discount.coupon');
+        $coupons = Coupon::all();
+        return view('admin.market.discount.coupon', compact('coupons'));
     }
-
     public function couponCreate()
     {
-        return view('admin.market.discount.coupon-create');
+        $users = User::all();
+        return view('admin.market.discount.coupon-create', compact('users'));
+    }
+
+    public function couponStore(CouponRequest $request)
+    {
+        $inputs = $request->all();
+
+        $realTimestampStart = substr($request->start_date, 0, 10);
+        $inputs['start_date'] = date("Y-m-d H:i:s", (int)$realTimestampStart);
+        $realTimestampEnd = substr($request->end_date, 0, 10);
+        $inputs['end_date'] = date("Y-m-d H:i:s", (int)$realTimestampEnd);
+
+        if($inputs['type'] == 0)
+            $inputs['user_id'] = null;
+
+        $amazingSale = coupon::create($inputs);
+        return redirect()->route('admin.market.discount.coupon')->with('swal-success', ' کد تخفیف جدید با موفقیت ثبت شد');
+    }
+
+    public function couponEdit(Coupon $coupon)
+    {
+        $users = User::all();
+        return view('admin.market.discount.coupon-edit', compact('coupon', 'users'));
+    }
+
+    public function couponUpdate(CouponRequest $request, Coupon $coupon)
+    {
+        $inputs = $request->all();
+
+        $realTimestampStart = substr($request->start_date, 0, 10);
+        $inputs['start_date'] = date("Y-m-d H:i:s", (int)$realTimestampStart);
+        $realTimestampEnd = substr($request->end_date, 0, 10);
+        $inputs['end_date'] = date("Y-m-d H:i:s", (int)$realTimestampEnd);
+
+        if($inputs['type'] == 0)
+            $inputs['user_id'] = null;
+
+        $coupon->update($inputs);
+        return redirect()->route('admin.market.discount.coupon')->with('swal-success', 'کد تخفیف با موفقیت ویرایش شد');
+    }
+
+
+    public function couponDestroy(Coupon $coupon)
+    {
+        $result = $coupon->delete();
+        return redirect()->route('admin.market.discount.coupon')->with('swal-success', ' تخفیف با موفقیت حذف شد');
     }
 
     public function commonDiscount()
@@ -77,6 +126,7 @@ class DiscountController extends Controller
         $amazingSales = AmazingSale::all();
         return view('admin.market.discount.amazing', compact('amazingSales'));
     }
+
     public function amazingSaleCreate()
     {
         $products = Product::all();
