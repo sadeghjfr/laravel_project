@@ -70,7 +70,7 @@
                                     </label>
                                 </td>
 
-                                <td class="width-8-rem text-left">
+                                <td class="width-8-rem text-left has-dropdown">
                                     <div class="dropdown" style="">
                                         <a href="#" class="btn btn-success btn-sm btn-block dropdown-toggle"
                                            role="button" id="dropdownMenuLink" data-toggle="dropdown"

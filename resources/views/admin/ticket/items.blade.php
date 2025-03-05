@@ -10,7 +10,7 @@
                 <th>اولویت تیکت</th>
                 <th>ارجاع شده از</th>
                 <th>پاسخ داده شده</th>
-                <th class="max-width-16-rem text-left"><i class="fa fa-cogs"></i> تنظیمات</th>
+                <th class="max-width-16-rem"><i class="fa fa-cogs"></i> تنظیمات</th>
             </tr>
             </thead>
             <tbody>
@@ -27,7 +27,7 @@
                     <td>{{$ticket->admin->user->fullName ?? '-'}}</td>
                     <td>@if($ticket->children->all()!=null) <i class="fa fa-check text-success"></i> @else <i class="fa fa-times text-danger"></i> @endif</td>
 
-                    <td class="width-16-rem text-left">
+                    <td class="width-16-rem">
                         <a href="{{ route('admin.ticket.show', $ticket->id) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> مشاهده</a>
                         @if($status == 'open' || $status == 'close')
                             <a href="{{ route('admin.ticket.status', $ticket->id) }}" class="btn btn-{{ $ticket->status == 'close' ? 'success' : 'warning' }} btn-sm text-white"> {{ $ticket->status == 'close' ? 'باز کردن' : 'بستن' }}</a>

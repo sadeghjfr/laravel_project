@@ -33,7 +33,7 @@
                         <tr>
                             <th>#</th>
                             <th> تصویر کالا</th>
-                            <th class="max-width-16-rem text-left"><i class="fa fa-cogs"></i> تنظیمات</th>
+                            <th class="max-width-16-rem"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -45,7 +45,7 @@
                                 <img src="{{ asset($image->image['indexArray'][$image->image['currentImage']] ) }}" alt="" width="50" height="50">
                             </td>
 
-                            <td class="width-16-rem text-left">
+                            <td class="width-16-rem">
                                 <form class="d-inline" action="{{ route('admin.market.gallery.destroy', ['product' => $product->id , 'gallery' => $image->id] ) }}" method="post">
                                     @csrf
                                     {{ method_field('delete') }}

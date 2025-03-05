@@ -39,7 +39,7 @@
                             <th>مقدار</th>
                             <th>افزایش قیمت</th>
                             <th>نوع</th>
-                            <th class="max-width-16-rem text-left"><i class="fa fa-cogs"></i> تنظیمات</th>
+                            <th class="max-width-16-rem"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -53,7 +53,7 @@
                                 <td>{{ json_decode($value->value)->value }} {{$attribute->unit}}</td>
                                 <td>{{ number_format(json_decode($value->value)->price_increase) . ' تومان' }}</td>
                                 <td>{{ $value->type == 0 ? 'ساده' : 'انتخابی'}}</td>
-                                <td class="width-22-rem text-left">
+                                <td class="width-22-rem">
                                     <a href="{{ route('admin.market.value.edit', ['attribute' => $attribute->id , 'value' => $value->id] ) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
                                     <form class="d-inline" action="{{ route('admin.market.value.destroy', ['attribute' => $attribute->id , 'value' => $value->id] ) }}" method="post">
                                         @csrf

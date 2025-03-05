@@ -7,7 +7,7 @@
             <th>محصول</th>
             <th>نظر</th>
             <th>پاسخ داده شده</th>
-            <th class="max-width-16-rem text-left"><i class="fa fa-cogs"></i> تنظیمات</th>
+            <th class="max-width-16-rem"><i class="fa fa-cogs"></i> تنظیمات</th>
         </tr>
         </thead>
         <tbody>
@@ -27,7 +27,7 @@
                     @endif
                 </td>
 
-                <td class="width-16-rem text-left">
+                <td class="width-16-rem">
                     <a href="{{ route('admin.market.comment.show', $comment->id) }}" class="btn btn-info btn-sm"><i
                             class="fa fa-eye"></i> مشاهده</a>
                     @if($status == 'waiting' || $status == 'approved')

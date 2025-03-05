@@ -40,7 +40,7 @@
                             <th>کلمات کلیدی سایت</th>
                             <th>لوگو سایت</th>
                             <th>آیکون سایت</th>
-                            <th class="max-width-16-rem text-left"><i class="fa fa-cogs"></i> تنظیمات</th>
+                            <th class="max-width-16-rem"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -51,7 +51,7 @@
                             <td>{{ \Illuminate\Support\Str::limit($setting->keywords, 20) }}</td>
                             <td><img src="{{ asset($setting->logo ) }}" alt="logo" width="100" height="50"></td>
                             <td><img src="{{ asset($setting->icon ) }}" alt="icon" width="50" height="50"></td>
-                            <td class="width-22-rem text-left">
+                            <td class="width-22-rem">
                                 <a href="{{route('admin.setting.edit', $setting->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
                             </td>
                         </tr>

@@ -39,7 +39,7 @@
                             <th>سوال</th>
                             <th>پاسخ</th>
                             <th>وضعیت</th>
-                            <th class="max-width-16-rem text-left"><i class="fa fa-cogs"></i> تنظیمات</th>
+                            <th class="max-width-16-rem"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -56,7 +56,7 @@
                                 </label>
                             </td>
 
-                            <td class="width-16-rem text-left">
+                            <td class="width-16-rem">
                                 <a href="{{route('admin.content.faq.edit', $faq->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
                                 <form class="d-inline" action="{{route('admin.content.faq.destroy', $faq->id)}}" method="post">
                                     @csrf

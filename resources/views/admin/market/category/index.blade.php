@@ -36,7 +36,7 @@
                             <th>دسته والد</th>
                             <th>وضعیت</th>
                             <th>نمایش در منو</th>
-                            <th class="max-width-16-rem text-left"><i class="fa fa-cogs"></i> تنظیمات</th>
+                            <th class="max-width-16-rem"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -56,7 +56,7 @@
                                         <input id="{{$productCategory->id}}-menu" onchange="changeStatus({{$productCategory->id}}, '-menu')" data-url="{{route('admin.market.category.show-in-menu', $productCategory->id)}}" type="checkbox" @if($productCategory->show_in_menu===1) checked @endif>
                                     </label>
                                 </td>
-                                <td class="width-16-rem text-left">
+                                <td class="width-16-rem">
                                     <a href="{{ route('admin.market.category.edit', $productCategory->id) }}"
                                        class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
                                     <form class="d-inline"

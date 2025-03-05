@@ -28,25 +28,6 @@
             <section class="sidebar-group-link">
                 <section class="sidebar-dropdown-toggle">
                     <i class="fas fa-chart-bar icon"></i>
-                    <span>سفارشات</span>
-                    <i class="fas fa-angle-left angle"></i>
-                </section>
-                <section class="sidebar-dropdown">
-                    <a href="{{route('admin.market.order.new')}}"> جدید</a>
-                    <a href="{{route('admin.market.order.sending')}}">در حال ارسال</a>
-                    <a href="{{route('admin.market.order.unpaid')}}">پرداخت نشده</a>
-                    <a href="{{route('admin.market.order.canceled')}}">باطل شده</a>
-                    <a href="{{route('admin.market.order.returned')}}">مرجوعی</a>
-                    <a href="{{route('admin.market.order.all')}}">تمام سفارشات</a>
-                </section>
-            </section>
-
-            <a href="{{route('admin.market.payment.index')}}" class="sidebar-link"><i class="fas fa-money-check-alt"></i><span>پرداخت ها</span></a>
-
-
-            <section class="sidebar-group-link">
-                <section class="sidebar-dropdown-toggle">
-                    <i class="fas fa-chart-bar icon"></i>
                     <span>تخفیف ها</span>
                     <i class="fas fa-angle-left angle"></i>
                 </section>
@@ -56,6 +37,11 @@
                     <a href="{{route('admin.market.discount.amazingSale')}}">فروش شگفت انگیز</a>
                 </section>
             </section>
+
+
+            <a href="{{route('admin.market.order.index')}}" class="sidebar-link"><i class="fas fa-money-check-alt"></i><span>سفارشات</span></a>
+
+            <a href="{{route('admin.market.payment.index')}}" class="sidebar-link"><i class="fas fa-money-check-alt"></i><span>پرداخت ها</span></a>
 
             <a href="{{route('admin.market.delivery.index')}}" class="sidebar-link"><i class="fas fa-bars"></i><span>روش های ارسال</span></a>
 

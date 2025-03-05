@@ -7,7 +7,7 @@
             <th>پست</th>
             <th>نظر</th>
             <th>پاسخ داده شده</th>
-            <th class="max-width-16-rem text-left"><i class="fa fa-cogs"></i> تنظیمات</th>
+            <th class="max-width-16-rem"><i class="fa fa-cogs"></i> تنظیمات</th>
         </tr>
         </thead>
         <tbody>
@@ -25,7 +25,7 @@
                         <i class="fa fa-times text-danger"></i>
                     @endif</td>
 
-                <td class="width-16-rem text-left">
+                <td class="width-16-rem">
                     <a href="{{ route('admin.content.comment.show', $comment->id) }}" class="btn btn-info btn-sm"><i
                             class="fa fa-eye"></i> مشاهده</a>
                     @if($status == 'waiting' || $status == 'approved')

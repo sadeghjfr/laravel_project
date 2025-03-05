@@ -34,7 +34,7 @@
                             <th>نام ویژگی</th>
                             <th>واحد اندازه گیری</th>
                             <th>دسته والد</th>
-                            <th class="max-width-16-rem text-left"><i class="fa fa-cogs"></i> تنظیمات</th>
+                            <th class="max-width-16-rem"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -45,7 +45,7 @@
                                 <td>{{ $attribute->name }}</td>
                                 <td>{{ $attribute->unit }}</td>
                                 <td>{{ $attribute->category->name }}</td>
-                                <td class="width-22-rem text-left">
+                                <td class="width-22-rem">
                                     <a href="{{ route('admin.market.value.index', $attribute->id) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> مقادیر</a>
                                     <a href="{{ route('admin.market.attribute.edit', $attribute->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
                                     <form class="d-inline" action="{{ route('admin.market.attribute.destroy', $attribute->id) }}" method="post">

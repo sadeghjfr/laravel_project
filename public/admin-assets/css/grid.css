@@ -408,3 +408,33 @@
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table-responsive table {
+    width: 100%;
+    white-space: nowrap; /* جلوگیری از خط‌شکنی متن */
+    border-collapse: collapse; /* ادغام خطوط مرزی */
+}
+
+.table-responsive td, .table-responsive th {
+    overflow: hidden; /* مخفی کردن متن اضافی */
+    text-overflow: ellipsis; /* نمایش سه نقطه برای متن اضافی */
+    max-width: 200px; /* حداکثر عرض سلول */
+
+    padding: 8px; /* فاصله داخلی سلول‌ها */
+    white-space: nowrap; /* جلوگیری از خط‌شکنی متن */
+
+    text-align: center; /* وسط‌چین کردن محتوا */
+
+    border: 1px solid #ddd; /* خطوط مرزی برای سلول‌ها */
+
+}
+
+.table-responsive td.has-dropdown {
+    overflow: visible !important; /* فقط برای سلول‌های دارای dropdown */
+}
+

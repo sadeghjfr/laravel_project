@@ -44,7 +44,7 @@
                 @if($isAdmin)
                     <td>سوپر ادمین</td>
                 @endif
-                <td class="width-22-rem text-left">
+                <td class="width-22-rem">
                     @if($isAdmin)
                         <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> نقش</a>
                     @endif

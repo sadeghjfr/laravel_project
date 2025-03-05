@@ -58,7 +58,7 @@
                                            @if ($file->status === 1) checked @endif >
                                 </label>
                             </td>
-                            <td class="width-16-rem text-left">
+                            <td class="width-16-rem">
                                 <a href="{{ route('admin.notify.email-file.edit', $file->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
                                 <form class="d-inline" action="{{ route('admin.notify.email-file.destroy', $file->id) }}" method="post">
                                     @csrf

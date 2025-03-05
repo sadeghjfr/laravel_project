@@ -46,7 +46,7 @@
                             <th>{{ $amazingSale->percentage }}%</th>
                             <td>{{ jalaliDate($amazingSale->start_date) }}</td>
                             <td>{{ jalaliDate($amazingSale->end_date) }}</td>
-                            <td class="width-16-rem text-left">
+                            <td class="width-16-rem">
                                 <a href="{{ route('admin.market.discount.amazingSale.edit', $amazingSale->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
                                 <form class="d-inline" action="{{ route('admin.market.discount.amazingSale.destroy', $amazingSale->id) }}" method="post">
                                     @csrf

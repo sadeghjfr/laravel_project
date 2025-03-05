@@ -3,7 +3,7 @@
     document.addEventListener("DOMContentLoaded", () => {
 
         const siteRoot = window.location.origin;
-        const specialPages = [extractBasePath(window.location.href)];
+        const specialPages = [extractBasePath(window.location.href) + '{{$section}}'];
         const previousPage = document.referrer;
         const isSpecialPage = specialPages.some(page => previousPage.includes(siteRoot + page)) || isReloaded();
 

@@ -1,139 +1,115 @@
 @extends('admin.layouts.master')
 
 @section('head-tag')
-<title>سفارشات</title>
+    <title>سفارشات</title>
 @endsection
 
 @section('content')
 
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item font-size-12"> <a href="#">خانه</a></li>
-      <li class="breadcrumb-item font-size-12"> <a href="#">بخش فروش</a></li>
-      <li class="breadcrumb-item font-size-12 active" aria-current="page"> سفارشات</li>
-    </ol>
-  </nav>
+
+    <section class="d-flex justify-content-between align-items-center">
+
+        <ol class="breadcrumb mb-0 w-100 ml-2">
+            <li class="breadcrumb-item font-size-12"> <a href="{{route('admin.home')}}"> خانه</a></li>
+            <li class="breadcrumb-item font-size-12"> <a href="#"> بخش فروش</a></li>
+            <li class="breadcrumb-item font-size-12 active" aria-current="page"> سفارشات</li>
+
+        </ol>
+
+        <div class="max-width-16-rem my-0">
+            <input type="text" class="form-control form-control-sm form-text my-2" placeholder="جستجو">
+        </div>
+
+    </section>
 
 
-  <section class="row">
-    <section class="col-12">
-        <section class="main-body-container">
-            <section class="main-body-container-header">
-                <h5>
-                 سفارشات
-                </h5>
+    <section class="row">
+        <section class="col-12">
+            <section class="main-body-container">
+
+                <section class="container-fluid mt-3">
+
+                    <nav>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+                            <li class="nav-item">
+                                <a class="nav-link" id="new-tab" data-toggle="tab" href="#new" role="tab"
+                                   aria-controls="new" aria-selected="false" data-tab-id="new">سفارشات جدید</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" id="waiting-tab" data-toggle="tab" href="#waiting"
+                                   role="tab"
+                                   aria-controls="waiting" aria-selected="false" data-tab-id="waiting">در انتظار ارسال</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" id="sent-tab" data-toggle="tab" href="#sent"
+                                   role="tab"
+                                   aria-controls="sent" aria-selected="false" data-tab-id="sent">ارسال شده</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" id="delivered-tab" data-toggle="tab" href="#delivered"
+                                   role="tab"
+                                   aria-controls="delivered" aria-selected="false" data-tab-id="delivered">تحویل شده</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" id="canceled-tab" data-toggle="tab" href="#canceled"
+                                   role="tab"
+                                   aria-controls="canceled" aria-selected="false" data-tab-id="canceled">باطل شده</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" id="returned-tab" data-toggle="tab" href="#returned"
+                                   role="tab"
+                                   aria-controls="returned" aria-selected="false" data-tab-id="returned">مرجوع شده</a>
+                            </li>
+
+                        </ul>
+                    </nav>
+
+                    <section class="tab-content" id="myTabContent">
+
+                        <div class="tab-pane fade" id="new" role="tabpanel" aria-labelledby="new-tab">
+                            @include('admin.market.order.items', ['items' => $newOrders])
+                        </div>
+
+                        <div class="tab-pane fade" id="waiting" role="tabpanel" aria-labelledby="waiting-tab">
+                            @include('admin.market.order.items', ['items' => $waitingOrders])
+                        </div>
+
+                        <div class="tab-pane fade" id="sent" role="tabpanel" aria-labelledby="sent-tab">
+                            @include('admin.market.order.items', ['items' => $sentOrders])
+                        </div>
+
+                        <div class="tab-pane fade" id="delivered" role="tabpanel" aria-labelledby="delivered-tab">
+                            @include('admin.market.order.items', ['items' => $deliveredOrders])
+                        </div>
+
+                        <div class="tab-pane fade" id="canceled" role="tabpanel" aria-labelledby="canceled-tab">
+                            @include('admin.market.order.items', ['items' => $canceledOrders])
+                        </div>
+
+                        <div class="tab-pane fade" id="returned" role="tabpanel" aria-labelledby="returned-tab">
+                            @include('admin.market.order.items', ['items' => $returnedOrders])
+                        </div>
+
+                    </section>
+
+                </section>
+
             </section>
-
-            <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
-                <a href="" class="btn btn-info btn-sm disabled">ایجاد سفارش </a>
-                <div class="max-width-16-rem">
-                    <input type="text" class="form-control form-control-sm form-text" placeholder="جستجو">
-                </div>
-            </section>
-
-            <section class="table-responsive">
-                <table class="table table-striped table-hover h-150px">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>کد سفارش</th>
-                            <th>مبلغ سفارش</th>
-                            <th>مبلغ تخفیف</th>
-                            <th>مبلغ نهایی</th>
-                            <th>وضعیت پرداخت</th>
-                            <th>شیوه پرداخت</th>
-                            <th>بانک</th>
-                            <th>وضعیت ارسال</th>
-                            <th>شیوه ارسال</th>
-                            <th>وضعیت سفارش</th>
-                            <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th>1</th>
-                            <td>19219-3234</td>
-                            <td>381,000 تومان</td>
-                            <td>34,000 تومان</td>
-                            <td>347,000 تومان</td>
-                            <td>پرداخت شده	</td>
-                            <td>آنلاین	</td>
-                            <td>ملت	</td>
-                            <td>درحال ارسال	</td>
-                            <td>پیک موتوری	</td>
-                            <td>درحال ارسال	</td>
-                            <td class="width-8-rem text-left">
-                                <div class="dropdown">
-                                    <a href="#" class="btn btn-success btn-sm btn-block dorpdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa fa-tools"></i> عملیات
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a href="" class="dropdown-item text-right"><i class="fa fa-images"></i> مشاهده فاکتور</a>
-                                        <a href="" class="dropdown-item text-right"><i class="fa fa-list-ul"></i> تغییر وضعیت ارسال</a>
-                                        <a href="" class="dropdown-item text-right"><i class="fa fa-edit"></i> تغییر وضعیت سفارش</a>
-                                        <a href="" class="dropdown-item text-right"><i class="fa fa-window-close"></i> باطل کردن سفارش</a>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>1</th>
-                            <td>19219-3234</td>
-                            <td>381,000 تومان</td>
-                            <td>34,000 تومان</td>
-                            <td>347,000 تومان</td>
-                            <td>پرداخت شده	</td>
-                            <td>آنلاین	</td>
-                            <td>ملت	</td>
-                            <td>درحال ارسال	</td>
-                            <td>پیک موتوری	</td>
-                            <td>درحال ارسال	</td>
-                            <td class="width-8-rem text-left">
-                                <div class="dropdown">
-                                    <a href="#" class="btn btn-success btn-sm btn-block dorpdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa fa-tools"></i> عملیات
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a href="" class="dropdown-item text-right"><i class="fa fa-images"></i> مشاهده فاکتور</a>
-                                        <a href="" class="dropdown-item text-right"><i class="fa fa-list-ul"></i> تغییر وضعیت ارسال</a>
-                                        <a href="" class="dropdown-item text-right"><i class="fa fa-edit"></i> تغییر وضعیت سفارش</a>
-                                        <a href="" class="dropdown-item text-right"><i class="fa fa-window-close"></i> باطل کردن سفارش</a>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>1</th>
-                            <td>19219-3234</td>
-                            <td>381,000 تومان</td>
-                            <td>34,000 تومان</td>
-                            <td>347,000 تومان</td>
-                            <td>پرداخت شده	</td>
-                            <td>آنلاین	</td>
-                            <td>ملت	</td>
-                            <td>درحال ارسال	</td>
-                            <td>پیک موتوری	</td>
-                            <td>درحال ارسال	</td>
-                            <td class="width-8-rem text-left">
-                                <div class="dropdown">
-                                    <a href="#" class="btn btn-success btn-sm btn-block dorpdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa fa-tools"></i> عملیات
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a href="" class="dropdown-item text-right"><i class="fa fa-images"></i> مشاهده فاکتور</a>
-                                        <a href="" class="dropdown-item text-right"><i class="fa fa-list-ul"></i> تغییر وضعیت ارسال</a>
-                                        <a href="" class="dropdown-item text-right"><i class="fa fa-edit"></i> تغییر وضعیت سفارش</a>
-                                        <a href="" class="dropdown-item text-right"><i class="fa fa-window-close"></i> باطل کردن سفارش</a>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-
         </section>
     </section>
-</section>
+
+
+@endsection
+
+@section('script')
+
+    @include('admin.scripts.tab-control', ['section' => '/order'])
+    @include('admin.alerts.sweetalert.delete-confirm', ['className' => 'delete'])
 
 @endsection

@@ -67,7 +67,7 @@
 
 @section('script')
 
-    @include('admin.scripts.tab-control')
+    @include('admin.scripts.tab-control', ['section' => ''])
     @include('admin.scripts.status-control')
     @include('admin.alerts.sweetalert.delete-confirm', ['className' => 'delete'])
 

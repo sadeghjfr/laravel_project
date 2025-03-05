@@ -34,7 +34,7 @@
                             <th>نام نقش</th>
                             <th>دسترسی ها</th>
                             <th>وضعیت</th>
-                            <th class="max-width-16-rem text-left"><i class="fa fa-cogs"></i> تنظیمات</th>
+                            <th class="max-width-16-rem"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -62,7 +62,7 @@
                                                @if($role->status===1) checked @endif>
                                     </label>
                                 </td>
-                                <td class="width-22-rem text-left">
+                                <td class="width-22-rem">
                                     <a href="{{route('admin.user.role.permission-form', $role->id)}}" class="btn btn-success btn-sm"><i class="fa fa-user-graduate ml-1"></i>دسترسی ها</a>
                                     <a href="{{route('admin.user.role.edit', $role->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
                                     <form class="d-inline" action="{{route('admin.user.role.destroy', $role->id)}}"

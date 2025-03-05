@@ -72,7 +72,7 @@
 
 @section('script')
 
-    @include('admin.scripts.tab-control')
+    @include('admin.scripts.tab-control', ['section' => '/payment'])
     @include('admin.alerts.sweetalert.delete-confirm', ['className' => 'delete'])
 
 @endsection

@@ -65,7 +65,7 @@
                                     </label>
                                 </td>
 
-                                <td class="width-16-rem text-left">
+                                <td class="width-16-rem">
                                     <a href="{{route('admin.content.category.edit', $postCategory->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
                                     <form class="d-inline" action="{{route('admin.content.category.destroy', $postCategory->id)}}" method="post">
                                         @csrf

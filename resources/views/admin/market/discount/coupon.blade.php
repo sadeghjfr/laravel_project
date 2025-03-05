@@ -54,7 +54,7 @@
                                 <th>{{ $coupon->type == 0 ? 'عمومی' : 'خصوصی' }}</th>
                                 <td>{{ jalaliDate($coupon->start_date) }}</td>
                                 <td>{{ jalaliDate($coupon->end_date) }}</td>
-                                <td class="width-16-rem text-left">
+                                <td class="width-16-rem">
                                     <a href="{{ route('admin.market.discount.coupon.edit', $coupon->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
                                     <form class="d-inline" action="{{ route('admin.market.discount.coupon.destroy', $coupon->id) }}" method="post">
                                         @csrf

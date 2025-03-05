@@ -51,7 +51,7 @@
                                             @endif>
                                     </label>
                                 </td>
-                                <td class="width-16-rem text-left">
+                                <td class="width-16-rem">
                                     <a href="{{ route('admin.ticket.category.edit', $ticketCategory->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
                                     <form class="d-inline" action="{{ route('admin.ticket.category.destroy', $ticketCategory->id) }}" method="post">
                                         @csrf

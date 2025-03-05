@@ -49,7 +49,7 @@
                             <th>{{ number_format($commonDiscount->discount_ceiling) }} تومان</th>
                             <td>{{ jalaliDate($commonDiscount->start_date) }}</td>
                             <td>{{ jalaliDate($commonDiscount->end_date) }}</td>
-                            <td class="width-16-rem text-left">
+                            <td class="width-16-rem">
                                 <a href="{{ route('admin.market.discount.commonDiscount.edit', $commonDiscount->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
                                 <form class="d-inline" action="{{ route('admin.market.discount.commonDiscount.destroy', $commonDiscount->id) }}" method="post">
                                     @csrf

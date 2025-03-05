@@ -18,7 +18,6 @@ use App\Http\Controllers\Admin\Market\GalleryController;
 use App\Http\Controllers\Admin\Market\OrderController;
 use App\Http\Controllers\Admin\Market\PaymentController;
 use App\Http\Controllers\Admin\Market\ProductController;
-use App\Http\Controllers\Admin\Market\PropertyController;
 use App\Http\Controllers\Admin\Market\StoreController;
 use App\Http\Controllers\Admin\Notify\EmailController;
 use App\Http\Controllers\Admin\Notify\EmailFileController;
@@ -157,17 +156,16 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         //order
         Route::prefix('order')->group(function () {
 
-            Route::get('/', [OrderController::class, 'all'])->name('admin.market.order.all');
-            Route::get('/new', [OrderController::class, 'newOrders'])->name('admin.market.order.new');
-            Route::get('/sending', [OrderController::class, 'sending'])->name('admin.market.order.sending');
-            Route::get('/unpaid', [OrderController::class, 'unpaid'])->name('admin.market.order.unpaid');
-            Route::get('/canceled', [OrderController::class, 'canceled'])->name('admin.market.order.canceled');
-            Route::get('/returned', [OrderController::class, 'returned'])->name('admin.market.order.returned');
-            Route::get('/show', [OrderController::class, 'show'])->name('admin.market.order.show');
-            Route::get('/change-send-status', [OrderController::class, 'changeSendStatus'])->name('admin.market.order.changeSendStatus');
-            Route::get('/change-order-status', [OrderController::class, 'changeOrderStatus'])->name('admin.market.order.changeOrderStatus');
-            Route::get('/cancel-order', [OrderController::class, 'cancelOrder'])->name('admin.market.order.cancelOrder');
+            Route::get('/', [OrderController::class, 'index'])->name('admin.market.order.index');
+            Route::get('/show/{order}', [OrderController::class, 'show'])->name('admin.market.order.show');
+            Route::get('/show/{order}/detail', [OrderController::class, 'detail'])->name('admin.market.order.detail');
+            Route::delete('/destroy/{order}', [OrderController::class, 'destroy'])->name('admin.market.order.destroy');
+            Route::get('/cancel/{order}', [OrderController::class, 'cancel'])->name('admin.market.order.cancel');
+            Route::get('/return/{order}', [OrderController::class, 'return'])->name('admin.market.order.return');
 
+            Route::get('/waiting/{order}', [OrderController::class, 'waiting'])->name('admin.market.order.waiting');
+            Route::get('/sent/{order}', [OrderController::class, 'sent'])->name('admin.market.order.sent');
+            Route::get('/delivered/{order}', [OrderController::class, 'delivered'])->name('admin.market.order.delivered');
         });
 
         //payment
