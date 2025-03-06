@@ -10,15 +10,15 @@
 
             <ol class="breadcrumb mb-0 w-100 ml-2">
                 <li class="breadcrumb-item font-size-12"> <a href="{{route('admin.home')}}"> خانه</a></li>
-                <li class="breadcrumb-item font-size-12"> <a href="#"> بخش فروش</a></li>
+                <li class="breadcrumb-item font-size-12"> <a href="#"> فروشگاه</a></li>
                 <li class="breadcrumb-item font-size-12 active" aria-current="page"> نظرات</li>
             </ol>
 
-            <div class="max-width-16-rem my-0">
-                <input type="text" class="form-control form-control-sm form-text my-2" placeholder="جستجو">
-            </div>
-
     </section>
+
+    <div class="max-width-16-rem my-0">
+        <input type="text" class="form-control form-control-sm form-text my-2" placeholder="جستجو">
+    </div>
 
 
     <section class="row">

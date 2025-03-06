@@ -9,7 +9,7 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item font-size-12"><a href="{{route('admin.home')}}">خانه</a></li>
-        <li class="breadcrumb-item font-size-12"><a href="#"> بخش فروش</a></li>
+        <li class="breadcrumb-item font-size-12"><a href="#"> فروشگاه</a></li>
       <li class="breadcrumb-item font-size-12 active" aria-current="page"> انبار</li>
     </ol>
   </nav>
@@ -18,8 +18,8 @@
   <section class="row">
     <section class="col-12">
         <section class="main-body-container">
-            <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
-                {{--<a href="" class="btn btn-info btn-sm disabled">ایجاد انبار جدید</a>--}}
+            <section class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">
+
                 <div class="max-width-16-rem">
                     <input type="text" class="form-control form-control-sm form-text" placeholder="جستجو">
                 </div>

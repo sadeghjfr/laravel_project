@@ -9,8 +9,8 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item font-size-12"> <a href="{{route('admin.home')}}">خانه</a></li>
-            <li class="breadcrumb-item font-size-12"> <a href="#">بخش محتوا</a></li>
-            <li class="breadcrumb-item font-size-12"> <a href="{{route('admin.content.category.index')}}">دسته بندی</a></li>
+            <li class="breadcrumb-item font-size-12"> <a href="#"> بلاگ</a></li>
+            <li class="breadcrumb-item font-size-12"> <a href="{{route('admin.content.category.index')}}"> دسته بندی</a></li>
             <li class="breadcrumb-item font-size-12 active" aria-current="page"> ایجاد دسته بندی</li>
         </ol>
     </nav>
@@ -18,13 +18,12 @@
     <section class="row">
         <section class="col-12">
             <section class="main-body-container">
-                <section class="main-body-container-header">
-                    <h5>
-                        ایجاد دسته بندی
-                    </h5>
-                </section>
-
-                <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
+                <section class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
+                    <section class="main-body-container-header">
+                        <h5>
+                            ایجاد دسته بندی
+                        </h5>
+                    </section>
                     <a href="{{ route('admin.content.category.index') }}" class="btn btn-info btn-sm">بازگشت</a>
                 </section>
 
@@ -97,7 +96,7 @@
                                 @enderror
                             </section>
 
-                            <section class="col-12">
+                            <section class="col-12 mb-2">
                                 <div class="form-group mb-1">
                                     <label for="tags">تگ ها</label>
                                     <input value="{{old('tags')}}" name="tags" id="tags" type="hidden" class="form-control form-control-sm">
@@ -114,7 +113,7 @@
                                 @enderror
                             </section>
 
-                            <section class="col-12">
+                            <section class="col-12 mb-2">
                                 <div class="form-group mb-1">
                                     <label for="description">توضیحات</label>
                                     <textarea name="description" id="description" type="text" class="form-control form-control-sm" rows="6">{{old('description')}}</textarea>
@@ -130,9 +129,9 @@
 
 
 
-                            <section class="col-12">
-                                <button class="btn btn-primary btn-sm">ثبت</button>
-                            </section>
+                            <section class="col-12 mt-4">
+                            <button class="btn btn-primary w-100">ثبت نهایی</button>
+                        </section>
 
                         </section>
                     </form>

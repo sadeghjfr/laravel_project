@@ -71,9 +71,9 @@
                                 </span>
                                 @enderror
                             </section>
-                            <section class="col-12">
-                                <button class="btn btn-primary btn-sm">ثبت</button>
-                            </section>
+                            <section class="col-12 mt-4">
+                            <button class="btn btn-primary w-100">ثبت نهایی</button>
+                        </section>
                         </section>
                     </form>
                 </section>

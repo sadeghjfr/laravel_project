@@ -22,14 +22,14 @@
 
             <section class="d-flex justify-content-between align-items-center mt-2  pb-2">
                 <section class="col-12 col-md-5">
-                    <div class="form-group">
+                    <div class="form-group mb-1">
 
                         <section><h6>نام نقش : {{ $role->name }}</h6></section>
                     </div>
                 </section>
 
                 <section class="col-12 col-md-5">
-                    <div class="form-group">
+                    <div class="form-group mb-1">
                         <section><h6>توضیح نقش : {{ $role->description ?? '-' }}</h6></section>
                     </div>
                 </section>
@@ -46,7 +46,7 @@
                             <section class="row border-top mt-3 py-3">
 
                                 <section class="col-12 mb-2">
-                                    <div class="form-group">
+                                    <div class="form-group mb-1">
                                         <h5>
                                             دسترسی های نقش
                                         </h5>

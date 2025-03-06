@@ -2,84 +2,174 @@
     <section class="sidebar-container">
         <section class="sidebar-wrapper">
 
-            <a href="{{route('admin.home')}}" class="sidebar-link">
+            <!-- لینک خانه -->
+            <a href="{{ route('admin.home') }}" class="sidebar-link {{ request()->routeIs('admin.home') ? 'active' : '' }}">
                 <i class="fas fa-home"></i>
                 <span>خانه</span>
             </a>
 
-            <section class="sidebar-part-title">بخش فروش</section>
-
-            <section class="sidebar-group-link">
+            <!-- بخش فروشگاه -->
+            <section class="sidebar-group-link {{ request()->routeIs('admin.market.*') ? 'active' : '' }}">
                 <section class="sidebar-dropdown-toggle">
-                    <i class="fas fa-chart-bar icon"></i>
-                    <span>ویترین</span>
+                    <i class="fas fa-store-alt icon"></i>
+                    <span>فروشگاه</span>
                     <i class="fas fa-angle-left angle"></i>
                 </section>
                 <section class="sidebar-dropdown">
-                    <a href="{{route('admin.market.category.index')}}">دسته بندی</a>
-                    <a href="{{route('admin.market.attribute.index')}}">ویژگی‌های دسته‌بندی‌ها</a>
-                    <a href="{{route('admin.market.brand.index')}}">برندها</a>
-                    <a href="{{route('admin.market.product.index')}}">محصولات</a>
-                    <a href="{{route('admin.market.store.index')}}">انبار</a>
-                    <a href="{{route('admin.market.comment.index')}}">نظرات</a>
+                    <a href="{{ route('admin.market.category.index') }}" class="sidebar-link {{ request()->routeIs('admin.market.category.*') ? 'active' : '' }}"><span>دسته بندی</span></a>
+                    <a href="{{ route('admin.market.attribute.index') }}" class="sidebar-link {{ request()->routeIs('admin.market.attribute.*') ? 'active' : '' }}"><span>ویژگی‌های دسته‌بندی‌ها</span></a>
+                    <a href="{{ route('admin.market.brand.index') }}" class="sidebar-link {{ request()->routeIs('admin.market.brand.*') ? 'active' : '' }}"><span>برندها</span></a>
+                    <a href="{{ route('admin.market.product.index') }}" class="sidebar-link {{ request()->routeIs('admin.market.product.*') ? 'active' : '' }}"><span>محصولات</span></a>
+                    <a href="{{ route('admin.market.store.index') }}" class="sidebar-link {{ request()->routeIs('admin.market.store.*') ? 'active' : '' }}"><span>انبار</span></a>
+                    <a href="{{ route('admin.market.comment.index') }}" class="sidebar-link {{ request()->routeIs('admin.market.comment.*') ? 'active' : '' }}"><span>نظرات</span></a>
+                    <a href="{{ route('admin.market.discount.coupon') }}" class="sidebar-link {{ request()->routeIs('admin.market.discount.coupon') ? 'active' : '' }}"><span>کوپن تخفیف</span></a>
+                    <a href="{{ route('admin.market.discount.commonDiscount') }}" class="sidebar-link {{ request()->routeIs('admin.market.discount.commonDiscount') ? 'active' : '' }}"><span>تخفیف عمومی</span></a>
+                    <a href="{{ route('admin.market.discount.amazingSale') }}" class="sidebar-link {{ request()->routeIs('admin.market.discount.amazingSale') ? 'active' : '' }}"><span>فروش شگفت انگیز</span></a>
+                    <a href="{{ route('admin.market.order.index') }}" class="sidebar-link {{ request()->routeIs('admin.market.order.*') ? 'active' : '' }}"><span>سفارشات</span></a>
+                    <a href="{{ route('admin.market.payment.index') }}" class="sidebar-link {{ request()->routeIs('admin.market.payment.*') ? 'active' : '' }}"><span>پرداخت ها</span></a>
+                    <a href="{{ route('admin.market.delivery.index') }}" class="sidebar-link {{ request()->routeIs('admin.market.delivery.*') ? 'active' : '' }}"><span>روش های ارسال</span></a>
                 </section>
             </section>
 
-            <section class="sidebar-group-link">
+            <!-- بخش بلاگ -->
+            <section class="sidebar-group-link {{ request()->routeIs('admin.content.*') ? 'active' : '' }}">
                 <section class="sidebar-dropdown-toggle">
-                    <i class="fas fa-chart-bar icon"></i>
-                    <span>تخفیف ها</span>
+                    <i class="fas fa-pencil-alt icon"></i>
+                    <span>بلاگ</span>
                     <i class="fas fa-angle-left angle"></i>
                 </section>
                 <section class="sidebar-dropdown">
-                    <a href="{{route('admin.market.discount.coupon')}}">کوپن تخفیف</a>
-                    <a href="{{route('admin.market.discount.commonDiscount')}}">تخفیف عمومی</a>
-                    <a href="{{route('admin.market.discount.amazingSale')}}">فروش شگفت انگیز</a>
+                    <a href="{{ route('admin.content.category.index') }}" class="sidebar-link {{ request()->routeIs('admin.content.category.*') ? 'active' : '' }}"><span>دسته بندی</span></a>
+                    <a href="{{ route('admin.content.post.index') }}" class="sidebar-link {{ request()->routeIs('admin.content.post.*') ? 'active' : '' }}"><span>پست ها</span></a>
+                    <a href="{{ route('admin.content.comment.index') }}" class="sidebar-link {{ request()->routeIs('admin.content.comment.*') ? 'active' : '' }}"><span>نظرات</span></a>
+                    <a href="{{ route('admin.content.menu.index') }}" class="sidebar-link {{ request()->routeIs('admin.content.menu.*') ? 'active' : '' }}"><span>منو ها</span></a>
+                    <a href="{{ route('admin.content.faq.index') }}" class="sidebar-link {{ request()->routeIs('admin.content.faq.*') ? 'active' : '' }}"><span>سوالات متداول</span></a>
+                    <a href="{{ route('admin.content.page.index') }}" class="sidebar-link {{ request()->routeIs('admin.content.page.*') ? 'active' : '' }}"><span>پیج ساز</span></a>
                 </section>
             </section>
 
+            <!-- بخش کاربران -->
+            <section class="sidebar-group-link {{ request()->routeIs('admin.user.*') ? 'active' : '' }}">
+                <section class="sidebar-dropdown-toggle">
+                    <i class="fas fa-users icon"></i>
+                    <span>کاربران</span>
+                    <i class="fas fa-angle-left angle"></i>
+                </section>
+                <section class="sidebar-dropdown">
+                    <a href="{{ route('admin.user.index') }}" class="sidebar-link {{ request()->routeIs('admin.user.index') ? 'active' : '' }}"><span>کاربران</span></a>
+                    <a href="{{ route('admin.user.role.index') }}" class="sidebar-link {{ request()->routeIs('admin.user.role.*') ? 'active' : '' }}"><span>سطوح دسترسی</span></a>
+                </section>
+            </section>
 
-            <a href="{{route('admin.market.order.index')}}" class="sidebar-link"><i class="fas fa-money-check-alt"></i><span>سفارشات</span></a>
+            <!-- بخش تیکت‌ها -->
+            <section class="sidebar-group-link {{ request()->routeIs('admin.ticket.*') ? 'active' : '' }}">
+                <section class="sidebar-dropdown-toggle">
+                    <i class="fas fa-headset icon"></i>
+                    <span>تیکت ها</span>
+                    <i class="fas fa-angle-left angle"></i>
+                </section>
+                <section class="sidebar-dropdown">
+                    <a href="{{ route('admin.ticket.category.index') }}" class="sidebar-link {{ request()->routeIs('admin.ticket.category.*') ? 'active' : '' }}"><span>دسته بندی تیکت ها</span></a>
+                    <a href="{{ route('admin.ticket.priority.index') }}" class="sidebar-link {{ request()->routeIs('admin.ticket.priority.*') ? 'active' : '' }}"><span>اولویت تیکت ها</span></a>
+                    <a href="{{ route('admin.ticket.admin.index') }}" class="sidebar-link {{ request()->routeIs('admin.ticket.admin.*') ? 'active' : '' }}"><span>ادمین تیکت ها</span></a>
+                    <a href="{{ route('admin.ticket.index') }}" class="sidebar-link {{ request()->routeIs('admin.ticket.index') ? 'active' : '' }}"><span>تیکت ها</span></a>
+                </section>
+            </section>
 
-            <a href="{{route('admin.market.payment.index')}}" class="sidebar-link"><i class="fas fa-money-check-alt"></i><span>پرداخت ها</span></a>
+            <!-- بخش اطلاع‌رسانی -->
+            <section class="sidebar-group-link {{ request()->routeIs('admin.notify.*') ? 'active' : '' }}">
+                <section class="sidebar-dropdown-toggle">
+                    <i class="fas fa-envelope icon"></i>
+                    <span>اطلاع رسانی</span>
+                    <i class="fas fa-angle-left angle"></i>
+                </section>
+                <section class="sidebar-dropdown">
+                    <a href="{{ route('admin.notify.email.index') }}" class="sidebar-link {{ request()->routeIs('admin.notify.email.*') ? 'active' : '' }}"><span>اطلاعیه ایمیلی</span></a>
+                    <a href="{{ route('admin.notify.sms.index') }}" class="sidebar-link {{ request()->routeIs('admin.notify.sms.*') ? 'active' : '' }}"><span>اطلاعیه پیامکی</span></a>
+                </section>
+            </section>
 
-            <a href="{{route('admin.market.delivery.index')}}" class="sidebar-link"><i class="fas fa-bars"></i><span>روش های ارسال</span></a>
-
-
-
-            <section class="sidebar-part-title">بخش محتوا</section>
-            <a href="{{route('admin.content.category.index')}}" class="sidebar-link"><i class="fas fa-bars"></i><span>دسته بندی</span></a>
-            <a href="{{route('admin.content.post.index')}}" class="sidebar-link"><i class="fas fa-bars"></i><span>پست ها</span></a>
-            <a href="{{route('admin.content.comment.index')}}" class="sidebar-link"><i class="fas fa-bars"></i><span>نظرات</span></a>
-            <a href="{{route('admin.content.menu.index')}}" class="sidebar-link"><i class="fas fa-bars"></i><span>منو</span></a>
-            <a href="{{route('admin.content.faq.index')}}" class="sidebar-link"><i class="fas fa-bars"></i><span>سوالات متداول</span></a>
-            <a href="{{route('admin.content.page.index')}}" class="sidebar-link"><i class="fas fa-bars"></i><span>پیج ساز</span></a>
-
-
-
-            <section class="sidebar-part-title">بخش کاربران</section>
-            <a href="{{route('admin.user.index')}}" class="sidebar-link"><i class="fas fa-bars"></i><span>کاربران</span></a>
-            <a href="{{route('admin.user.role.index')}}" class="sidebar-link"><i class="fas fa-bars"></i><span>سطوح دسترسی</span></a>
-
-
-
-            <section class="sidebar-part-title">بخش تیکت ها</section>
-            <a href="{{route('admin.ticket.category.index')}}" class="sidebar-link"><i class="fas fa-bars"></i><span>دسته بندی تیکت ها</span></a>
-            <a href="{{route('admin.ticket.priority.index')}}" class="sidebar-link"><i class="fas fa-bars"></i><span>اولویت تیکت ها</span></a>
-            <a href="{{route('admin.ticket.admin.index')}}" class="sidebar-link"><i class="fas fa-bars"></i><span>ادمین تیکت ها</span></a>
-            <a href="{{route('admin.ticket.index')}}" class="sidebar-link"><i class="fas fa-bars"></i><span>تیکت ها</span></a>
-
-
-
-            <section class="sidebar-part-title">اطلاع رسانی</section>
-            <a href="{{route('admin.notify.email.index')}}" class="sidebar-link"><i class="fas fa-bars"></i><span>اطلاعیه ایمیلی</span></a>
-            <a href="{{route('admin.notify.sms.index')}}" class="sidebar-link"><i class="fas fa-bars"></i><span>اطلاعیه پیامکی</span></a>
-
-
-
-            <section class="sidebar-part-title">تنظیمات</section>
-            <a href="{{route('admin.setting.index')}}" class="sidebar-link"><i class="fas fa-bars"></i><span>تنظیمات</span></a>
+            <!-- بخش تنظیمات -->
+            <section class="sidebar-group-link {{ request()->routeIs('admin.setting.*') ? 'active' : '' }}">
+                <section class="sidebar-dropdown-toggle">
+                    <i class="fas fa-cogs icon"></i>
+                    <span>تنظیمات</span>
+                    <i class="fas fa-angle-left angle"></i>
+                </section>
+                <section class="sidebar-dropdown">
+                    <a href="{{ route('admin.setting.index') }}" class="sidebar-link {{ request()->routeIs('admin.setting.*') ? 'active' : '' }}"><span>تنظیمات سایت</span></a>
+                </section>
+            </section>
 
         </section>
     </section>
 </aside>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const dropdownToggles = document.querySelectorAll('.sidebar-dropdown-toggle');
+        const sidebarLinks = document.querySelectorAll('.sidebar-dropdown a');
+
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', function (event) {
+                event.preventDefault();
+                const parent = this.closest('.sidebar-group-link');
+                const angleIcon = this.querySelector('.angle');
+
+                if (parent.classList.contains('active')) {
+                    parent.classList.remove('active');
+                    angleIcon.style.transform = 'rotate(90deg)';
+                } else {
+
+                    dropdownToggles.forEach(otherToggle => {
+                        const otherParent = otherToggle.closest('.sidebar-group-link');
+                        const otherAngleIcon = otherToggle.querySelector('.angle');
+                        if (otherParent !== parent) {
+                            otherParent.classList.remove('active');
+                            otherAngleIcon.style.transform = 'rotate(0deg)';
+                        }
+                    });
+
+                    parent.classList.add('active');
+                    angleIcon.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
+
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', function (event) {
+
+                event.stopPropagation();
+            });
+        });
+    });
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const currentPage = window.location.origin + window.location.pathname;
+        const sidebarLinks = document.querySelectorAll('.sidebar-dropdown a');
+
+        sidebarLinks.forEach(link => {
+            const linkHref = link.getAttribute('href');
+
+            if (linkHref && currentPage.includes(linkHref)) {
+                const parentGroup = link.closest('.sidebar-group-link');
+                if (parentGroup) {
+
+                    const dropdownToggle = parentGroup.querySelector('.sidebar-dropdown-toggle');
+                    const angleIcon = dropdownToggle.querySelector('.angle');
+                    const dropdown = parentGroup.querySelector('.sidebar-dropdown');
+
+                    parentGroup.classList.add('active');
+                    angleIcon.style.transform = 'rotate(-90deg)';
+                    dropdown.style.height = 'auto';
+                    dropdown.style.display = 'block';
+                }
+            }
+        });
+    });
+
+</script>
+
+

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Market;
 
+use App\Http\Controllers\Controller;
 use App\Models\Admin\Market\Product;
 use App\Models\Admin\Market\ProductColor;
 use Illuminate\Http\Request;
@@ -32,9 +33,9 @@ class ProductColorController extends Controller
     }
 
 
-    public function destroy(Product $product, ProductColor $productColor)
+    public function destroy(Product $product, ProductColor $color)
     {
-        $result = $productColor->delete();
+        $result = $color->delete();
         return redirect()->route('admin.market.color.index', $product->id)->with('swal-success', 'رنگ با موفقیت حذف شد');
     }
 }

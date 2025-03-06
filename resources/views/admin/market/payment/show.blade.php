@@ -9,7 +9,7 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item font-size-12"><a href="{{route('admin.home')}}">خانه</a></li>
-        <li class="breadcrumb-item font-size-12"><a href="#"> بخش فروش</a></li>
+        <li class="breadcrumb-item font-size-12"><a href="#"> فروشگاه</a></li>
       <li class="breadcrumb-item font-size-12"> <a href="{{ route('admin.market.payment.index') }}"> پرداخت ها</a></li>
       <li class="breadcrumb-item font-size-12 active" aria-current="page"> نمایش پرداخت</li>
     </ol>
@@ -20,26 +20,109 @@
     <section class="col-12">
         <section class="main-body-container">
 
-            <section class="card mb-3">
-                <section class="d-flex justify-content-between align-items-center bg-custom-pink">
-                    <section class="card-header text-white w-100">
-                       پرداخت کننده :  {{$payment->user->fullName}} - شناسه : {{$payment->user->id}}
-                    </section>
-                    <a href="{{ route('admin.market.payment.index') }}" class="btn btn-info btn-sm ml-2">بازگشت</a>
-                </section>
-                <section class="card-body">
-                    <h5 class="card-title"> مبلغ : {{ number_format($payment->paymentable->amount) }} تومان</h5>
-                    <p class="card-text">  نوع پرداخت : {{$payment->type_fa}}</p>
-                    <p class="card-text">  وضعیت پرداخت : {{$payment->status_fa}}</p>
-                    <p class="card-text"> بانک : {{ $payment->paymentable->gateway ?? '-' }}</p>
-                    <p class="card-text"> شماره تراکنش : {{ $payment->paymentable->transaction_id ?? '-' }}</p>
-                    <p class="card-text"> تاریخ پرداخت : {{ jalaliDate($payment->paymentable->pay_date) ?? '-' }}</p>
-                    <p class="card-text">  دریافت کننده : {{ $payment->paymentable->cash_receiver ?? '-' }}</p>
-                </section>
+
+            <section class="row mb-2 mr-2 main-body-container-header d-flex justify-content-between align-items-center">
+                <h5 class="m-0">پرداخت</h5>
+                <div>
+                    <a href="" class="btn btn-dark btn-sm text-white" id="print"><i class="fa fa-print"></i> چاپ</a>
+                    <a href="{{ route('admin.market.payment.index') }}" class="btn btn-info btn-sm ml-3">بازگشت</a>
+                </div>
+            </section>
+
+            <section class="table-responsive">
+                <table class="table table-striped table-hover h-150px" id="printable">
+
+                    <tbody>
+
+                    <tr class="border-bottom">
+                        <th class="text-right">شناسه پرداخت</th>
+                        <td class="text-right font-weight-bolder">
+                            {{ $payment->id }}
+                        </td>
+                    </tr>
+
+                    <tr class="border-bottom">
+                        <th class="text-right">پرداخت کننده</th>
+                        <td class="text-right font-weight-bolder">
+                            {{$payment->user->fullName ?? '-'}}
+                        </td>
+                    </tr>
+
+                    <tr class="border-bottom">
+                        <th class="text-right">شناسه پرداخت کننده</th>
+                        <td class="text-right font-weight-bolder">
+                            {{$payment->user->id ?? '-'}}
+                        </td>
+                    </tr>
+
+                    <tr class="border-bottom">
+                        <th class="text-right">موبایل پرداخت کننده</th>
+                        <td class="text-right font-weight-bolder">
+                            {{$payment->user->mobile ?? '-'}}
+                        </td>
+                    </tr>
+
+                    <tr class="border-bottom">
+                        <th class="text-right">مبلغ پرداختی</th>
+                        <td class="text-right font-weight-bolder">
+                            {{ number_format($payment->paymentable->amount) }} تومان
+                        </td>
+                    </tr>
+
+                    <tr class="border-bottom">
+                        <th class="text-right">وضعیت پرداخت</th>
+                        <td class="text-right font-weight-bolder">
+                            {{$payment->status_fa ?? '-'}}
+                        </td>
+                    </tr>
+
+                    <tr class="border-bottom">
+                        <th class="text-right">نوع پرداخت</th>
+                        <td class="text-right font-weight-bolder">
+                            {{$payment->type_fa ?? '-'}}
+                        </td>
+                    </tr>
+
+                    <tr class="border-bottom">
+                        <th class="text-right">بانک</th>
+                        <td class="text-right font-weight-bolder">
+                            {{ $payment->paymentable->gateway ?? '-' }}
+                        </td>
+                    </tr>
+
+                    <tr class="border-bottom">
+                        <th class="text-right">شماره تراکنش</th>
+                        <td class="text-right font-weight-bolder">
+                            {{ $payment->paymentable->transaction_id ?? '-' }}
+                        </td>
+                    </tr>
+
+                    <tr class="border-bottom">
+                        <th class="text-right">تاریخ پرداخت</th>
+                        <td class="text-right font-weight-bolder">
+                            {{ jalaliDate($payment->paymentable->pay_date) ?? '-' }}
+                        </td>
+                    </tr>
+
+                    <tr class="border-bottom">
+                        <th class="text-right">دریافت کننده</th>
+                        <td class="text-right font-weight-bolder">
+                            {{ $payment->paymentable->cash_receiver ?? '-' }}
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
             </section>
 
         </section>
     </section>
 </section>
+
+@endsection
+
+@section('script')
+
+    @include('admin.scripts.print-control')
 
 @endsection

@@ -202,9 +202,9 @@
 }
 
 .sidebar-link{
-    font-size: .8rem;
-    margin-top: 1rem;
-    padding: .4rem 1rem;
+    font-size: 1rem;
+    margin-top: 0.3rem;
+    padding: .4rem;
     display: block;
     text-decoration: none;
     outline: none;
@@ -224,21 +224,24 @@
 }
 
 .sidebar-group-link{
+    border-right: 3px solid transparent;
+    transition: border-right-color 0.3s ease;
     font-size: .8rem;
     margin-top: 1rem;
     padding: .4rem 0;
     color: #DCDCDC;
 }
 
-.sidebar-group-link-active{
+.sidebar-group-link.active{
     border-right: #FE8A7D 3px solid;
 }
-
 
 .sidebar-group-link>.sidebar-dropdown{
     height: 0;
     display: none;
 }
+
+
 
 .sidebar-group-link-active>.sidebar-dropdown{
     height: auto;
@@ -246,8 +249,9 @@
 }
 
 .sidebar-dropdown-toggle{
+    font-size: 1rem;
     cursor: pointer;
-    padding: .2rem 1rem;
+    padding: .4rem 0 .4rem 1rem;
     transition: all .3s;
 }
 
@@ -266,6 +270,7 @@
 }
 
 .sidebar-dropdown a,button{
+    font-size: 0.9rem;
     padding: .2rem 1rem;
     display: block;
     text-decoration: none;
@@ -282,6 +287,40 @@
 }
 
 .sidebar-dropdown a:hover,button:hover{
+    color: #FE8A7D;
+}
+
+
+
+.sidebar-dropdown {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.sidebar-group-link.active .sidebar-dropdown {
+    max-height: 500px;
+}
+
+
+.sidebar-dropdown-toggle .angle {
+    margin-left: 0.8rem ;
+    transition: transform 0.3s ease;
+}
+
+.sidebar-group-link.active .sidebar-dropdown-toggle .angle {
+    transform: rotate(-90deg);
+    transition: transform 0.3s ease;
+}
+
+
+
+.sidebar-dropdown a {
+    color: #BABABA;
+    transition: color 0.3s ease;
+}
+
+.sidebar-link.active, .sidebar-dropdown a.active {
     color: #FE8A7D;
 }
 
@@ -396,7 +435,7 @@
 .nav-item .nav-link.active {
     background-color: #007bff;
     color: white;
-    border-radius: 0; /* حذف لبه‌های گرد */
+    border-radius: 0;
     width: 100%;
     height: 100%;
     display: flex;
@@ -416,25 +455,24 @@
 
 .table-responsive table {
     width: 100%;
-    white-space: nowrap; /* جلوگیری از خط‌شکنی متن */
-    border-collapse: collapse; /* ادغام خطوط مرزی */
+    white-space: nowrap;
+    border-collapse: collapse;
 }
 
 .table-responsive td, .table-responsive th {
-    overflow: hidden; /* مخفی کردن متن اضافی */
-    text-overflow: ellipsis; /* نمایش سه نقطه برای متن اضافی */
-    max-width: 200px; /* حداکثر عرض سلول */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
 
-    padding: 8px; /* فاصله داخلی سلول‌ها */
-    white-space: nowrap; /* جلوگیری از خط‌شکنی متن */
+    padding: 8px;
+    white-space: nowrap;
 
-    text-align: center; /* وسط‌چین کردن محتوا */
+    text-align: center;
 
-    border: 1px solid #ddd; /* خطوط مرزی برای سلول‌ها */
+    border: 1px solid #ddd;
 
 }
 
 .table-responsive td.has-dropdown {
-    overflow: visible !important; /* فقط برای سلول‌های دارای dropdown */
+    overflow: visible !important;
 }
-

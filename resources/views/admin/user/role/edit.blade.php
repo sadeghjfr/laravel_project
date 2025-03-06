@@ -20,7 +20,7 @@
     <section class="col-12">
         <section class="main-body-container">
 
-            <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
+            <section class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
                 <h5>
                     ویرایش نقش
                 </h5>
@@ -34,7 +34,7 @@
                     <section class="row">
 
                         <section class="col-12 col-md-5">
-                            <div class="form-group">
+                            <div class="form-group mb-1">
                                 <label for="name">عنوان نقش</label>
                                 <input type="text" name="name" value="{{ old('name', $role->name) }}" class="form-control form-control-sm">
                             </div>
@@ -47,7 +47,7 @@
                         @enderror
                         </section>
                         <section class="col-12 col-md-5">
-                            <div class="form-group">
+                            <div class="form-group mb-1">
                                 <label for="description">توضیح نقش</label>
                                 <input type="text" name="description" value="{{ old('description', $role->description) }}" class="form-control form-control-sm">
                             </div>

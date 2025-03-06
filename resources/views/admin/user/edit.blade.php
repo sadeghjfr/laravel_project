@@ -20,7 +20,7 @@
         <section class="col-12">
             <section class="main-body-container">
 
-                <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
+                <section class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
 
                     <section class="main-body-container-header">
                         <h5>
@@ -137,7 +137,7 @@
                             </section>
 
                             <section class="col-12 mt-2">
-                                <button class="btn btn-primary btn-sm">ثبت نهایی</button>
+                                <button class="btn btn-primary w-100">ثبت نهایی</button>
                             </section>
                         </section>
                     </form>

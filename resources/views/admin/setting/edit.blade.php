@@ -19,13 +19,14 @@
     <section class="row">
         <section class="col-12">
             <section class="main-body-container">
-                <section class="main-body-container-header">
-                    <h5>
-                        ویرایش تنظیمات</>
-                    </h5>
-                </section>
 
-                <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
+
+                <section class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
+                    <section class="main-body-container-header">
+                        <h5>
+                            ویرایش تنظیمات
+                        </h5>
+                    </section>
                     <a href="{{ route('admin.setting.index') }}" class="btn btn-info btn-sm">بازگشت</a>
                 </section>
 
@@ -35,8 +36,8 @@
                         @method('put')
                         <section class="row">
 
-                            <section class="col-12">
-                                <div class="form-group">
+                            <section class="col-12 mb-2">
+                                <div class="form-group mb-1">
                                     <label for="title">عنوان سایت</label>
                                     <input type="text" class="form-control form-control-sm" name="title" id="title"
                                         value="{{ old('title', $setting->title) }}">
@@ -48,8 +49,8 @@
                                 @enderror
                             </section>
 
-                            <section class="col-12">
-                                <div class="form-group">
+                            <section class="col-12 mb-2">
+                                <div class="form-group mb-1">
                                     <label for="description">توضیحات سایت</label>
                                     <input type="text" class="form-control form-control-sm" name="description" id="description"
                                         value="{{ old('description', $setting->description) }}">
@@ -61,8 +62,8 @@
                                 @enderror
                             </section>
 
-                            <section class="col-12">
-                                <div class="form-group">
+                            <section class="col-12 mb-2">
+                                <div class="form-group mb-1">
                                     <label for="keywords">کلمات کلیدی سایت</label>
                                     <input type="text" class="form-control form-control-sm" name="keywords" id="keywords"
                                         value="{{ old('keywords', $setting->keywords) }}">
@@ -77,7 +78,7 @@
 
 
                             <section class="col-12 col-md-6 my-2">
-                                <div class="form-group">
+                                <div class="form-group mb-1">
                                     <label for="logo">لوگو</label>
                                     <input type="file" class="form-control form-control-sm" name="logo" id="logo">
                                 </div>
@@ -90,7 +91,7 @@
 
 
                          <section class="col-12 col-md-6 my-2">
-                                <div class="form-group">
+                                <div class="form-group mb-1">
                                     <label for="icon">آیکون</label>
                                     <input type="file" class="form-control form-control-sm" name="icon" id="icon">
                                 </div>
@@ -103,7 +104,7 @@
 
 
                             <section class="col-12 my-3">
-                                <button class="btn btn-primary btn-sm">ثبت</button>
+                                <button class="btn btn-primary w-100">ثبت نهایی</button>
                             </section>
                         </section>
                     </form>

@@ -21,7 +21,7 @@
 
             @include('admin.alerts.alert-section.success')
 
-            <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
+            <section class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
                 <a href="{{ route('admin.ticket.priority.create') }}" class="btn btn-info btn-sm">ایجاد اولویت</a>
                 <div class="max-width-16-rem">
                     <input type="text" class="form-control form-control-sm form-text" placeholder="جستجو">

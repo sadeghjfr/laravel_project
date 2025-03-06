@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\Market\DiscountController;
 use App\Http\Controllers\Admin\Market\GalleryController;
 use App\Http\Controllers\Admin\Market\OrderController;
 use App\Http\Controllers\Admin\Market\PaymentController;
+use App\Http\Controllers\Admin\Market\ProductColorController;
 use App\Http\Controllers\Admin\Market\ProductController;
 use App\Http\Controllers\Admin\Market\StoreController;
 use App\Http\Controllers\Admin\Notify\EmailController;
@@ -29,7 +30,6 @@ use App\Http\Controllers\Admin\Ticket\TicketController;
 use App\Http\Controllers\Admin\Ticket\TicketPriorityController;
 use App\Http\Controllers\Admin\User\RoleController;
 use App\Http\Controllers\Admin\User\UserController;
-use App\Http\Controllers\ProductColorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -198,6 +198,7 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
             Route::get('/color/create/{product}', [ProductColorController::class, 'create'])->name('admin.market.color.create');
             Route::post('/color/store/{product}', [ProductColorController::class, 'store'])->name('admin.market.color.store');
             Route::delete('/color/destroy/{product}/{color}', [ProductColorController::class, 'destroy'])->name('admin.market.color.destroy');
+
             //gallery
             Route::get('/gallery/{product}', [GalleryController::class, 'index'])->name('admin.market.gallery.index');
             Route::get('/gallery/create/{product}', [GalleryController::class, 'create'])->name('admin.market.gallery.create');

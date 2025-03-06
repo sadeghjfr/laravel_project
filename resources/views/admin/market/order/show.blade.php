@@ -9,7 +9,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item font-size-12"><a href="{{route('admin.home')}}"> خانه</a></li>
-            <li class="breadcrumb-item font-size-12"><a href="#"> بخش فروش</a></li>
+            <li class="breadcrumb-item font-size-12"><a href="#"> فروشگاه</a></li>
             <li class="breadcrumb-item font-size-12"><a href="{{route('admin.market.order.index')}}"> سفارشات</a></li>
             <li class="breadcrumb-item font-size-12 active" aria-current="page"> فاکتور سفارش</li>
         </ol>

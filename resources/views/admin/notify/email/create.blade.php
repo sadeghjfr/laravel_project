@@ -10,8 +10,8 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item font-size-12"> <a href="{{route('admin.home')}}">خانه</a></li>
-      <li class="breadcrumb-item font-size-12"> <a href="#">اطلاع رسانی</a></li>
-      <li class="breadcrumb-item font-size-12"> <a href="{{route('admin.notify.email.index')}}">اطلاعیه ایمیلی</a></li>
+      <li class="breadcrumb-item font-size-12"> <a href="#"> اطلاع رسانی</a></li>
+      <li class="breadcrumb-item font-size-12"> <a href="{{route('admin.notify.email.index')}}"> اطلاعیه ایمیلی</a></li>
       <li class="breadcrumb-item font-size-12 active" aria-current="page"> ایجاد اطلاعیه ایمیلی</li>
     </ol>
   </nav>
@@ -20,13 +20,14 @@
   <section class="row">
     <section class="col-12">
         <section class="main-body-container">
-            <section class="main-body-container-header">
-                <h5>
-                  ایجاد اطلاعیه ایمیلی
-                </h5>
-            </section>
 
-            <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
+            <section class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
+                <section class="main-body-container-header">
+                    <h5>
+                        ایجاد اطلاعیه ایمیلی
+                    </h5>
+                </section>
+
                 <a href="{{ route('admin.notify.email.index') }}" class="btn btn-info btn-sm">بازگشت</a>
             </section>
 
@@ -35,8 +36,8 @@
                     @csrf
                     <section class="row">
 
-                        <section class="col-12 col-md-6">
-                            <div class="form-group">
+                        <section class="col-12 col-md-6 mb-2">
+                            <div class="form-group mb-1">
                                 <label for="">عنوان ایمیل</label>
                                 <input type="text" name="subject" class="form-control form-control-sm"
                                 value="{{ old('subject') }}">
@@ -49,8 +50,8 @@
                         </section>
 
 
-                        <section class="col-12 col-md-6">
-                            <div class="form-group">
+                        <section class="col-12 col-md-6 mb-2">
+                            <div class="form-group mb-1">
                                 <label for="">تاریخ و ساعت انتشار</label>
                                 <input type="text" name="published_at" id="published_at"
                                     class="form-control form-control-sm d-none">
@@ -64,10 +65,10 @@
                         </section>
 
 
-                        <section class="col-12">
-                            <div class="form-group">
+                        <section class="col-12 mb-2">
+                            <div class="form-group mb-1">
                                 <label for="status">وضعیت</label>
-                                <select name="status" id="" class="form-control form-control-sm" id="status">
+                                <select name="status"  class="form-control form-control-sm" id="status">
                                     <option value="0" @if (old('status') == 0) selected @endif>غیرفعال</option>
                                     <option value="1" @if (old('status') == 1) selected @endif>فعال</option>
                                 </select>
@@ -79,8 +80,8 @@
                             @enderror
                         </section>
 
-                        <section class="col-12">
-                            <div class="form-group">
+                        <section class="col-12 mb-2">
+                            <div class="form-group mb-1">
                                 <label for="">متن ایمیل</label>
                                 <textarea name="body" id="body"  class="form-control form-control-sm" rows="6">{{ old('body') }}</textarea>
                             </div>
@@ -93,8 +94,8 @@
 
 
 
-                        <section class="col-12">
-                            <button class="btn btn-primary btn-sm">ثبت</button>
+                        <section class="col-12 mt-4">
+                            <button class="btn btn-primary w-100">ثبت نهایی</button>
                         </section>
                     </section>
                 </form>
@@ -112,21 +113,6 @@
         CKEDITOR.replace('body');
     </script>
 
-<script src="{{ asset('admin-assets/jalalidatepicker/persian-date.min.js') }}"></script>
-<script src="{{ asset('admin-assets/jalalidatepicker/persian-datepicker.min.js') }}"></script>
-<script>
-    $(document).ready(function() {
-        $('#published_at_view').persianDatepicker({
-            format: 'YYYY/MM/DD',
-            altField: '#published_at',
-            timePicker: {
-                enabled: true,
-                meridiem: {
-                    enabled: true
-                }
-            }
-        })
-    });
-</script>
+    @include('admin.scripts.date-picker-control')
 
 @endsection

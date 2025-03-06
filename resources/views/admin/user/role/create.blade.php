@@ -20,7 +20,7 @@
         <section class="col-12">
             <section class="main-body-container">
 
-                <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
+                <section class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
                     <h5>
                         ایجاد نقش
                     </h5>

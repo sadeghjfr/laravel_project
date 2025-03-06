@@ -10,7 +10,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item font-size-12"><a href="{{route('admin.home')}}">خانه</a></li>
-            <li class="breadcrumb-item font-size-12"><a href="#"> بخش محتوا</a></li>
+            <li class="breadcrumb-item font-size-12"><a href="#"> بلاگ</a></li>
             <li class="breadcrumb-item font-size-12"><a href="{{route('admin.content.post.index')}}"> پست ها</a></li>
             <li class="breadcrumb-item font-size-12 active" aria-current="page"> ویرایش پست</li>
         </ol>
@@ -20,13 +20,13 @@
     <section class="row">
         <section class="col-12">
             <section class="main-body-container">
-                <section class="main-body-container-header">
-                    <h5>
-                        ویرایش پست
-                    </h5>
-                </section>
 
-                <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
+                <section class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
+                    <section class="main-body-container-header">
+                        <h5>
+                            ویرایش پست
+                        </h5>
+                    </section>
                     <a href="{{ route('admin.content.post.index') }}" class="btn btn-info btn-sm">بازگشت</a>
                 </section>
 
@@ -37,8 +37,8 @@
                         @method('put')
                         <section class="row">
 
-                            <section class="col-12 col-md-6">
-                                <div class="form-group">
+                            <section class="col-12 col-md-6 mb-2">
+                                <div class="form-group mb-1">
                                     <label for="">عنوان پست</label>
                                     <input type="text" class="form-control form-control-sm" name="title"
                                            value="{{ old('title', $post->title) }}">
@@ -52,10 +52,10 @@
                                 @enderror
                             </section>
 
-                            <section class="col-12 col-md-6">
-                                <div class="form-group">
+                            <section class="col-12 col-md-6 mb-2">
+                                <div class="form-group mb-1">
                                     <label for="">انتخاب دسته</label>
-                                    <select name="category_id" id="" class="form-control form-control-sm">
+                                    <select name="category_id"  class="form-control form-control-sm">
                                         <option value="">دسته را انتخاب کنید</option>
                                         @foreach ($postCategories as $postCategory)
                                             <option value="{{ $postCategory->id }}"
@@ -73,8 +73,85 @@
                                 @enderror
                             </section>
 
-                            <section class="col-12 col-md-6">
-                                <div class="form-group">
+                            <section class="col-12 col-md-6 mb-2">
+                                <div class="form-group mb-1">
+                                    <label for="tags">تگ ها</label>
+                                    <input type="hidden" class="form-control form-control-sm" name="tags" id="tags"
+                                           value="{{ old('tags', $post->tags) }}">
+                                    <select class="select2 form-control form-control-sm" id="select_tags" multiple>
+
+                                    </select>
+                                </div>
+                                @error('tags')
+                                <span class="text-danger" role="alert">
+                                    <strong>
+                                        {{$message}}
+                                    </strong>
+                                </span>
+                                @enderror
+                            </section>
+
+                            <section class="col-12 col-md-6 mb-2">
+                                <div class="form-group mb-1">
+                                    <label for="status">وضعیت</label>
+                                    <select name="status"  class="form-control form-control-sm" id="status">
+                                        <option value="0" @if(old('status', $post->status) == 0) selected @endif>
+                                            غیرفعال
+                                        </option>
+                                        <option value="1" @if(old('status', $post->status) == 1) selected @endif>فعال
+                                        </option>
+                                    </select>
+                                </div>
+                                @error('status')
+                                <span class="text-danger" role="alert">
+                                    <strong>
+                                        {{$message}}
+                                    </strong>
+                                </span>
+                                @enderror
+                            </section>
+
+
+                            <section class="col-12 col-md-6 mb-2">
+                                <div class="form-group mb-1">
+                                    <label for="commentable">امکان درج کامنت</label>
+                                    <select name="commentable" class="form-control form-control-sm"
+                                            id="commentable">
+                                        <option value="0"
+                                                @if(old('commentable', $post->commentable) == 0) selected @endif>غیرفعال
+                                        </option>
+                                        <option value="1"
+                                                @if(old('commentable', $post->commentable) == 1) selected @endif>فعال
+                                        </option>
+                                    </select>
+                                </div>
+                                @error('commentable')
+                                <span class="text-danger" role="alert">
+                                    <strong>
+                                        {{$message}}
+                                    </strong>
+                                </span>
+                                @enderror
+                            </section>
+
+
+                            <section class="col-12 col-md-6 mb-2">
+                                <div class="form-group mb-1">
+                                    <label for="">تاریخ انتشار</label>
+                                    <input class="form-control form-control-sm d-none"  type="text" id="published_at" name="published_at" value="{{$post->published_at}}">
+                                    <input type="text" id="published_at_view" class="form-control form-control-sm" value="{{$post->published_at}}">
+                                </div>
+                                @error('published_at')
+                                <span class="text-danger" role="alert">
+                                    <strong>
+                                        {{$message}}
+                                    </strong>
+                                </span>
+                                @enderror
+                            </section>
+
+                            <section class="col-12 mb-4">
+                                <div class="form-group mb-1">
                                     <label for="">تصویر </label>
                                     <input type="file" name="image" id="image" class="form-control form-control-sm">
                                 </div>
@@ -112,85 +189,9 @@
 
                             </section>
 
-                            <section class="col-12 col-md-6">
-                                <div class="form-group">
-                                    <label for="status">وضعیت</label>
-                                    <select name="status" id="" class="form-control form-control-sm" id="status">
-                                        <option value="0" @if(old('status', $post->status) == 0) selected @endif>
-                                            غیرفعال
-                                        </option>
-                                        <option value="1" @if(old('status', $post->status) == 1) selected @endif>فعال
-                                        </option>
-                                    </select>
-                                </div>
-                                @error('status')
-                                <span class="text-danger" role="alert">
-                                    <strong>
-                                        {{$message}}
-                                    </strong>
-                                </span>
-                                @enderror
-                            </section>
-
-
-                            <section class="col-12 col-md-6">
-                                <div class="form-group">
-                                    <label for="commentable">امکان درج کامنت</label>
-                                    <select name="commentable" id="" class="form-control form-control-sm"
-                                            id="commentable">
-                                        <option value="0"
-                                                @if(old('commentable', $post->commentable) == 0) selected @endif>غیرفعال
-                                        </option>
-                                        <option value="1"
-                                                @if(old('commentable', $post->commentable) == 1) selected @endif>فعال
-                                        </option>
-                                    </select>
-                                </div>
-                                @error('commentable')
-                                <span class="text-danger" role="alert">
-                                    <strong>
-                                        {{$message}}
-                                    </strong>
-                                </span>
-                                @enderror
-                            </section>
-
-
-                            <section class="col-12 col-md-6">
-                                <div class="form-group">
-                                    <label for="">تاریخ انتشار</label>
-                                    <input class="form-control form-control-sm d-none"  type="text" id="published_at" name="published_at" value="{{$post->published_at}}">
-                                    <input type="text" id="published_at_view" class="form-control form-control-sm" value="{{$post->published_at}}">
-                                </div>
-                                @error('published_at')
-                                <span class="text-danger" role="alert">
-                                    <strong>
-                                        {{$message}}
-                                    </strong>
-                                </span>
-                                @enderror
-                            </section>
 
                             <section class="col-12">
-                                <div class="form-group">
-                                    <label for="tags">تگ ها</label>
-                                    <input type="hidden" class="form-control form-control-sm" name="tags" id="tags"
-                                           value="{{ old('tags', $post->tags) }}">
-                                    <select class="select2 form-control form-control-sm" id="select_tags" multiple>
-
-                                    </select>
-                                </div>
-                                @error('tags')
-                                <span class="text-danger" role="alert">
-                                    <strong>
-                                        {{$message}}
-                                    </strong>
-                                </span>
-                                @enderror
-                            </section>
-
-                            <section class="col-12">
-                                <div class="form-group">
+                                <div class="form-group mb-1">
                                     <label for="">خلاصه پست</label>
                                     <textarea name="summary" id="summary" class="form-control form-control-sm"
                                               rows="6">{{ old('summary', $post->summary) }}</textarea>
@@ -205,7 +206,7 @@
                             </section>
 
                             <section class="col-12">
-                                <div class="form-group">
+                                <div class="form-group mb-1">
                                     <label for="">متن پست</label>
                                     <textarea name="body" id="body" class="form-control form-control-sm"
                                               rows="6">{{ old('body', $post->body) }}</textarea>
@@ -219,9 +220,9 @@
                                 @enderror
                             </section>
 
-                            <section class="col-12">
-                                <button class="btn btn-primary btn-sm">ثبت</button>
-                            </section>
+                            <section class="col-12 mt-4">
+                            <button class="btn btn-primary w-100">ثبت نهایی</button>
+                        </section>
                         </section>
                     </form>
                 </section>
@@ -235,50 +236,13 @@
 @section('script')
 
     <script src="{{ asset('admin-assets/ckeditor/ckeditor.js') }}"></script>
-    <script src="{{ asset('admin-assets/jalalidatepicker/persian-date.min.js') }}"></script>
-    <script src="{{ asset('admin-assets/jalalidatepicker/persian-datepicker.min.js') }}"></script>
 
     <script>
         CKEDITOR.replace('body');
         CKEDITOR.replace('summary');
     </script>
 
-    <script>
-        $(document).ready(function () {
-            $('#published_at_view').persianDatepicker({
-
-                format: 'YYYY/MM/DD',
-                altField: '#published_at'
-            })
-        });
-    </script>
-
-    <script>
-        $(document).ready(function () {
-            var tags_input = $('#tags');
-            var select_tags = $('#select_tags');
-            var default_tags = tags_input.val();
-            var default_data = null;
-
-            if (tags_input.val() !== null && tags_input.val().length > 0) {
-                default_data = default_tags.split(',');
-            }
-
-            select_tags.select2({
-                placeholder: 'لطفا تگ های خود را وارد نمایید',
-                tags: true,
-                data: default_data
-            });
-            select_tags.children('option').attr('selected', true).trigger('change');
-
-
-            $('#form').submit(function (event) {
-                if (select_tags.val() !== null && select_tags.val().length > 0) {
-                    var selectedSource = select_tags.val().join(',');
-                    tags_input.val(selectedSource)
-                }
-            })
-        })
-    </script>
+    @include('admin.scripts.date-picker-control')
+    @include('admin.scripts.tags-control')
 
 @endsection

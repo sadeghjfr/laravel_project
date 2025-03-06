@@ -48,28 +48,28 @@ class OrderController extends Controller
 
         $order->status = 'canceled';
         $order->save();
-        return back();
+        return back()->with('toast-success', 'عملیات با موفقیت انجام شد');
     }
 
     public function return(Order $order){
 
         $order->status = 'returned';
         $order->save();
-        return back();
+        return back()->with('toast-success', 'عملیات با موفقیت انجام شد');
     }
 
     public function waiting(Order $order){
         $order->status = 'waiting';
         $order->sent_at = null;
         $order->save();
-        return back();
+        return back()->with('toast-success', 'وضعیت سفارش با موفقیت تغییر کرد');
     }
 
     public function sent(Order $order){
         $order->status = 'sent';
         $order->sent_at = now();
         $order->save();
-        return back();
+        return back()->with('toast-success', 'وضعیت سفارش با موفقیت تغییر کرد');
     }
 
     public function delivered(Order $order){
@@ -79,7 +79,7 @@ class OrderController extends Controller
 
         $order->status = 'delivered';
         $order->save();
-        return back();
+        return back()->with('toast-success', 'وضعیت سفارش با موفقیت تغییر کرد');
     }
 
 }

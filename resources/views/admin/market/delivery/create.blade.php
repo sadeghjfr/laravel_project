@@ -9,7 +9,7 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item font-size-12"><a href="{{route('admin.home')}}">خانه</a></li>
-      <li class="breadcrumb-item font-size-12"> <a href="#">بخش فروش</a></li>
+      <li class="breadcrumb-item font-size-12"> <a href="#">فروشگاه</a></li>
       <li class="breadcrumb-item font-size-12"> <a href="{{ route('admin.market.delivery.index') }}">روش های ارسال</a></li>
       <li class="breadcrumb-item font-size-12 active" aria-current="page"> ایجاد روش ارسال</li>
     </ol>
@@ -20,7 +20,7 @@
     <section class="col-12">
         <section class="main-body-container">
 
-            <section class="d-flex justify-content-between align-items-center mt-2 mb-3 border-bottom pb-2">
+            <section class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">
                 <section class="main-body-container-header">
                     <h5>
                         ایجاد روش ارسال
@@ -34,8 +34,8 @@
                     @csrf
                     <section class="row">
 
-                        <section class="col-12 col-md-6">
-                            <div class="form-group">
+                        <section class="col-12 col-md-6 mb-2">
+                            <div class="form-group mb-1">
                                 <label for="">نام روش ارسال</label>
                                 <input type="text" name="name" value="{{ old('name') }}" class="form-control form-control-sm">
                             </div>
@@ -47,8 +47,8 @@
                             </span>
                         @enderror
                         </section>
-                        <section class="col-12 col-md-6">
-                            <div class="form-group">
+                        <section class="col-12 col-md-6 mb-2">
+                            <div class="form-group mb-1">
                                 <label for="">هزینه روش ارسال</label>
                                 <input type="text" name="amount"  value="{{ old('amount') }}" class="form-control form-control-sm">
                             </div>
@@ -60,8 +60,8 @@
                             </span>
                         @enderror
                         </section>
-                        <section class="col-12 col-md-6">
-                            <div class="form-group">
+                        <section class="col-12 col-md-6 mb-2">
+                            <div class="form-group mb-1">
                                 <label for="">زمان ارسال</label>
                                 <input type="text" name="delivery_time" value="{{ old('delivery_time') }}" class="form-control form-control-sm">
                             </div>
@@ -74,8 +74,8 @@
                         @enderror
                         </section>
 
-                        <section class="col-12 col-md-6">
-                            <div class="form-group">
+                        <section class="col-12 col-md-6 mb-2">
+                            <div class="form-group mb-1">
                                 <label for="">واحد زمان ارسال</label>
                                 <input type="text" name="delivery_time_unit" value="{{ old('delivery_time_unit') }}" class="form-control form-control-sm">
                             </div>
@@ -88,8 +88,8 @@
                         @enderror
                         </section>
 
-                        <section class="col-12">
-                            <button class="btn btn-primary btn-sm">ثبت</button>
+                        <section class="col-12 mt-4">
+                            <button class="btn btn-primary w-100">ثبت نهایی</button>
                         </section>
                     </section>
                 </form>

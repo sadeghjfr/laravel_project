@@ -9,7 +9,7 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item font-size-12"><a href="{{route('admin.home')}}">خانه</a></li>
-        <li class="breadcrumb-item font-size-12"><a href="#"> بخش فروش</a></li>
+        <li class="breadcrumb-item font-size-12"><a href="#"> فروشگاه</a></li>
         <li class="breadcrumb-item font-size-12"> <a href="{{route('admin.market.product.index')}}"> محصولات</a></li>
       <li class="breadcrumb-item font-size-12 active" aria-current="page"> گالری</li>
     </ol>
@@ -20,7 +20,7 @@
     <section class="col-12">
         <section class="main-body-container">
 
-            <section class="d-flex justify-content-between align-items-center mt-2 mb-3 border-bottom pb-2">
+            <section class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">
                 <a href="{{ route('admin.market.gallery.create', $product->id) }}" class="btn btn-info btn-sm">ایجاد تصویر جدید برای {{$product->name}} </a>
                 <div class="max-width-16-rem">
                     <a href="{{ route('admin.market.product.index') }}" class="btn btn-info btn-sm">بازگشت</a>

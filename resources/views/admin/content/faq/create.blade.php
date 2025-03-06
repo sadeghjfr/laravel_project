@@ -9,7 +9,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item font-size-12"> <a href="{{route('admin.home')}}">خانه</a></li>
-            <li class="breadcrumb-item font-size-12"> <a href="#">بخش محتوا</a></li>
+            <li class="breadcrumb-item font-size-12"> <a href="#"> بلاگ</a></li>
             <li class="breadcrumb-item font-size-12"> <a href="{{route('admin.content.faq.index')}}"> سوالات متداول</a></li>
             <li class="breadcrumb-item font-size-12 active" aria-current="page"> ایجاد سوال</li>
         </ol>
@@ -19,13 +19,13 @@
     <section class="row">
         <section class="col-12">
             <section class="main-body-container">
-                <section class="main-body-container-header">
-                    <h5>
-                        ایجاد سوال
-                    </h5>
-                </section>
 
-                <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
+                <section class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
+                    <section class="main-body-container-header">
+                        <h5>
+                            ایجاد سوال
+                        </h5>
+                    </section>
                     <a href="{{ route('admin.content.faq.index') }}" class="btn btn-info btn-sm">بازگشت</a>
                 </section>
 
@@ -92,9 +92,9 @@
                                 @enderror
                             </section>
 
-                            <section class="col-12">
-                                <button class="btn btn-primary btn-sm">ثبت</button>
-                            </section>
+                            <section class="col-12 mt-4">
+                            <button class="btn btn-primary w-100">ثبت نهایی</button>
+                        </section>
                         </section>
                     </form>
                 </section>
@@ -113,40 +113,6 @@
         CKEDITOR.replace('answer');
     </script>
 
-    <script>
-
-        $(document).ready(function () {
-
-            const tags_input = $('#tags');
-            const select_tags = $('#select_tags');
-            const default_tags = tags_input.val();
-            let default_data = null;
-
-            if(tags_input.val() !== null && tags_input.val().length > 0)
-            {
-                default_data = default_tags.split(',');
-            }
-
-            select_tags.select2({
-                placeholder : 'لطفا تگ های خود را وارد نمایید',
-                tags: true,
-                data: default_data
-            });
-
-            select_tags.children('option').attr('selected', true).trigger('change');
-
-
-            $('#form').submit(function ( event ){
-
-                if(select_tags.val() !== null && select_tags.val().length > 0){
-                    const selectedSource = select_tags.val().join(',');
-                    tags_input.val(selectedSource)
-                }
-
-            })
-
-        })
-
-    </script>
+    @include('admin.scripts.tags-control')
 
 @endsection

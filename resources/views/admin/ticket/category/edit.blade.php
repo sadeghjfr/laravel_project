@@ -20,7 +20,7 @@
         <section class="col-12">
             <section class="main-body-container">
 
-                <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
+                <section class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
                     <section class="main-body-container-header">
                         <h5>
                             ویرایش دسته بندی
@@ -37,7 +37,7 @@
                         <section class="row">
 
                             <section class="col-12 col-md-6 my-2">
-                                <div class="form-group">
+                                <div class="form-group mb-1">
                                     <label for="name">نام دسته</label>
                                     <input type="text" class="form-control form-control-sm" name="name" id="name"
                                            value="{{ old('name', $ticketCategory->name) }}">
@@ -53,7 +53,7 @@
 
 
                             <section class="col-12 col-md-6 my-2">
-                                <div class="form-group">
+                                <div class="form-group mb-1">
                                     <label for="status">وضعیت</label>
                                     <select name="status" class="form-control form-control-sm" id="status">
                                         <option value="0" @if (old('status', $ticketCategory->status) == 0) selected @endif>غیرفعال</option>
@@ -70,7 +70,7 @@
                             </section>
 
                             <section class="col-12 my-3 ">
-                                <button class="btn btn-primary btn-sm">ثبت نهایی</button>
+                                <button class="btn btn-primary w-100">ثبت نهایی</button>
                             </section>
 
                         </section>

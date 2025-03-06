@@ -9,7 +9,7 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item font-size-12"><a href="{{route('admin.home')}}">خانه</a></li>
-        <li class="breadcrumb-item font-size-12"><a href="#"> بخش فروش</a></li>
+        <li class="breadcrumb-item font-size-12"><a href="#"> فروشگاه</a></li>
         <li class="breadcrumb-item font-size-12"><a href="{{route('admin.market.store.index')}}"> انبار</a></li>
       <li class="breadcrumb-item font-size-12 active" aria-current="page"> اضافه کردن به انبار</li>
     </ol>
@@ -20,7 +20,7 @@
     <section class="col-12">
         <section class="main-body-container">
 
-            <section class="d-flex justify-content-between align-items-center mt-2 mb-3 border-bottom pb-2">
+            <section class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">
                 <section class="main-body-container-header">
                     <h5>
                         اضافه کردن به انبار
@@ -88,10 +88,10 @@
                             @enderror
                         </section>
 
-
-                        <section class="col-12">
-                            <button class="btn btn-primary btn-sm">ثبت</button>
+                        <section class="col-12 mt-4">
+                            <button class="btn btn-primary w-100">ثبت نهایی</button>
                         </section>
+
                     </section>
                 </form>
             </section>

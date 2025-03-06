@@ -19,7 +19,7 @@
         <section class="col-12">
             <section class="main-body-container">
 
-                <section class="d-flex justify-content-between align-items-center mt-2 mb-3 border-bottom pb-2">
+                <section class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">
                     <a href="{{ route('admin.user.role.create') }}" class="btn btn-info btn-sm">ایجاد نقش جدید</a>
                     <div class="max-width-16-rem">
                         <input type="text" class="form-control form-control-sm form-text" placeholder="جستجو">

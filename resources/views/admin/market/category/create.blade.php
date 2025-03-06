@@ -9,7 +9,7 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item font-size-12"><a href="{{ route('admin.home') }}">خانه</a></li>
-        <li class="breadcrumb-item font-size-12"><a href="#"> بخش فروش</a></li>
+        <li class="breadcrumb-item font-size-12"><a href="#"> فروشگاه</a></li>
         <li class="breadcrumb-item font-size-12"><a href="{{ route('admin.market.category.index') }}"> دسته بندی</a></li>
       <li class="breadcrumb-item font-size-12 active" aria-current="page"> ایجاد دسته بندی</li>
     </ol>
@@ -20,7 +20,7 @@
     <section class="col-12">
         <section class="main-body-container">
 
-            <section class="d-flex justify-content-between align-items-center mt-2 mb-3 border-bottom pb-2">
+            <section class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">
                 <section class="main-body-container-header">
                     <h5>
                         ایجاد دسته بندی
@@ -34,8 +34,8 @@
                     @csrf
                     <section class="row">
 
-                        <section class="col-12 col-md-6">
-                            <div class="form-group">
+                        <section class="col-12 col-md-6 mb-2">
+                            <div class="form-group mb-1">
                                 <label for="">نام دسته</label>
                                 <input type="text" name="name" value="{{ old('name') }}" class="form-control form-control-sm">
                             </div>
@@ -48,10 +48,10 @@
                             @enderror
                         </section>
 
-                        <section class="col-12 col-md-6">
-                            <div class="form-group">
+                        <section class="col-12 col-md-6 mb-2">
+                            <div class="form-group mb-1">
                                 <label for="">منو والد</label>
-                                <select name="parent_id" id="" class="form-control form-control-sm">
+                                <select name="parent_id"  class="form-control form-control-sm">
                                     <option value="">منوی اصلی</option>
                                     @foreach ($categories as $category)
 
@@ -71,7 +71,7 @@
                         </section>
 
                         <section class="col-12 col-md-6 my-2">
-                            <div class="form-group">
+                            <div class="form-group mb-1">
                                 <label for="image">تصویر</label>
                                 <input type="file" class="form-control form-control-sm" name="image" id="image">
                             </div>
@@ -86,7 +86,7 @@
 
 
                         <section class="col-12 col-md-6 my-2">
-                            <div class="form-group">
+                            <div class="form-group mb-1">
                                 <label for="status">وضعیت</label>
                                 <select name="status" class="form-control form-control-sm" id="status">
                                     <option value="0" @if(old('status') == 0) selected @endif>غیرفعال</option>
@@ -103,7 +103,7 @@
                         </section>
 
                         <section class="col-12 col-md-6 my-2">
-                            <div class="form-group">
+                            <div class="form-group mb-1">
                                 <label for="show_in_menu">نمایش در منو</label>
                                 <select name="show_in_menu" class="form-control form-control-sm" id="show_in_menu">
                                     <option value="0" @if(old('show_in_menu') == 0) selected @endif>غیرفعال</option>
@@ -121,7 +121,7 @@
 
 
                         <section class="col-12 col-md-6 my-2">
-                            <div class="form-group">
+                            <div class="form-group mb-1">
                                 <label for="tags">تگ ها</label>
                                 <input type="hidden" class="form-control form-control-sm"  name="tags" id="tags" value="{{ old('tags') }}">
                                 <select class="select2 form-control form-control-sm" id="select_tags" multiple>
@@ -138,7 +138,7 @@
                         </section>
 
                         <section class="col-12">
-                            <div class="form-group">
+                            <div class="form-group mb-1">
                                 <label for="">توضیحات</label>
                                 <textarea name="description" id="description"  class="form-control form-control-sm" rows="6">
                                     {{ old('description') }}

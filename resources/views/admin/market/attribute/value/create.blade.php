@@ -9,7 +9,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item font-size-12"><a href="{{route('admin.home')}}">خانه</a></li>
-            <li class="breadcrumb-item font-size-12"><a href="#"> بخش فروش</a></li>
+            <li class="breadcrumb-item font-size-12"><a href="#"> فروشگاه</a></li>
             <li class="breadcrumb-item font-size-12"><a href="{{ route('admin.market.attribute.index') }}"> ویژگی‌های دسته‌بندی‌ها</a></li>
             <li class="breadcrumb-item font-size-12"><a href="{{ route('admin.market.value.index', $attribute->id) }}"> مقادیر ویژگی</a></li>
             <li class="breadcrumb-item font-size-12 active" aria-current="page"> ایجاد مقدار ویژگی</li>
@@ -21,7 +21,7 @@
         <section class="col-12">
             <section class="main-body-container">
 
-                <section class="d-flex justify-content-between align-items-center mt-2 mb-3 border-bottom pb-2">
+                <section class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">
                     <section class="main-body-container-header">
                         <h5>
                             ایجاد مقدار برای ویژگی {{$attribute->name}} در دسته بندی {{$attribute->category->name}}

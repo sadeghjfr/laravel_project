@@ -9,7 +9,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item font-size-12"><a href="{{route('admin.home')}}">خانه</a></li>
-            <li class="breadcrumb-item font-size-12"><a href="#"> بخش فروش</a></li>
+            <li class="breadcrumb-item font-size-12"><a href="#"> فروشگاه</a></li>
             <li class="breadcrumb-item font-size-12"><a href="{{ route('admin.market.attribute.index') }}"> ویژگی‌های دسته‌بندی‌ها</a></li>
             <li class="breadcrumb-item font-size-12 active" aria-current="page"> مقادیر ویژگی</li>
         </ol>

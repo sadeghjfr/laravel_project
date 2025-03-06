@@ -10,7 +10,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item font-size-12"> <a href="{{route('admin.home')}}">خانه</a></li>
-            <li class="breadcrumb-item font-size-12"> <a href="#"> بخش فروش</a></li>
+            <li class="breadcrumb-item font-size-12"> <a href="#"> فروشگاه</a></li>
             <li class="breadcrumb-item font-size-12"> <a href="{{route('admin.market.product.index')}}"> محصولات</a></li>
             <li class="breadcrumb-item font-size-12 active" aria-current="page"> ایجاد محصول</li>
         </ol>
@@ -21,7 +21,7 @@
         <section class="col-12">
             <section class="main-body-container">
 
-                <section class="d-flex justify-content-between align-items-center mt-2 mb-3 border-bottom pb-2">
+                <section class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">
                     <section class="main-body-container-header">
                         <h5>
                             ایجاد محصول
@@ -52,7 +52,7 @@
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
                                     <label for="category_id">انتخاب دسته</label>
-                                    <select name="category_id" id="" class="form-control form-control-sm">
+                                    <select name="category_id"  class="form-control form-control-sm">
                                         <option value="">دسته را انتخاب کنید</option>
                                         @foreach ($productCategories as $productCategory)
                                             <option value="{{ $productCategory->id }}" @if(old('category_id') == $productCategory->id) selected @endif>{{ $productCategory->name }}</option>
@@ -73,7 +73,7 @@
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
                                     <label for="brand_id">انتخاب برند</label>
-                                    <select name="brand_id" id="" class="form-control form-control-sm">
+                                    <select name="brand_id"  class="form-control form-control-sm">
                                         <option value="">دسته را انتخاب کنید</option>
                                         @foreach ($brands as $brand)
                                             <option value="{{ $brand->id }}" @if(old('brand_id') == $brand->id) selected @endif>{{ $brand->original_name }}</option>
