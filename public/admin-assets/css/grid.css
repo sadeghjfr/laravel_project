@@ -52,6 +52,8 @@
     color: #000000;
     box-shadow: 0 1px 20px 0 rgba(70,90,100,0.08);
     display: none;
+    overflow: auto;
+    max-height: 20rem;
 }
 
 .notification-img{
@@ -90,11 +92,12 @@
 .header-comment-wrapper{
     height: calc(100% - 6rem);
     overflow: auto;
+    max-height: 20rem;
 }
 
-.header-comment-wrapper::-webkit-scrollbar{
+/*.header-comment-wrapper::-webkit-scrollbar{
     display: none;
-}
+}*/
 
 .comment-user{
 
@@ -111,6 +114,15 @@
     padding-bottom: 0.6rem;
 }
 
+.comment-user-header{
+
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
+
 .comment-user, .comment-body {
     line-height: 1;
 }
@@ -125,7 +137,6 @@
 .comment-user-status{
     font-size: .3rem;
 }
-
 
 .header-avatar{
     width: 2rem;

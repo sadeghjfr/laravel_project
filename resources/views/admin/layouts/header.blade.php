@@ -44,65 +44,47 @@
             <section>
 
                 <span class="ml-2 ml-md-4 position-relative">
+
                     <span id="header-notification-toggle" class="pointer">
-                        <i class="fa fa-bell"></i><sup class="badge badge-danger">4</sup>
+                        @if($notifications->count() !== 0)
+                            <i class="fa fa-bell"></i><sup class="badge badge-danger">{{$notifications->count()}}</sup>
+                        @else
+                            <i class="fa fa-bell"></i>
+                        @endif
                     </span>
 
                     <section id="header-notification" class="header-notification rounded">
 
-                        <section class="d-flex justify-content-between">
-                            <span class="px-2">
-                                    نوتیفیکیشن ها
-                            </span>
-
-                            <span class="px-2">
-                                <span class="badge badge-danger">جدید</span>
-                            </span>
-                        </section>
-
                         <ul class="list-group rounded px-0">
 
-                            <li class="list-group-item list-group-item-action">
-                                <section class="media">
-                                    <img class="notification-img" src="{{asset('admin-assets/images/avatar-2.jpg')}}"
-                                         alt="avatar">
-                                    <section class="media-body pr-2">
-
-                                        <h5 class="notification-user">صادق جعفری</h5>
-                                        <p class="notification-text">این یک متن تستی است</p>
-                                        <p class="notification-time">30 دقیقه پیش</p>
-
-                                    </section>
+                            @if($notifications->count() !== 0)
+                                <section class="d-flex justify-content-between mx-2 my-2">
+                                    <span class="px-2 comment-user-header">نوتیفیکیشن ها</span>
+                                    <span class="px-2 comment-user-header"><span class="badge badge-danger">جدید</span></span>
                                 </section>
-                            </li>
+                            @else
+                                <li class="list-group-item list-group-item-action">
+                                        <h5 class="comment-user">نوتیفیکیشن جدیدی یافت نشد</h5>
+                                </li>
+                            @endif
 
-                            <li class="list-group-item list-group-item-action">
-                                <section class="media">
-                                    <img class="notification-img" src="{{asset('admin-assets/images/avatar-2.jpg')}}"
-                                         alt="avatar">
-                                    <section class="media-body pr-2">
+                            @foreach($notifications as $notification)
 
-                                        <h5 class="notification-user">صادق جعفری</h5>
-                                        <p class="notification-text">این یک متن تستی است</p>
-                                        <p class="notification-time">30 دقیقه پیش</p>
-
-                                    </section>
-                                </section>
-                            </li>
-
-                            <li class="list-group-item list-group-item-action">
-                                <section class="media">
-                                    <img class="notification-img" src="{{asset('admin-assets/images/avatar-2.jpg')}}"
-                                         alt="avatar">
-                                    <section class="media-body pr-2">
-
-                                        <h5 class="notification-user">صادق جعفری</h5>
-                                        <p class="notification-text">این یک متن تستی است</p>
-                                        <p class="notification-time">30 دقیقه پیش</p>
-
-                                    </section>
-                                </section>
-                            </li>
+                                    <a id="{{$notification->id}}"
+                                       onclick="notificationSeen('{{$notification->id}}', '{{route($notification->data['url'])}}')"
+                                       href="{{route($notification->data['url'])}}" class="text-decoration-none">
+                                    <li class="list-group-item list-group-item-action header-comment-item pointer">
+                                        <section class="media">
+                                            <section class="media-body pr-2">
+                                                <span class="row comment-body">
+                                                    <i class="fas fa-circle text-success comment-user-status ml-2 mt-1"></i>
+                                                    <p class="notification-text mb-1">{{$notification->data['message']}}</p>
+                                                </span>
+                                            </section>
+                                        </section>
+                                </li>
+                                </a>
+                            @endforeach
 
                         </ul>
 
@@ -128,9 +110,13 @@
                             <ul class="list-group rounded px-0">
 
                                 @if($unseenComments->count() !== 0)
-                                    <li class="list-group-item list-group-item-action">
-                                        <h5 class="comment-user">نظرات جدید</h5>
-                                    </li>
+
+                                    <section class="d-flex justify-content-between my-2 mx-2">
+                                        <span class="px-2 comment-user-header">نظرات</span>
+                                        <span class="px-2 comment-user-header"><span
+                                                class="badge badge-danger">جدید</span></span>
+                                    </section>
+
                                 @else
                                     <li class="list-group-item list-group-item-action">
                                         <h5 class="comment-user">نظر جدیدی درج نشده است</h5>
@@ -138,9 +124,10 @@
                                 @endif
 
                                 @foreach($unseenComments as $comment)
-                                    <a href="@if($comment->commentable_type === 'App\Models\Admin\Market\Product') {{route('admin.market.comment.index')}} @else {{route('admin.content.comment.index')}}  @endif" class="btn btn-sm">
+                                    <a href="@if($comment->commentable_type === 'App\Models\Admin\Market\Product') {{route('admin.market.comment.index')}} @else {{route('admin.content.comment.index')}}  @endif"
+                                       class="text-decoration-none">
                                         <li class="list-group-item list-group-item-action header-comment-item pointer">
-                                        <h5 class="comment-user">{{$comment->user->fullName}}</h5>
+                                        <h5 class="comment-user">{{$comment->user->fullName ?? 'کاربر'}}</h5>
                                         <span class="comment-body">
                                             <i class="fas fa-circle text-success comment-user-status ml-2"></i>
                                             {{\Illuminate\Support\Str::limit($comment->body, 30)}}
@@ -201,3 +188,27 @@
     </section>
 
 </header>
+
+<script>
+
+    function notificationSeen(id) {
+
+        $.ajax({
+            type: "POST",
+            url: '/admin/notification/read/' + id,
+            data: {
+                _token: "{{ csrf_token() }}",
+                notification_id: id
+            },
+            success: function(response) {
+                window.location.href = url;
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', error);
+                window.location.href = url;
+            }
+        });
+    }
+
+
+</script>

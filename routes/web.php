@@ -30,6 +30,7 @@ use App\Http\Controllers\Admin\Ticket\TicketController;
 use App\Http\Controllers\Admin\Ticket\TicketPriorityController;
 use App\Http\Controllers\Admin\User\RoleController;
 use App\Http\Controllers\Admin\User\UserController;
+use App\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -432,6 +433,8 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         //Route::post('/store', [SettingController::class, 'store'])->name('admin.setting.store');
         //Route::get('/show/{setting}', [SettingController::class, 'show'])->name('admin.setting.show');
     });
+
+    Route::post('/notification/read/{notification}', [NotificationController::class, 'read'])->name('admin.notification.read');
 
 });
 

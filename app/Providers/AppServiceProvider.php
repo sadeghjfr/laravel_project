@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Admin\Content\Comment;
+use App\Models\Notification;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer('admin.layouts.header', function ($view){
             $view->with('unseenComments', Comment::where('status', 'unseen')->get());
+            $view->with('notifications', Notification::whereNull('read_at')->get());
         });
     }
 }
