@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('head-tag')
-    <title>کوپن تخفیف</title>
+    <title>کد تخفیف</title>
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item font-size-12"><a href="{{route('admin.home')}}">خانه</a></li>
             <li class="breadcrumb-item font-size-12"><a href="#"> فروشگاه</a></li>
-            <li class="breadcrumb-item font-size-12 active" aria-current="page"> کوپن تخفیف</li>
+            <li class="breadcrumb-item font-size-12 active" aria-current="page"> کد تخفیف</li>
         </ol>
     </nav>
 
@@ -20,7 +20,7 @@
             <section class="main-body-container mt-0">
 
                 <section class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">
-                    <a href="{{ route('admin.market.discount.coupon.create') }}" class="btn btn-info btn-sm">ایجاد کوپن تخفیف</a>
+                    <a href="{{ route('admin.market.discount.coupon.create') }}" class="btn btn-info btn-sm">ایجاد کد تخفیف</a>
                     <div class="max-width-16-rem">
                         <input type="text" class="form-control form-control-sm form-text" placeholder="جستجو">
                     </div>
@@ -34,8 +34,8 @@
                             <th>کد تخفیف</th>
                             <th>میزان تخفیف</th>
                             <th>واحد تخفیف</th>
-                            <th>سقف تخفیف</th>
-                            <th>نوع کوپن</th>
+                            <th>حداکثر تخفیف</th>
+                            <th>نوع کد</th>
                             <th>تاریخ شروع</th>
                             <th>تاریخ پایان</th>
                             <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>

@@ -34,7 +34,7 @@
                             <th>نام منو</th>
                             <th>منوی والد</th>
                             <th> لینک منو</th>
-                            <th>وضعیت</th>
+                            <th>فعال سازی</th>
                             <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>
                     </thead>

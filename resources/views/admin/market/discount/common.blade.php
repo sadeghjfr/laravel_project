@@ -32,7 +32,7 @@
                             <th>#</th>
                             <th>عنوان مناسبت</th>
                             <th>درصد تخفیف</th>
-                            <th>سقف تخفیف</th>
+                            <th>حداکثر تخفیف</th>
                             <th>تاریخ شروع</th>
                             <th>تاریخ پایان</th>
                             <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>

@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('head-tag')
-    <title>ویرایش کوپن تخفیف</title>
+    <title>ویرایش کد تخفیف</title>
     <link rel="stylesheet" href="{{ asset('admin-assets/jalalidatepicker/persian-datepicker.min.css') }}">
 @endsection
 
@@ -11,9 +11,9 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item font-size-12"><a href="{{route('admin.home')}}">خانه</a></li>
             <li class="breadcrumb-item font-size-12"><a href="#"> فروشگاه</a></li>
-            <li class="breadcrumb-item font-size-12"><a href="{{ route('admin.market.discount.coupon') }}"> کوپن
+            <li class="breadcrumb-item font-size-12"><a href="{{ route('admin.market.discount.coupon') }}"> کد
                     تخفیف</a></li>
-            <li class="breadcrumb-item font-size-12 active" aria-current="page"> ویرایش کوپن تخفیف</li>
+            <li class="breadcrumb-item font-size-12 active" aria-current="page"> ویرایش کد تخفیف</li>
         </ol>
     </nav>
 
@@ -25,7 +25,7 @@
                 <section class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">
                     <section class="main-body-container-header">
                         <h5>
-                            ویرایش کوپن تخفیف
+                            ویرایش کد تخفیف
                         </h5>
                     </section>
                     <a href="{{ route('admin.market.discount.coupon') }}" class="btn btn-info btn-sm">بازگشت</a>
@@ -40,7 +40,7 @@
 
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
-                                    <label for="">کد کوپن</label>
+                                    <label for="">کد تخفیف</label>
                                     <input type="text" name="code" value="{{ old('code', $coupon->code) }}"
                                            class="form-control form-control-sm">
                                 </div>
@@ -54,7 +54,7 @@
                             </section>
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
-                                    <label for="">نوع کوپن</label>
+                                    <label for="">نوع کد تخفیف</label>
                                     <select name="type" id="type" class="form-control form-control-sm">
                                         <option value="0" @if(old('type', $coupon->type) == 0) selected @endif>عمومی
                                         </option>
@@ -129,7 +129,7 @@
 
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
-                                    <label for="">حداکثر تخفیف</label>
+                                    <label for="">حداکثر تخفیف (تومان)</label>
                                     <input type="text" name="discount_ceiling"
                                            value="{{ old('discount_ceiling', $coupon->discount_ceiling) }}"
                                            class="form-control form-control-sm">

@@ -25,12 +25,11 @@
 
                 <td class="width-16-rem has-dropdown">
                     <a href="{{ route('admin.market.payment.show', $payment->id) }}"
-                       class="btn btn-info btn-sm"><i class="fa fa-edit"></i> نمایش</a>
+                       class="btn btn-info btn-sm">نمایش</a>
                     <div class="dropdown d-inline">
                         <a href="#" class="btn btn-success btn-sm dropdown-toggle"
                            role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                           aria-expanded="false">
-                            <i class="fa fa-tools"></i> تغییر وضعیت
+                           aria-expanded="false">وضعیت
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" >
                             <a href="{{route('admin.market.payment.paid', $payment->id)}}" class="dropdown-item text-right"> پرداخت شده</a>

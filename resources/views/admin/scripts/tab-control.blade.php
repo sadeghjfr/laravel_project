@@ -1,52 +1,46 @@
 <script type="text/javascript">
 
-    document.addEventListener("DOMContentLoaded", () => {
 
-        const siteRoot = window.location.origin;
-        const specialPages = [extractBasePath(window.location.href) + '{{$section}}'];
-        const previousPage = document.referrer;
-        const isSpecialPage = specialPages.some(page => previousPage.includes(siteRoot + page));
+    document.addEventListener('DOMContentLoaded', function () {
 
-        function extractBasePath(url, depth = 2) {
-            try {
-                const path = new URL(url).pathname;
-                const segments = path.split('/').filter(Boolean);
-                return '/' + segments.slice(0, depth).join('/');
-            } catch (error) {
-                console.error("Invalid URL:", error);
-                return null;
+        const tabs = document.querySelectorAll('.nav-tabs .nav-link');
+
+        const pageKey = window.location.pathname + '-lastActiveTab';
+        const timeKey = window.location.pathname + '-lastActiveTime';
+
+        const lastActiveTabId = localStorage.getItem(pageKey);
+        const lastActiveTime = localStorage.getItem(timeKey);
+
+        const currentTime = new Date().getTime();
+        const timeLimit = 10 * 60 * 1000;
+
+        if (lastActiveTabId && lastActiveTime && (currentTime - lastActiveTime < timeLimit)) {
+
+            const lastActiveTab = document.querySelector(`[data-tab-id="${lastActiveTabId}"]`);
+            if (lastActiveTab) {
+                new bootstrap.Tab(lastActiveTab).show();
             }
-        }
-
-        function activateTab(tabId) {
-
-            document.querySelectorAll('.nav-link').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.tab-pane').forEach(tabContent => tabContent.classList.remove('show', 'active'));
-            document.querySelector(`[data-tab-id="${tabId}"]`)?.classList.add('active');
-            document.getElementById(tabId)?.classList.add('show', 'active');
-        }
-
-        function setDefaultTab() {
-
-            const firstTab = document.querySelector('.nav-link');
-            const firstTabContent = document.querySelector('.tab-pane');
-            firstTab?.classList.add('active');
-            firstTabContent?.classList.add('show', 'active');
-        }
-
-        if (isSpecialPage) {
-            const activeTab = localStorage.getItem('activeTab');
-            activeTab ? activateTab(activeTab) : setDefaultTab();
-            document.querySelectorAll('[data-toggle="tab"]').forEach(tabLink => {
-                tabLink.addEventListener('click', () => {
-                    localStorage.setItem('activeTab', tabLink.getAttribute('data-tab-id'));
-                });
-            });
         } else {
-            setDefaultTab();
-        }
-    });
 
+            const firstTab = tabs[0];
+            if (firstTab) {
+                new bootstrap.Tab(firstTab).show();
+            }
+
+            localStorage.removeItem(pageKey);
+            localStorage.removeItem(timeKey);
+        }
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function () {
+                const tabId = this.getAttribute('data-tab-id');
+                const currentTime = new Date().getTime();
+
+                localStorage.setItem(pageKey, tabId);
+                localStorage.setItem(timeKey, currentTime);
+            });
+        });
+    });
 
 </script>
 

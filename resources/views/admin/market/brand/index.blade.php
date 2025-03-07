@@ -34,7 +34,7 @@
                             <th>نام فارسی</th>
                             <th>نام انگلیسی</th>
                             <th>لوگو</th>
-                            <th>فعال</th>
+                            <th>فعال سازی</th>
                             <th class="max-width-16-rem"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>
                         </thead>

@@ -36,7 +36,7 @@
                             <th> تصویر</th>
                             <th> قیمت</th>
                             <th>دسته</th>
-                            <th>فعال</th>
+                            <th>فعال سازی</th>
                             <th>قابل فروش</th>
                             <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>

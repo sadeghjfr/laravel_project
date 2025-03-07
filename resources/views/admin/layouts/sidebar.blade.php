@@ -17,17 +17,17 @@
                 </section>
                 <section class="sidebar-dropdown">
                     <a href="{{ route('admin.market.category.index') }}" class="sidebar-link {{ request()->routeIs('admin.market.category.*') ? 'active' : '' }}"><span>دسته بندی</span></a>
-                    <a href="{{ route('admin.market.attribute.index') }}" class="sidebar-link {{ request()->routeIs('admin.market.attribute.*') ? 'active' : '' }}"><span>ویژگی‌های دسته‌بندی‌ها</span></a>
+                    <a href="{{ route('admin.market.attribute.index') }}" class="sidebar-link {{ request()->routeIs('admin.market.attribute.*') || request()->routeIs('admin.market.value.*') ? 'active' : '' }}"><span>ویژگی‌های دسته‌بندی‌ها</span></a>
+                    <a href="{{ route('admin.market.product.index') }}" class="sidebar-link {{ request()->routeIs('admin.market.product.*') || request()->routeIs('admin.market.color.*') || request()->routeIs('admin.market.gallery.*') ? 'active' : '' }}"><span>محصولات</span></a>
                     <a href="{{ route('admin.market.brand.index') }}" class="sidebar-link {{ request()->routeIs('admin.market.brand.*') ? 'active' : '' }}"><span>برندها</span></a>
-                    <a href="{{ route('admin.market.product.index') }}" class="sidebar-link {{ request()->routeIs('admin.market.product.*') ? 'active' : '' }}"><span>محصولات</span></a>
                     <a href="{{ route('admin.market.store.index') }}" class="sidebar-link {{ request()->routeIs('admin.market.store.*') ? 'active' : '' }}"><span>انبار</span></a>
-                    <a href="{{ route('admin.market.comment.index') }}" class="sidebar-link {{ request()->routeIs('admin.market.comment.*') ? 'active' : '' }}"><span>نظرات</span></a>
-                    <a href="{{ route('admin.market.discount.coupon') }}" class="sidebar-link {{ request()->routeIs('admin.market.discount.coupon') ? 'active' : '' }}"><span>کوپن تخفیف</span></a>
-                    <a href="{{ route('admin.market.discount.commonDiscount') }}" class="sidebar-link {{ request()->routeIs('admin.market.discount.commonDiscount') ? 'active' : '' }}"><span>تخفیف عمومی</span></a>
-                    <a href="{{ route('admin.market.discount.amazingSale') }}" class="sidebar-link {{ request()->routeIs('admin.market.discount.amazingSale') ? 'active' : '' }}"><span>فروش شگفت انگیز</span></a>
-                    <a href="{{ route('admin.market.order.index') }}" class="sidebar-link {{ request()->routeIs('admin.market.order.*') ? 'active' : '' }}"><span>سفارشات</span></a>
                     <a href="{{ route('admin.market.payment.index') }}" class="sidebar-link {{ request()->routeIs('admin.market.payment.*') ? 'active' : '' }}"><span>پرداخت ها</span></a>
+                    <a href="{{ route('admin.market.order.index') }}" class="sidebar-link {{ request()->routeIs('admin.market.order.*') ? 'active' : '' }}"><span>سفارشات</span></a>
                     <a href="{{ route('admin.market.delivery.index') }}" class="sidebar-link {{ request()->routeIs('admin.market.delivery.*') ? 'active' : '' }}"><span>روش های ارسال</span></a>
+                    <a href="{{ route('admin.market.comment.index') }}" class="sidebar-link {{ request()->routeIs('admin.market.comment.*') ? 'active' : '' }}"><span>نظرات</span></a>
+                    <a href="{{ route('admin.market.discount.coupon') }}" class="sidebar-link {{ request()->routeIs('admin.market.discount.coupon') || request()->routeIs('admin.market.discount.coupon.*') ? 'active' : '' }}"><span>کد تخفیف</span></a>
+                    <a href="{{ route('admin.market.discount.commonDiscount') }}" class="sidebar-link {{ request()->routeIs('admin.market.discount.commonDiscount') || request()->routeIs('admin.market.discount.commonDiscount.*') ? 'active' : '' }}"><span>تخفیف عمومی</span></a>
+                    <a href="{{ route('admin.market.discount.amazingSale') }}" class="sidebar-link {{ request()->routeIs('admin.market.discount.amazingSale') || request()->routeIs('admin.market.discount.amazingSale.*') ? 'active' : '' }}"><span>فروش شگفت انگیز</span></a>
                 </section>
             </section>
 
@@ -56,7 +56,7 @@
                     <i class="fas fa-angle-left angle"></i>
                 </section>
                 <section class="sidebar-dropdown">
-                    <a href="{{ route('admin.user.index') }}" class="sidebar-link {{ request()->routeIs('admin.user.index') ? 'active' : '' }}"><span>کاربران</span></a>
+                    <a href="{{ route('admin.user.index') }}" class="sidebar-link {{ request()->routeIs('admin.user.*') ? 'active' : '' }}"><span>کاربران</span></a>
                     <a href="{{ route('admin.user.role.index') }}" class="sidebar-link {{ request()->routeIs('admin.user.role.*') ? 'active' : '' }}"><span>سطوح دسترسی</span></a>
                 </section>
             </section>
@@ -72,7 +72,7 @@
                     <a href="{{ route('admin.ticket.category.index') }}" class="sidebar-link {{ request()->routeIs('admin.ticket.category.*') ? 'active' : '' }}"><span>دسته بندی تیکت ها</span></a>
                     <a href="{{ route('admin.ticket.priority.index') }}" class="sidebar-link {{ request()->routeIs('admin.ticket.priority.*') ? 'active' : '' }}"><span>اولویت تیکت ها</span></a>
                     <a href="{{ route('admin.ticket.admin.index') }}" class="sidebar-link {{ request()->routeIs('admin.ticket.admin.*') ? 'active' : '' }}"><span>ادمین تیکت ها</span></a>
-                    <a href="{{ route('admin.ticket.index') }}" class="sidebar-link {{ request()->routeIs('admin.ticket.index') ? 'active' : '' }}"><span>تیکت ها</span></a>
+                    <a href="{{ route('admin.ticket.index') }}" class="sidebar-link {{ request()->routeIs('admin.ticket.*') ? 'active' : '' }}"><span>تیکت ها</span></a>
                 </section>
             </section>
 
@@ -84,7 +84,7 @@
                     <i class="fas fa-angle-left angle"></i>
                 </section>
                 <section class="sidebar-dropdown">
-                    <a href="{{ route('admin.notify.email.index') }}" class="sidebar-link {{ request()->routeIs('admin.notify.email.*') ? 'active' : '' }}"><span>اطلاعیه ایمیلی</span></a>
+                    <a href="{{ route('admin.notify.email.index') }}" class="sidebar-link {{ request()->routeIs('admin.notify.email.*') || request()->routeIs('admin.notify.email-file.*') ? 'active' : '' }}"><span>اطلاعیه ایمیلی</span></a>
                     <a href="{{ route('admin.notify.sms.index') }}" class="sidebar-link {{ request()->routeIs('admin.notify.sms.*') ? 'active' : '' }}"><span>اطلاعیه پیامکی</span></a>
                 </section>
             </section>

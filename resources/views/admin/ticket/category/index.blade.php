@@ -33,7 +33,7 @@
                         <tr>
                             <th>#</th>
                             <th>نام دسته بندی</th>
-                            <th>وضعیت</th>
+                            <th>فعال سازی</th>
                             <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>
                         </thead>

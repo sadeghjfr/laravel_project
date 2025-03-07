@@ -69,7 +69,7 @@
                             </section>
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
-                                    <label for="">سقف تخفیف (تومان)</label>
+                                    <label for="">حداکثر تخفیف (تومان)</label>
                                     <input type="text" name="discount_ceiling"
                                            value="{{ old('discount_ceiling', $commonDiscount->discount_ceiling) }}"
                                            class="form-control form-control-sm">

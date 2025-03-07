@@ -40,7 +40,7 @@ class CouponRequest extends FormRequest
     {
         return [
             'amount' => 'میزان تخفیف',
-            'type' => 'نوع کوپن',
+            'type' => 'نوع کد',
         ];
     }
 

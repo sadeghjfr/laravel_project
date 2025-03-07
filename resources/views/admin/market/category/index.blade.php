@@ -34,7 +34,7 @@
                             <th>#</th>
                             <th>نام دسته بندی</th>
                             <th>دسته والد</th>
-                            <th>وضعیت</th>
+                            <th>فعال سازی</th>
                             <th>نمایش در منو</th>
                             <th class="max-width-16-rem"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>

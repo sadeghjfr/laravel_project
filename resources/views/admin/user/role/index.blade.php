@@ -33,7 +33,7 @@
                             <th>#</th>
                             <th>نام نقش</th>
                             <th>دسترسی ها</th>
-                            <th>وضعیت</th>
+                            <th>فعال سازی</th>
                             <th class="max-width-16-rem"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>
                         </thead>

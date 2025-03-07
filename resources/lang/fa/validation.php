@@ -202,7 +202,7 @@ return [
         'deliverer' => 'تحویل دهنده',
         'marketable_number' => 'تعداد',
         'percentage' => 'درصد',
-        'discount_ceiling' => 'سقف تخفیف',
+        'discount_ceiling' => 'حداکثر تخفیف',
         'minimal_order_amount' => 'حداقل مبلغ',
     ],
 ];
