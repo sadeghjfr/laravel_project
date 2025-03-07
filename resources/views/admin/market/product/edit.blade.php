@@ -212,7 +212,7 @@
 
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
-                                    <label for="published_at">تاریخ انتشار</label>
+                                    <label for="published_at">تاریخ و ساعت انتشار</label>
                                     <input value="{{$product->published_at}}" type="text" name="published_at" id="published_at" class="form-control form-control-sm d-none">
                                     <input value="{{$product->published_at}}" type="text" id="published_at_view" class="form-control form-control-sm">
                                 </div>
@@ -388,7 +388,7 @@
         CKEDITOR.replace('introduction');
     </script>
 
-    @include('admin.scripts.date-picker-control')
+    @include('admin.scripts.date-time-picker-control')
     @include('admin.scripts.tags-control')
 
     <script>

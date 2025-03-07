@@ -100,7 +100,7 @@
                     <tr class="border-bottom">
                         <th class="text-right">تاریخ پرداخت</th>
                         <td class="text-right font-weight-bolder">
-                            {{ jalaliDate($payment->paymentable->pay_date) ?? '-' }}
+                            {{ jalaliDate($payment->paymentable->pay_date, 'H:i:s Y-m-d') ?? '-' }}
                         </td>
                     </tr>
 

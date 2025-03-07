@@ -108,6 +108,13 @@
                         </tr>
 
                         <tr class="border-bottom">
+                            <th class="text-right">تاریخ پرداخت</th>
+                            <td class="text-right font-weight-bolder">
+                                {{ jalaliDate($order->payment->paymentable->pay_date, 'H:i:s Y-m-d') ?? '-' }}
+                            </td>
+                        </tr>
+
+                        <tr class="border-bottom">
                             <th class="text-right">وضعیت سفارش</th>
                             <td class="text-right font-weight-bolder">
                                 {{ $order->status_fa ?? '-' }}

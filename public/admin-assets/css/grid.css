@@ -476,3 +476,23 @@
 .table-responsive td.has-dropdown {
     overflow: visible !important;
 }
+
+.breadcrumb-item {
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: none !important;
+}
+
+.breadcrumb-item:not(:last-child)::after {
+    content: "/";
+    margin: 0 5px;
+    color: #999;
+}
+
+
+
+

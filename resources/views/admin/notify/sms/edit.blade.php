@@ -111,6 +111,6 @@
 
 @section('script')
 
-    @include('admin.scripts.date-picker-control')
+    @include('admin.scripts.date-time-picker-control')
 
 @endsection

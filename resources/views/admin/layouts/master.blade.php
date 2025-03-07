@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" class="hide-scroll">
 
 <head>
     @include('admin.layouts.head-tag')

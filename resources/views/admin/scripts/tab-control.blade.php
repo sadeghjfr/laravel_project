@@ -5,7 +5,7 @@
         const siteRoot = window.location.origin;
         const specialPages = [extractBasePath(window.location.href) + '{{$section}}'];
         const previousPage = document.referrer;
-        const isSpecialPage = specialPages.some(page => previousPage.includes(siteRoot + page)) || isReloaded();
+        const isSpecialPage = specialPages.some(page => previousPage.includes(siteRoot + page));
 
         function extractBasePath(url, depth = 2) {
             try {
@@ -18,12 +18,8 @@
             }
         }
 
-        function isReloaded() {
-            const [navigationEntry] = performance.getEntriesByType("navigation") || [];
-            return navigationEntry?.type === "reload";
-        }
-
         function activateTab(tabId) {
+
             document.querySelectorAll('.nav-link').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.tab-pane').forEach(tabContent => tabContent.classList.remove('show', 'active'));
             document.querySelector(`[data-tab-id="${tabId}"]`)?.classList.add('active');
@@ -31,6 +27,7 @@
         }
 
         function setDefaultTab() {
+
             const firstTab = document.querySelector('.nav-link');
             const firstTabContent = document.querySelector('.tab-pane');
             firstTab?.classList.add('active');
@@ -52,3 +49,4 @@
 
 
 </script>
+
