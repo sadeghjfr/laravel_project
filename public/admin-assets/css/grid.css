@@ -79,7 +79,7 @@
 .header-comment {
 
     position: absolute;
-    height: calc(100vh - 3.5rem);
+    height: auto;
     width: 18rem;
     background-color: white;
     color: #000000;
@@ -98,14 +98,34 @@
 
 .comment-user{
 
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     font-weight: bold;
-    margin-top: .8rem;
+    margin: 0;
+    padding: 0;
+}
+
+.comment-body{
+    font-size: 0.8rem;
+    margin: 0;
+    padding-top: 0.5rem;
+    padding-bottom: 0.6rem;
+}
+
+.comment-user, .comment-body {
+    line-height: 1;
+}
+
+.header-comment-item {
+    display: flex;
+    flex-direction: column;
+    padding: 0.6rem 0.6rem 0 0;
+    margin: 0;
 }
 
 .comment-user-status{
-    font-size: .4rem;
+    font-size: .3rem;
 }
+
 
 .header-avatar{
     width: 2rem;

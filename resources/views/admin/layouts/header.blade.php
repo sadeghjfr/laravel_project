@@ -1,4 +1,3 @@
-
 <header class="header-main">
 
     <section class="sidebar-header bg-gray">
@@ -65,7 +64,8 @@
 
                             <li class="list-group-item list-group-item-action">
                                 <section class="media">
-                                    <img class="notification-img" src="{{asset('admin-assets/images/avatar-2.jpg')}}" alt="avatar">
+                                    <img class="notification-img" src="{{asset('admin-assets/images/avatar-2.jpg')}}"
+                                         alt="avatar">
                                     <section class="media-body pr-2">
 
                                         <h5 class="notification-user">صادق جعفری</h5>
@@ -78,7 +78,8 @@
 
                             <li class="list-group-item list-group-item-action">
                                 <section class="media">
-                                    <img class="notification-img" src="{{asset('admin-assets/images/avatar-2.jpg')}}" alt="avatar">
+                                    <img class="notification-img" src="{{asset('admin-assets/images/avatar-2.jpg')}}"
+                                         alt="avatar">
                                     <section class="media-body pr-2">
 
                                         <h5 class="notification-user">صادق جعفری</h5>
@@ -91,7 +92,8 @@
 
                             <li class="list-group-item list-group-item-action">
                                 <section class="media">
-                                    <img class="notification-img" src="{{asset('admin-assets/images/avatar-2.jpg')}}" alt="avatar">
+                                    <img class="notification-img" src="{{asset('admin-assets/images/avatar-2.jpg')}}"
+                                         alt="avatar">
                                     <section class="media-body pr-2">
 
                                         <h5 class="notification-user">صادق جعفری</h5>
@@ -111,106 +113,41 @@
                 <span class="ml-2 ml-md-4 position-relative">
 
                     <span id="header-comment-toggle" class="pointer">
-                        <i class="fa fa-comment-alt"></i><sup class="badge badge-danger">3</sup>
+
+                        @if($unseenComments->count() !== 0)
+                            <i class="fa fa-comment-alt"></i><sup
+                                class="badge badge-danger">{{$unseenComments->count()}}</sup>
+                        @else
+                            <i class="fa fa-comment-alt"></i>
+                        @endif
                     </span>
 
                     <section id="header-comment" class="header-comment">
 
-                        <section class="border-bottom px-4">
-                            <input type="text" class="form-control form-control-sm my-4" placeholder="جستجو...">
-                        </section>
-
                         <section class="header-comment-wrapper">
                             <ul class="list-group rounded px-0">
 
-                                <li class="list-group-item list-group-item-action">
-                                    <section class="media">
-                                        <img src="{{asset('admin-assets/images/avatar-2.jpg')}}" alt="avatar" class="notification-img">
-                                        <section class="media-body pr-1">
-                                            <section class="d-flex justify-content-between">
-                                                <h5 class="comment-user">صادق جعفری</h5>
-                                                <span><i class="fas fa-circle text-success comment-user-status"></i></span>
-                                            </section>
-                                        </section>
-                                    </section>
-                                </li>
-                                <li class="list-group-item list-group-item-action">
-                                    <section class="media">
-                                        <img src="{{asset('admin-assets/images/avatar-2.jpg')}}" alt="avatar" class="notification-img">
-                                        <section class="media-body pr-1">
-                                            <section class="d-flex justify-content-between">
-                                                <h5 class="comment-user">صادق جعفری</h5>
-                                                <span><i class="fas fa-circle text-success comment-user-status"></i></span>
-                                            </section>
-                                        </section>
-                                    </section>
-                                </li>
-                                <li class="list-group-item list-group-item-action">
-                                    <section class="media">
-                                        <img src="{{asset('admin-assets/images/avatar-2.jpg')}}" alt="avatar" class="notification-img">
-                                        <section class="media-body pr-1">
-                                            <section class="d-flex justify-content-between">
-                                                <h5 class="comment-user">صادق جعفری</h5>
-                                                <span><i class="fas fa-circle text-success comment-user-status"></i></span>
-                                            </section>
-                                        </section>
-                                    </section>
-                                </li>
-                                <li class="list-group-item list-group-item-action">
-                                    <section class="media">
-                                        <img src="{{asset('admin-assets/images/avatar-2.jpg')}}" alt="avatar" class="notification-img">
-                                        <section class="media-body pr-1">
-                                            <section class="d-flex justify-content-between">
-                                                <h5 class="comment-user">صادق جعفری</h5>
-                                                <span><i class="fas fa-circle text-success comment-user-status"></i></span>
-                                            </section>
-                                        </section>
-                                    </section>
-                                </li>
-                                <li class="list-group-item list-group-item-action">
-                                    <section class="media">
-                                        <img src="{{asset('admin-assets/images/avatar-2.jpg')}}" alt="avatar" class="notification-img">
-                                        <section class="media-body pr-1">
-                                            <section class="d-flex justify-content-between">
-                                                <h5 class="comment-user">صادق جعفری</h5>
-                                                <span><i class="fas fa-circle text-success comment-user-status"></i></span>
-                                            </section>
-                                        </section>
-                                    </section>
-                                </li>
-                                <li class="list-group-item list-group-item-action">
-                                    <section class="media">
-                                        <img src="{{asset('admin-assets/images/avatar-2.jpg')}}" alt="avatar" class="notification-img">
-                                        <section class="media-body pr-1">
-                                            <section class="d-flex justify-content-between">
-                                                <h5 class="comment-user">صادق جعفری</h5>
-                                                <span><i class="fas fa-circle text-success comment-user-status"></i></span>
-                                            </section>
-                                        </section>
-                                    </section>
-                                </li>
-                                <li class="list-group-item list-group-item-action">
-                                    <section class="media">
-                                        <img src="{{asset('admin-assets/images/avatar-2.jpg')}}" alt="avatar" class="notification-img">
-                                        <section class="media-body pr-1">
-                                            <section class="d-flex justify-content-between">
-                                                <h5 class="comment-user">صادق جعفری</h5>
-                                                <span><i class="fas fa-circle text-success comment-user-status"></i></span>
-                                            </section>
-                                        </section>
-                                    </section>
-                                </li>
-                                <li class="list-group-item list-group-item-action">
-                                    <section class="media">
-                                        <img src="{{asset('admin-assets/images/avatar-2.jpg')}}" alt="avatar" class="notification-img">
-                                        <section class="media-body pr-1">
-                                            <section class="d-flex justify-content-between">
-                                                <h5 class="comment-user">صادق جعفری</h5>
-                                                <span><i class="fas fa-circle text-success comment-user-status"></i></span>
-                                            </section>
-                                        </section>
-                                    </section>
-                                </li>
+                                @if($unseenComments->count() !== 0)
+                                    <li class="list-group-item list-group-item-action">
+                                        <h5 class="comment-user">نظرات جدید</h5>
+                                    </li>
+                                @else
+                                    <li class="list-group-item list-group-item-action">
+                                        <h5 class="comment-user">نظر جدیدی درج نشده است</h5>
+                                    </li>
+                                @endif
+
+                                @foreach($unseenComments as $comment)
+                                    <a href="@if($comment->commentable_type === 'App\Models\Admin\Market\Product') {{route('admin.market.comment.index')}} @else {{route('admin.content.comment.index')}}  @endif" class="btn btn-sm">
+                                        <li class="list-group-item list-group-item-action header-comment-item pointer">
+                                        <h5 class="comment-user">{{$comment->user->fullName}}</h5>
+                                        <span class="comment-body">
+                                            <i class="fas fa-circle text-success comment-user-status ml-2"></i>
+                                            {{\Illuminate\Support\Str::limit($comment->body, 30)}}
+                                        </span>
+                                    </li>
+                                    </a>
+                                @endforeach
 
                             </ul>
                         </section>
