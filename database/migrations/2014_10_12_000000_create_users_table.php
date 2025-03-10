@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('slug')->unique()->nullable();
             $table->text('profile_photo_path')->nullable();
             $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('mobile_verified_at')->nullable();
             $table->tinyInteger('activation')->default(0); //register sms confirmation
             $table->timestamp('activation_date')->nullable();
             $table->tinyInteger('user_type')->default(0)->comment('0 => user , 1 => admin');

@@ -12,7 +12,7 @@ return [
     |
     | Here you may specify which authentication guard Fortify will use while
     | authenticating users. This value should correspond with one of your
-    | guards that is already present in your "auth" configuration file.
+    | guards that is already present in your "Auth" configuration file.
     |
     */
 
@@ -25,7 +25,7 @@ return [
     |
     | Here you may specify which password broker Fortify can use when a user
     | is resetting their password. This configured value should match one
-    | of your password brokers setup in your "auth" configuration file.
+    | of your password brokers setup in your "Auth" configuration file.
     |
     */
 

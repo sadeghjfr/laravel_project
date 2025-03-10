@@ -30,6 +30,7 @@ use App\Http\Controllers\Admin\Ticket\TicketController;
 use App\Http\Controllers\Admin\Ticket\TicketPriorityController;
 use App\Http\Controllers\Admin\User\RoleController;
 use App\Http\Controllers\Admin\User\UserController;
+use App\Http\Controllers\Auth\Customer\LoginRegisterController;
 use App\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\Route;
 
@@ -439,8 +440,72 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
 });
 
 
+/*
+|--------------------------------------------------------------------------
+| Auth
+|--------------------------------------------------------------------------
+|
+*/
+
+Route::namespace('Auth')->group(function (){
+
+    Route::get('login-register', [LoginRegisterController::class, 'loginRegisterForm'])->name('auth.customer.login-register-form');
+    Route::middleware('throttle:customer-login-register-limiter')
+        ->post('login-register', [LoginRegisterController::class, 'loginRegister'])->name('auth.customer.login-register');
+
+    Route::get('login-confirm/{token}', [LoginRegisterController::class, 'loginConfirmForm'])->name('auth.customer.login-confirm-form');
+    Route::middleware('throttle:customer-login-confirm-limiter')
+        ->post('login-confirm/{token}', [LoginRegisterController::class, 'loginConfirm'])->name('auth.customer.login-confirm');
+
+    Route::middleware('throttle:customer-login-resend-otp-limiter')
+        ->get('login-resend-otp/{token}', [LoginRegisterController::class, 'loginResendOtp'])->name('auth.customer.login-resend-otp');
+
+    Route::get('/logout', [LoginRegisterController::class, 'logout'])->name('auth.customer.logout');
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Customer
+|--------------------------------------------------------------------------
+|
+*/
+
+Route::get('/', function (){
+   return view('customer.home');
+})->name('customer.home');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Route::middleware([
-    'auth:sanctum',
+    'Auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {

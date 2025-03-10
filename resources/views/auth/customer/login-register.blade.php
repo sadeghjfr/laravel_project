@@ -1,0 +1,31 @@
+@extends('customer.layouts.master-simple')
+
+@section('content')
+
+    <section class="vh-100 d-flex justify-content-center align-items-center pb-5">
+        <form action="{{route('auth.customer.login-register')}}" method="POST">
+            @csrf
+            <section class="login-wrapper mb-5">
+                <section class="login-logo">
+                    <img src="{{asset('customer-assets/images/logo/4.png')}}" alt="">
+                </section>
+                <section class="login-title">ورود / ثبت نام</section>
+                <section class="login-info">شماره موبایل یا ایمیل خود را وارد کنید</section>
+                <section class="login-input-text mb-1">
+                    <input name="id" type="text" class="border border-2" value="{{old('id')}}">
+                </section>
+                @error('id')
+                    <span class="text-danger small" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+                <section class="login-btn d-grid g-2 mt-4">
+                    <button type="submit" class="btn btn-danger">ورود به آمازون</button>
+                </section>
+                <section class="login-terms-and-conditions"><a href="#">شرایط و قوانین</a> را خوانده ام و پذیرفته ام
+                </section>
+            </section>
+        </form>
+    </section>
+
+@endsection
