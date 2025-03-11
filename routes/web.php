@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\Content\FAQController;
 use App\Http\Controllers\Admin\Content\MenuController;
 use App\Http\Controllers\Admin\Content\PageController;
 use App\Http\Controllers\Admin\Content\PostController;
+use App\Http\Controllers\Admin\Market\BannerController;
 use App\Http\Controllers\Admin\Market\BrandController;
 use App\Http\Controllers\Admin\Market\CategoryAttributeController;
 use App\Http\Controllers\Admin\Market\CategoryAttributeValueController;
@@ -91,6 +92,18 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
             Route::put('/value/update/{attribute}/{value}', [CategoryAttributeValueController::class, 'update'])->name('admin.market.value.update');
             Route::delete('/value/destroy/{attribute}/{value}', [CategoryAttributeValueController::class, 'destroy'])->name('admin.market.value.destroy');
 
+        });
+
+        //banner
+        Route::prefix('banner')->group(function () {
+
+            Route::get('/', [BannerController::class, 'index'])->name('admin.market.banner.index');
+            Route::get('/create', [BannerController::class, 'create'])->name('admin.market.banner.create');
+            Route::post('/store', [BannerController::class, 'store'])->name('admin.market.banner.store');
+            Route::get('/edit/{banner}', [BannerController::class, 'edit'])->name('admin.market.banner.edit');
+            Route::put('/update/{banner}', [BannerController::class, 'update'])->name('admin.market.banner.update');
+            Route::delete('/destroy/{banner}', [BannerController::class, 'destroy'])->name('admin.market.banner.destroy');
+            Route::get('/status/{banner}', [BannerController::class, 'status'])->name('admin.market.banner.status');
         });
 
         //brand

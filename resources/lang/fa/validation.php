@@ -202,6 +202,7 @@ return [
         'deliverer' => 'تحویل دهنده',
         'marketable_number' => 'تعداد',
         'percentage' => 'درصد',
+        'position' => 'جایگاه',
         'otp' => 'کد تایید',
         'discount_ceiling' => 'حداکثر تخفیف',
         'minimal_order_amount' => 'حداقل مبلغ',
