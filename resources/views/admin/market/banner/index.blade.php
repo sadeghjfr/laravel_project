@@ -59,7 +59,7 @@
                             </td>
 
                             <td>
-                               {{ $banner->position }}
+                               {{ $banner->position_name }}
                             </td>
                             <td class="width-16-rem">
                                 <a href="{{ route('admin.market.banner.edit', $banner->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>

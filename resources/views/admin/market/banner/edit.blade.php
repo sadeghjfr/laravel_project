@@ -51,8 +51,20 @@
 
                         <section class="col-12 col-md-6 mb-2">
                             <div class="form-group mb-1">
-                                <label for="">موقعیت</label>
-                                <input type="text" name="position" value="{{ old('position', $banner->position) }}" class="form-control form-control-sm">
+                                @php
+                                    $positions = [
+                                        '1' => 'اسلایدشو (صفحه اصلی)',
+                                        '2' => 'کنار اسلایدشو (صفحه اصلی)',
+                                        '3' => 'دو بنر تبلیغی بین دو اسلایدر (صفحه اصلی)',
+                                        '4' => 'بنر تبلیغی بزرگ پایین دو اسلایدر (صفحه اصلی)',
+                                    ];
+                                @endphp
+                                <label for="position">جایگاه</label>
+                                <select name="position" id="position" class="form-control form-control-sm">
+                                    @foreach ($positions as $key => $value)
+                                        <option value="{{ $key }}" @if(old('position', $banner->position) == $key) selected @endif>{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             @error('position')
                             <span class="text-danger" role="alert">
