@@ -65,7 +65,7 @@
                     <tr class="border-bottom">
                         <th class="text-right">مبلغ پرداختی</th>
                         <td class="text-right font-weight-bolder">
-                            {{ number_format($payment->paymentable->amount) }} تومان
+                            {{ priceFormat($payment->paymentable->amount) }} تومان
                         </td>
                     </tr>
 

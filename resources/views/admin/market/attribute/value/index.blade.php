@@ -51,7 +51,7 @@
                                 <td>{{ $attribute->category->name }}</td>
                                 <td>{{ $value->product->name }}</td>
                                 <td>{{ json_decode($value->value)->value }} {{$attribute->unit}}</td>
-                                <td>{{ number_format(json_decode($value->value)->price_increase) . ' تومان' }}</td>
+                                <td>{{ priceFormat(json_decode($value->value)->price_increase) . ' تومان' }}</td>
                                 <td>{{ $value->type == 0 ? 'ساده' : 'انتخابی'}}</td>
                                 <td class="width-22-rem">
                                     <a href="{{ route('admin.market.value.edit', ['attribute' => $attribute->id , 'value' => $value->id] ) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>

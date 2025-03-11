@@ -129,31 +129,31 @@
                         <tr class="border-bottom">
                             <th class="text-right">مجموع مبلغ سفارش (بدون تخفیف)</th>
                             <td class="text-right font-weight-bolder">
-                                {{ number_format($order->order_final_amount) . ' تومان' ?? '-' }}
+                                {{ priceFormat($order->order_final_amount) . ' تومان' ?? '-' }}
                             </td>
                         </tr>
                         <tr class="border-bottom">
                             <th class="text-right">مجموع تمامی مبلغ تخفیفات</th>
                             <td class="text-right font-weight-bolder">
-                                {{ number_format($order->order_discount_amount) . ' تومان' ?? '-' }}
+                                {{ priceFormat($order->order_discount_amount) . ' تومان' ?? '-' }}
                             </td>
                         </tr>
                         <tr class="border-bottom">
                             <th class="text-right">مبلغ تخفیف همه محصولات</th>
                             <td class="text-right font-weight-bolder">
-                                {{ number_format($order->order_total_products_discount_amount) . ' تومان' ?? '-' }}
+                                {{ priceFormat($order->order_total_products_discount_amount) . ' تومان' ?? '-' }}
                             </td>
                         </tr>
                         <tr class="border-bottom">
                             <th class="text-right">هزینه ارسال</th>
                             <td class="text-right font-weight-bolder">
-                                {{ number_format($order->delivery->amount) . ' تومان' ?? '-' }}
+                                {{ priceFormat($order->delivery->amount) . ' تومان' ?? '-' }}
                             </td>
                         </tr>
                         <tr class="border-bottom">
                             <th class="text-right">مبلغ نهایی</th>
                             <td class="text-right font-weight-bolder">
-                                {{ number_format(($order->order_final_amount -  $order->order_discount_amount)+$order->delivery->amount) . ' تومان' }}
+                                {{ priceFormat(($order->order_final_amount -  $order->order_discount_amount)+$order->delivery->amount) . ' تومان' }}
                             </td>
                         </tr>
                         <tr class="border-bottom">
@@ -173,9 +173,9 @@
                             <td class="text-right font-weight-bolder">
                                 @if($order->coupon)
                                     @if($order->coupon->amount_type == 0)
-                                        {{ '% ' . number_format($order->coupon->amount) ?? '-' }}
+                                        {{ '% ' . priceFormat($order->coupon->amount) ?? '-' }}
                                     @else
-                                        {{ number_format($order->coupon->amount) . ' تومان' ?? '-' }}
+                                        {{ priceFormat($order->coupon->amount) . ' تومان' ?? '-' }}
                                     @endif
                                 @else
                                     {{'-'}}

@@ -18,7 +18,7 @@
             <tr>
                 <th>{{ $loop->iteration }}</th>
                 <td>{{ $order->user->fullName }}</td>
-                <td>{{ number_format(($order->order_final_amount -  $order->order_discount_amount)+$order->delivery->amount) }} تومان</td>
+                <td>{{ priceFormat(($order->order_final_amount -  $order->order_discount_amount)+$order->delivery->amount) }} تومان</td>
                 <td>{{$order->payment->status_fa}}</td>
                 <td>{{ $order->delivery->name }}</td>
                 <td>{{$order->status_fa}}</td>

@@ -18,7 +18,7 @@
             <tr>
                 <th>{{ $loop->iteration }}</th>
                 <td>{{ $payment->user->fullname }}</td>
-                <td>{{ number_format($payment->amount) . ' تومان' }}</td>
+                <td>{{ priceFormat($payment->amount) . ' تومان' }}</td>
                 <td>{{$payment->paymentable->transaction_id ?? '-'}}</td>
                 <td>{{$payment->paymentable->gateway ?? '-'}}</td>
                 <td>{{$payment->status_fa}}</td>

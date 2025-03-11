@@ -44,7 +44,7 @@
                             <tr>
                                 <th>{{ $loop->iteration }}</th>
                                 <td>{{ $color->color_name }}</td>
-                                <td>{{number_format($color->price_increase)}} تومان</td>
+                                <td>{{priceFormat($color->price_increase)}} تومان</td>
                                 <td class="width-8-rem text-left">
                                     <form class="d-inline"
                                           action="{{ route('admin.market.color.destroy', ['product' => $product->id, 'color' => $color->id]) }}"

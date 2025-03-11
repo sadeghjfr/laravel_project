@@ -46,7 +46,7 @@
                             <th>{{ $loop->iteration }}</th>
                             <th>{{ $commonDiscount->title }}</th>
                             <th>{{ $commonDiscount->percentage }}%</th>
-                            <th>{{ number_format($commonDiscount->discount_ceiling) }} تومان</th>
+                            <th>{{ priceFormat($commonDiscount->discount_ceiling) }} تومان</th>
                             <td>{{ jalaliDate($commonDiscount->start_date) }}</td>
                             <td>{{ jalaliDate($commonDiscount->end_date) }}</td>
                             <td class="width-16-rem">

@@ -45,7 +45,7 @@
                             <tr>
                                 <th>{{ $loop->iteration }}</th>
                                 <td>{{ $delivery_method->name }}</td>
-                                <td>{{ number_format($delivery_method->amount) }} تومان</td>
+                                <td>{{ priceFormat($delivery_method->amount) }} تومان</td>
                                 <td>{{ $delivery_method->delivery_time . ' - ' . $delivery_method->delivery_time_unit }}</td>
                                 <td>
                                     <label>

@@ -48,9 +48,9 @@
                             <tr>
                                 <th>{{ $loop->iteration }}</th>
                                 <th>{{ $coupon->code }}</th>
-                                <th>{{ number_format($coupon->amount) }}</th>
+                                <th>{{ priceFormat($coupon->amount) }}</th>
                                 <th>{{ $coupon->amount_type == 0 ? 'درصد' : 'تومان' }}</th>
-                                <th>{{ number_format($coupon->discount_ceiling) ?? '-' }} تومان</th>
+                                <th>{{ priceFormat($coupon->discount_ceiling) ?? '-' }} تومان</th>
                                 <th>{{ $coupon->type == 0 ? 'عمومی' : 'خصوصی' }}</th>
                                 <td>{{ jalaliDate($coupon->start_date) }}</td>
                                 <td>{{ jalaliDate($coupon->end_date) }}</td>

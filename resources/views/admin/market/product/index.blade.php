@@ -51,7 +51,7 @@
                                 <td><img
                                         src="@if($product->image !=null) {{asset($product->image['indexArray'][$product->image['currentImage']])}} @endif"
                                         alt="image" width="50" height="50"></td>
-                                <td>{{number_format($product->price)}} تومان</td>
+                                <td>{{priceFormat($product->price)}} تومان</td>
                                 <td>{{$product->category->name}}</td>
                                 <td>
                                     <label>
