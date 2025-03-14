@@ -25,8 +25,8 @@ class PostCategoryRequest extends FormRequest
     {
 
         $image = $this->isMethod('post')
-            ? 'required|image|mimes:png,jpg,jpeg,gif'
-            : 'image|mimes:png,jpg,jpeg,gif';
+            ? 'required|image|mimes:png,jpg,jpeg,gif|max:2048'
+            : 'image|mimes:png,jpg,jpeg,gif|max:2048';
 
         return [
             'name' => 'required|max:120|min:2|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',

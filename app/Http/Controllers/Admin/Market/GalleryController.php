@@ -24,7 +24,7 @@ class GalleryController extends Controller
     public function store(Request $request, Product $product, ImageService $imageService)
     {
         $validated = $request->validate([
-            'image' => 'required|image|mimes:png,jpg,jpeg,gif',
+            'image' => 'required|image|mimes:png,jpg,jpeg,gif|max:2048',
         ]);
 
         $inputs = $request->all();

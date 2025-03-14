@@ -18,7 +18,7 @@ class HomeController extends Controller
         $middleBanners = Banner::where('position', 3)->where('status', 1)->take(2)->get();
         $bottomBanner = Banner::where('position', 4)->where('status', 1)->first();
 
-        $brands = Brand::all();
+        $brands = Brand::where('status', 1)->get();
 
         $mostVisitedProducts = Product::latest()->take(10)->get();
         $offerProducts = Product::latest()->take(10)->get();

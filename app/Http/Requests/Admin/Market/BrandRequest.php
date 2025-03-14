@@ -24,8 +24,8 @@ class BrandRequest extends FormRequest
     public function rules()
     {
         $image = $this->isMethod('post')
-            ? 'required|image|mimes:png,jpg,jpeg,gif'
-            : 'image|mimes:png,jpg,jpeg,gif';
+            ? 'required|image|mimes:png,jpg,jpeg,gif|max:2048'
+            : 'image|mimes:png,jpg,jpeg,gif|max:2048';
 
         return [
             'persian_name' => 'required|max:120|min:1',

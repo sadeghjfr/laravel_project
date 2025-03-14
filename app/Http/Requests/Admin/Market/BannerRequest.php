@@ -25,8 +25,8 @@ class BannerRequest extends FormRequest
     {
 
         $image = $this->isMethod('post')
-            ? 'required|image|mimes:png,jpg,jpeg,gif'
-            : 'image|mimes:png,jpg,jpeg,gif';
+            ? 'required|image|mimes:png,jpg,jpeg,gif|max:2048'
+            : 'image|mimes:png,jpg,jpeg,gif|max:2048';
 
         return [
             'title' => 'required|max:120|min:2',

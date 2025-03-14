@@ -29,7 +29,7 @@ class BannerController extends Controller
         if ($request->hasFile('image')) {
 
             $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'banner');
-            $result = $imageService->fitAndSave($request->file('image'), 1780, 890);
+            $result = $imageService->save($request->file('image'));
 
             if ($result === false)
                 return redirect()->route('admin.market.banner.index')->with('toast-error', 'آپلود تصویر با خطا مواجه شد');
@@ -56,7 +56,7 @@ class BannerController extends Controller
                 $imageService->deleteImage($banner->image);
 
             $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'banner');
-            $result = $imageService->fitAndSave($request->file('image'), 1780, 890);
+            $result = $imageService->save($request->file('image'));
 
             if ($result === false)
                 return redirect()->route('admin.market.banner.index')->with('toast-error', 'آپلود تصویر با خطا مواجه شد');

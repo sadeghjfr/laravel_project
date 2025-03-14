@@ -23,7 +23,7 @@ class UserRequest extends FormRequest
                 'mobile' => ['required', 'digits:11', 'unique:users'],
                 'email' => ['nullable', 'string', 'email', 'unique:users'],
                 'password' => ['required', Password::min(8)->letters()->mixedCase()->numbers()->symbols()->uncompromised(), 'confirmed'],
-                'image' => 'nullable|image|mimes:png,jpg,jpeg,gif',
+                'image' => 'nullable|image|mimes:png,jpg,jpeg,gif|max:2048',
                 'activation' => 'required|numeric|in:0,1',
                 'user_type' => 'required|numeric|in:0,1',
             ];
@@ -33,7 +33,7 @@ class UserRequest extends FormRequest
             return [
                 'first_name' => 'nullable|max:120|min:2',
                 'last_name' => 'nullable|max:120|min:2',
-                'image' => 'nullable|image|mimes:png,jpg,jpeg,gif',
+                'image' => 'nullable|image|mimes:png,jpg,jpeg,gif|max:2048',
                 'user_type' => 'required|numeric|in:0,1',
             ];
         }
