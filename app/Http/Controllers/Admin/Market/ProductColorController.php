@@ -23,6 +23,7 @@ class ProductColorController extends Controller
     {
         $validated = $request->validate([
             'color_name' => 'required|max:120|min:1',
+            'color_code' => 'required|max:120',
             'price_increase' => 'required|numeric'
         ]);
 
@@ -35,7 +36,7 @@ class ProductColorController extends Controller
 
     public function destroy(Product $product, ProductColor $color)
     {
-        $result = $color->delete();
+        $result = $color->forceDelete();
         return redirect()->route('admin.market.color.index', $product->id)->with('swal-success', 'رنگ با موفقیت حذف شد');
     }
 }

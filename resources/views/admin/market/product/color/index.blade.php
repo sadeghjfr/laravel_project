@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('head-tag')
-    <title>رنگ محصول</title>
+    <title>رنگ ها</title>
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@
             <li class="breadcrumb-item font-size-12"><a href="{{route('admin.home')}}">خانه</a></li>
             <li class="breadcrumb-item font-size-12"><a href="#"> فروشگاه</a></li>
             <li class="breadcrumb-item font-size-12"><a href="{{route('admin.market.product.index')}}"> محصولات</a></li>
-            <li class="breadcrumb-item font-size-12 active" aria-current="page"> رنگ محصول</li>
+            <li class="breadcrumb-item font-size-12 active" aria-current="page"> رنگ ها</li>
         </ol>
     </nav>
 
@@ -45,7 +45,7 @@
                                 <th>{{ $loop->iteration }}</th>
                                 <td>{{ $color->color_name }}</td>
                                 <td>{{priceFormat($color->price_increase)}} تومان</td>
-                                <td class="width-8-rem text-left">
+                                <td class="width-8-rem text-center">
                                     <form class="d-inline"
                                           action="{{ route('admin.market.color.destroy', ['product' => $product->id, 'color' => $color->id]) }}"
                                           method="post">

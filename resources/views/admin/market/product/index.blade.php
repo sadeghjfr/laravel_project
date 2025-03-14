@@ -78,20 +78,14 @@
                                             <i class="fa fa-tools"></i> عملیات
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <a href="{{route('admin.market.gallery.index', $product->id)}}" class="dropdown-item text-right"><i class="fa fa-images"></i>
-                                                گالری</a>
-                                            <a href="{{route('admin.market.color.index', $product->id)}}" class="dropdown-item text-right"><i class="fa fa-list-ul"></i>
-                                                رنگ محصول</a>
-                                            <a href="{{route('admin.market.product.edit', $product->id)}}"
-                                               class="dropdown-item text-right"><i class="fa fa-edit"></i> ویرایش</a>
-                                            <form class="d-inline"
-                                                  action="{{route('admin.market.product.destroy', $product->id)}}"
-                                                  method="post">
+                                            <a href="{{route('admin.market.gallery.index', $product->id)}}" class="dropdown-item text-right">گالری</a>
+                                            <a href="{{route('admin.market.color.index', $product->id)}}" class="dropdown-item text-right">رنگ ها</a>
+                                            <a href="{{route('admin.market.guarantee.index', $product->id)}}" class="dropdown-item text-right">گارانتی</a>
+                                            <a href="{{route('admin.market.product.edit', $product->id)}}" class="dropdown-item text-right"> ویرایش</a>
+                                            <form class="d-inline" action="{{route('admin.market.product.destroy', $product->id)}}" method="post">
                                                 @csrf
                                                 @method('delete')
-                                                <button class="dropdown-item text-right delete" type="submit"><i
-                                                        class="fa fa-trash-alt"></i> حذف
-                                                </button>
+                                                <button class="dropdown-item text-right delete" type="submit">حذف</button>
                                             </form>
                                         </div>
                                     </div>

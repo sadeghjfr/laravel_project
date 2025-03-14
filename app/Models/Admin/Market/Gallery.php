@@ -10,7 +10,7 @@ class Gallery extends Model
 {
     protected $table = 'product_images';
 
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $fillable = ['image', 'product_id'];
 

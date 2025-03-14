@@ -57,6 +57,11 @@ class Product extends Model
         return $this->hasMany(CategoryAttributeValue::class);
     }
 
+    public function guarantees()
+    {
+        return $this->hasMany(Guarantee::class);
+    }
+
     public function comments(){
 
         return $this->morphMany(Comment::class, 'commentable');
@@ -87,6 +92,10 @@ class Product extends Model
 
             $product->comments()->each(function ($comment) {
                 $comment->delete();
+            });
+
+            $product->guarantees()->each(function ($guarantee) {
+                $guarantee->delete();
             });
         });
 
