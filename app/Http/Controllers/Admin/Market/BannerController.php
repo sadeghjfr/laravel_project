@@ -29,13 +29,14 @@ class BannerController extends Controller
         if ($request->hasFile('image')) {
 
             $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'banner');
-            $result = $imageService->createIndexAndSave($request->file('image'));
+            $result = $imageService->fitAndSave($request->file('image'), 1780, 890);
 
             if ($result === false)
                 return redirect()->route('admin.market.banner.index')->with('toast-error', 'آپلود تصویر با خطا مواجه شد');
 
             $inputs['image'] = $result;
         }
+
         $banner = Banner::create($inputs);
         return redirect()->route('admin.market.banner.index')->with('swal-success', 'بنر  جدید با موفقیت ثبت شد');
     }
@@ -49,27 +50,21 @@ class BannerController extends Controller
     {
         $inputs = $request->all();
 
-
         if ($request->hasFile('image')) {
 
             if (!empty($banner->image))
-                $imageService->deleteDirectoryAndFiles($banner->image['directory']);
+                $imageService->deleteImage($banner->image);
 
             $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'banner');
-            $result = $imageService->createIndexAndSave($request->file('image'));
+            $result = $imageService->fitAndSave($request->file('image'), 1780, 890);
 
             if ($result === false)
                 return redirect()->route('admin.market.banner.index')->with('toast-error', 'آپلود تصویر با خطا مواجه شد');
 
             $inputs['image'] = $result;
 
-        } else {
-            if (isset($inputs['currentImage']) && !empty($banner->image)) {
-                $image = $banner->image;
-                $image['currentImage'] = $inputs['currentImage'];
-                $inputs['image'] = $image;
-            }
         }
+
         $banner->update($inputs);
         return redirect()->route('admin.market.banner.index')->with('swal-success', 'بنر با موفقیت ویرایش شد');
     }

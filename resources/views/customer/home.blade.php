@@ -8,17 +8,25 @@
         <section class="row">
             <section class="col-md-8 pe-md-1 ">
                 <section id="slideshow" class="owl-carousel owl-theme">
-                    <section class="item"><a class="w-100 d-block h-auto text-decoration-none" href="#"><img class="w-100 rounded-2 d-block h-auto" src="{{asset('customer-assets/images/slideshow/1.jpg')}}" alt=""></a></section>
-                    <section class="item"><a class="w-100 d-block h-auto text-decoration-none" href="#"><img class="w-100 rounded-2 d-block h-auto" src="{{asset('customer-assets/images/slideshow/2.jpg')}}" alt=""></a></section>
-                    <section class="item"><a class="w-100 d-block h-auto text-decoration-none" href="#"><img class="w-100 rounded-2 d-block h-auto" src="{{asset('customer-assets/images/slideshow/3.jpg')}}" alt=""></a></section>
-                    <section class="item"><a class="w-100 d-block h-auto text-decoration-none" href="#"><img class="w-100 rounded-2 d-block h-auto" src="{{asset('customer-assets/images/slideshow/4.jpg')}}" alt=""></a></section>
-                    <section class="item"><a class="w-100 d-block h-auto text-decoration-none" href="#"><img class="w-100 rounded-2 d-block h-auto" src="{{asset('customer-assets/images/slideshow/5.jpg')}}" alt=""></a></section>
-                    <section class="item"><a class="w-100 d-block h-auto text-decoration-none" href="#"><img class="w-100 rounded-2 d-block h-auto" src="{{asset('customer-assets/images/slideshow/6.gif')}}" alt=""></a></section>
+
+                    @foreach($slideShowImages as $slideShow)
+                    <section class="item">
+                            <a class="w-100 d-block h-auto text-decoration-none" href="{{urldecode($slideShow->url)}}">
+                                <img class="w-100 rounded-2 d-block h-auto" src="{{asset($slideShow->image)}}" alt="">
+                            </a>
+                        </section>
+                    @endforeach
+
                 </section>
             </section>
             <section class="col-md-4 ps-md-1 mt-2 mt-md-0">
-                <section class="mb-2"><a href="#" class="d-block"><img class="w-100 rounded-2" src="{{asset('customer-assets/images/slideshow/12.gif')}}" alt=""></a></section>
-                <section class="mb-2"><a href="#" class="d-block"><img class="w-100 rounded-2" src="{{asset('customer-assets/images/slideshow/11.jpg')}}" alt=""></a></section>
+                @foreach($topBanners as $banner)
+                <section class="mb-2">
+                    <a href="#" class="d-block">
+                        <img class="w-100 rounded-2" src="{{asset($banner->image)}}" alt="">
+                    </a>
+                </section>
+                @endforeach
             </section>
         </section>
     </section>
@@ -284,10 +292,17 @@
     <section class="mb-3">
         <section class="container-xxl">
             <!-- two column-->
+
+
             <section class="row py-4">
-                <section class="col-12 col-md-6 mt-2 mt-md-0"><img class="d-block rounded-2 w-100" src="assets/images/ads/two-col-1.jpg" alt=""></section>
-                <section class="col-12 col-md-6 mt-2 mt-md-0"><img class="d-block rounded-2 w-100" src="assets/images/ads/two-col-2.jpg" alt=""></section>
+                @foreach($middleBanners as $banner)
+                <section class="col-12 col-md-6 mt-2 mt-md-0">
+                    <img class="d-block rounded-2 w-100" src="{{asset($banner->image)}}" alt="">
+                </section>
+                @endforeach
             </section>
+
+
 
         </section>
     </section>
@@ -592,7 +607,9 @@
         <section class="container-xxl">
             <!-- one column -->
             <section class="row py-4">
-                <section class="col"><img class="d-block rounded-2 w-100" src="assets/images/ads/one-col-1.jpg" alt=""></section>
+                <section class="col">
+                    <img class="d-block rounded-2 w-100" src="{{$bottomBanner ? asset($bottomBanner->image) : ''}}" alt="">
+                </section>
             </section>
 
         </section>

@@ -32,6 +32,7 @@ use App\Http\Controllers\Admin\Ticket\TicketPriorityController;
 use App\Http\Controllers\Admin\User\RoleController;
 use App\Http\Controllers\Admin\User\UserController;
 use App\Http\Controllers\Auth\Customer\LoginRegisterController;
+use App\Http\Controllers\Customer\HomeController;
 use App\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\Route;
 
@@ -480,15 +481,6 @@ Route::namespace('Auth')->group(function (){
 
 
 
-
-
-
-
-
-
-
-
-
 /*
 |--------------------------------------------------------------------------
 | Customer
@@ -496,9 +488,7 @@ Route::namespace('Auth')->group(function (){
 |
 */
 
-Route::get('/', function (){
-   return view('customer.home');
-})->name('customer.home');
+Route::get('/', [HomeController::class, 'home'])->name('customer.home');
 
 
 

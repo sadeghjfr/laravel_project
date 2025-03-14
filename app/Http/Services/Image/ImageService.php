@@ -22,7 +22,10 @@ class ImageService extends ImageToolsService{
         $this->setImage($image);
         $this->provider();
 
-        $result = Image::make($image->getRealPath())->fit($width, $height)->save(public_path($this->getImageAddress()), null, $this->getImageFormat());
+        $result = Image::make($image->getRealPath())
+            ->encode('webp', 50)
+            ->fit($width, $height)
+            ->save(public_path($this->getImageAddress()), null, $this->getImageFormat());
 
         return $result ? $this->getImageAddress() : false;
     }

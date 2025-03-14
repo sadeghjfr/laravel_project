@@ -21,8 +21,8 @@ return [
 
     'index-image-sizes' => [
         'large' => [
-            'width' => 800,
-            'height' => 600
+            'width' => 1780,
+            'height' => 890
         ],
         'medium' => [
             'width' => 400,
@@ -40,8 +40,8 @@ return [
 
     'cache-image-sizes' => [
         'large' => [
-            'width' => 800,
-            'height' => 600
+            'width' => 1780,
+            'height' => 890
         ],
         'medium' => [
             'width' => 400,
