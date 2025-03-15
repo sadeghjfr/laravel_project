@@ -40,7 +40,7 @@
 
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
-                                    <label for="first_name">نام (اختیاری)</label>
+                                    <label for="first_name">نام</label>
                                     <input type="text" name="first_name" class="form-control form-control-sm" value="{{ old('first_name', $user->first_name) }}">
                                 </div>
                                 @error('first_name')
@@ -51,7 +51,7 @@
                             </section>
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
-                                    <label for="last_name">نام خانوادگی (اختیاری)</label>
+                                    <label for="last_name">نام خانوادگی</label>
                                     <input type="text" name="last_name" class="form-control form-control-sm" value="{{ old('last_name', $user->last_name) }}">
                                 </div>
                                 @error('last_name')
@@ -105,19 +105,6 @@
                                 </span>
                                 @enderror
                             </section>--}}
-                            <section class="col-12 col-md-6 mb-2">
-                                <div class="form-group mb-1">
-                                    <label for="profile_photo_path">تصویر (اختیاری)</label>
-                                    <input type="file" name="profile_photo_path" class="form-control form-control-sm">
-                                </div>
-                                @error('profile_photo_path')
-                                <span class="text-danger" role="alert">
-                                    <strong>{{$message}}</strong>
-                                </span>
-                                </span>
-                                @enderror
-                            </section>
-
 
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
@@ -136,7 +123,41 @@
                                 @enderror
                             </section>
 
-                            <section class="col-12 mt-2">
+                            <section class="col-12 col-md-6 mb-2">
+                                <div class="form-group mb-1">
+                                    <label for="status">وضعیت</label>
+                                    <select name="status" id="status" class="form-control form-control-sm">
+                                        <option value="0" @if(old('status', $user->status) ==0 ) selected @endif>غیر فعال</option>
+                                        <option value="1" @if(old('status', $user->status) ==1 ) selected @endif>فعال</option>
+                                    </select>
+                                </div>
+                                @error('status')
+                                <span class="text-danger" role="alert">
+                                    <strong>
+                                        {{$message}}
+                                    </strong>
+                                </span>
+                                @enderror
+                            </section>
+
+                            <section class="col-12 col-md-6 mb-2">
+                                <div class="form-group mb-1">
+                                    <label for="profile_photo_path">تصویر</label>
+                                    <input type="file" name="profile_photo_path" id="image" class="form-control form-control-sm">
+                                </div>
+                                @error('profile_photo_path')
+                                <span class="text-danger" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                </span>
+                                @enderror
+                            </section>
+                            @if(!empty($user->profile_photo_path))
+                                <img src="{{ asset($user->profile_photo_path) }}" width="75" height="75"
+                                     id="imagePreview" class="rounded mt-1" alt="پروفایل">
+                            @endif
+
+                            <section class="col-12 mt-4">
                                 <button class="btn btn-primary w-100">ثبت نهایی</button>
                             </section>
                         </section>
@@ -147,4 +168,8 @@
         </section>
     </section>
 
+@endsection
+
+@section('script')
+    @include('admin.scripts.image-preview-control')
 @endsection

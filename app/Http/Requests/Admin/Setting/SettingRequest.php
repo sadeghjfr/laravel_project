@@ -27,8 +27,8 @@ class SettingRequest extends FormRequest
             'title' => 'required|max:255|min:2',
             'description' => 'required|min:2',
             'keywords' => 'required|max:255|min:2',
-            'logo' => 'image|mimes:png,jpg,jpeg,gif',
-            'icon' => 'image|mimes:png,jpg,jpeg,gif',
+            'logo' => 'image|mimes:png,jpg,jpeg,gif,webp|max:1024',
+            'icon' => 'image|mimes:png,jpg,jpeg,gif,webp|max:1024',
         ];
     }
 }

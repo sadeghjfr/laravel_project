@@ -93,10 +93,10 @@
                                 @enderror
                             </section>
 
-                            <section class="col-12 mb-2">
+                            <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
                                     <label for="logo"> لوگو<span class="text-danger">*</span> </label>
-                                    <input name="logo" id="logo" type="file" class="form-control form-control-sm">
+                                    <input name="logo" id="image" type="file" class="form-control form-control-sm">
                                 </div>
                                 @error('logo')
                                 <span class="text-danger" role="alert">
@@ -106,33 +106,18 @@
                                 </span>
                                 @enderror
 
-                                @if(!empty($brand->logo))
-                                    <section class="row">
-                                        @php
-                                            $number = 1;
-                                        @endphp
-                                        @foreach ($brand->logo['indexArray'] as $key => $value )
-                                            <section class="col-md-{{ 6 / $number }}">
-                                                <div class="form-check">
-                                                    <input type="radio" class="form-check-input" name="currentImage" value="{{ $key }}" id="{{ $number }}" @if($brand->logo['currentImage'] == $key) checked @endif>
-                                                    <label for="{{ $number }}" class="form-check-label mx-2">
-                                                        <img src="{{ asset($value) }}" class="w-100" alt="logo">
-                                                    </label>
-                                                </div>
-                                            </section>
-                                            @php
-                                                $number++;
-                                            @endphp
-                                        @endforeach
 
-                                    </section>
-                                @endif
 
                             </section>
 
+                            @if(!empty($brand->logo))
+                                <img src="{{ asset($brand->logo) }}" width="75" height="75"
+                                     id="imagePreview" class="rounded mt-1 mr-3" alt="{{$brand->logo}}">
+                            @endif
+
 
                             <section class="col-12">
-                                <button class="btn btn-primary w-100 mt-3">ثبت نهایی</button>
+                                <button class="btn btn-primary w-100 mt-4">ثبت نهایی</button>
                             </section>
                         </section>
                     </form>
@@ -147,5 +132,6 @@
 @section('script')
 
     @include('admin.scripts.tags-control')
+    @include('admin.scripts.image-preview-control')
 
 @endsection

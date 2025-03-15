@@ -36,7 +36,7 @@
 
                         <section class="col-12 col-md-6 mb-2">
                             <div class="form-group mb-1">
-                                <label for="">نام دسته</label>
+                                <label for="">نام دسته بندی</label>
                                 <input type="text" name="name" value="{{ old('name') }}" class="form-control form-control-sm">
                             </div>
                             @error('name')
@@ -50,9 +50,9 @@
 
                         <section class="col-12 col-md-6 mb-2">
                             <div class="form-group mb-1">
-                                <label for="">منو والد</label>
+                                <label for="">دسته بندی والد</label>
                                 <select name="parent_id"  class="form-control form-control-sm">
-                                    <option value="">منوی اصلی</option>
+                                    <option value="">دسته بندی اصلی</option>
                                     @foreach ($categories as $category)
 
                                     <option value="{{ $category->id }}"  @if(old('parent_id') == $category->id) selected @endif>{{ $category->name }}</option>

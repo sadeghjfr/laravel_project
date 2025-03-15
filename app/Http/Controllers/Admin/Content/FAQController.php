@@ -27,7 +27,7 @@ class FAQController extends Controller
 
         $inputs = $request->all();
         $faq = FAQ::create($inputs);
-        return redirect()->route('admin.content.faq.index')->with('toast-success', 'سوال جدید با موفقیت ثبت شد');
+        return redirect()->route('admin.content.faq.index')->with('swal-success', 'سوال جدید با موفقیت ثبت شد');
     }
 
 
@@ -45,14 +45,14 @@ class FAQController extends Controller
         $inputs = $request->all();
         $inputs['slug'] = null;
         $faq->update($inputs);
-        return redirect()->route('admin.content.faq.index')->with('toast-success', 'سوال با موفقیت ویرایش شد');
+        return redirect()->route('admin.content.faq.index')->with('swal-success', 'سوال با موفقیت ویرایش شد');
     }
 
 
     public function destroy(FAQ $faq)
     {
         $result = $faq->delete();
-        return redirect()->route('admin.content.faq.index')->with('toast-error', 'سوال با موفقیت حذف شد');
+        return redirect()->route('admin.content.faq.index')->with('swal-success', 'سوال با موفقیت حذف شد');
     }
 
     public function status(FAQ $faq)

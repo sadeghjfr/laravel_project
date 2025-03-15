@@ -48,7 +48,7 @@
                             <td>{{ $banner->title }}</td>
                             <td>{{ $banner->url }}</td>
                             <td>
-                                <img src="{{ asset($banner->image) }}" alt="" width="100" height="50">
+                                <img class="rounded" src="{{ asset($banner->image) }}" alt="{{ $banner->title }}" width="100" height="50">
                             </td>
                             <td>
                                 <label>

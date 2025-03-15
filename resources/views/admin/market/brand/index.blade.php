@@ -45,7 +45,7 @@
                                 <th>{{$loop->iteration}}</th>
                                 <td>{{$brand->persian_name}}</td>
                                 <td>{{$brand->original_name}}</td>
-                                <td><img src="@if($brand->logo !=null) {{asset($brand->logo['indexArray'][$brand->logo['currentImage']])}} @endif" alt="logo" width="100" height="50"></td>
+                                <td><img class="rounded" src="{{asset($brand->logo)}}" alt="{{$brand->persian_name}}" width="75" height="75"></td>
                                 <td>
                                     <label>
                                         <input id="{{$brand->id}}" onchange="changeStatus({{$brand->id}})" data-url="{{route('admin.market.brand.status', $brand->id)}}" type="checkbox" @if($brand->status===1) checked @endif>

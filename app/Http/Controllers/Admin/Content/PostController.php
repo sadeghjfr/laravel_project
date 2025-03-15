@@ -34,7 +34,7 @@ class PostController extends Controller
         if ($request->hasFile('image')){
 
             $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'post');
-            $result = $imageService->createIndexAndSave($request->file('image'));
+            $result = $imageService->save($request->file('image'));
 
             if ($result === false)
                 return redirect()->route('admin.content.post.index')->with('toast-error', 'آپلود تصویر با خطا مواجه شد');
@@ -44,11 +44,8 @@ class PostController extends Controller
 
         $inputs['user_id'] = 1;
         $post = Post::create($inputs);
-        return redirect()->route('admin.content.post.index')->with('toast-success', 'پست جدید با موفقیت ثبت شد');
+        return redirect()->route('admin.content.post.index')->with('swal-success', 'پست جدید با موفقیت ثبت شد');
     }
-
-
-    //public function show($post){}
 
 
     public function edit(Post $post)
@@ -69,11 +66,11 @@ class PostController extends Controller
 
             if (!empty($post->image)){
 
-                $imageService->deleteDirectoryAndFiles($post->image['directory']);
+                $imageService->deleteImage($post->image);
             }
 
             $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'post');
-            $result = $imageService->createIndexAndSave($request->file('image'));
+            $result = $imageService->save($request->file('image'));
 
             if ($result === false)
                 return redirect()->route('admin.content.post.index')->with('toast-error', 'آپلود تصویر با خطا مواجه شد');
@@ -81,26 +78,16 @@ class PostController extends Controller
             $inputs['image'] = $result;
         }
 
-        else{
-
-            if (isset($inputs['currentImage']) && !empty($post->image)){
-
-                $image = $post->image;
-                $image['currentImage'] = $inputs['currentImage'];
-                $inputs['image'] = $image;
-            }
-        }
-
         $inputs['slug'] = null;
         $post->update($inputs);
-        return redirect()->route('admin.content.post.index')->with('toast-success', 'پست با موفقیت ویرایش شد');
+        return redirect()->route('admin.content.post.index')->with('swal-success', 'پست با موفقیت ویرایش شد');
     }
 
 
     public function destroy(Post $post)
     {
         $result = $post->delete();
-        return redirect()->route('admin.content.post.index')->with('toast-error', 'پست با موفقیت حذف شد');
+        return redirect()->route('admin.content.post.index')->with('swal-success', 'پست با موفقیت حذف شد');
     }
 
     public function status(Post $post)

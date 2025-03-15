@@ -45,7 +45,21 @@
                         <tr>
                             <th>{{ $key + 1 }}</th>
                             <td>{{ $email->subject }}</td>
-                            <td>{{ $file->file_size }}</td>
+                            <td>
+                                @php
+                                    $size = $file->file_size;
+                                    if ($size < 1024) {
+                                        echo $size . ' بایت';
+                                    } elseif ($size < 1024 * 1024) {
+                                        echo round($size / 1024, 2) . ' کیلوبایت';
+                                    } elseif ($size < 1024 * 1024 * 1024) {
+                                        echo round($size / (1024 * 1024), 2) . ' مگابایت';
+                                    } else {
+                                        echo round($size / (1024 * 1024 * 1024), 2) . ' گیگابایت';
+                                    }
+                                @endphp
+                            </td>
+
                             <td>{{ $file->file_type }}</td>
                             <td>
                                 <label>

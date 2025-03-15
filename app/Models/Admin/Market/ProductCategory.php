@@ -41,7 +41,7 @@ class ProductCategory extends Model
 
     public function attributes(){
 
-        return $this->hasMany(CategoryAttribute::class);
+        return $this->hasMany(CategoryAttribute::class, 'category_id');
     }
 
     public static function boot()

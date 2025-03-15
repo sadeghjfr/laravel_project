@@ -22,9 +22,8 @@ class UserRequest extends FormRequest
                 'last_name' => 'nullable|max:120|min:2',
                 'mobile' => ['required', 'digits:11', 'unique:users'],
                 'email' => ['nullable', 'string', 'email', 'unique:users'],
-                'password' => ['required', Password::min(8)->letters()->mixedCase()->numbers()->symbols()->uncompromised(), 'confirmed'],
-                'image' => 'nullable|image|mimes:png,jpg,jpeg,gif|max:2048',
-                'activation' => 'required|numeric|in:0,1',
+                'password' => ['nullable', Password::min(8)->letters()->mixedCase()->numbers()->symbols()->uncompromised(), 'confirmed'],
+                'profile_photo_path' => 'nullable|image|mimes:png,jpg,jpeg,gif,webp|max:1024|dimensions:ratio=1/1,min_width=256,min_height=256',
                 'user_type' => 'required|numeric|in:0,1',
             ];
         }
@@ -33,9 +32,16 @@ class UserRequest extends FormRequest
             return [
                 'first_name' => 'nullable|max:120|min:2',
                 'last_name' => 'nullable|max:120|min:2',
-                'image' => 'nullable|image|mimes:png,jpg,jpeg,gif|max:2048',
+                'profile_photo_path' => 'nullable|image|mimes:png,jpg,jpeg,gif,webp|max:1024|dimensions:ratio=1/1,min_width=256,min_height=256',
                 'user_type' => 'required|numeric|in:0,1',
             ];
         }
+    }
+
+    public function messages()
+    {
+        return [
+            'profile_photo_path.dimensions' => 'ابعاد تصویر باید حداقل ۲۵۶ * ۲۵۶ پیکسل باشد و نسبت طول به عرض آن ۱:۱ باشد.'
+        ];
     }
 }

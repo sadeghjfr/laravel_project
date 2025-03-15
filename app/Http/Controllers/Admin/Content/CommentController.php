@@ -39,7 +39,7 @@ class CommentController extends Controller
     public function destroy(Comment $comment)
     {
         $result = $comment->delete();
-        return redirect()->route('admin.content.comment.index')->with('toast-success', 'کامنت با موفقیت حذف شد');
+        return redirect()->route('admin.content.comment.index')->with('swal-success', 'نظر با موفقیت حذف شد');
     }
 
 
@@ -55,7 +55,7 @@ class CommentController extends Controller
             $inputs['status'] = 'answer';
 
             $comment = Comment::create($inputs);
-            return redirect()->route('admin.content.comment.index')->with('toast-success', 'پاسخ با موفقیت ثبت شد');
+            return redirect()->route('admin.content.comment.index')->with('swal-success', 'پاسخ با موفقیت ثبت شد');
         }
 
         else
@@ -67,7 +67,7 @@ class CommentController extends Controller
     {
         $comment = $answerComment->parent;
         $result = $answerComment->forceDelete();
-        return redirect()->route('admin.content.comment.show', compact('comment'))->with('toast-success', 'پاسخ با موفقیت حذف شد');
+        return redirect()->route('admin.content.comment.show', compact('comment'))->with('swal-success', 'پاسخ با موفقیت حذف شد');
     }
 
 }

@@ -114,7 +114,7 @@
 
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
-                                    <label for="commentable">امکان درج کامنت</label>
+                                    <label for="commentable">امکان درج نظر</label>
                                     <select name="commentable" class="form-control form-control-sm"
                                             id="commentable">
                                         <option value="0"
@@ -137,7 +137,7 @@
 
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
-                                    <label for="">تاریخ و ساعت انتشار</label>
+                                    <label for="">زمان انتشار</label>
                                     <input class="form-control form-control-sm d-none"  type="text" id="published_at" name="published_at" value="{{$post->published_at}}">
                                     <input type="text" id="published_at_view" class="form-control form-control-sm" value="{{$post->published_at}}">
                                 </div>
@@ -150,9 +150,9 @@
                                 @enderror
                             </section>
 
-                            <section class="col-12 mb-4">
+                            <section class="col-12 col-md-6 mb-4">
                                 <div class="form-group mb-1">
-                                    <label for="">تصویر </label>
+                                    <label for="image">تصویر </label>
                                     <input type="file" name="image" id="image" class="form-control form-control-sm">
                                 </div>
                                 @error('image')
@@ -163,34 +163,13 @@
                                 </span>
                                 @enderror
 
-                                @if(!empty($post->image))
-                                    <section class="row">
-                                        @php
-                                            $number = 1;
-                                        @endphp
-                                        @foreach ($post->image['indexArray'] as $key => $value )
-                                            <section class="col-md-{{ 6 / $number }}">
-                                                <div class="form-check">
-                                                    <input type="radio" class="form-check-input" name="currentImage"
-                                                           value="{{ $key }}" id="{{ $number }}"
-                                                           @if($post->image['currentImage'] == $key) checked @endif>
-                                                    <label for="{{ $number }}" class="form-check-label mx-2">
-                                                        <img src="{{ asset($value) }}" class="w-100" alt="">
-                                                    </label>
-                                                </div>
-                                            </section>
-                                            @php
-                                                $number++;
-                                            @endphp
-                                        @endforeach
-
-                                    </section>
-                                @endif
-
                             </section>
+                            @if(!empty($post->image))
+                                <img src="{{ asset($post->image) }}" width="150" height="100"
+                                     id="imagePreview" class="rounded mt-1" alt="تصویر">
+                            @endif
 
-
-                            <section class="col-12">
+                            <section class="col-12 mb-2">
                                 <div class="form-group mb-1">
                                     <label for="">خلاصه پست</label>
                                     <textarea name="summary" id="summary" class="form-control form-control-sm"
@@ -205,7 +184,7 @@
                                 @enderror
                             </section>
 
-                            <section class="col-12">
+                            <section class="col-12 mb-2">
                                 <div class="form-group mb-1">
                                     <label for="">متن پست</label>
                                     <textarea name="body" id="body" class="form-control form-control-sm"
@@ -244,5 +223,6 @@
 
     @include('admin.scripts.date-time-picker-control')
     @include('admin.scripts.tags-control')
+    @include('admin.scripts.image-preview-control')
 
 @endsection

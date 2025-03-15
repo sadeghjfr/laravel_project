@@ -33,9 +33,6 @@
                             <th>#</th>
                             <th>نام دسته بندی</th>
                             <th>دسته والد</th>
-                            <th>اسلاگ</th>
-                            <th>تصویر</th>
-                            <th>تگ ها</th>
                             <th>فعال سازی</th>
                             <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>
@@ -49,9 +46,6 @@
                                 <th>{{$key+1}}</th>
                                 <td>{{$postCategory->name}}</td>
                                 <td>{{empty($postCategory->parent_id) ? '-' : $postCategory->parent->name}}</td>
-                                <td>{{$postCategory->slug}}</td>
-                                <td><img src="@if($postCategory->image !=null) {{asset($postCategory->image['indexArray'][$postCategory->image['currentImage']])}} @endif" alt="image" width="50" height="50"></td>
-                                <td>{{$postCategory->tags}}</td>
                                 <td>
                                     <label>
                                         <input id="{{$postCategory->id}}" onchange="changeStatus({{$postCategory->id}})" data-url="{{route('admin.content.category.status', $postCategory->id)}}" type="checkbox" @if($postCategory->status===1) checked @endif>

@@ -27,7 +27,7 @@ class SMSController extends Controller
         $realTimestampStart = substr($request->published_at, 0, 10);
         $inputs['published_at'] = date("Y-m-d H:i:s", (int)$realTimestampStart);
         $sms = SMS::create($inputs);
-        return redirect()->route('admin.notify.sms.index')->with('toast-success', 'پیامک با موفقیت ثبت شد');
+        return redirect()->route('admin.notify.sms.index')->with('swal-success', 'پیامک با موفقیت ثبت شد');
     }
 
     //public function show($id){}
@@ -44,13 +44,13 @@ class SMSController extends Controller
         $realTimestampStart = substr($request->published_at, 0, 10);
         $inputs['published_at'] = date("Y-m-d H:i:s", (int)$realTimestampStart);
         $sms->update($inputs);
-        return redirect()->route('admin.notify.sms.index')->with('toast-success', 'پیامک با موفقیت ویرایش شد');
+        return redirect()->route('admin.notify.sms.index')->with('swal-success', 'پیامک با موفقیت ویرایش شد');
     }
 
     public function destroy(SMS $sms)
     {
         $result = $sms->delete();
-        return redirect()->route('admin.notify.sms.index')->with('toast-success', 'پیامک با موفقیت حذف شد');
+        return redirect()->route('admin.notify.sms.index')->with('swal-success', 'پیامک با موفقیت حذف شد');
     }
 
 

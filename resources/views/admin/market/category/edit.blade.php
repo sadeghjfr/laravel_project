@@ -56,7 +56,7 @@
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
                                     <label for="">منو والد</label>
-                                    <select name="parent_id"  class="form-control form-control-sm">
+                                    <select name="parent_id" class="form-control form-control-sm">
                                         <option value="">منوی اصلی</option>
                                         @foreach ($parent_categories as $parent_category)
 
@@ -75,43 +75,6 @@
                             </span>
                                 @enderror
                             </section>
-
-                            <section class="col-12 col-md-6 my-2">
-                                <div class="form-group mb-1">
-                                    <label for="image">تصویر</label>
-                                    <input type="file" class="form-control form-control-sm" name="image" id="image">
-                                </div>
-                                @error('image')
-                                <span class="text-danger" role="alert">
-                                <strong>
-                                    {{ $message }}
-                                </strong>
-                            </span>
-                                @enderror
-                            </section>
-
-                            <section class="row">
-                                @php
-                                    $number = 1;
-                                @endphp
-                                @foreach ($productCategory->image['indexArray'] as $key => $value )
-                                    <section class="col-md-{{ 6 / $number }} mb-3">
-                                        <div class="form-check d-flex flex-column align-items-center">
-                                            <input type="radio" class="form-check-input mb-2" name="currentImage"
-                                                   value="{{ $key }}" id="{{ $number }}"
-                                                   @if($productCategory->image['currentImage'] == $key) checked @endif>
-                                            <label for="{{ $number }}" class="form-check-label mx-2">
-                                                <img src="{{ asset($value) }}" class="w-100 img-thumbnail rounded shadow-sm" style="object-fit: cover; aspect-ratio: 1/1; transition: transform 0.3s ease; cursor: pointer;" alt="">
-                                            </label>
-                                        </div>
-                                    </section>
-                                    @php
-                                        $number++;
-                                    @endphp
-                                @endforeach
-                            </section>
-
-
 
                             <section class="col-12 col-md-6 my-2">
                                 <div class="form-group mb-1">
@@ -137,7 +100,7 @@
 
                             <section class="col-12 col-md-6 my-2">
                                 <div class="form-group mb-1">
-                                    <label for="show_in_menu">وضعیت نمایش در منو</label>
+                                    <label for="show_in_menu">نمایش در منو</label>
                                     <select name="show_in_menu" class="form-control form-control-sm"
                                             id="show_in_menu">
                                         <option value="0"
@@ -159,8 +122,7 @@
                                 @enderror
                             </section>
 
-
-                            <section class="col-12 col-md-6 my-2">
+                            <section class="col-12 my-2">
                                 <div class="form-group mb-1">
                                     <label for="tags">تگ ها</label>
                                     <input type="hidden" class="form-control form-control-sm" name="tags" id="tags"
@@ -178,10 +140,32 @@
                                 @enderror
                             </section>
 
+
+                            <section class="col-12 col-md-6 my-2">
+                                <div class="form-group mb-1">
+                                    <label for="image">تصویر</label>
+                                    <input type="file" class="form-control form-control-sm" name="image" id="image">
+                                </div>
+                                @error('image')
+                                <span class="text-danger" role="alert">
+                                <strong>
+                                    {{ $message }}
+                                </strong>
+                            </span>
+                                @enderror
+
+                            </section>
+                            @if(!empty($productCategory->image))
+                                <img src="{{ asset($productCategory->image) }}" width="100" height="100"
+                                     id="imagePreview" class="rounded mt-1" alt="{{$productCategory->name}}">
+                            @endif
+
+
                             <section class="col-12">
                                 <div class="form-group mb-1">
                                     <label for="">توضیحات</label>
-                                    <textarea name="description" id="description"  class="form-control form-control-sm" rows="6">
+                                    <textarea name="description" id="description" class="form-control form-control-sm"
+                                              rows="6">
                                     {{ old('description', $productCategory->description) }}
                                 </textarea>
                                 </div>
@@ -218,6 +202,7 @@
     </script>
 
     @include('admin.scripts.tags-control')
+    @include('admin.scripts.image-preview-control')
 
 @endsection
 

@@ -47,11 +47,8 @@ class EmailFileController extends Controller
         $inputs['public_mail_id'] = $email->id;
 
         $file = EmailFile::create($inputs);
-        return redirect()->route('admin.notify.email-file.index', $email->id)->with('toast-success', 'فایل جدید با موفقیت ثبت شد');
+        return redirect()->route('admin.notify.email-file.index', $email->id)->with('swal-success', 'فایل جدید با موفقیت ثبت شد');
     }
-
-
-    //public function show($id){}
 
 
     public function edit(EmailFile $file)
@@ -87,14 +84,14 @@ class EmailFileController extends Controller
         }
 
         $file->update($inputs);
-        return redirect()->route('admin.notify.email-file.index', $file->email->id)->with('toast-success', 'فایل  با موفقیت ویرایش شد');
+        return redirect()->route('admin.notify.email-file.index', $file->email->id)->with('swal-success', 'فایل  با موفقیت ویرایش شد');
     }
 
 
     public function destroy(EmailFile $file)
     {
         $result = $file->delete();
-        return redirect()->route('admin.notify.email-file.index', $file->email->id)->with('toast-success', 'فایل با موفقیت حذف شد');
+        return redirect()->route('admin.notify.email-file.index', $file->email->id)->with('swal-success', 'فایل با موفقیت حذف شد');
     }
 
     public function status(EmailFile $file){

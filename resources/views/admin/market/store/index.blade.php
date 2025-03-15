@@ -30,8 +30,8 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>نام کالا</th>
-                            <th>تصویر کالا</th>
+                            <th>نام محصول</th>
+                            <th>تصویر محصول</th>
                             <th>تعداد قابل فروش</th>
                             <th>تعداد رزرو شده</th>
                             <th>تعداد فروخته شده</th>
@@ -45,7 +45,7 @@
                             <th>{{ $loop->iteration }}</th>
                             <td>{{ $product->name }}</td>
                             <td>
-                                <img src="{{ asset($product->image['indexArray'][$product->image['currentImage']] ) }}" alt="" width="100" height="50">
+                                <img class="rounded" src="{{ asset($product->image['indexArray']['small'] ) }}" alt="تصویر" width="50" height="50">
                             </td>
                             <td>{{ $product->marketable_number }}</td>
                             <td>{{ $product->frozen_number }}</td>

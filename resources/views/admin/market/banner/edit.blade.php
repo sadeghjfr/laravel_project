@@ -69,6 +69,9 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                <span id="positionText" class="d-block my-1" role="alert">
+                                     <strong></strong>
+                                </span>
                                 @error('position')
                                 <span class="text-danger" role="alert">
                                 <strong>
@@ -129,9 +132,10 @@
                                 @enderror
                             </section>
 
-
-                            <img src="{{ asset($banner->image) }}" height="100" width="200" class="mr-3" alt="">
-
+                            @if(!empty($banner->image))
+                                <img src="{{ asset($banner->image) }}" width="200" height="100"
+                                     id="imagePreview" class="rounded mt-1 mr-3" alt="{{$banner->title}}">
+                            @endif
 
 
                             <section class="col-12">
@@ -145,4 +149,31 @@
         </section>
     </section>
 
+@endsection
+
+@section('script')
+    @include('admin.scripts.image-preview-control')
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const positionSelect = document.getElementById('position');
+            const imageSizeText = document.getElementById('positionText');
+
+            const positionTexts = {
+                '1': 'اندازه تصویر : عرض ۱۷۸۰ و ارتفاع ۸۹۰ پیکسل باشد.',
+                '2': 'اندازه تصویر : عرض ۸۵۶ و ارتفاع ۴۲۸ پیکسل باشد.',
+                '3': 'اندازه تصویر : عرض ۸۲۰ و ارتفاع ۳۰۰ پیکسل باشد.',
+                '4': 'اندازه تصویر : عرض ۱۶۵۶ و ارتفاع ۲۱۰ پیکسل باشد.',
+            };
+
+            positionSelect.addEventListener('change', function () {
+                const selectedPosition = this.value;
+                if (positionTexts[selectedPosition]) {
+                    imageSizeText.querySelector('strong').textContent = positionTexts[selectedPosition];
+                } else {
+                    imageSizeText.querySelector('strong').textContent = '';
+                }
+            });
+        });
+    </script>
 @endsection

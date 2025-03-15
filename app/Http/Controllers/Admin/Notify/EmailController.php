@@ -27,7 +27,7 @@ class EmailController extends Controller
         $realTimestampStart = substr($request->published_at, 0, 10);
         $inputs['published_at'] = date("Y-m-d H:i:s", (int)$realTimestampStart);
         $email = Email::create($inputs);
-        return redirect()->route('admin.notify.email.index')->with('toast-success', 'ایمیل با موفقیت ثبت شد');
+        return redirect()->route('admin.notify.email.index')->with('swal-success', 'ایمیل با موفقیت ثبت شد');
     }
 
     //public function show($id){}
@@ -44,13 +44,13 @@ class EmailController extends Controller
         $realTimestampStart = substr($request->published_at, 0, 10);
         $inputs['published_at'] = date("Y-m-d H:i:s", (int)$realTimestampStart);
         $email->update($inputs);
-        return redirect()->route('admin.notify.email.index')->with('toast-success', 'ایمیل با موفقیت ویرایش شد');
+        return redirect()->route('admin.notify.email.index')->with('swal-success', 'ایمیل با موفقیت ویرایش شد');
     }
 
     public function destroy(Email $email)
     {
         $result = $email->delete();
-        return redirect()->route('admin.notify.email.index')->with('toast-success', 'ایمیل با موفقیت حذف شد');
+        return redirect()->route('admin.notify.email.index')->with('swal-success', 'ایمیل با موفقیت حذف شد');
     }
 
 

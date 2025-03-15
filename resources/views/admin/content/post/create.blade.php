@@ -51,9 +51,9 @@
 
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
-                                    <label for="">انتخاب دسته</label>
+                                    <label for="">دسته بندی</label>
                                     <select name="category_id"  class="form-control form-control-sm">
-                                        <option value="">دسته را انتخاب کنید</option>
+                                        <option value="">دسته بندی را انتخاب کنید</option>
                                         @foreach ($postCategories as $postCategory)
                                             <option value="{{ $postCategory->id }}" @if(old('category_id') == $postCategory->id) selected @endif>{{ $postCategory->name }}</option>
                                         @endforeach
@@ -71,7 +71,7 @@
 
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
-                                    <label for="">تصویر </label>
+                                    <label for="">تصویر</label>
                                     <input type="file" name="image" class="form-control form-control-sm">
                                 </div>
                                 @error('image')
@@ -103,7 +103,7 @@
 
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
-                                    <label for="commentable">امکان درج کامنت</label>
+                                    <label for="commentable">امکان درج نظر</label>
                                     <select name="commentable"  class="form-control form-control-sm" id="commentable">
                                         <option value="0" @if(old('commentable') == 0) selected @endif>غیرفعال</option>
                                         <option value="1" @if(old('commentable') == 1) selected @endif>فعال</option>
@@ -122,7 +122,7 @@
 
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
-                                    <label for="">تاریخ و ساعت انتشار</label>
+                                    <label for="">زمان انتشار</label>
                                     <input type="text" id="published_at" name="published_at" class="form-control form-control-sm d-none">
                                     <input type="text" id="published_at_view" class="form-control form-control-sm">
                                 </div>

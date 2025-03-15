@@ -25,7 +25,7 @@ class MenuController extends Controller
     {
         $inputs = $request->all();
         $menu = Menu::create($inputs);
-        return redirect()->route('admin.content.menu.index')->with('toast-success', 'منوی جدید با موفقیت ثبت شد');
+        return redirect()->route('admin.content.menu.index')->with('swal-success', 'منوی جدید با موفقیت ثبت شد');
     }
 
     //public function show($id){}
@@ -40,13 +40,13 @@ class MenuController extends Controller
     {
         $inputs = $request->all();
         $menu->update($inputs);
-        return redirect()->route('admin.content.menu.index')->with('toast-success', 'منو با موفقیت ویرایش شد');
+        return redirect()->route('admin.content.menu.index')->with('swal-success', 'منو با موفقیت ویرایش شد');
     }
 
     public function destroy(Menu $menu)
     {
         $result = $menu->delete();
-        return redirect()->route('admin.content.menu.index')->with('toast-success', ' منو شما با موفقیت حذف شد');
+        return redirect()->route('admin.content.menu.index')->with('swal-success', ' منو شما با موفقیت حذف شد');
     }
 
 

@@ -53,7 +53,7 @@
 
                         <section class="col-12 col-md-6 mb-2">
                             <div class="form-group mb-1">
-                                <label for="">تاریخ و ساعت انتشار</label>
+                                <label for="">زمان انتشار</label>
                                 <input type="text" name="published_at" id="published_at"
                                     class="form-control form-control-sm d-none" value="{{ $email->published_at }}">
                                 <input type="text" id="published_at_view" class="form-control form-control-sm" value="{{ $email->published_at }}">

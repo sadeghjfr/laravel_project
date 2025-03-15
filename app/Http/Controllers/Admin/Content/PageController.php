@@ -28,7 +28,7 @@ class PageController extends Controller
         $inputs = $request->all();
 
         $page = Page::create($inputs);
-        return redirect()->route('admin.content.page.index')->with('toast-success', 'پیج با موفقیت ثبت شد');
+        return redirect()->route('admin.content.page.index')->with('swal-success', 'پیج با موفقیت ثبت شد');
     }
 
 
@@ -46,14 +46,14 @@ class PageController extends Controller
         $inputs = $request->all();
         $inputs['slug'] = null;
         $page->update($inputs);
-        return redirect()->route('admin.content.page.index')->with('toast-success', 'پیج با موفقیت ویرایش شد');
+        return redirect()->route('admin.content.page.index')->with('swal-success', 'پیج با موفقیت ویرایش شد');
     }
 
 
     public function destroy(Page $page)
     {
         $result = $page->delete();
-        return redirect()->route('admin.content.page.index')->with('toast-error', 'پیج با موفقیت حذف شد');
+        return redirect()->route('admin.content.page.index')->with('swal-success', 'پیج با موفقیت حذف شد');
     }
 
     public function status(Page $page)

@@ -31,13 +31,14 @@ class CategoryController extends Controller
         if($request->hasFile('image'))
         {
             $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'product-category');
-            $result = $imageService->createIndexAndSave($request->file('image'));
+            $result = $imageService->save($request->file('image'));
 
             if($result === false)
                 return redirect()->route('admin.market.category.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
+
+            $inputs['image'] = $result;
         }
 
-        $inputs['image'] = $result;
         $productCategory = ProductCategory::create($inputs);
         return redirect()->route('admin.market.category.index')->with('swal-success', 'دسته بندی جدید با موفقیت ثبت شد');
     }
@@ -56,10 +57,10 @@ class CategoryController extends Controller
         if($request->hasFile('image'))
         {
             if(!empty($productCategory->image))
-                $imageService->deleteDirectoryAndFiles($productCategory->image['directory']);
+                $imageService->deleteImage($productCategory->image);
 
             $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'product-category');
-            $result = $imageService->createIndexAndSave($request->file('image'));
+            $result = $imageService->save($request->file('image'));
 
             if($result === false)
                 return redirect()->route('admin.market.category.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
@@ -67,16 +68,7 @@ class CategoryController extends Controller
             $inputs['image'] = $result;
         }
 
-        else
-        {
-            if(isset($inputs['currentImage']) && !empty($productCategory->image))
-            {
-                $image = $productCategory->image;
-                $image['currentImage'] = $inputs['currentImage'];
-                $inputs['image'] = $image;
-            }
-        }
-
+        $inputs['slug'] = null;
         $productCategory->update($inputs);
         return redirect()->route('admin.market.category.index')->with('swal-success', 'دسته بندی با موفقیت ویرایش شد');
     }

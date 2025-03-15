@@ -2,7 +2,6 @@
 
 @section('head-tag')
 <title>ایجاد بنر</title>
-<link rel="stylesheet" href="{{ asset('admin-assets/jalalidatepicker/persian-datepicker.min.css') }}">
 @endsection
 
 @section('content')
@@ -48,19 +47,6 @@
                         @enderror
                         </section>
 
-                        <section class="col-12 col-md-6 mb-2">
-                            <div class="form-group mb-1">
-                                <label for="">تصویر </label>
-                                <input type="file" name="image" class="form-control form-control-sm">
-                            </div>
-                            @error('image')
-                            <span class="text-danger" role="alert">
-                                <strong>
-                                    {{ $message }}
-                                </strong>
-                            </span>
-                        @enderror
-                        </section>
 
                         <section class="col-12 col-md-6 mb-2">
                             <div class="form-group mb-1">
@@ -97,7 +83,7 @@
 
 
 
-                        <section class="col-12">
+                        <section class="col-12 col-md-6 mb-2">
                             <div class="form-group mb-1">
                                 @php
                                     $positions = [
@@ -115,6 +101,9 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <span id="positionText" class="d-block my-1" role="alert">
+                                <strong></strong>
+                            </span>
                             @error('position')
                             <span class="text-danger" role="alert">
                                 <strong>
@@ -122,6 +111,20 @@
                                 </strong>
                             </span>
                         @enderror
+                        </section>
+
+                        <section class="col-12 mb-2">
+                            <div class="form-group mb-1">
+                                <label for="">تصویر </label>
+                                <input type="file" name="image" class="form-control form-control-sm">
+                            </div>
+                            @error('image')
+                            <span class="text-danger" role="alert">
+                                <strong>
+                                    {{ $message }}
+                                </strong>
+                            </span>
+                            @enderror
                         </section>
 
                         <section class="col-12">
@@ -134,5 +137,32 @@
         </section>
     </section>
 </section>
+
+@endsection
+
+@section('script')
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const positionSelect = document.getElementById('position');
+            const imageSizeText = document.getElementById('positionText');
+
+            const positionTexts = {
+                '1': 'اندازه تصویر : عرض ۱۷۸۰ و ارتفاع ۸۹۰ پیکسل باشد.',
+                '2': 'اندازه تصویر : عرض ۸۵۶ و ارتفاع ۴۲۸ پیکسل باشد.',
+                '3': 'اندازه تصویر : عرض ۸۲۰ و ارتفاع ۳۰۰ پیکسل باشد.',
+                '4': 'اندازه تصویر : عرض ۱۶۵۶ و ارتفاع ۲۱۰ پیکسل باشد.',
+            };
+
+            positionSelect.addEventListener('change', function() {
+                const selectedPosition = this.value;
+                if (positionTexts[selectedPosition]) {
+                    imageSizeText.querySelector('strong').textContent = positionTexts[selectedPosition];
+                } else {
+                    imageSizeText.querySelector('strong').textContent = '';
+                }
+            });
+        });
+    </script>
 
 @endsection

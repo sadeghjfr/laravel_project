@@ -49,42 +49,6 @@
                                 @enderror
                             </section>
 
-                            <section class="col-12 col-md-6 mb-2">
-                                <div class="form-group mb-1">
-                                    <label for="image">تصویر</label>
-                                    <input name="image" id="image" type="file" class="form-control form-control-sm">
-                                </div>
-                                @error('image')
-                                <span class="text-danger" role="alert">
-                                    <strong>
-                                        {{$message}}
-                                    </strong>
-                                </span>
-                                @enderror
-
-                                @if(!empty($postCategory->image))
-                                    <section class="row">
-                                        @php
-                                            $number = 1;
-                                        @endphp
-                                        @foreach ($postCategory->image['indexArray'] as $key => $value )
-                                            <section class="col-md-{{ 6 / $number }}">
-                                                <div class="form-check">
-                                                    <input type="radio" class="form-check-input" name="currentImage" value="{{ $key }}" id="{{ $number }}" @if($postCategory->image['currentImage'] == $key) checked @endif>
-                                                    <label for="{{ $number }}" class="form-check-label mx-2">
-                                                        <img src="{{ asset($value) }}" class="w-100" alt="">
-                                                    </label>
-                                                </div>
-                                            </section>
-                                            @php
-                                                $number++;
-                                            @endphp
-                                        @endforeach
-
-                                    </section>
-                                @endif
-
-                            </section>
 
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
@@ -122,7 +86,7 @@
                                 @enderror
                             </section>
 
-                            <section class="col-12 my-2">
+                            <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
                                     <label for="tags">تگ ها</label>
                                     <input type="hidden" class="form-control form-control-sm"  name="tags" id="tags" value="{{ old('tags', $postCategory->tags) }}">
@@ -138,6 +102,26 @@
                             </span>
                                 @enderror
                             </section>
+
+                            <section class="col-12 col-md-6 mb-2">
+                                <div class="form-group mb-1">
+                                    <label for="image">تصویر</label>
+                                    <input name="image" id="image" type="file" class="form-control form-control-sm">
+                                </div>
+                                @error('image')
+                                <span class="text-danger" role="alert">
+                                    <strong>
+                                        {{$message}}
+                                    </strong>
+                                </span>
+                                @enderror
+
+
+                            </section>
+                            @if(!empty($postCategory->image))
+                                <img src="{{ asset($postCategory->image) }}" width="100" height="100"
+                                     id="imagePreview" class="rounded mt-1" alt="{{$postCategory->name}}">
+                            @endif
 
                             <section class="col-12 mb-2">
                                 <div class="form-group mb-1">
@@ -176,5 +160,6 @@
     </script>
 
     @include('admin.scripts.tags-control')
+    @include('admin.scripts.image-preview-control')
 
 @endsection

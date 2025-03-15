@@ -21,16 +21,16 @@ return [
 
     'index-image-sizes' => [
         'large' => [
-            'width' => 1780,
-            'height' => 890
+            'width' => 800,
+            'height' => 800
         ],
         'medium' => [
-            'width' => 400,
-            'height' => 600
+            'width' => 300,
+            'height' => 300
         ],
         'small' => [
-            'width' => 80,
-            'height' => 60
+            'width' => 100,
+            'height' => 100
         ],
     ],
 
@@ -40,16 +40,16 @@ return [
 
     'cache-image-sizes' => [
         'large' => [
-            'width' => 1780,
-            'height' => 890
+            'width' => 800,
+            'height' => 800
         ],
         'medium' => [
-            'width' => 400,
-            'height' => 600
+            'width' => 300,
+            'height' => 300
         ],
         'small' => [
-            'width' => 80,
-            'height' => 60
+            'width' => 100,
+            'height' => 100
         ],
     ],
 

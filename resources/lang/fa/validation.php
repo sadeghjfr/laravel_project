@@ -203,6 +203,7 @@ return [
         'marketable_number' => 'تعداد',
         'percentage' => 'درصد',
         'position' => 'جایگاه',
+        'profile_photo_path' => 'تصویر',
         'otp' => 'کد تایید',
         'discount_ceiling' => 'حداکثر تخفیف',
         'minimal_order_amount' => 'حداقل مبلغ',

@@ -24,33 +24,29 @@ class PostRequest extends FormRequest
     public function rules()
     {
 
-        if($this->isMethod('post')){
+        $image = $this->isMethod('post')
+            ? 'required|image|mimes:png,jpg,jpeg,gif,webp|max:1024|dimensions:width=1200,height=760'
+            : 'image|mimes:png,jpg,jpeg,gif,webp|max:1024|dimensions:width=1200,height=760';
+
 
             return [
-                'title' => 'required|max:120|min:2|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
-                'summary' => 'required|max:300|min:5',
-                'category_id' => 'required|regex:/^[0-9]+$/u|exists:post_categories,id',
-                'image' => 'required|image|mimes:png,jpg,jpeg,gif|max:2048',
+                'title' => 'required|max:120|min:2',
+                'summary' => 'required|max:1024|min:5',
+                'category_id' => 'required|exists:post_categories,id',
+                'image' => $image,
                 'status' => 'required|numeric|in:0,1',
-                'tags' => 'required|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
-                'body' => 'required|max:600|min:5',
+                'tags' => 'required',
+                'body' => 'required|min:5',
                 'published_at' => 'required|numeric',
 
             ];
-        }
 
-        else{
+    }
 
-            return [
-                'title' => 'required|max:120|min:2|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
-                'summary' => 'required|max:300|min:5',
-                'category_id' => 'required|regex:/^[0-9]+$/u|exists:post_categories,id',
-                'image' => 'image|mimes:png,jpg,jpeg,gif|max:2048',
-                'status' => 'required|numeric|in:0,1',
-                'tags' => 'required|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
-                'body' => 'required|max:600|min:5',
-                'published_at' => 'required|numeric',
-            ];
-        }
+    public function messages()
+    {
+        return [
+            'image.dimensions' => 'ابعاد تصویر باید ۷۶۰ * ۱۲۰۰ پیکسل باشد.'
+        ];
     }
 }

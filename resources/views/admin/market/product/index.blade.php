@@ -33,9 +33,9 @@
                         <tr>
                             <th>#</th>
                             <th>نام محصول</th>
-                            <th> تصویر</th>
-                            <th> قیمت</th>
-                            <th>دسته</th>
+                            <th>تصویر</th>
+                            <th>قیمت</th>
+                            <th>دسته بندی</th>
                             <th>فعال سازی</th>
                             <th>قابل فروش</th>
                             <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
@@ -48,9 +48,8 @@
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$product->name}}</td>
-                                <td><img
-                                        src="@if($product->image !=null) {{asset($product->image['indexArray'][$product->image['currentImage']])}} @endif"
-                                        alt="image" width="50" height="50"></td>
+                                <td><img src="@if($product->image !=null) {{asset($product->image['indexArray']['small'])}} @endif"
+                                        class="rounded" alt="image" width="50" height="50"></td>
                                 <td>{{priceFormat($product->price)}} تومان</td>
                                 <td>{{$product->category->name}}</td>
                                 <td>

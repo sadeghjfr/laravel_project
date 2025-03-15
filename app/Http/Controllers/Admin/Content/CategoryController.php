@@ -33,9 +33,9 @@ class CategoryController extends Controller
         if ($request->hasFile('image')){
 
             $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'post-category');
-            //$result = $imageService->save($request->file('image'));
+            $result = $imageService->save($request->file('image'));
             //$result = $imageService->fitAndSave($request->file('image'), 600, 150);
-            $result = $imageService->createIndexAndSave($request->file('image'));
+            //$result = $imageService->createIndexAndSave($request->file('image'));
 
             if ($result === false)
                 return redirect()->route('admin.content.category.index')->with('toast-error', 'آپلود تصویر با خطا مواجه شد');
@@ -44,10 +44,7 @@ class CategoryController extends Controller
         }
 
         $postCategory = PostCategory::create($inputs);
-        return redirect()->route('admin.content.category.index')->with('toast-success', 'دسته بندی با موفقیت ثبت شد');
-           // ->with('swal-success', 'دسته بندی شما با موفقیت ثبت شد');
-           // ->with('alert-section-success', 'دسته بندی شما با موفقیت ثبت شد');
-
+        return redirect()->route('admin.content.category.index')->with('swal-success', 'دسته بندی با موفقیت ثبت شد');
     }
 
 
@@ -70,11 +67,11 @@ class CategoryController extends Controller
 
             if (!empty($postCategory->image)){
 
-                $imageService->deleteDirectoryAndFiles($postCategory->image['directory']);
+                $imageService->deleteImage($postCategory->image);
             }
 
             $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'post-category');
-            $result = $imageService->createIndexAndSave($request->file('image'));
+            $result = $imageService->save($request->file('image'));
 
             if ($result === false)
                 return redirect()->route('admin.content.category.index')->with('toast-error', 'آپلود تصویر با خطا مواجه شد');
@@ -82,26 +79,16 @@ class CategoryController extends Controller
             $inputs['image'] = $result;
         }
 
-        else{
-
-            if (isset($inputs['currentImage']) && !empty($postCategory->image)){
-
-                $image = $postCategory->image;
-                $image['currentImage'] = $inputs['currentImage'];
-                $inputs['image'] = $image;
-            }
-        }
-
         $inputs['slug'] = null;
         $postCategory->update($inputs);
-        return redirect()->route('admin.content.category.index')->with('toast-success', 'دسته بندی با موفقیت ویرایش شد');
+        return redirect()->route('admin.content.category.index')->with('swal-success', 'دسته بندی با موفقیت ویرایش شد');
     }
 
 
     public function destroy(PostCategory $postCategory)
     {
         $result = $postCategory->delete();
-        return redirect()->route('admin.content.category.index')->with('toast-error', 'دسته بندی با موفقیت حذف شد');
+        return redirect()->route('admin.content.category.index')->with('swal-success', 'دسته بندی با موفقیت حذف شد');
     }
 
     public function status(PostCategory $postCategory)

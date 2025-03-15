@@ -27,8 +27,7 @@ class FAQRequest extends FormRequest
             'question' => 'required|min:2',
             'answer' => 'required|min:2',
             'status' => 'required|numeric|in:0,1',
-            'tags' => 'required|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
-
+            'tags' => 'required',
         ];
     }
 }

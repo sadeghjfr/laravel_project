@@ -26,14 +26,14 @@ class EmailFileRequest extends FormRequest
 
         if($this->isMethod('post')){
             return [
-                'file' => 'required|mimes:png,jpg,jpeg,gif,svg,zip,pdf,docx,doc,apk,txt,psd,xls,ppt,mp4,mkv,html,xml,rar',
+                'file' => 'required|mimes:png,jpg,jpeg,gif,webp,svg,zip,pdf,docx,doc,apk,txt,psd,xls,ppt,mp4,mp3,mkv,html,xml,rar|max:20480',
                 'status' => 'required|numeric|in:0,1',
             ];
         }
 
         else{
             return [
-                'file' => 'mimes:png,jpg,jpeg,gif,svg,zip,pdf,docx,doc,apk,txt,psd,xls,ppt,mp4,mkv,html,xml,rar',
+                'file' => 'mimes:png,jpg,jpeg,gif,webp,svg,zip,pdf,docx,doc,apk,txt,psd,xls,ppt,mp4,mp3,mkv,html,xml,rar|max:20480',
                 'status' => 'required|numeric|in:0,1',
             ];
         }

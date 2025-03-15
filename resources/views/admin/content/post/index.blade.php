@@ -32,10 +32,11 @@
                         <tr>
                             <th>#</th>
                             <th>عنوان پست</th>
-                            <th>دسته</th>
                             <th>تصویر</th>
+                            <th>دسته بندی</th>
+                            <th>زمان انتشار</th>
                             <th>فعال سازی</th>
-                            <th>امکان درج کامنت</th>
+                            <th>امکان درج نظر</th>
                             <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>
                     </thead>
@@ -45,8 +46,9 @@
                         <tr>
                             <th>{{$key+1}}</th>
                             <td>{{$post->title}}</td>
+                            <td><img class="rounded" src="{{asset($post->image)}}" alt="تصویر" width="75" height="50"></td>
                             <td>{{$post->postCategory->name}}</td>
-                            <td><img src="@if($post->image !=null) {{asset($post->image['indexArray'][$post->image['currentImage']])}} @endif" alt="image" width="50" height="50"></td>
+                            <td>{{jalaliDate($post->published_at, '%A, %d %B %Y - %H:i')}}</td>
                             <td>
                                 <label>
                                     <input id="{{$post->id}}" onchange="changeStatus({{$post->id}})" data-url="{{route('admin.content.post.status', $post->id)}}" type="checkbox" @if($post->status===1) checked @endif>

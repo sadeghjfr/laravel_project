@@ -13,6 +13,7 @@ class CommentController extends Controller
 
     public function index()
     {
+
         $unseenComments = Comment::where('status', 'unseen')->where('commentable_type', 'App\Models\Admin\Market\Product')->get();
         $waitingComments = Comment::where('status', 'waiting')->where('commentable_type', 'App\Models\Admin\Market\Product')->get();
         $approvedComments = Comment::where('status', 'approved')->where('commentable_type', 'App\Models\Admin\Market\Product')->get();
@@ -34,13 +35,13 @@ class CommentController extends Controller
 
         $comment->status = $comment->status == 'waiting' ? 'approved' : 'waiting';
         $comment->save();
-        return  Redirect::back()->with('toast-success', 'تغییرات با موفقیت اعمال شد');
+        return  Redirect::back()->with('swal-success', 'تغییرات با موفقیت اعمال شد');
     }
 
     public function destroy(Comment $comment)
     {
         $result = $comment->delete();
-        return redirect()->route('admin.market.comment.index')->with('toast-success', 'کامنت با موفقیت حذف شد');
+        return redirect()->route('admin.market.comment.index')->with('swal-success', 'نظر با موفقیت حذف شد');
     }
 
 
@@ -56,7 +57,7 @@ class CommentController extends Controller
             $inputs['status'] = 'answer';
 
             $comment = Comment::create($inputs);
-            return redirect()->route('admin.market.comment.index')->with('toast-success', 'پاسخ با موفقیت ثبت شد');
+            return redirect()->route('admin.market.comment.index')->with('swal-success', 'پاسخ با موفقیت ثبت شد');
         }
 
         else
@@ -68,7 +69,7 @@ class CommentController extends Controller
     {
         $comment = $answerComment->parent;
         $result = $answerComment->forceDelete();
-        return redirect()->route('admin.market.comment.show', compact('comment'))->with('toast-success', 'پاسخ با موفقیت حذف شد');
+        return redirect()->route('admin.market.comment.show', compact('comment'))->with('swal-success', 'پاسخ با موفقیت حذف شد');
     }
 
 }

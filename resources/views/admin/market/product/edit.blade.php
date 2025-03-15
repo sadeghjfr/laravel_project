@@ -54,9 +54,9 @@
 
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
-                                    <label for="category_id">انتخاب دسته</label>
+                                    <label for="category_id">دسته بندی</label>
                                     <select name="category_id" id="category_id" class="form-control form-control-sm">
-                                        <option value="">دسته را انتخاب کنید</option>
+                                        <option value="">دسته بندی را انتخاب کنید</option>
                                         @foreach ($productCategories as $productCategory)
                                             <option value="{{ $productCategory->id }}"
                                                     @if(old('category_id', $product->category_id) == $productCategory->id) selected @endif>{{ $productCategory->name }}</option>
@@ -75,7 +75,7 @@
 
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
-                                    <label for="brand_id">انتخاب برند</label>
+                                    <label for="brand_id">برند</label>
                                     <select name="brand_id" id="brand_id" class="form-control form-control-sm">
                                         <option value="">برند را انتخاب کنید</option>
                                         @foreach ($brands as $brand)
@@ -92,42 +92,6 @@
                                 </strong>
                             </span>
                                 @enderror
-                            </section>
-
-                            <section class="col-12 col-md-6 mb-2">
-                                <div class="form-group mb-1">
-                                    <label for="image">تصویر </label>
-                                    <input type="file" name="image" id="image" class="form-control form-control-sm">
-                                </div>
-                                @error('image')
-                                <span class="text-danger" role="alert">
-                                <strong>
-                                    {{ $message }}
-                                </strong>
-                            </span>
-                                @enderror
-                            </section>
-
-                            <section class="row">
-                                @php
-                                    $number = 1;
-                                @endphp
-                                @foreach ($product->image['indexArray'] as $key => $value )
-                                    <section class="col-md-{{ 6 / $number }}">
-                                        <div class="form-check">
-                                            <input type="radio" class="form-check-input" name="currentImage"
-                                                   value="{{ $key }}" id="{{ $number }}"
-                                                   @if($product->image['currentImage'] == $key) checked @endif>
-                                            <label for="{{ $number }}" class="form-check-label mx-2">
-                                                <img src="{{ asset($value) }}" class="w-100" alt="">
-                                            </label>
-                                        </div>
-                                    </section>
-                                    @php
-                                        $number++;
-                                    @endphp
-                                @endforeach
-
                             </section>
 
                             <section class="col-12 col-md-6 mb-2">
@@ -212,7 +176,7 @@
 
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
-                                    <label for="published_at">تاریخ و ساعت انتشار</label>
+                                    <label for="published_at">زمان انتشار</label>
                                     <input value="{{$product->published_at}}" type="text" name="published_at" id="published_at" class="form-control form-control-sm d-none">
                                     <input value="{{$product->published_at}}" type="text" id="published_at_view" class="form-control form-control-sm">
                                 </div>
@@ -269,7 +233,7 @@
                                 @enderror
                             </section>
 
-                            <section class="col-12 mb-2 my-2">
+                            <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
                                     <label for="tags">تگ ها</label>
                                     <input type="hidden" class="form-control form-control-sm" name="tags" id="tags"
@@ -287,7 +251,26 @@
                                 @enderror
                             </section>
 
-                            <section class="col-12 border-top border-bottom py-3 mb-3">
+                            <section class="col-12 col-md-6 mb-2">
+                                <div class="form-group mb-1">
+                                    <label for="image">تصویر</label>
+                                    <input type="file" name="image" id="image" class="form-control form-control-sm">
+                                </div>
+                                @error('image')
+                                <span class="text-danger" role="alert">
+                                <strong>
+                                    {{ $message }}
+                                </strong>
+                            </span>
+                                @enderror
+                            </section>
+
+                            @if(!empty($product->image))
+                                <img src="{{ asset($product->image['indexArray']['small']) }}" width="100" height="100"
+                                     id="imagePreview" class="rounded mt-2 mb-4" alt="تصویر">
+                            @endif
+
+                            <section class="col-12 border-top border-bottom py-5 mb-3">
 
                                 <section id="fields-container">
 
@@ -390,6 +373,7 @@
 
     @include('admin.scripts.date-time-picker-control')
     @include('admin.scripts.tags-control')
+    @include('admin.scripts.image-preview-control')
 
     <script>
         $(function () {

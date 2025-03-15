@@ -35,7 +35,7 @@ class BrandController extends Controller
         if ($request->hasFile('logo')){
 
             $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'brand');
-            $result = $imageService->createIndexAndSave($request->file('logo'));
+            $result = $imageService->save($request->file('logo'));
 
             if ($result === false)
                 return redirect()->route('admin.market.brand.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
@@ -61,25 +61,15 @@ class BrandController extends Controller
         if($request->hasFile('logo'))
         {
             if(!empty($brand->logo))
-                $imageService->deleteDirectoryAndFiles($brand->logo['directory']);
+                $imageService->deleteImage($brand->logo);
 
             $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'brand');
-            $result = $imageService->createIndexAndSave($request->file('logo'));
+            $result = $imageService->save($request->file('logo'));
 
             if($result === false)
                 return redirect()->route('admin.market.brand.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
 
             $inputs['logo'] = $result;
-        }
-
-        else
-        {
-            if(isset($inputs['currentImage']) && !empty($brand->logo))
-            {
-                $logo = $brand->logo;
-                $logo['currentImage'] = $inputs['currentImage'];
-                $inputs['logo'] = $logo;
-            }
         }
 
         $inputs['slug'] = null;

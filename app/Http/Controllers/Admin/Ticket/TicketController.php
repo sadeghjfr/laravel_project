@@ -52,13 +52,13 @@ class TicketController extends Controller
         $inputs['ticket_id'] = $ticket->id;
 
         $result = Ticket::create($inputs);
-        return redirect()->route('admin.ticket.index')->with('toast-success', 'پاسخ تیکت با موفقیت ثبت شد');
+        return redirect()->route('admin.ticket.index')->with('swal-success', 'پاسخ تیکت با موفقیت ثبت شد');
     }
 
 
     public function destroy(Ticket $ticket){
         $result = $ticket->delete();
-        return redirect()->route('admin.ticket.index')->with('toast-success', 'تیکت با موفقیت حذف شد');
+        return redirect()->route('admin.ticket.index')->with('swal-success', 'تیکت با موفقیت حذف شد');
     }
 
     //public function create(){}

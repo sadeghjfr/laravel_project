@@ -63,7 +63,7 @@ class SettingController extends Controller
         }
 
         $setting->update($inputs);
-        return redirect()->route('admin.setting.index')->with('toast-success', 'تنظیمات سایت  با موفقیت ویرایش شد');
+        return redirect()->route('admin.setting.index')->with('swal-success', 'تنظیمات سایت  با موفقیت ویرایش شد');
     }
 
 

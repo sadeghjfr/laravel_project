@@ -337,8 +337,6 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         Route::put('/update/{user}', [UserController::class, 'update'])->name('admin.user.update');
         Route::delete('/destroy/{user}', [UserController::class, 'destroy'])->name('admin.user.destroy');
         Route::get('/status/{user}', [UserController::class, 'status'])->name('admin.user.status');
-        Route::get('/activation/{user}', [UserController::class, 'activation'])->name('admin.user.activation');
-
 
         //role
         Route::prefix('role')->group(function () {

@@ -42,7 +42,8 @@ class UserController extends Controller
             $inputs['profile_photo_path'] = $result;
         }
 
-        $inputs['password'] = Hash::make($request->password);
+        //$inputs['password'] = Hash::make($request->password);
+        $inputs['activation'] = 1;
         $user = User::create($inputs);
 
         //notification
@@ -56,9 +57,6 @@ class UserController extends Controller
 
         return redirect()->route('admin.user.index')->with('swal-success', 'کاربر جدید با موفقیت ثبت شد');
     }
-
-
-    //public function show($id){}
 
 
     public function edit(User $user)
@@ -84,6 +82,7 @@ class UserController extends Controller
             $inputs['profile_photo_path'] = $result;
         }
 
+        $inputs['activation'] = 1;
         $user->update($inputs);
         return redirect()->route('admin.user.index')->with('swal-success', 'کاربر با موفقیت ویرایش شد');
     }
@@ -113,21 +112,4 @@ class UserController extends Controller
             return response()->json(['status' => false]);
     }
 
-
-    public function activation(User $user){
-
-        $user->activation = $user->activation == 0 ? 1 : 0;
-        $result = $user->save();
-
-        if($result){
-            if($user->activation == 0)
-                return response()->json(['status' => true, 'checked' => false]);
-
-            else
-                return response()->json(['status' => true, 'checked' => true]);
-        }
-
-        else
-            return response()->json(['status' => false]);
-    }
 }

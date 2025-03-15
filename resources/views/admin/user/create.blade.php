@@ -40,7 +40,7 @@
 
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
-                                    <label for="first_name">نام (اختیاری)</label>
+                                    <label for="first_name">نام</label>
                                     <input type="text" name="first_name" class="form-control form-control-sm" value="{{ old('first_name') }}">
                                 </div>
                                 @error('first_name')
@@ -51,7 +51,7 @@
                             </section>
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
-                                    <label for="last_name">نام خانوادگی (اختیاری)</label>
+                                    <label for="last_name">نام خانوادگی</label>
                                     <input type="text" name="last_name" class="form-control form-control-sm" value="{{ old('last_name') }}">
                                 </div>
                                 @error('last_name')
@@ -62,7 +62,7 @@
                             </section>
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
-                                    <label for="email">ایمیل (اختیاری)</label>
+                                    <label for="email">ایمیل</label>
                                     <input type="text" name="email" class="form-control form-control-sm" value="{{ old('email') }}">
                                 </div>
                                 @error('email')
@@ -73,7 +73,7 @@
                             </section>
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
-                                    <label for="mobile"> شماره موبایل</label>
+                                    <label for="mobile">شماره موبایل</label>
                                     <input type="text" name="mobile" class="form-control form-control-sm" value="{{ old('mobile') }}">
                                 </div>
                                 @error('mobile')
@@ -82,7 +82,7 @@
                                 </span>
                                 @enderror
                             </section>
-                            <section class="col-12 col-md-6 mb-2">
+                            {{-- <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
                                     <label for="password">کلمه عبور</label>
                                     <input type="password" name="password" class="form-control form-control-sm">
@@ -104,29 +104,28 @@
                                     <strong>{{$message}}</strong>
                                 </span>
                                 @enderror
-                            </section>
+                            </section>--}}
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
-                                    <label for="profile_photo_path">تصویر (اختیاری)</label>
+                                    <label for="profile_photo_path">تصویر</label>
                                     <input type="file" name="profile_photo_path" class="form-control form-control-sm">
                                 </div>
                                 @error('profile_photo_path')
                                 <span class="text-danger" role="alert">
                                     <strong>{{$message}}</strong>
                                 </span>
-                            </span>
                                 @enderror
                             </section>
 
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
-                                    <label for="activation">وضعیت فعالسازی</label>
-                                    <select name="activation" class="form-control form-control-sm" id="activation">
-                                        <option value="0" @if(old('activation') == 0) selected @endif>غیرفعال</option>
-                                        <option value="1" @if(old('activation') == 1) selected @endif>فعال</option>
+                                    <label for="status">وضعیت</label>
+                                    <select name="status" class="form-control form-control-sm" id="status">
+                                        <option value="0" @if(old('status') == 0) selected @endif>غیرفعال</option>
+                                        <option value="1" @if(old('status') == 1) selected @endif>فعال</option>
                                     </select>
                                 </div>
-                                @error('activation')
+                                @error('status')
                                 <span class="text-danger" role="alert">
                                     <strong>{{$message}}</strong>
                                 </span>

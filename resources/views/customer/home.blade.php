@@ -258,7 +258,7 @@
                             <section class="item">
                                 <section class="brand-item">
                                     <a href="#">
-                                        <img class="rounded-2" src="{{asset($brand->logo['indexArray']['small'])}}"
+                                        <img class="rounded-2" src="{{asset($brand->logo)}}"
                                              alt="{{$brand->persian_name}}">
                                     </a>
                                 </section>

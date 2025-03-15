@@ -52,7 +52,7 @@
 
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
-                                    <label for="">تاریخ و ساعت انتشار</label>
+                                    <label for="">زمان انتشار</label>
                                     <input type="text" name="published_at" id="published_at"
                                         class="form-control form-control-sm d-none">
                                     <input type="text" id="published_at_view" class="form-control form-control-sm">
@@ -64,7 +64,7 @@
                                 @enderror
                             </section>
 
-                            <section class="col-12">
+                            <section class="col-12 mb-2">
                                 <div class="form-group mb-1">
                                     <label for="status">وضعیت</label>
                                     <select name="status"  class="form-control form-control-sm" id="status">
@@ -79,7 +79,7 @@
                                 @enderror
                             </section>
 
-                            <section class="col-12">
+                            <section class="col-12 mb-2">
                                 <div class="form-group mb-1">
                                     <label for="">متن پیامک</label>
                                     <textarea name="body" id="body" class="form-control form-control-sm"

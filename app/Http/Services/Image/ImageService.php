@@ -12,7 +12,9 @@ class ImageService extends ImageToolsService{
         $this->setImage($image);
         $this->provider();
 
-        $result = Image::make($image->getRealPath())->save(public_path($this->getImageAddress()), null, $this->getImageFormat());
+        $result = Image::make($image->getRealPath())
+            ->encode('webp', 100)
+            ->save(public_path($this->getImageAddress()), 100, 'webp');
 
         return $result ? $this->getImageAddress() : false;
     }
@@ -23,9 +25,9 @@ class ImageService extends ImageToolsService{
         $this->provider();
 
         $result = Image::make($image->getRealPath())
-            ->encode('webp', 50)
             ->fit($width, $height)
-            ->save(public_path($this->getImageAddress()), null, $this->getImageFormat());
+            ->encode('webp', 100)
+            ->save(public_path($this->getImageAddress()), 100, 'webp');
 
         return $result ? $this->getImageAddress() : false;
     }
@@ -57,7 +59,13 @@ class ImageService extends ImageToolsService{
             $this->provider();
 
             //save image
-            $result = Image::make($image->getRealPath())->fit($imageSize['width'], $imageSize['height'])->save(public_path($this->getImageAddress()), null, $this->getImageFormat());
+            $result = Image::make(
+                $image->getRealPath())
+                ->resize($imageSize['width'], $imageSize['height'])
+                ->encode('webp', 100)
+                ->save(public_path($this->getImageAddress()),
+                    100, 'webp'
+            );
 
             if($result)
                 $indexArray[$sizeAlias] = $this->getImageAddress();

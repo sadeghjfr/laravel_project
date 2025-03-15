@@ -51,9 +51,9 @@
 
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
-                                    <label for="category_id">انتخاب دسته</label>
+                                    <label for="category_id">دسته بندی</label>
                                     <select name="category_id"  class="form-control form-control-sm">
-                                        <option value="">دسته را انتخاب کنید</option>
+                                        <option value="">دسته بندی را انتخاب کنید</option>
                                         @foreach ($productCategories as $productCategory)
                                             <option value="{{ $productCategory->id }}" @if(old('category_id') == $productCategory->id) selected @endif>{{ $productCategory->name }}</option>
                                         @endforeach
@@ -72,9 +72,9 @@
 
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
-                                    <label for="brand_id">انتخاب برند</label>
+                                    <label for="brand_id">برند</label>
                                     <select name="brand_id"  class="form-control form-control-sm">
-                                        <option value="">دسته را انتخاب کنید</option>
+                                        <option value="">برند را انتخاب کنید</option>
                                         @foreach ($brands as $brand)
                                             <option value="{{ $brand->id }}" @if(old('brand_id') == $brand->id) selected @endif>{{ $brand->original_name }}</option>
                                         @endforeach
@@ -178,7 +178,7 @@
 
                             <section class="col-12 col-md-6 mb-2">
                                 <div class="form-group mb-1">
-                                    <label for="published_at">تاریخ و ساعت انتشار</label>
+                                    <label for="published_at">زمان انتشار</label>
                                     <input type="text" name="published_at" id="published_at" class="form-control form-control-sm d-none">
                                     <input type="text" id="published_at_view" class="form-control form-control-sm">
                                 </div>

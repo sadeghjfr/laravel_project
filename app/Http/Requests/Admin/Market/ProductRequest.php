@@ -25,8 +25,8 @@ class ProductRequest extends FormRequest
     {
 
         $image = $this->isMethod('post')
-            ? 'required|image|mimes:png,jpg,jpeg,gif|max:2048'
-            : 'image|mimes:png,jpg,jpeg,gif|max:2048';
+            ? 'required|image|mimes:png,jpg,jpeg,gif,webp|max:1024|dimensions:ratio=1/1,min_width=800,min_height=800'
+            : 'image|mimes:png,jpg,jpeg,gif,webp|max:1024|dimensions:ratio=1/1,min_width=800,min_height=800';
 
 
         return [
@@ -44,6 +44,13 @@ class ProductRequest extends FormRequest
             'brand_id' => 'nullable|exists:brands,id',
             'category_id' => 'required|exists:product_categories,id',
             'published_at' => 'required|numeric',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'image.dimensions' => 'ابعاد تصویر باید حداقل ۸۰۰ * ۸۰۰ پیکسل باشد و نسبت طول به عرض آن ۱:۱ باشد.'
         ];
     }
 }

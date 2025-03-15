@@ -7,7 +7,6 @@
             <th>شماره موبایل</th>
             <th>نام و نام خانوادگی</th>
             <th>فعال سازی</th>
-            <th>وضعیت</th>
             @if($isAdmin)
                 <th>نقش</th>
             @endif
@@ -23,15 +22,6 @@
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->mobile }}</td>
                 <td>{{ $user->full_name }}</td>
-                <td>
-                    <label>
-                        <input id="{{ $user->id }}-active" onchange="changeActive({{ $user->id }})"
-                               data-url="{{ route('admin.user.activation', $user->id) }}" type="checkbox"
-                               @if ($user->activation === 1)
-                                   checked
-                            @endif>
-                    </label>
-                </td>
                 <td>
                     <label>
                         <input id="{{ $user->id }}" onchange="changeStatus({{ $user->id }})"
