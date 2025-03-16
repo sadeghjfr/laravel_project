@@ -3,30 +3,35 @@
     <section class="container-xxl my-4">
         <section class="row">
             <section class="col">
-                <section class="footer-shop-features d-md-flex justify-content-md-around align-items-md-center">
+                <section class="footer-shop-features d-flex flex-wrap justify-content-around align-items-center">
 
-                    <section class="footer-shop-features-item">
-                        <img src="assets/images/footer/1.png" alt="">
+                    <section class="footer-shop-features-item text-center p-2 col-6 col-md-auto">
+                        <img src="{{asset('customer-assets/images/footer/1.png')}}" alt="" class="img-fluid">
                         <section class="text-center">امکان تحویل اکسپرس</section>
                     </section>
 
-                    <section class="footer-shop-features-item">
-                        <img src="assets/images/footer/2.png" alt="">
+                    <section class="footer-shop-features-item text-center p-2 col-6 col-md-auto">
+                        <img src="{{asset('customer-assets/images/footer/2.png')}}" alt="" class="img-fluid">
                         <section class="text-center">امکان پرداخت در محل</section>
                     </section>
 
-                    <section class="footer-shop-features-item">
-                        <img src="assets/images/footer/3.png" alt="">
+                    <section class="footer-shop-features-item text-center p-2 col-6 col-md-auto">
+                        <img src="{{asset('customer-assets/images/footer/3.png')}}" alt="" class="img-fluid">
                         <section class="text-center">7 روز هفته، 24 ساعته</section>
                     </section>
 
-                    <section class="footer-shop-features-item">
-                        <img src="assets/images/footer/4.png" alt="">
+                    <section class="footer-shop-features-item text-center p-2 col-6 col-md-auto">
+                        <img src="{{asset('customer-assets/images/footer/4.png')}}" alt="" class="img-fluid">
                         <section class="text-center">7 روز ضمانت بازگشت کالا</section>
                     </section>
 
-                    <section class="footer-shop-features-item">
-                        <img src="assets/images/footer/5.png" alt="">
+                    <section class="footer-shop-features-item text-center p-2 col-6 col-md-auto">
+                        <img src="{{asset('customer-assets/images/footer/5.png')}}" alt="" class="img-fluid">
+                        <section class="text-center">ضمانت اصل بودن کالا</section>
+                    </section>
+
+                    <section class="footer-shop-features-item text-center p-2 col-6 col-md-auto">
+                        <img src="{{asset('customer-assets/images/footer/5.png')}}" alt="" class="img-fluid">
                         <section class="text-center">ضمانت اصل بودن کالا</section>
                     </section>
 

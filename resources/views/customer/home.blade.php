@@ -60,7 +60,7 @@
                                     <section class="lazyload-item-wrapper">
                                         <section class="product">
 
-                                            <section class="product-add-to-cart">
+                                            {{--<section class="product-add-to-cart">
                                                 <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="افزودن به سبد خرید">
                                                     <i class="fa fa-cart-plus"></i>
                                                 </a>
@@ -70,7 +70,7 @@
                                                 <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="افزودن به علاقه مندی">
                                                     <i class="fa fa-heart"></i>
                                                 </a>
-                                            </section>
+                                            </section>--}}
 
                                             <a class="product-link" href="#">
 
@@ -84,15 +84,16 @@
                                                 </section>
 
                                                 <section class="product-name">
-                                                    <h3>{{\Illuminate\Support\Str::limit($product->name, 30)}}</h3>
+                                                    <h3>{{$product->name}}</h3>
                                                 </section>
 
                                                 <section class="product-price-wrapper">
-                                                    <section class="product-discount">
-                                                        <span class="product-old-price">{{priceFormat($product->price) . ' تومان'}}</span>
-                                                        <span class="product-discount-amount">10%</span>
+                                                    <section class="d-flex product-discount">
+
+                                                        <span class="product-discount-amount">۱۰٪</span>
+                                                        <span class="product-price w-100">{{priceFormat($product->price) . ' تومان'}}</span>
                                                     </section>
-                                                    <section class="product-price">{{priceFormat($product->price) . ' تومان'}}</section>
+                                                    <section class="product-old-price">{{priceFormat($product->price)}}</section>
                                                 </section>
 
                                                 <section class="product-colors">
@@ -147,7 +148,7 @@
                         <section class="content-header">
                             <section class="d-flex justify-content-between align-items-center">
                                 <h2 class="content-header-title">
-                                    <span>پیشنهاد آمازون به شما</span>
+                                    <span>پربازدیدترین کالاها</span>
                                 </h2>
                                 <section class="content-header-link">
                                     <a href="#">مشاهده همه</a>
@@ -163,7 +164,7 @@
                                         <section class="lazyload-item-wrapper">
                                             <section class="product">
 
-                                                <section class="product-add-to-cart">
+                                                {{--<section class="product-add-to-cart">
                                                     <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="افزودن به سبد خرید">
                                                         <i class="fa fa-cart-plus"></i>
                                                     </a>
@@ -173,7 +174,7 @@
                                                     <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="افزودن به علاقه مندی">
                                                         <i class="fa fa-heart"></i>
                                                     </a>
-                                                </section>
+                                                </section>--}}
 
                                                 <a class="product-link" href="#">
 
@@ -187,15 +188,16 @@
                                                     </section>
 
                                                     <section class="product-name">
-                                                        <h3>{{\Illuminate\Support\Str::limit($product->name, 30)}}</h3>
+                                                        <h3>{{$product->name}}</h3>
                                                     </section>
 
                                                     <section class="product-price-wrapper">
-                                                        <section class="product-discount">
-                                                            <span class="product-old-price">{{priceFormat($product->price) . ' تومان'}}</span>
-                                                            <span class="product-discount-amount">10%</span>
+                                                        <section class="d-flex product-discount">
+
+                                                            <span class="product-discount-amount">۱۰٪</span>
+                                                            <span class="product-price w-100">{{priceFormat($product->price) . ' تومان'}}</span>
                                                         </section>
-                                                        <section class="product-price">{{priceFormat($product->price) . ' تومان'}}</section>
+                                                        <section class="product-old-price">{{priceFormat($product->price)}}</section>
                                                     </section>
 
                                                     <section class="product-colors">
