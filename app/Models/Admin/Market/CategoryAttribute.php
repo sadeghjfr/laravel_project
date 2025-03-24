@@ -19,7 +19,7 @@ class CategoryAttribute extends Model
 
     public function values(){
 
-        return $this->hasMany(CategoryAttributeValue::class);
+        return $this->hasMany(CategoryAttributeValue::class, 'category_attribute_id');
     }
 
     public static function boot()

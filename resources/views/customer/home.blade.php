@@ -72,7 +72,7 @@
                                                 </a>
                                             </section>--}}
 
-                                            <a class="product-link" href="#">
+                                            <a class="product-link" href="{{route('customer.market.product.index', $product)}}">
 
                                                 <section class="product-image">
                                                     <img class="" src="{{asset($product->image['indexArray']['medium'])}}"
@@ -87,14 +87,29 @@
                                                     <h3>{{$product->name}}</h3>
                                                 </section>
 
-                                                <section class="product-price-wrapper">
-                                                    <section class="d-flex product-discount">
+                                                @if($product->marketable_number>0)
+                                                    <section class="product-price-wrapper">
 
-                                                        <span class="product-discount-amount">۱۰٪</span>
-                                                        <span class="product-price w-100">{{priceFormat($product->price) . ' تومان'}}</span>
+                                                        @if(!empty($product->activeAmazingSale()))
+                                                            <section class="d-flex product-discount">
+
+                                                                <span class="product-discount-amount">{{priceFormat($product->activeAmazingSale()->percentage).'٪'}}</span>
+                                                                <span class="product-price w-100">{{priceFormat($product->price - (($product->price * $product->activeAmazingSale()->percentage)/100)). ' تومان'}}</span>
+                                                            </section>
+                                                            <section
+                                                                class="product-old-price">{{priceFormat($product->price)}}
+                                                            </section>
+                                                        @else
+                                                            <span class="product-price w-100 d-block text-left">{{priceFormat($product->price). ' تومان'}}</span>
+
+                                                        @endif
+
                                                     </section>
-                                                    <section class="product-old-price">{{priceFormat($product->price)}}</section>
-                                                </section>
+                                                @else
+                                                    <section class="text-center">
+                                                        <span class="text-secondary">ناموجود</span>
+                                                    </section>
+                                                @endif
 
                                                 <section class="product-colors">
                                                     @foreach($product->colors as $color)
@@ -176,7 +191,7 @@
                                                     </a>
                                                 </section>--}}
 
-                                                <a class="product-link" href="#">
+                                                <a class="product-link" href="{{route('customer.market.product.index', $product)}}">
 
                                                     <section class="product-image">
                                                         <img class="" src="{{asset($product->image['indexArray']['medium'])}}"
@@ -191,14 +206,29 @@
                                                         <h3>{{$product->name}}</h3>
                                                     </section>
 
-                                                    <section class="product-price-wrapper">
-                                                        <section class="d-flex product-discount">
+                                                    @if($product->marketable_number>0)
+                                                        <section class="product-price-wrapper">
 
-                                                            <span class="product-discount-amount">۱۰٪</span>
-                                                            <span class="product-price w-100">{{priceFormat($product->price) . ' تومان'}}</span>
+                                                            @if(!empty($product->activeAmazingSale()))
+                                                                <section class="d-flex product-discount">
+
+                                                                    <span class="product-discount-amount">{{priceFormat($product->activeAmazingSale()->percentage).'٪'}}</span>
+                                                                    <span class="product-price w-100">{{priceFormat($product->price - (($product->price * $product->activeAmazingSale()->percentage)/100)). ' تومان'}}</span>
+                                                                </section>
+                                                                <section
+                                                                    class="product-old-price">{{priceFormat($product->price)}}
+                                                                </section>
+                                                            @else
+                                                                <span class="product-price w-100 d-block text-left">{{priceFormat($product->price). ' تومان'}}</span>
+
+                                                            @endif
+
                                                         </section>
-                                                        <section class="product-old-price">{{priceFormat($product->price)}}</section>
-                                                    </section>
+                                                    @else
+                                                        <section class="text-center">
+                                                            <span class="text-secondary">ناموجود</span>
+                                                        </section>
+                                                    @endif
 
                                                     <section class="product-colors">
                                                         @foreach($product->colors as $color)

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Market;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Market\Payment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class PaymentController extends Controller
 {
@@ -21,7 +22,7 @@ class PaymentController extends Controller
 
         $payment->status = 'paid';
         $result = $payment->save();
-        return redirect()->route('admin.market.payment.index')->with('toast-success', 'وضعیت پرداخت با موفقیت تغییر کرد');
+        return Redirect::back()->with('toast-success', 'وضعیت پرداخت با موفقیت تغییر کرد');
     }
 
     public function unpaid(Payment $payment){

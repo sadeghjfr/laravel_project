@@ -33,7 +33,8 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>رنگ محصول</th>
+                            <th>نام رنگ</th>
+                            <th>رنگ</th>
                             <th>افزایش قیمت</th>
                             <th class="max-width-16-rem"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>
@@ -44,6 +45,9 @@
                             <tr>
                                 <th>{{ $loop->iteration }}</th>
                                 <td>{{ $color->color_name }}</td>
+                                <td>
+                                    <p style="background-color: {{$color->color_code}};  width: 20px; height: 20px;"></p>
+                                </td>
                                 <td>{{priceFormat($color->price_increase)}} تومان</td>
                                 <td class="width-8-rem text-center">
                                     <form class="d-inline"

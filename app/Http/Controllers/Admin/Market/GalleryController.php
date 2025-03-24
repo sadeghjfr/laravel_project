@@ -18,13 +18,19 @@ class GalleryController extends Controller
 
     public function create(Product $product)
     {
+        if ($product->images()->count()>=4)
+            return redirect()->route('admin.market.gallery.index', $product->id)->with('toast-error', 'هر محصول می تواند حداکثر ۴ تصویر داشته باشد');
+
         return view('admin.market.product.gallery.create', compact('product'));
     }
 
     public function store(Request $request, Product $product, ImageService $imageService)
     {
         $validated = $request->validate([
-            'image' => 'required|image|mimes:png,jpg,jpeg,gif,webp|max:2048',
+            'image' => 'required|image|mimes:png,jpg,jpeg,gif,webp|max:1024|dimensions:ratio=1/1,min_width=800,min_height=800',
+        ],
+        [
+            'image.dimensions' => 'ابعاد تصویر باید حداقل ۸۰۰ * ۸۰۰ پیکسل باشد و نسبت طول به عرض آن ۱:۱ باشد.'
         ]);
 
         $inputs = $request->all();

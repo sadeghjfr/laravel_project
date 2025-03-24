@@ -7,6 +7,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Carbon;
 
 class Product extends Model
 {
@@ -62,10 +63,28 @@ class Product extends Model
         return $this->hasMany(Guarantee::class);
     }
 
+    public function amazingSales()
+    {
+        return $this->hasMany(AmazingSale::class);
+    }
+
+    public function activeAmazingSale()
+    {
+        return $this->amazingSales()
+            ->where('start_date', '<', Carbon::now())
+            ->where('end_date', '>', Carbon::now())
+            ->first();
+    }
+
     public function comments(){
 
         return $this->morphMany(Comment::class, 'commentable');
     }
+
+    public function activeComments(){
+        return $this->comments()->where('status', 'approved')->orderBy('created_at', 'desc')->get();
+    }
+
 
 
     public static function boot()
@@ -96,6 +115,10 @@ class Product extends Model
 
             $product->guarantees()->each(function ($guarantee) {
                 $guarantee->delete();
+            });
+
+            $product->amazingSales()->each(function ($amazingSale) {
+                $amazingSale->delete();
             });
         });
 

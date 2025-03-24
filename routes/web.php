@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\Market\OrderController;
 use App\Http\Controllers\Admin\Market\PaymentController;
 use App\Http\Controllers\Admin\Market\ProductColorController;
 use App\Http\Controllers\Admin\Market\ProductController;
+use App\Http\Controllers\Customer\Market\ProductController as CustomerProductController;
 use App\Http\Controllers\Admin\Market\StoreController;
 use App\Http\Controllers\Admin\Notify\EmailController;
 use App\Http\Controllers\Admin\Notify\EmailFileController;
@@ -466,7 +467,7 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
 |
 */
 
-Route::namespace('Auth')->group(function (){
+Route::namespace('Auth')->group(function () {
 
     Route::get('login-register', [LoginRegisterController::class, 'loginRegisterForm'])->name('auth.customer.login-register-form');
     Route::middleware('throttle:customer-login-register-limiter')
@@ -484,8 +485,6 @@ Route::namespace('Auth')->group(function (){
 });
 
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Customer
@@ -496,20 +495,19 @@ Route::namespace('Auth')->group(function (){
 Route::get('/', [HomeController::class, 'home'])->name('customer.home');
 
 
+Route::namespace('Customer')->group(function () {
 
+    //market
+    Route::namespace('Market')->group(function () {
 
+        //product
+        Route::prefix('product')->group(function () {
+            Route::get('/{product:slug}', [CustomerProductController::class, 'index'])->name('customer.market.product.index');
+            Route::post('/add-comment/{product:slug}', [CustomerProductController::class, 'addComment'])->name('customer.market.product.add-comment');
+        });
 
-
-
-
-
-
-
-
-
-
-
-
+    });
+});
 
 
 Route::middleware([
