@@ -7,12 +7,16 @@ use App\Models\Admin\Market\Banner;
 use App\Models\Admin\Market\Brand;
 use App\Models\Admin\Market\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
 
     public function home()
     {
+        Auth::loginUsingId(1);
+        //Auth::logout();
+
         $slideShowImages = Banner::where('position', 1)->where('status', 1)->get();
         $topBanners = Banner::where('position', 2)->where('status', 1)->take(2)->get();
         $middleBanners = Banner::where('position', 3)->where('status', 1)->take(2)->get();

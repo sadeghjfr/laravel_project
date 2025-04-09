@@ -504,6 +504,7 @@ Route::namespace('Customer')->group(function () {
         Route::prefix('product')->group(function () {
             Route::get('/{product:slug}', [CustomerProductController::class, 'index'])->name('customer.market.product.index');
             Route::post('/add-comment/{product:slug}', [CustomerProductController::class, 'addComment'])->name('customer.market.product.add-comment');
+            Route::get('/add-to-favorite/{product:slug}', [CustomerProductController::class, 'addToFavorite'])->name('customer.market.product.add-to-favorite');
         });
 
     });

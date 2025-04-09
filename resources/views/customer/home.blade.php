@@ -60,17 +60,40 @@
                                     <section class="lazyload-item-wrapper">
                                         <section class="product">
 
-                                            {{--<section class="product-add-to-cart">
+                                            <section class="product-add-to-cart">
                                                 <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="افزودن به سبد خرید">
                                                     <i class="fa fa-cart-plus"></i>
                                                 </a>
                                             </section>
 
-                                            <section class="product-add-to-favorite">
-                                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="افزودن به علاقه مندی">
-                                                    <i class="fa fa-heart"></i>
-                                                </a>
-                                            </section>--}}
+                                            @guest
+                                                <section class="product-add-to-favorite">
+                                                    <button class="btn btn-light btn-sm text-decoration-none"
+                                                            data-url="{{ route('customer.market.product.add-to-favorite', $product) }}"
+                                                            data-bs-toggle="tooltip" data-bs-placement="left">
+                                                        <i class="fa fa-heart"></i>
+                                                    </button>
+                                                </section>
+                                            @endguest
+                                            @auth
+                                                @if ($product->user->contains(auth()->user()->id))
+                                                    <section class="product-add-to-favorite">
+                                                        <button class="btn btn-light btn-sm text-decoration-none"
+                                                                data-url="{{ route('customer.market.product.add-to-favorite', $product) }}"
+                                                                data-bs-toggle="tooltip" data-bs-placement="left">
+                                                            <i class="fa fa-heart text-danger"></i>
+                                                        </button>
+                                                    </section>
+                                                @else
+                                                    <section class="product-add-to-favorite">
+                                                        <button class="btn btn-light btn-sm text-decoration-none"
+                                                                data-url="{{ route('customer.market.product.add-to-favorite', $product) }}"
+                                                                data-bs-toggle="tooltip" data-bs-placement="left">
+                                                            <i class="fa fa-heart"></i>
+                                                        </button>
+                                                    </section>
+                                                @endif
+                                            @endauth
 
                                             <a class="product-link" href="{{route('customer.market.product.index', $product)}}">
 
@@ -185,11 +208,36 @@
                                                     </a>
                                                 </section>
 
-                                                <section class="product-add-to-favorite">
-                                                    <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="افزودن به علاقه مندی">
-                                                        <i class="fa fa-heart"></i>
-                                                    </a>
-                                                </section>--}}
+                                                --}}
+
+                                                @guest
+                                                    <section class="product-add-to-favorite">
+                                                        <button class="btn btn-light btn-sm text-decoration-none"
+                                                                data-url="{{ route('customer.market.product.add-to-favorite', $product) }}"
+                                                                data-bs-toggle="tooltip" data-bs-placement="left">
+                                                            <i class="fa fa-heart"></i>
+                                                        </button>
+                                                    </section>
+                                                @endguest
+                                                @auth
+                                                    @if ($product->user->contains(auth()->user()->id))
+                                                        <section class="product-add-to-favorite">
+                                                            <button class="btn btn-light btn-sm text-decoration-none"
+                                                                    data-url="{{ route('customer.market.product.add-to-favorite', $product) }}"
+                                                                    data-bs-toggle="tooltip" data-bs-placement="left">
+                                                                <i class="fa fa-heart text-danger"></i>
+                                                            </button>
+                                                        </section>
+                                                    @else
+                                                        <section class="product-add-to-favorite">
+                                                            <button class="btn btn-light btn-sm text-decoration-none"
+                                                                    data-url="{{ route('customer.market.product.add-to-favorite', $product) }}"
+                                                                    data-bs-toggle="tooltip" data-bs-placement="left">
+                                                                <i class="fa fa-heart"></i>
+                                                            </button>
+                                                        </section>
+                                                    @endif
+                                                @endauth
 
                                                 <a class="product-link" href="{{route('customer.market.product.index', $product)}}">
 
@@ -303,4 +351,51 @@
         </section>
     </section>
     <!-- end brand part-->
+
+    <section class="position-fixed p-4 flex-row-reverse" style="z-index: 909999999; left: 0; top: 3rem; width: 26rem; max-width: 80%;">
+        <div class="toast"  data-delay="7000" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">دیجی کالا</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                <strong class="ml-auto">
+                    برای افزودن کالا به لیست علاقه مندی ها باید ابتدا وارد حساب کاربری خود شوید
+                    <br>
+                    <a href="{{ route('auth.customer.login-register-form') }}" class="text-dark">
+                        ثبت نام / ورود
+                    </a>
+                </strong>
+            </div>
+        </div>
+    </section>
+
+@endsection
+
+@section('script')
+
+    <script>
+        $('.product-add-to-favorite button').click(function() {
+            var url = $(this).attr('data-url');
+            var element = $(this);
+            $.ajax({
+                url : url,
+                success : function(result){
+                    if(result.status == 1)
+                    {
+                        $(element).children().first().addClass('text-danger');
+                    }
+                    else if(result.status == 2)
+                    {
+                        $(element).children().first().removeClass('text-danger')
+                    }
+                    else if(result.status == 3)
+                    {
+                        $('.toast').toast('show');
+                    }
+                }
+            })
+        })
+    </script>
+
 @endsection

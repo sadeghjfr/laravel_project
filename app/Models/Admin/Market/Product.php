@@ -3,6 +3,7 @@
 namespace App\Models\Admin\Market;
 
 use App\Models\Admin\Content\Comment;
+use App\Models\User;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -31,6 +32,11 @@ class Product extends Model
     public function category(){
 
         return $this->belongsTo(ProductCategory::class);
+    }
+
+    public function user(){
+
+        return $this->belongsToMany(User::class);
     }
 
     public function brand(){

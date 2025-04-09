@@ -94,6 +94,7 @@
 
                                                 <input class="d-none" type="radio" name="color" id="{{ 'color_' . $color->id }}"
                                                        value="{{ $color->id }}" data-color-name="{{ $color->color_name }}"
+                                                       data-color-price={{ $color->price_increase }}
                                                        @if($key == 0) checked @endif
                                                 >
                                             @endforeach
@@ -101,11 +102,26 @@
                                         </p>
                                     @endif
 
-                                    @foreach($product->guarantees as $key => $guarantee)
+                                    @php
+                                        $guarantees = $product->guarantees()->get();
+                                    @endphp
+
+                                    @if($guarantees->count() != 0)
+
                                         <p><i class="fa fa-shield-alt cart-product-selected-warranty me-1"></i>
-                                            <span>{{$guarantee->name}}</span>
+                                            گارانتی :
+                                            <select name="guarantee" id="guarantee" class="p-1">
+                                                @foreach ($guarantees as $key => $guarantee)
+                                                    <option value="{{ $guarantee->id }}"
+                                                            data-guarantee-price={{ $guarantee->price_increase }}
+                                                            @if($key == 0) selected @endif>{{ $guarantee->name }}
+                                                    </option>
+                                                @endforeach
+
+                                            </select>
                                         </p>
-                                    @endforeach
+
+                                    @endif
 
 
                                     <p>
@@ -119,18 +135,41 @@
                                     </p>
 
                                     <p>
-                                        <a class="btn btn-light  btn-sm text-decoration-none" href="#">
-                                            <i class="fa fa-heart text-danger"></i>
-                                            افزودن به علاقه مندی
-                                        </a>
+                                    @guest
+                                        <section class="product-add-to-favorite position-relative" style="top: 0">
+                                            <button class="btn btn-light btn-sm text-decoration-none"
+                                                    data-url="{{ route('customer.market.product.add-to-favorite', $product) }}"
+                                                    data-bs-toggle="tooltip" data-bs-placement="left">
+                                                <i class="fa fa-heart"></i>
+                                            </button>
+                                        </section>
+                                    @endguest
+                                    @auth
+                                        @if ($product->user->contains(auth()->user()->id))
+                                            <section class="product-add-to-favorite position-relative" style="top: 0">
+                                                <button class="btn btn-light btn-sm text-decoration-none"
+                                                        data-url="{{ route('customer.market.product.add-to-favorite', $product) }}"
+                                                        data-bs-toggle="tooltip" data-bs-placement="left">
+                                                    <i class="fa fa-heart text-danger"></i>
+                                                </button>
+                                            </section>
+                                        @else
+                                            <section class="product-add-to-favorite position-relative" style="top: 0">
+                                                <button class="btn btn-light btn-sm text-decoration-none"
+                                                        data-url="{{ route('customer.market.product.add-to-favorite', $product) }}"
+                                                        data-bs-toggle="tooltip" data-bs-placement="left">
+                                                    <i class="fa fa-heart"></i>
+                                                </button>
+                                            </section>
+                                            @endif
+                                            @endauth
                                     </p>
 
                                     <section>
                                         <section class="cart-product-number d-inline-block ">
-                                            <button class="cart-number-down" type="button">-</button>
-                                            <input class="" type="number" min="1" max="5" step="1" value="1"
-                                                   readonly="readonly">
-                                            <button class="cart-number-up" type="button">+</button>
+                                            <button class="cart-number cart-number-down" type="button">-</button>
+                                            <input type="number" id="number" name="number" min="1" max="5" step="1" value="1" readonly="readonly">
+                                            <button class="cart-number cart-number-up" type="button">+</button>
                                         </section>
                                     </section>
 
@@ -151,38 +190,41 @@
                                 <section class="content-wrapper bg-white p-3 rounded-2 cart-total-price">
                                     <section class="d-flex justify-content-between align-items-center">
                                         <p class="text-muted">قیمت کالا</p>
-                                        <p class="text-muted">{{priceFormat($product->price)}} <span
-                                                class="small">تومان</span></p>
+                                        <p class="text-muted">
+                                            <span id="product_price" data-product-original-price={{ $product->price }}>
+                                                {{ priceFormat($product->price) }}
+                                            </span>
+                                            <span class="small">تومان</span>
+                                        </p>
                                     </section>
 
-                                    <section class="d-flex justify-content-between align-items-center">
-                                        <p class="text-muted">تخفیف کالا</p>
-                                        <p class="text-danger fw-bolder ">
-                                            @if(!empty($product->activeAmazingSale()))
-                                                {{priceFormat(($product->price * $product->activeAmazingSale()->percentage)/100)}}
-                                            @else
-                                                ۰
-                                            @endif
-                                            <span class="small">تومان</span></p>
-                                    </section>
+                                    @php
+                                        $amazingSale = $product->activeAmazingSale();
+                                    @endphp
+
+                                    @if(!empty($amazingSale))
+                                        <section class="d-flex justify-content-between align-items-center">
+                                            <p class="text-muted">تخفیف کالا</p>
+                                            <p class="text-danger fw-bolder" id="product-discount-price"
+                                               data-product-discount-price="{{ ($product->price * ($amazingSale->percentage / 100) ) }}">
+                                                {{ priceFormat($product->price * ($amazingSale->percentage / 100) ) }}
+                                                <span class="small">تومان</span>
+                                            </p>
+                                        </section>
+                                    @endif
 
                                     <section class="border-bottom mb-3"></section>
 
                                     <section class="d-flex justify-content-between align-items-center">
                                         <p class="text-muted">قیمت نهایی</p>
                                         <p class="fw-bolder">
-                                            @if(!empty($product->activeAmazingSale()))
-                                                {{priceFormat($product->price - (($product->price * $product->activeAmazingSale()->percentage)/100))}}
-                                            @else
-                                                {{priceFormat($product->price)}}
-                                            @endif
+                                            <span  id="final-price"></span>
                                             <span class="small">تومان</span>
                                         </p>
                                     </section>
 
                                     <section class="cart-button">
-                                        <a id="next-level" href="#" class="btn btn-danger d-block">افزودن به سبد
-                                            خرید</a>
+                                        <a id="next-level" href="#" class="btn btn-danger d-block">افزودن به سبد خرید</a>
                                     </section>
 
 
@@ -242,11 +284,36 @@
                                                     </a>
                                                 </section>
 
-                                                <section class="product-add-to-favorite">
-                                                    <a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="افزودن به علاقه مندی">
-                                                        <i class="fa fa-heart"></i>
-                                                    </a>
-                                                </section>--}}
+                                                --}}
+
+                                                @guest
+                                                    <section class="product-add-to-favorite">
+                                                        <button class="btn btn-light btn-sm text-decoration-none"
+                                                                data-url="{{ route('customer.market.product.add-to-favorite', $relatedProduct) }}"
+                                                                data-bs-toggle="tooltip" data-bs-placement="left">
+                                                            <i class="fa fa-heart"></i>
+                                                        </button>
+                                                    </section>
+                                                @endguest
+                                                @auth
+                                                    @if ($relatedProduct->user->contains(auth()->user()->id))
+                                                        <section class="product-add-to-favorite">
+                                                            <button class="btn btn-light btn-sm text-decoration-none"
+                                                                    data-url="{{ route('customer.market.product.add-to-favorite', $relatedProduct) }}"
+                                                                    data-bs-toggle="tooltip" data-bs-placement="left">
+                                                                <i class="fa fa-heart text-danger"></i>
+                                                            </button>
+                                                        </section>
+                                                    @else
+                                                        <section class="product-add-to-favorite">
+                                                            <button class="btn btn-light btn-sm text-decoration-none"
+                                                                    data-url="{{ route('customer.market.product.add-to-favorite', $relatedProduct) }}"
+                                                                    data-bs-toggle="tooltip" data-bs-placement="left">
+                                                                <i class="fa fa-heart"></i>
+                                                            </button>
+                                                        </section>
+                                                    @endif
+                                                @endauth
 
                                                 <a class="product-link"
                                                    href="{{route('customer.market.product.index', $relatedProduct)}}">
@@ -495,9 +562,28 @@
     </section>
     <!-- end description, features and comments -->
 
+    <section class="position-fixed p-4 flex-row-reverse" style="z-index: 909999999; left: 0; top: 3rem; width: 26rem; max-width: 80%;">
+        <div class="toast"  data-delay="7000" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">دیجی کالا</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                <strong class="ml-auto">
+                    برای افزودن کالا به لیست علاقه مندی ها باید ابتدا وارد حساب کاربری خود شوید
+                    <br>
+                    <a href="{{ route('auth.customer.login-register-form') }}" class="text-dark">
+                        ثبت نام / ورود
+                    </a>
+                </strong>
+            </div>
+        </div>
+    </section>
+
 @endsection
 
 @section('script')
+
     <script>
         $(document).ready(function(){
             bill();
@@ -505,11 +591,88 @@
             $('input[name="color"]').change(function(){
                 bill();
             })
+            //guarantee
+            $('select[name="guarantee"]').change(function(){
+                bill();
+            })
+            //number
+            $('.cart-number').click(function(){
+                bill();
+            })
         })
 
         function bill() {
-            var selected_color = $('input[name="color"]:checked');
-            $("#selected_color_name").html(selected_color.attr('data-color-name'))
+
+            if($('input[name="color"]:checked').length != 0){
+                var selected_color = $('input[name="color"]:checked');
+                $("#selected_color_name").html(selected_color.attr('data-color-name'));
+            }
+
+            //price computing
+            var selected_color_price = 0;
+            var selected_guarantee_price = 0;
+            var number = 1;
+            var product_discount_price = 0;
+            var product_original_price = parseFloat($('#product_price').attr('data-product-original-price'));
+
+            if($('input[name="color"]:checked').length != 0)
+            {
+                selected_color_price = parseFloat(selected_color.attr('data-color-price'));
+            }
+
+            if($('#guarantee option:selected').length != 0)
+            {
+                selected_guarantee_price = parseFloat($('#guarantee option:selected').attr('data-guarantee-price'));
+            }
+
+            if($('#number').val() > 0)
+            {
+                number = parseFloat($('#number').val());
+            }
+
+            if($('#product-discount-price').length != 0)
+            {
+                product_discount_price = parseFloat($('#product-discount-price').attr('data-product-discount-price'));
+            }
+
+            //final price
+            var product_price = product_original_price + selected_color_price + selected_guarantee_price;
+            var final_price = number * (product_price - product_discount_price);
+            $('#product-price').html(toFarsiNumber(product_price));
+            $('#final-price').html(toFarsiNumber(final_price));
         }
+
+        function toFarsiNumber(number)
+        {
+            const farsiDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+            number = new Intl.NumberFormat().format(number);
+            return number.toString().replace(/\d/g, x => farsiDigits[x]);
+        }
+
     </script>
+
+    <script>
+        $('.product-add-to-favorite button').click(function() {
+            var url = $(this).attr('data-url');
+            var element = $(this);
+            $.ajax({
+                url : url,
+                success : function(result){
+                    if(result.status == 1)
+                    {
+                        $(element).children().first().addClass('text-danger');
+                    }
+                    else if(result.status == 2)
+                    {
+                        $(element).children().first().removeClass('text-danger')
+                    }
+                    else if(result.status == 3)
+                    {
+                        $('.toast').toast('show');
+                    }
+                }
+            })
+        })
+    </script>
+
 @endsection
